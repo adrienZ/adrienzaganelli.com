@@ -1,0 +1,15 @@
+// first of all reset user agent stylesheet
+@import 'partials/reset';
+
+// import your helpers functions
+@import 'globals/functions';
+// import all your globals variables
+
+@import 'globals/colors';
+@import 'globals/typography';
+@import 'globals/layout';
+
+// import font faces
+@import 'globals/fonts';
+
+@include build-type-scale;

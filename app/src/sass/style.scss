@@ -1,0 +1,42 @@
+/* sass/
+// |
+// |-- globals/              # /!\ Import all theses files in partials/_base.scss /!\
+// |   |-- _typography.scss      # body text, headlines, font, em, rem, line-height, letter spacing
+// |   |-- _colors.scss          # backgrounds, font colors, borders, grandients ...
+// |   |-- _layout.scss          # container, grid, full screen section...
+// |   |-- _functions.scss       # prefixers, loops, etc..
+// |   |-- _fonts.scss           # all your font face
+// |
+// |-- partials/             # Partials : reususable parts of your website
+// |   |-- _base.sass           # imports for all mixins + global project variables
+// |   |-- _reset.scss          # reset
+// |   |-- _header.scss         # header
+// |   |-- _footer.scss         # footer
+// |   |-- _reset.scss          # reset
+// |   |-- example.scss         # example
+// |
+// |
+// |-- views/             # Views: page of your website
+// |   |-- page_base.sass       #
+// |   |-- _home.scss           # home
+// |   ...
+// |
+// |-- vendor/               # CSS or Sass from other projects
+// |   |-- _bootsrap.scss
+// |   ...
+// |
+// `-- style.scss            # each file at the root will render a css file, use one css file per page;
+*/
+
+@import 'partials/base';
+@import 'views/home';
+
+body {
+  background: red;
+  transform: translate3d(20px, 100px, 0);
+}
+h3 {
+  color: blue;
+}
+
+// DONT WRITE CODE AFTER IMPORTS

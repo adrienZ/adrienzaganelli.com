@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <!-- https://github.com/joshbuchea/HEAD -->
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="description of your site">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h3>Comment est votre blanquette ?</h3>
+    <% users =  ['geddy', 'neil', 'alex']; %>
+    <% users.forEach(function(user){ %>
+      <%= user %>
+    <% }); %>
+    <!--SCRIPTS are auto-imported-->
+  </body>
+</html>
