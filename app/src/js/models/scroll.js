@@ -1,43 +1,52 @@
 export default class scroll {
   constructor(target, callback) {
-    this._callback = callback
+    // props
+    this._callback = callback.bind(this)
     this._target = target
+    this._delay = 0
 
+    // binded methods
     this.watch = this.getScroll.bind(this)
-    target.addEventListener('mousewheel', this.watch.bind(this))
-    target.addEventListener('DOMMouseScroll', this.watch.bind(this))
-
-    return this;
   }
 
   destroy() {
-    this.div.removeEventListener('mousewheel', this.watch);
-    this.div.removeEventListener('DOMMouseScroll', this.watch);
+    this._target.removeEventListener('mousewheel', this.watch)
+    this._target.removeEventListener('DOMMouseScroll', this.watch)
   }
   start() {
-    this.div.addEventListener('mousewheel', this.watch);
-    this.div.addEventListener('DOMMouseScroll', this.watch);
+    this._target.addEventListener('mousewheel', this.watch)
+    this._target.addEventListener('DOMMouseScroll', this.watch)
   }
 
   getScroll(event) {
-    if (event) event.preventDefault();
-    let orgEvent = event || window.event || window.eventBackup;
+    if (event) event.preventDefault()
+    let orgEvent = event || window.event || window.eventBackup
     let speed = 0
-    event = orgEvent;
-    window.eventBackup = event;
+    event = orgEvent
+    window.eventBackup = event
 
     // Old school scrollwheel delta
     if (orgEvent.wheelDelta) {
-      speed = orgEvent.wheelDelta / 120;
+      speed = orgEvent.wheelDelta / 120
     }
     if (orgEvent.detail) {
-      speed = -orgEvent.detail / 3;
+      speed = -orgEvent.detail / 3
     }
 
-    const direction = speed >= 0 ? -1 : 1;
-    speed = Math.abs(speed);
-    this._callback({
-      speed, direction
-    })
+    const direction = speed >= 0 ? -1 : 1
+    speed = Math.abs(speed)
+
+    if (!this._delay) {
+      const resetDelay = this.resetDelay.bind(this)
+
+      this._callback({ speed, direction })
+      this._delay = setTimeout(resetDelay, 2000)
+    } else {
+      console.warn("scroll prevented")
+    }
+  }
+
+  resetDelay() {
+    this._delay = clearInterval(this._delay)
   }
 }

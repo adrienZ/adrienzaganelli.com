@@ -1,12 +1,7 @@
-import DomManipulator from "@js/models/class.dom-manipulator";
-import style from "@sass/style.scss";
-import Scroll from "@js/models/scroll"
 
-const $ = new DomManipulator();
+import style from "@sass/style.scss" // eslint-disable-line
+import Carousel from "@js/modules/Carousel"
 
-new Scroll(window, (e) => {
-  console.log(e);
-})
-
-console.log("Elle est bonnne !", style);
-console.debug("move your ", $.el("body"));
+new Carousel(window, [] , (e) => {
+  console.log(e)
+}).start()
