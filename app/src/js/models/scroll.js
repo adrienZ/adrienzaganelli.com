@@ -1,9 +1,8 @@
 export default class scroll {
-  constructor(target, callback) {
+  constructor(target) {
     // props
-    this._callback = callback.bind(this)
     this._target = target
-    this._delay = 0
+    this._delay = undefined
 
     // binded methods
     this.watch = this.getScroll.bind(this)
@@ -48,5 +47,9 @@ export default class scroll {
 
   resetDelay() {
     this._delay = clearInterval(this._delay)
+  }
+
+  setHandler(callback) {
+    this._callback = callback.bind(this)
   }
 }

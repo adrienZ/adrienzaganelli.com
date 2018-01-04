@@ -15,7 +15,7 @@ const urlComponents = {
 module.exports = {
   contentBase: path.join(urls.BASE_URL, "dist"),
   // change this as you want
-  compress: true,
+  compress: false,
   inline: true,
   noInfo: true,
   overlay: {

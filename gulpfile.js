@@ -15,6 +15,10 @@ gulp.task('importDatas', () => {
 gulp.task('importImages', () => {
   gulp.src(urls.APP_ASSETS_URL + 'media/img/**/*').pipe(gulp.dest(urls.DIST_ASSETS_URL + 'media/img/'));
 });
+gulp.task('importMarkdown', () => {
+  console.log(urls.DIST_ASSETS_URL);
+  gulp.src(urls.APP_ASSETS_URL + 'media/markdown/**/*').pipe(gulp.dest(urls.DIST_ASSETS_URL + "/media/markdown"));
+});
 gulp.task('importVideos', () => {
   gulp.src(urls.APP_ASSETS_URL + 'media/video/**/*').pipe(gulp.dest(urls.DIST_ASSETS_URL + 'media/video/'));
 });
@@ -25,4 +29,4 @@ gulp.task('importFonts', () => {
 // =======================================================================//
 // ! PROD                                                                 //
 // =======================================================================//
-gulp.task('build', ['importImages', 'importDatas', 'importVideos', 'importFonts']);
+gulp.task('build', ['importImages', 'importDatas', 'importVideos', 'importMarkdown', 'importFonts']);
