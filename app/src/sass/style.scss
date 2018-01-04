@@ -30,13 +30,3 @@
 
 @import 'partials/base';
 @import 'views/home';
-
-body {
-  background: red;
-  transform: translate3d(20px, 100px, 0);
-}
-h3 {
-  color: blue;
-}
-
-// DONT WRITE CODE AFTER IMPORTS

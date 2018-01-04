@@ -1,17 +1,22 @@
 export default class scroll {
-  constructor(target) {
+  constructor(target, callback) {
     // props
     this._target = target
     this._delay = undefined
 
     // binded methods
     this.watch = this.getScroll.bind(this)
+
+    this._callback = callback ? callback : undefined
+
+    return this
   }
 
   destroy() {
     this._target.removeEventListener('mousewheel', this.watch)
     this._target.removeEventListener('DOMMouseScroll', this.watch)
   }
+
   start() {
     this._target.addEventListener('mousewheel', this.watch)
     this._target.addEventListener('DOMMouseScroll', this.watch)
@@ -41,7 +46,7 @@ export default class scroll {
       this._callback({ speed, direction })
       this._delay = setTimeout(resetDelay, 2000)
     } else {
-      console.warn("scroll prevented")
+      // scroll prevented
     }
   }
 
@@ -49,7 +54,7 @@ export default class scroll {
     this._delay = clearInterval(this._delay)
   }
 
-  setHandler(callback) {
+  setScrollHandler(callback) {
     this._callback = callback.bind(this)
   }
 }
