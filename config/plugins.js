@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const fs = require("fs");
 const path = require("path");
+const WebpackNotifierPlugin = require('webpack-notifier');
 
 const env = require("./env");
 const entries = require("./entries");
@@ -14,6 +15,7 @@ const mainConfigPlugins = [
   // get all the views as HtmlWebpackPlugin instance
   // build css from scss import
   ...entries.VIEWS,
+  new WebpackNotifierPlugin(),
   loaders.extractSass
 ];
 const staticSassConfigPlugins = [loaders.extractStaticSass];
