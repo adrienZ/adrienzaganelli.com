@@ -58,7 +58,7 @@ const VIEWS = fs
   .map(view => {
     // all these files are now outputs
     return new HtmlWebpackPlugin({
-      title: '👋 Give me a title 🔥',
+      title: '🦄 Adrien Zaganelli - Portfolio MMXVIII',
       template: `${urls.BASE_URL}/app/${view}`,
       filename: `${view.replace('.ejs', '.html')}`,
       inject: "body",

@@ -2,29 +2,29 @@ export default [
   {
     label: 'Pulsar',
     name: 'Pulsar One [Ø]',
-    file: 'test.md'
+    file: 'pulsar.md'
   },
   {
     label: 'Fidget',
     name: 'Fidget Cube',
-    file: 'test.md'
+    file: 'fidget.md'
   },
   {
     label: 'Marketme',
     name: 'MARKET-ME.FR',
-    file: 'test.md'
+    file: 'marketme.md'
   },
   {
     name: 'CNJE',
-    file: 'test.md'
+    file: 'cnje.md'
   },
   {
     name: 'Alium',
-    file: 'test.md'
+    file: 'alium.md'
   },
   {
     name: 'Sketchfab',
-    file: 'test.md'
+    file: 'skfb.md'
   }
 ]
 

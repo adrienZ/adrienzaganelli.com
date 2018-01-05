@@ -45,6 +45,6 @@
   "dependencies": {
     "axios": "^0.17.1",
     "preact": "^8.2.7",
-    "showdown": "^1.8.6"
+    "preact-markup": "^1.6.0"
   }
 }

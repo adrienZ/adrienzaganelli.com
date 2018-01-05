@@ -1,0 +1,15 @@
+.carousel {
+  width: 85%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  // align-content: center;
+
+  &__header {
+    &--menu {
+      display: flex;
+    }
+  }
+}

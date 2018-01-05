@@ -2,12 +2,10 @@ import { Component, h } from 'preact'; // eslint-disable-line
 import Carousel from "@js/modules/Carousel"
 import Scroll from '@js/models/scroll'
 import axios from "axios"
-import showdown from "showdown"
 
 export default class CarouselInterface extends Carousel {
   constructor(props) {
     super(props)
-
 
     this._xhr = {
       markdown: 'src/media/markdown/'
@@ -15,7 +13,8 @@ export default class CarouselInterface extends Carousel {
   }
 
   componentDidMount() {
-    new Scroll(document.body, this.onChange.bind(this)).start()
+    this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
+    this.scrollManager.start()
   }
 
   onLoadMoreHandler(e) {
@@ -30,9 +29,8 @@ export default class CarouselInterface extends Carousel {
         }
       },
     }).then(response => {
-      const app = document.getElementById('app')
-      const converter = new showdown.Converter()
-      app.innerHTML = converter.makeHtml(response.data)
+      this.props.expandViewHandler(response.data)
+      this.scrollManager.destroy()
     })
   }
 }

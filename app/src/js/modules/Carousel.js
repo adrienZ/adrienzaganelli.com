@@ -6,11 +6,6 @@ export default class CarouselInterface extends Component {
   constructor(props) {
     super()
 
-    Object.assign(props, {
-      interval: 2000,
-      projects: props.data
-    })
-
     this._timer = new Timer(this.onTimeoutHandler.bind(this), props.interval)
     this._projectsLength = props.projects.length
 
@@ -65,10 +60,22 @@ export default class CarouselInterface extends Component {
 
   render() {
     return (
-      <div>
+      <section class="carousel">
+        <header class="carousel__header">
+          <nav>
+            <ul class="carousel__header--menu">
+              {this.props.projects.map(p => <li>{p.label || p.name}</li>)}
+            </ul>
+          </nav>
+        </header>
+
         <h1>{this.state.activeItem.name}</h1>
-        <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)}/>
-      </div>
+        <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
+
+        <footer>
+          <a href="#" class="about">about & contact</a>
+        </footer>
+      </section>
     )
   }
 }
