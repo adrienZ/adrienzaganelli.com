@@ -1,8 +1,9 @@
 export default class scroll {
-  constructor(target, callback) {
+  constructor(target, callback, force) {
     // props
     this._target = target
     this._delay = undefined
+    this._force = force || .8
 
     // binded methods
     this.watch = this.getScroll.bind(this)
@@ -24,6 +25,8 @@ export default class scroll {
 
   getScroll(event) {
     if (event) event.preventDefault()
+    if (this._delay) return
+
     let orgEvent = event || window.event || window.eventBackup
     let speed = 0
     event = orgEvent
@@ -40,13 +43,11 @@ export default class scroll {
     const direction = speed >= 0 ? -1 : 1
     speed = Math.abs(speed)
 
-    if (!this._delay) {
+    if (this._force < speed) {
       const resetDelay = this.resetDelay.bind(this)
 
       this._callback({ speed, direction })
-      this._delay = setTimeout(resetDelay, 2000)
-    } else {
-      // scroll prevented
+      this._delay = setTimeout(resetDelay, 1000)
     }
   }
 

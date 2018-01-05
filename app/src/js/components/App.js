@@ -17,7 +17,7 @@ export default class App extends Component {
         <CarouselInterface
           projects={projects}
           expandViewHandler={this.enableExpandedView.bind(this)}
-          interval={2000}
+          interval={10000}
         />
         {this.state.expandedView && <Markup markup={this.state.expandedView}/>}
       </div>

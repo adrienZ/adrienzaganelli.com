@@ -42,6 +42,19 @@ export default class CarouselInterface extends Component {
     })
   }
 
+  // verry dirty
+  resetPogressBar() {
+    const oldProgressBar = Array.from(this.base.querySelectorAll('.carousel__progress'))
+    const newProgressBar = oldProgressBar[0].cloneNode(true)
+    const parent = oldProgressBar[0].parentNode
+    oldProgressBar.map(p => p.remove())
+    parent.appendChild(newProgressBar)
+  }
+
+  componentDidUpdate() {
+    this.resetPogressBar()
+  }
+
   previous() {
     this.onChange({ direction: -1 })
   }
@@ -59,6 +72,7 @@ export default class CarouselInterface extends Component {
   }
 
   render() {
+    console.log("render carousel");
     return (
       <section class="carousel">
         <header class="carousel__header">
@@ -69,17 +83,29 @@ export default class CarouselInterface extends Component {
           </nav>
         </header>
 
-        <aside class="carousel__aside">
-          <div>
-            <p class="number">{this.state.index + 1}</p>
-            <p class="number divider">{this._projectsLength}</p>
-          </div>
-        </aside>
+        <div class="carousel__content">
+          <aside class="carousel__aside">
+            <div class="pagination">
+              <p class="number">{this.state.index + 1}</p>
+              <p class="number divider">{this._projectsLength}</p>
+            </div>
+          </aside>
 
-        <h1>{this.state.activeItem.name}</h1>
-        <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
+          <main class="carousel__main">
+            <div class="carousel__arrow">
+              <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
+              <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
+            </div>
+            <h1>{this.state.activeItem.name}</h1>
+            <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
 
-        <footer>
+            <div class="carousel__progress" style={{
+              'animation-duration': this.props.interval + "ms"
+            }}></div>
+          </main>
+        </div>
+
+        <footer class="carousel__footer">
           <a href="#" class="about">about & contact</a>
         </footer>
       </section>

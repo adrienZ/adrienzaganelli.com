@@ -23,7 +23,7 @@ export default class CarouselInterface extends Carousel {
     axios.get(this._xhr.markdown + this.state.activeItem.file, {
       onDownloadProgress: function (progressEvent) {
         if (progressEvent.lengthComputable) {
-          console.log(`loading: ${(progressEvent.loaded / progressEvent.total) * 100} %`)
+          return (progressEvent.loaded / progressEvent.total) * 100
         }
       },
     }).then(response => {

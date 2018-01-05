@@ -13,3 +13,7 @@
 @import 'globals/fonts';
 
 @include build-type-scale;
+
+* {
+  box-sizing: border-box
+}
