@@ -5,7 +5,7 @@ export default class Post extends Component {
     return (
       <section class="post">
         <header class="post__header">
-          <a class="btn">See website</a>
+          <a href="#" class="btn">See website</a>
         </header>
         <div id="mardownContainer"></div>
       </section>

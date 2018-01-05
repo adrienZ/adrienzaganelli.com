@@ -104,18 +104,20 @@ export default class CarouselInterface extends Component {
                 </div>
               }
               {this.state.stopTimer &&
-                <button onClick={this.onClosePost.bind(this)}>EXIT</button>
+                <button class="btn" onClick={this.onClosePost.bind(this)}>EXIIIIIIIIIIT</button>
               }
 
               <h1>{this.state.activeItem.name}</h1>
               <p>Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world, The game is in French.</p>
-              {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
 
+              <div style="display: inline-block">
+                {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
+                <div class="carousel__progress" style={{
+                  'animation-duration': this.props.interval + "ms",
+                  'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
+                }}></div>
+              </div>
 
-              <div class="carousel__progress" style={{
-                'animation-duration': this.props.interval + "ms",
-                'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
-              }}></div>
             </div>
 
             <div class="carousel__main--img">
