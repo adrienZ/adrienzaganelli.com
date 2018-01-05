@@ -108,7 +108,7 @@ export default class CarouselInterface extends Component {
             }
 
             <h1>{this.state.activeItem.name}</h1>
-            <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
+            {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
 
 
             <div class="carousel__progress" style={{

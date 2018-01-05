@@ -5174,6 +5174,10 @@ schema-utils@^0.3.0:
   dependencies:
     ajv "^5.0.0"
 
+scroll-to-js@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/scroll-to-js/-/scroll-to-js-1.0.5.tgz#1db19731d49c640d6b82f1acbbefe047b0631f47"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"

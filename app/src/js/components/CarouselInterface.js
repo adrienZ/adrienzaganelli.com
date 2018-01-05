@@ -41,6 +41,6 @@ export default class CarouselInterface extends Carousel {
     this.props.disableExpandedView()
     this.scrollManager.start()
     this.state.stopTimer = false
-    this.resetTimeout
+    this.resetTimeout()
   }
 }
