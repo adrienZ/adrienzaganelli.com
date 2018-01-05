@@ -15,7 +15,7 @@ export default class App extends Component {
     return (
       <div>
         <CarouselInterface
-          projects={projects}
+          projects={[ "me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
           interval={10000}
           disableExpandedView={this.disableExpandedView.bind(this)}

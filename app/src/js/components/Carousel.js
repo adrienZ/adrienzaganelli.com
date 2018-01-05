@@ -1,7 +1,8 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import Timer from "@js/models/timer"
 // ui components
-import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
+import HeroProject from '@js/components/HeroProject' // eslint-disable-line
+import Me from '@js/components/Me' // eslint-disable-line
 
 export default class CarouselInterface extends Component {
   constructor(props) {
@@ -44,17 +45,6 @@ export default class CarouselInterface extends Component {
     })
   }
 
-  // verry dirty
-  resetPogressBar() {
-    const oldProgressBar = Array.from(this.base.querySelectorAll('.carousel__progress'))
-    if (!oldProgressBar.length) return
-
-    const newProgressBar = oldProgressBar[0].cloneNode(true)
-    const parent = oldProgressBar[0].parentNode
-    oldProgressBar.map(p => p.remove())
-    parent.appendChild(newProgressBar)
-  }
-
   previous() {
     this.onChange({ direction: -1 })
   }
@@ -69,10 +59,6 @@ export default class CarouselInterface extends Component {
 
   onTimeoutHandler() {
     this.onChange({ direction: 1 })
-  }
-
-  componentDidUpdate() {
-    this.resetPogressBar()
   }
 
   render() {
@@ -95,35 +81,19 @@ export default class CarouselInterface extends Component {
           </aside>
 
           <main class="carousel__main">
-
-            <div class="carousel__main--text">
-              {!this.state.stopTimer &&
-                <div class="carousel__arrow">
-                  <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
-                  <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
-                </div>
-              }
-              {this.state.stopTimer &&
-                <button class="btn" onClick={this.onClosePost.bind(this)}>EXIIIIIIIIIIT</button>
-              }
-
-              <h1>{this.state.activeItem.name}</h1>
-              <p>Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world, The game is in French.</p>
-
-              <div style="display: inline-block">
-                {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
-                <div class="carousel__progress" style={{
-                  'animation-duration': this.props.interval + "ms",
-                  'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
-                }}></div>
-              </div>
-
-            </div>
-
-            <div class="carousel__main--img">
-              <img src="https://www.market-me.fr/assets/become-seller/img/home.png" />
-            </div>
-
+            { this.state.index === 0 ?
+              <Me
+                stopTimer={this.state.stopTimer}
+                next={this.next.bind(this)}
+                previous={this.previous.bind(this)} />
+              : <HeroProject
+                stopTimer={this.state.stopTimer}
+                project={this.state.activeItem}
+                next={this.next.bind(this)}
+                previous={this.previous.bind(this)}
+                onClosePost={this.onClosePost.bind(this)}
+                onClickHandler={this.onLoadMoreHandler.bind(this)} />
+            }
           </main>
         </div>
 

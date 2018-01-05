@@ -44,7 +44,11 @@
   &__main {
     padding: 0 3rem;
     width: 100%;
-    display: flex;
+
+    &--container {
+      display: flex;
+      align-items: center;
+    }
 
     &--text {
       width: 30%;
