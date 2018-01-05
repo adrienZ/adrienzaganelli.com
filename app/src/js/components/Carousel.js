@@ -1,6 +1,5 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import Timer from "@js/models/timer"
-
 // ui components
 import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
 
@@ -56,10 +55,6 @@ export default class CarouselInterface extends Component {
     parent.appendChild(newProgressBar)
   }
 
-  componentDidUpdate() {
-    this.resetPogressBar()
-  }
-
   previous() {
     this.onChange({ direction: -1 })
   }
@@ -74,6 +69,10 @@ export default class CarouselInterface extends Component {
 
   onTimeoutHandler() {
     this.onChange({ direction: 1 })
+  }
+
+  componentDidUpdate() {
+    this.resetPogressBar()
   }
 
   render() {

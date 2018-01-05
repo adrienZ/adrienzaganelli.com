@@ -3,6 +3,7 @@ import Carousel from "@js/components/Carousel"
 import Scroll from '@js/models/scroll'
 import axios from "axios"
 import showdown from "showdown"
+import Hammer from 'hammerjs'
 
 export default class CarouselInterface extends Carousel {
   constructor(props) {
@@ -16,6 +17,16 @@ export default class CarouselInterface extends Carousel {
   componentDidMount() {
     this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
     this.scrollManager.start()
+
+    const hammer = new Hammer(this.base, {
+      velocity: 0.8
+    })
+
+    hammer.on('swipe', e => {
+      e.deltaX < 0
+        ? this.next()
+        : this.previous()
+    })
   }
 
   onLoadMoreHandler(e) {
