@@ -96,24 +96,31 @@ export default class CarouselInterface extends Component {
 
           <main class="carousel__main">
 
-            {!this.state.stopTimer &&
-              <div class="carousel__arrow">
-                <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
-                <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
-              </div>
-            }
-            {this.state.stopTimer &&
-              <button onClick={this.onClosePost.bind(this)}>EXIT</button>
-            }
+            <div class="carousel__main--text">
+              {!this.state.stopTimer &&
+                <div class="carousel__arrow">
+                  <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
+                  <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
+                </div>
+              }
+              {this.state.stopTimer &&
+                <button onClick={this.onClosePost.bind(this)}>EXIT</button>
+              }
 
-            <h1>{this.state.activeItem.name}</h1>
-            {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
+              <h1>{this.state.activeItem.name}</h1>
+              <p>Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world, The game is in French.</p>
+              {!this.state.stopTimer && <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />}
 
 
-            <div class="carousel__progress" style={{
-              'animation-duration': this.props.interval + "ms",
-              'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
-            }}></div>
+              <div class="carousel__progress" style={{
+                'animation-duration': this.props.interval + "ms",
+                'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
+              }}></div>
+            </div>
+
+            <div class="carousel__main--img">
+              <img src="https://www.market-me.fr/assets/become-seller/img/home.png" />
+            </div>
 
           </main>
         </div>

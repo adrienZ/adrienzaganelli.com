@@ -24,7 +24,6 @@
   }
 
   &__aside {
-    width: 10%;
     text-align: center;
 
     .number {
@@ -36,13 +35,34 @@
     }
 
     .pagination {
+      margin-left: -100%;
+      background: white;
       display: inline-block;
     }
   }
 
   &__main {
-    width: 90%;
+    padding: 0 3rem;
+    width: 100%;
+    display: flex;
+
+    &--text {
+      width: 30%;
+      min-width: 280px;
+    }
+
+    &--img {
+      width: 70%;
+      min-width: 280px;
+
+      img {
+        max-width: 100%;
+        display: block;
+        margin: auto;
+      }
+    }
   }
+
 
   &__footer {
     padding: $padding-header-footer;
