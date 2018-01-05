@@ -47,7 +47,7 @@ export default class scroll {
       const resetDelay = this.resetDelay.bind(this)
 
       this._callback({ speed, direction })
-      this._delay = setTimeout(resetDelay, 1000)
+      this._delay = setTimeout(resetDelay, 700)
     }
   }
 

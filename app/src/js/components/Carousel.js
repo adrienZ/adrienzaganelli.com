@@ -1,5 +1,7 @@
-import { Component, h } from 'preact'; // eslint-disable-line
+import { Component, h } from 'preact' // eslint-disable-line
 import Timer from "@js/models/timer"
+
+// ui components
 import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
 
 export default class CarouselInterface extends Component {
@@ -11,7 +13,8 @@ export default class CarouselInterface extends Component {
 
     this.state = {
       activeItem: props.projects[0],
-      index: 0
+      index: 0,
+      stopTimer: false
     }
   }
 
@@ -25,7 +28,7 @@ export default class CarouselInterface extends Component {
       newIndex = 0
     }
 
-    this.setPosition(newIndex);
+    this.setPosition(newIndex)
 
     if (e.hasOwnProperty('speed')) {
       this.resetTimeout()
@@ -45,6 +48,8 @@ export default class CarouselInterface extends Component {
   // verry dirty
   resetPogressBar() {
     const oldProgressBar = Array.from(this.base.querySelectorAll('.carousel__progress'))
+    if (!oldProgressBar.length) return
+
     const newProgressBar = oldProgressBar[0].cloneNode(true)
     const parent = oldProgressBar[0].parentNode
     oldProgressBar.map(p => p.remove())
@@ -72,13 +77,12 @@ export default class CarouselInterface extends Component {
   }
 
   render() {
-    console.log("render carousel");
     return (
       <section class="carousel">
         <header class="carousel__header">
           <nav>
             <ul class="carousel__header--menu">
-              {this.props.projects.map(p => <li>{p.label || p.name}</li>)}
+              { /* this.props.projects.map(p => <li>{p.label || p.name}</li>) */ }
             </ul>
           </nav>
         </header>
@@ -92,16 +96,26 @@ export default class CarouselInterface extends Component {
           </aside>
 
           <main class="carousel__main">
-            <div class="carousel__arrow">
-              <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
-              <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
-            </div>
+
+            {!this.state.stopTimer &&
+              <div class="carousel__arrow">
+                <button onClick={this.previous.bind(this)} class="carousel__arrow--prev">prev</button>
+                <button onClick={this.next.bind(this)} class="carousel__arrow--next">next</button>
+              </div>
+            }
+            {this.state.stopTimer &&
+              <button onClick={this.onClosePost.bind(this)}>EXIT</button>
+            }
+
             <h1>{this.state.activeItem.name}</h1>
             <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
 
+
             <div class="carousel__progress" style={{
-              'animation-duration': this.props.interval + "ms"
+              'animation-duration': this.props.interval + "ms",
+              'animation-play-state': this.state.stopTimer ? 'paused' : 'running'
             }}></div>
+
           </main>
         </div>
 

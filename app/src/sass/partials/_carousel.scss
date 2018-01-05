@@ -56,7 +56,7 @@
     animation-name: progress;
     animation-iteration-count: infinite;
     transform-origin: 0 0;
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1)
+    transition-timing-function: linear;
   }
 
   @keyframes progress {
