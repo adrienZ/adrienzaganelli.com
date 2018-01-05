@@ -1,5 +1,4 @@
 import { Component, h } from 'preact' // eslint-disable-line
-import scrollTo from "scroll-to-js"
 
 export default class Post extends Component {
   render() {
@@ -15,6 +14,10 @@ export default class Post extends Component {
 
   componentDidMount() {
     this.base.querySelector('#mardownContainer').innerHTML = this.props.expandedView
-    scrollTo(document.body, this.base.offsetTop, 200)
+    window.scroll({
+      top: this.base.offsetTop,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }

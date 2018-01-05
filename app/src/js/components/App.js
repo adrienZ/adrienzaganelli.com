@@ -23,6 +23,9 @@ export default class App extends Component {
         { this.state.expandedView &&
           <Post expandedView={this.state.expandedView} />
         }
+        {this.state.expandedView &&
+          <button class="app-to-top" onClick={this.backToTop.bind(this)}>TO top</button>
+        }
       </div>
     )
   }
@@ -37,5 +40,13 @@ export default class App extends Component {
     this.setState({
       expandedView: null,
     })
+  }
+
+  backToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }
