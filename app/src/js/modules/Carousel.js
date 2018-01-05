@@ -69,6 +69,13 @@ export default class CarouselInterface extends Component {
           </nav>
         </header>
 
+        <aside class="carousel__aside">
+          <div>
+            <p class="number">{this.state.index + 1}</p>
+            <p class="number divider">{this._projectsLength}</p>
+          </div>
+        </aside>
+
         <h1>{this.state.activeItem.name}</h1>
         <LoadMoreButton onClickHandler={this.onLoadMoreHandler.bind(this)} />
 

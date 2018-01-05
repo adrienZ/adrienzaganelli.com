@@ -24,8 +24,6 @@ export default class CarouselInterface extends Carousel {
       onDownloadProgress: function (progressEvent) {
         if (progressEvent.lengthComputable) {
           console.log(`loading: ${(progressEvent.loaded / progressEvent.total) * 100} %`)
-        } else {
-          console.log('loading');
         }
       },
     }).then(response => {
