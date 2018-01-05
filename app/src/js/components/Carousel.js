@@ -85,10 +85,12 @@ export default class CarouselInterface extends Component {
               <Me
                 stopTimer={this.state.stopTimer}
                 next={this.next.bind(this)}
+                interval={this.props.interval}
                 previous={this.previous.bind(this)} />
               : <HeroProject
                 stopTimer={this.state.stopTimer}
                 project={this.state.activeItem}
+                interval={this.props.interval}
                 next={this.next.bind(this)}
                 previous={this.previous.bind(this)}
                 onClosePost={this.onClosePost.bind(this)}

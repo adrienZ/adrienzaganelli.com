@@ -14,8 +14,8 @@ export default class HeroProject extends Component {
     parent.appendChild(newProgressBar)
   }
 
-  componentDidMount() {
-    // this.resetPogressBar()
+  componentDidUpdate() {
+    this.resetPogressBar()
   }
 
   render() {
