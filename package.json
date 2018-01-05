@@ -4,7 +4,7 @@
   "description": "Boilerplate on steroids",
   "main": "gulpfile.js",
   "scripts": {
-    "build": "gulp build && CLEAR_DIST=true webpack -p --hide-modules --cache",
+    "build": "CLEAR_DIST=true webpack -p --hide-modules --cache && gulp build",
     "start": "NODE_ENV=dev webpack-dev-server --colors",
     "open": "code . || open . -a atom",
     "hello": "(yarn install || npm i) && npm run build && npm run start",
