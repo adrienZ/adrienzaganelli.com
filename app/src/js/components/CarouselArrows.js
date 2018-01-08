@@ -8,7 +8,7 @@ export default props =>
 
 
 const arrowSvg = (id) =>
-  <svg class="previous" version="1.1" id={id} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 40 22" style="enable-background:new 0 0 40 22;">
+  <svg class="previous" version="1.1" id={id} xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 40 22" style="enable-background:new 0 0 40 22;">
     <g id="Symbols">
       <g id="arrow-nav" transform="translate(20.000000, -1.000000)">
         <g id="Group-6-Copy" transform="translate(-20.000000, 0.000000)">

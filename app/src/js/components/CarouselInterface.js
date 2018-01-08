@@ -27,6 +27,26 @@ export default class CarouselInterface extends Carousel {
         ? this.next()
         : this.previous()
     })
+
+    window.onkeyup = this.onKeyUp.bind(this)
+  }
+
+  onKeyUp(e) {
+    if (this.state.stopTimer) return false
+
+    const key = e.keyCode ? e.keyCode : e.which
+    switch (key) {
+    case 37:
+      this.previous()
+      break
+    case 39:
+      this.next()
+      break
+    }
+  }
+
+  componentWillUnmount() {
+    window.onkeyup = null
   }
 
   onLoadMoreHandler(e) {
@@ -55,3 +75,4 @@ export default class CarouselInterface extends Carousel {
     this.resetTimeout()
   }
 }
+

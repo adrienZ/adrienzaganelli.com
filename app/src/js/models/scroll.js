@@ -23,14 +23,13 @@ export default class scroll {
     this._target.addEventListener('DOMMouseScroll', this.watch)
   }
 
-  getScroll(event) {
-    if (event) event.preventDefault()
+  getScroll(event, options = {}) {
+    if (event && !options) event.preventDefault()
     if (this._delay) return
 
-    let orgEvent = event || window.event || window.eventBackup
-    let speed = 0
+    let orgEvent = event || window.event
+    let speed = options.speed || 0
     event = orgEvent
-    window.eventBackup = event
 
     // Old school scrollwheel delta
     if (orgEvent.wheelDelta) {
