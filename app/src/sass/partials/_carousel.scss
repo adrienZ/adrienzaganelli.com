@@ -70,7 +70,7 @@
       display:flex;
       align-items: center;
       justify-content: center;
-      background: lightgrey;
+      background: hsl(0, 0%, 95%);
       min-width: 0;
       min-height: 0;
 
@@ -98,6 +98,19 @@
     animation-iteration-count: infinite;
     transform-origin: 0 0;
     transition-timing-function: linear;
+  }
+
+  &__arrow {
+    display: inline-flex;
+    flex-direction: column;
+    transform: rotate(-90deg);
+    svg {
+      height: 2rem;
+      width: 2rem;
+    }
+    &--next {
+      transform: rotate(180deg);
+    }
   }
 
   @keyframes progress {
