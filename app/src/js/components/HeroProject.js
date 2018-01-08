@@ -46,7 +46,7 @@ export default class HeroProject extends Component {
         </div>
 
         <div class="carousel__main--img">
-          <img src="https://www.market-me.fr/assets/become-seller/img/home.png" />
+          <img src={this.props.project.cover} />
         </div>
       </div>
     )
