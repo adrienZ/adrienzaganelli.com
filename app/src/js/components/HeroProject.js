@@ -33,7 +33,7 @@ export default class HeroProject extends Component {
           }
 
           <h1>{this.props.project.name}</h1>
-          <p>Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world, The game is in French.</p>
+          <p>{this.props.project.description}</p>
 
           <div style="display: inline-block">
             {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} />}
