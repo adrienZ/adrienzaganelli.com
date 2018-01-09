@@ -37,8 +37,10 @@ export default class CarouselInterface extends Carousel {
     const key = e.keyCode ? e.keyCode : e.which
     switch (key) {
     case 37:
+    case 40:
       this.previous()
       break
+    case 38:
     case 39:
       this.next()
       break

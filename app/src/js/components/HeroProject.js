@@ -42,11 +42,11 @@ export default class HeroProject extends Component {
               'animation-play-state': this.props.stopTimer ? 'paused' : 'running'
             }}></div>
           </div>
+          <a href={this.props.project.link}> or go to site</a>
 
         </div>
 
-        <div class="carousel__main--img">
-          <img src={this.props.project.cover} />
+        <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }}>
         </div>
       </div>
     )

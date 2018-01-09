@@ -34,7 +34,7 @@ export default class CarouselInterface extends Component {
     } else {
       // a bit tricky, use the delay of scroll manager in order
       // to prevent spamming, this delay allow animations to run
-      return this.scrollManager.getScroll(null, { speed: 1 })
+      // return this.scrollManager.getScroll(null, { speed: 1 })
     }
     this.setPosition(newIndex)
   }

@@ -25,6 +25,11 @@ gulp.task('importFonts', () => {
   gulp.src(urls.APP_ASSETS_URL + 'media/fonts/**/*').pipe(gulp.dest(urls.DIST_ASSETS_URL + 'media/fonts/'));
 });
 
+
+gulp.task('md', () => {
+  gulp.watch(urls.APP_ASSETS_URL + 'media/markdown/**/*', ['importMarkdown'])
+})
+
 // =======================================================================//
 // ! PROD                                                                 //
 // =======================================================================//
