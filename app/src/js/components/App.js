@@ -23,6 +23,8 @@ export default class App extends Component {
         { this.state.expandedView &&
           <Post
             project={this.props.project}
+            previousProject={this.props.previousProject}
+            nextProject={this.props.nextProject}
             onClosePost={this.props.onClosePost}
             expandedView={this.state.expandedView} />
         }
@@ -38,8 +40,10 @@ export default class App extends Component {
       expandedView: postText,
     })
 
-    Object.assign(this.props, {
+    this.props = Object.assign(this.props, {
       project: projects[pIndex - 1],
+      previousProject: projects[pIndex - 1] || projects[projects.length - 1],
+      nextProject: projects[pIndex + 1] || projects[0],
       onClosePost
     })
   }

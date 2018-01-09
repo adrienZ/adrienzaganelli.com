@@ -20,6 +20,14 @@ export default class Post extends Component {
             </div>
           )}
         </div>
+        <footer class="post__footer">
+          <div class="post__footer--prev">
+            <p>previous project: {this.props.previousProject.name}</p>
+          </div>
+          <div class="post__footer--next">
+            <p>next project: {this.props.nextProject.name}</p>
+          </div>
+        </footer>
       </section>
     )
   }

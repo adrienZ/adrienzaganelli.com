@@ -86,8 +86,8 @@ export default class CarouselInterface extends Component {
           </aside>
 
           <main class="carousel__main">
-            { this.state.index === 0 ?
-              <Me
+            { this.state.index === 0
+              ? <Me
                 stopTimer={this.state.stopTimer}
                 next={this.next.bind(this)}
                 interval={this.props.interval}
