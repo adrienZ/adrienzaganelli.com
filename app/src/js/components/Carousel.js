@@ -98,7 +98,6 @@ export default class CarouselInterface extends Component {
                 interval={this.props.interval}
                 next={this.next.bind(this)}
                 previous={this.previous.bind(this)}
-                onClosePost={this.onClosePost.bind(this)}
                 onClickHandler={this.onLoadMoreHandler.bind(this)} />
             }
           </main>

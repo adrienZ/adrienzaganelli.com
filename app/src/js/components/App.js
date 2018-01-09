@@ -21,7 +21,10 @@ export default class App extends Component {
           disableExpandedView={this.disableExpandedView.bind(this)}
         />
         { this.state.expandedView &&
-          <Post expandedView={this.state.expandedView} />
+          <Post
+            project={this.props.project}
+            onClosePost={this.props.onClosePost}
+            expandedView={this.state.expandedView} />
         }
         {this.state.expandedView &&
           <button class="app-to-top" onClick={this.backToTop.bind(this)}>TO top</button>
@@ -30,9 +33,14 @@ export default class App extends Component {
     )
   }
 
-  enableExpandedView(postText) {
+  enableExpandedView(postText, pIndex, onClosePost) {
     this.setState({
       expandedView: postText,
+    })
+
+    Object.assign(this.props, {
+      project: projects[pIndex - 1],
+      onClosePost
     })
   }
 

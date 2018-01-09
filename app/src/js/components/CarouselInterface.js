@@ -63,7 +63,7 @@ export default class CarouselInterface extends Carousel {
     }).then(response => {
       const converter = new showdown.Converter()
       const blogPost = converter.makeHtml(response.data)
-      this.props.expandViewHandler(blogPost)
+      this.props.expandViewHandler(blogPost, this.state.index, this.onClosePost.bind(this))
       this._timer.stop()
       this.scrollManager.destroy()
       this.state.stopTimer = true

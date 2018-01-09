@@ -8,9 +8,18 @@ export default class Post extends Component {
         <div class={`post__wire ${doFill(this.props.expandedView)}`}></div>
         <div class={`post__wire--end ${doFill(this.props.expandedView)}`}></div>
         <header class="post__header">
-          <a href="#" class="btn">See website</a>
+          <button class="btn" onClick={this.props.onClosePost}>EXIT</button>
+          <a href={this.props.project.link} class="btn">See website</a>
         </header>
         <div id="mardownContainer"></div>
+        <div class="post__collaborators">
+          {this.props.project.collaborators.map( c =>
+            <div class="post__collaborator">
+              <p>{c.role}</p>
+              <a href={c.link}>{c.fullname}</a>
+            </div>
+          )}
+        </div>
       </section>
     )
   }

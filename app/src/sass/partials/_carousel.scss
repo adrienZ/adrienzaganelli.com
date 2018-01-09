@@ -78,12 +78,10 @@
 
 
   &__footer {
-    // padding: $padding-header-footer;
-    flex: 0;
     background: $white;
     padding: 0 1rem;
-    position: relative;
-    top: 1.75%;
+    position: absolute;
+    bottom: 3vh;
   }
 
   &__wire {

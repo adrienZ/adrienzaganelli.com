@@ -28,9 +28,6 @@ export default class HeroProject extends Component {
               previous={this.props.previous}
             />
           }
-          {this.props.stopTimer &&
-            <button class="btn" onClick={this.props.onClosePost}>EXIIIIIIIIIIT</button>
-          }
 
           <h1>{this.props.project.name}</h1>
           <p>{this.props.project.description}</p>
@@ -42,7 +39,6 @@ export default class HeroProject extends Component {
               'animation-play-state': this.props.stopTimer ? 'paused' : 'running'
             }}></div>
           </div>
-          <a href={this.props.project.link}> or go to site</a>
 
         </div>
 
