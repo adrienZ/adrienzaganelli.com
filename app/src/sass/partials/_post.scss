@@ -2,6 +2,27 @@
   width: 92%;
   margin: auto;
   margin-bottom: 3rem;
+
+  &__wire {
+    width: 1px;
+    background: $pimper;
+    margin-left: calc(50% - 2px);
+    height: 3rem;
+    position: relative;
+    opacity: .15;
+
+    &--end {
+      width: 20%;
+      margin: auto;
+      background: $pimper;
+      height: 2px;
+      opacity: .15;
+    }
+  }
+}
+
+.fill {
+  opacity: 1;
 }
 
 #mardownContainer {
@@ -13,10 +34,7 @@
   }
 
   img {
-    display: block;
-    width: 60%;
-    min-width: 260px;
-    margin: auto;
+    width: 100%;
     box-shadow: 0 1rem 2rem rgb(145, 145, 145);
   }
 }

@@ -15,7 +15,7 @@ const mainConfigPlugins = [
   // get all the views as HtmlWebpackPlugin instance
   // build css from scss import
   ...entries.VIEWS,
-  new WebpackNotifierPlugin(),
+  new WebpackNotifierPlugin({ excludeWarnings: true }),
   loaders.extractSass
 ];
 const staticSassConfigPlugins = [loaders.extractStaticSass];

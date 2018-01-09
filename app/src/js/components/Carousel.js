@@ -1,5 +1,6 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import Timer from "@js/models/timer"
+import { doFill } from '@js/models/utils'
 // ui components
 import HeroProject from '@js/components/HeroProject' // eslint-disable-line
 import Me from '@js/components/Me' // eslint-disable-line
@@ -104,7 +105,7 @@ export default class CarouselInterface extends Component {
         </div>
 
         <footer class="carousel__footer">
-          <a href="#" class="about">about & contact</a>
+          <p class={`carousel__wire ${doFill(this.state.stopTimer)}`}>Case study</p>
         </footer>
       </section>
     )
