@@ -1,6 +1,7 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import Sticky from 'react-sticky-el' // eslint-disable-line
 import { doFill } from '@js/models/utils'
+import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 
 export default class Post extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class Post extends Component {
         <Sticky>
           <header class="post__header">
             <button class="btn" onClick={this.props.onClosePost}>EXIT</button>
-            <a href={this.props.project.link} class="btn">See website</a>
+            <ExternalLink href={this.props.project.link} class="btn">See website</ExternalLink>
           </header>
         </Sticky>
         <div id="mardownContainer"></div>
@@ -19,7 +20,7 @@ export default class Post extends Component {
           {this.props.project.collaborators.map( c =>
             <div class="post__collaborator">
               <p>{c.role}</p>
-              <a href={c.link}>{c.fullname}</a>
+              <ExternalLink href={c.link}>{c.fullname}</ExternalLink>
             </div>
           )}
         </div>
