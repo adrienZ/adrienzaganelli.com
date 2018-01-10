@@ -1,4 +1,5 @@
 import { Component, h } from 'preact' // eslint-disable-line
+import Sticky from 'react-sticky-el' // eslint-disable-line
 import { doFill } from '@js/models/utils'
 
 export default class Post extends Component {
@@ -7,10 +8,12 @@ export default class Post extends Component {
       <section class="post">
         <div class={`post__wire ${doFill(this.props.expandedView)}`}></div>
         <div class={`post__wire--end ${doFill(this.props.expandedView)}`}></div>
-        <header class="post__header">
-          <button class="btn" onClick={this.props.onClosePost}>EXIT</button>
-          <a href={this.props.project.link} class="btn">See website</a>
-        </header>
+        <Sticky>
+          <header class="post__header">
+            <button class="btn" onClick={this.props.onClosePost}>EXIT</button>
+            <a href={this.props.project.link} class="btn">See website</a>
+          </header>
+        </Sticky>
         <div id="mardownContainer"></div>
         <div class="post__collaborators">
           {this.props.project.collaborators.map( c =>

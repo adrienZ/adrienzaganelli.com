@@ -17,7 +17,11 @@ const urls = {
 const aliases = {
   "@js": path.resolve(urls.APP_ASSETS_URL, "js/"),
   "@sass": path.resolve(urls.APP_ASSETS_URL, "sass/"),
-  "@md": path.resolve(urls.APP_MEDIA_URL, "md/")
+  "@md": path.resolve(urls.APP_MEDIA_URL, "md/"),
+  'react': 'preact-compat',
+  'react-dom': 'preact-compat',
+  // Not necessary unless you consume a module using `createClass`
+  'create-react-class': 'preact-compat/lib/create-react-class'
 };
 
 let exportObj = {};

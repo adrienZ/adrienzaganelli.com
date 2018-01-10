@@ -47,6 +47,8 @@
     "bootstrap": "4.0.0-beta.3",
     "hammerjs": "^2.0.8",
     "preact": "^8.2.7",
+    "preact-compat": "^3.17.0",
+    "react-sticky-el": "^1.0.16",
     "scroll-to-js": "^1.0.5",
     "showdown": "^1.8.6"
   }

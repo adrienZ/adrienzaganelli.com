@@ -29,7 +29,7 @@ export default class App extends Component {
             expandedView={this.state.expandedView} />
         }
         {this.state.expandedView &&
-          <button class="app-to-top" onClick={this.backToTop.bind(this)}>TO top</button>
+          <button class="btn app-to-top" onClick={this.backToTop.bind(this)}>⬆</button>
         }
       </div>
     )
