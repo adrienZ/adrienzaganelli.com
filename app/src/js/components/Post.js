@@ -7,9 +7,21 @@ import SmoothScroll from 'smooth-scroll'
 const scroll = new SmoothScroll()
 
 export default class Post extends Component {
+  constructor() {
+    super()
+    this.state.modal = {}
+  }
+
   render() {
     return (
       <section class="post">
+
+        { this.state.modal.open &&
+          <div class="post__modal" onClick={this.closeModal.bind(this)} >
+            <img class="post__modal--img" src={this.state.modal.src} />
+          </div>
+        }
+
         <div class={`post__wire ${doFill(this.props.expandedView)}`}></div>
         <Sticky>
           <header class="post__header">
@@ -40,8 +52,27 @@ export default class Post extends Component {
     )
   }
 
+  openModal(src) {
+    this.setState({
+      modal: {
+        src,
+        open: true
+      }
+    })
+  }
+
+  closeModal() {
+    this.setState({
+      modal: {}
+    })
+  }
+
   componentDidMount() {
     this.base.querySelector('#mardownContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
+
+    Array.from(this.base.querySelectorAll('#mardownContainer img')).map( img =>
+      img.addEventListener('click', () => this.openModal(img.src))
+    )
   }
 }

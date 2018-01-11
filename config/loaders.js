@@ -21,7 +21,7 @@ const extractSass = new ExtractTextPlugin({
 });
 
 const cssLoaders = [
-  { loader: "css-loader", options: { importLoaders: 1 } },
+  { loader: "css-loader", options: { importLoaders: 1, url: false } },
   {
     loader: "postcss-loader",
     options: {
