@@ -42,7 +42,7 @@ export default class HeroProject extends Component {
 
         </div>
 
-        <a href="#" class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }}></a>
+        <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }}></div>
       </div>
     )
   }

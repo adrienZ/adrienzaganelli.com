@@ -32,11 +32,26 @@
     }
   }
 
-  &__collaborators {
-    margin: 2rem 0;
+  &__collaborator {
+    &s {
+      margin: 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      background: lightgrey;
+      padding: 1rem;
+      justify-content: space-between;
+    }
+  }
+
+  &__footer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+
+    > div {
+      padding: 1rem;
+      width: 40%;
+      border: 1px solid $black;
+    }
   }
 }
 
