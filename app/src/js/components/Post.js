@@ -2,6 +2,9 @@ import { Component, h } from 'preact' // eslint-disable-line
 import Sticky from 'react-sticky-el' // eslint-disable-line
 import { doFill } from '@js/models/utils'
 import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
+import SmoothScroll from 'smooth-scroll'
+
+const scroll = new SmoothScroll()
 
 export default class Post extends Component {
   render() {
@@ -38,10 +41,6 @@ export default class Post extends Component {
 
   componentDidMount() {
     this.base.querySelector('#mardownContainer').innerHTML = this.props.expandedView
-    window.scroll({
-      top: this.base.offsetTop,
-      left: 0,
-      behavior: 'smooth'
-    });
+    scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
   }
 }

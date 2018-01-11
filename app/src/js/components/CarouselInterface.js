@@ -14,7 +14,14 @@ export default class CarouselInterface extends Carousel {
     }
   }
 
+  componentDidUpdate() {
+    this.state.stopTimer
+      ? document.body.classList.remove('no-scroll')
+      : document.body.classList.add('no-scroll')
+  }
+
   componentDidMount() {
+
     this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
     this.scrollManager.start()
 

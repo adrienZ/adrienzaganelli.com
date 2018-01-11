@@ -2,6 +2,7 @@ import { Component, h } from 'preact' // eslint-disable-line
 import CarouselInterface from "@js/components/CarouselInterface" // eslint-disable-line
 import projects from "@js/models/data"
 import Post from '@js/components/Post' // eslint-disable-line
+import SmoothScroll from 'smooth-scroll'
 
 export default class App extends Component {
   constructor() {
@@ -49,16 +50,17 @@ export default class App extends Component {
   }
 
   disableExpandedView() {
-    this.setState({
-      expandedView: null,
+    this.backToTop({
+      after: () => this.setState({
+        expandedView: null,
+      })
     })
   }
 
-  backToTop() {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+  backToTop(config = {}) {
+    const scrollTop = scroll => scroll.animateScroll(0, {
+      easing: 'easeInOutQuart',
+    })
+    scrollTop(new SmoothScroll(null, config))
   }
 }

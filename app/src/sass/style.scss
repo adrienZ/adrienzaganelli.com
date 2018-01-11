@@ -27,6 +27,9 @@
 // |
 // `-- style.scss            # each file at the root will render a css file, use one css file per page;
 */
+.no-scroll {
+  overflow: hidden;
+}
 
 @import 'partials/base';
 @import 'partials/carousel';
