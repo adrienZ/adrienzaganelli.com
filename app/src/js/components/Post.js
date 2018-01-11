@@ -11,7 +11,6 @@ export default class Post extends Component {
     return (
       <section class="post">
         <div class={`post__wire ${doFill(this.props.expandedView)}`}></div>
-        <div class={`post__wire--end ${doFill(this.props.expandedView)}`}></div>
         <Sticky>
           <header class="post__header">
             <button class="btn" onClick={this.props.onClosePost}>EXIT</button>

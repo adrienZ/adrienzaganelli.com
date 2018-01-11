@@ -66,62 +66,50 @@
 
     &--container {
       display: flex;
-      height: 100%;
-      width: 100%;
+      height: 80%;
+      flex-direction: column-reverse;
+      width: 80%;
+      margin: auto;
       align-items: center;
       position: relative;
 
       > div {
         padding: 0 1rem;
-      }
-
-      &.test {
-        display: flex;
-        flex-direction: column-reverse;
-        height: 100%;
         width: 100%;
-
-        .carousel__main {
-          &--text {
-            height: 60%;
-            background: grey;
-            width: 100%;
-            z-index: 1;
-          }
-
-          &--img {
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            height: 100%;
-            width: 50%;
-            border: 2px solid rgba(211, 211, 211, .25);
-
-            &-container {
-              display: flex;
-              justify-content: flex-end;
-              height: 40%;
-              width: 100%;
-              position: relative;
-            }
-          }
-        }
       }
     }
 
     &--text {
-      width: 30%;
-      min-width: 280px;
+      height: 50%;
+      margin-top: 2rem;
+      text-align: center;
     }
 
     &--img {
-      height: 70%;
-      width: 70%;
+      height: 100%;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
-      border: 2px solid rgba(211, 211, 211, .25);
+      position: relative;
+
+
+      &-container {
+        background-color:rgba(211, 211, 211, .25);
+        border: 2px solid lightgray;
+        height: 50%;
+      }
     }
+  }
+
+  &__title {
+    text-align: left;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    line-height: 1.5;
+    text-align: left;
   }
 
 
@@ -163,9 +151,15 @@
   }
 
   &__arrow {
-    display: inline-flex;
-    flex-direction: column;
-    transform: rotate(-90deg) translateY(.75rem);
+    //display: inline-flex;
+    // flex-direction: column;
+    // transform: rotate(-90deg) translateY(.75rem);
+    margin-top: 2rem;
+    margin-right: 2rem;
+
+    button {
+      display: block;
+    }
 
     svg {
       height: 1.5rem;
