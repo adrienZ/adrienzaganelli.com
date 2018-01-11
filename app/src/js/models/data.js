@@ -78,11 +78,11 @@ const buildCollaborator = (id, role) => Object.assign(collaborators[id], { role 
 
 export default [
   {
-    label: 'Pulsar',
+    slug: 'pulsar',
     name: 'Pulsar One [Ø]',
     file: 'pulsar.md',
     description: "Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world, The game is in French.",
-    cover: 'https://adrienzaganelli.com/projects/pulsar_one/src/img/characters/Chronos_D.png',
+    cover: 'src/media/img/carousel-img/pulsar.png',
     date: 'May 2016',
     myRole: 'Lead developer',
     link: 'https://adrienzaganelli.com/projects/pulsar_one/',
@@ -94,11 +94,11 @@ export default [
     ]
   },
   {
-    label: 'Fidget',
+    slug: 'Fidget',
     name: 'Fidget Cube',
     file: 'fidget.md',
     description: 'The Fidget cube is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.',
-    cover: 'https://suongkevintan.github.io/hetic-p2019-11/dist/images/hand_fidget_photo.png',
+    cover: 'src/media/img/carousel-img/fidget.png',
     date: 'November 2016',
     myRole: 'Webgl developer',
     link: 'https://suongkevintan.github.io/hetic-p2019-11/',
@@ -110,11 +110,11 @@ export default [
     ],
   },
   {
-    label: 'Marketme',
+    slug: 'marketme',
     name: 'MARKET-ME.FR',
     file: 'marketme.md',
     description: 'The MarketMe team (2 developers, 2 designers, 1 marketing assistant) and I build a creative marketplace in 2 months.',
-    cover: 'https://www.market-me.fr/assets/become-seller/img/home.png',
+    cover: 'src/media/img/carousel-img/marketme.png',
     date: 'July-September 2016',
     myRole: 'Intern full stack developer',
     link: 'https://www.market-me.fr/',
@@ -127,9 +127,10 @@ export default [
     ]
   },
   {
+    slug: 'cnje',
     name: 'CNJE',
     file: 'cnje.md',
-    cover: 'https://junior-entreprises.com/wp-content/uploads/2017/06/CNJE.png',
+    cover: 'src/media/img/carousel-img/cnje.png',
     date: 'July-August 2017',
     myRole: 'Front end Developer',
     link: 'https://junior-entreprises.com/',
@@ -138,9 +139,9 @@ export default [
     ]
   },
   {
-    name: 'Alium',
+    slug: 'alium',
     file: 'alium.md',
-    cover: 'https://www.aliumbikes.fr/wp-content/uploads/2017/06/Home_01.jpg',
+    cover: 'src/media/img/carousel-img/alium.jpg',
     date: 'April-May 2017',
     myRole: 'Front-end developer',
     link: 'https://www.aliumbikes.fr/fr/',
@@ -152,9 +153,10 @@ export default [
       buildCollaborator(17, 'Marketing & SEO'),
     ]  },
   {
+    slug: 'skfb',
     name: 'Sketchfab',
     file: 'skfb.md',
-    cover: 'https://static.sketchfab.com/static/builds/web/dist/hero-e49112ac2753496e2182980c4e186b35.png',
+    cover: 'src/media/img/carousel-img/skfb.png',
     date: 'July-October 2017',
     myRole: 'Intern front-end developer',
     link: 'https://sketchfab.com',

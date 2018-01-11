@@ -21,21 +21,25 @@
   </head>
 
   <body class="no-scroll">
-    <script async>
-      preloadedImgs = <%= JSON.stringify(preloadedImgs) %>
-    </script>
       <noscript>
         <h1>Adrien Zaganelli</h1>
         <p>Projects:</p>
-        <ul>
-        <% projects.map( (p, index) => { %>
-          <li>#<%= index %>: <a href=<%= p.link %>><%= p.name %></a></li>
-        <% }) %>
-        </ul>
+        <ul><% projects.map( (p, index) => { %>
+          <li>#<%= index %>: <a href="<%= p.link %>"><%= p.name %></a></li>
+        <% }) %></ul>
       </noscript>
 
-    <div id="app">
-    </div>
+      <div class="preloader" style="position: absolute; top: -99999px; left: -9999999px">
+        <% projects.map( (p, index) => { %>
+          <img src="<%= p.cover %>" width="1" height="1">
+        <% }) %>
+      </div>
+
+    <div id="app"></div>
+
+    <script async>
+      preloadedImgs = <%= JSON.stringify(preloadedImgs) %>
+    </script>
     <!--SCRIPTS are auto-imported-->
   </body>
 </html>
