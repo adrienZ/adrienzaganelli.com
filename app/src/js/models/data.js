@@ -81,7 +81,7 @@ export default [
     slug: 'pulsar',
     name: 'Pulsar One [Ø]',
     file: 'pulsar.md',
-    description: "Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world",
+    description: 'Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world',
     cover: 'src/media/img/carousel-img/pulsar.png',
     date: 'May 2016',
     myRole: 'Lead developer',

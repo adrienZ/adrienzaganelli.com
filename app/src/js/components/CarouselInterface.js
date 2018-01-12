@@ -1,8 +1,8 @@
 import { Component, h } from 'preact' // eslint-disable-line
-import Carousel from "@js/components/Carousel"
+import Carousel from '@js/components/Carousel'
 import Scroll from '@js/models/scroll'
-import axios from "axios"
-import showdown from "showdown"
+import axios from 'axios'
+import showdown from 'showdown'
 import Hammer from 'hammerjs'
 
 export default class CarouselInterface extends Carousel {

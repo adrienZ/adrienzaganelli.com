@@ -31,11 +31,8 @@
   overflow: hidden;
 }
 
-body {
-  //font-family: 'Stroke'!important;
-}
-
 @import 'partials/base';
 @import 'partials/carousel';
+@import 'partials/me';
 @import 'partials/post';
 @import 'partials/buttons';

@@ -9,12 +9,6 @@
 
   &__header {
     height: 0;
-    // flex: 0;
-    // padding: $padding-header-footer;
-
-    // &--menu {
-    //   display: flex;
-    // }
   }
 
   &__content {
@@ -128,16 +122,6 @@
     text-transform: uppercase;
     position: relative;
     opacity: .15;
-
-    &::before {
-      content: '';
-      position: absolute;
-      width: 1px;
-      left: calc(49% - 1px);
-      height: 107%;
-      background: $pimper;
-      top: 100%;
-    }
   }
 
   &__progress {
@@ -151,11 +135,7 @@
   }
 
   &__arrow {
-    //display: inline-flex;
-    // flex-direction: column;
-    // transform: rotate(-90deg) translateY(.75rem);
-    margin-top: 2rem;
-    margin-right: 2rem;
+    margin-right: 1rem;
 
     button {
       display: block;

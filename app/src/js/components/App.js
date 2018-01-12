@@ -55,13 +55,16 @@ export default class App extends Component {
       after: () => this.setState({
         expandedView: null,
       })
-    })
+    }, true)
   }
 
-  backToTop(config = {}) {
-    const scrollTop = scroll => scroll.animateScroll(0, {
+  backToTop(config = {}, toZero) {
+    const post = this.base.querySelector('.post')
+
+    const scrollTop = scroll => scroll.animateScroll(toZero ? 0 : post.offsetTop || 0, {
       easing: 'easeInOutQuart',
     })
     scrollTop(new SmoothScroll(null, config))
+    this.base.querySelector('.app-to-top').classList.add('hide')
   }
 }

@@ -3,7 +3,7 @@ import CarouselArrows from '@js/components/CarouselArrows' // eslint-disable-lin
 import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 
 export default (props) =>
-  <div>
+  <div class="me">
     {!props.stopTimer &&
       <CarouselArrows
         next={props.next}
@@ -17,7 +17,7 @@ export default (props) =>
     </p>
 
     <div class="carousel__progress" style={{
-      'animation-duration': props.interval + "ms",
+      'animation-duration': props.interval + 'ms',
       'animation-play-state': props.stopTimer ? 'paused' : 'running'
     }}></div>
   </div>

@@ -1,6 +1,10 @@
 .post {
   margin-bottom: 3rem;
 
+  .sticky &__header{
+    border-bottom: 1px solid lightgray;
+  }
+
   &__modal {
     position: fixed;
     width: 100%;
@@ -20,22 +24,12 @@
     }
   }
 
-  &__wire {
-    width: 1px;
-    background: $pimper;
-    margin-left: calc(50% - 3px);
-    height: 3rem;
-    position: relative;
-    opacity: .15;
-
-  }
-
   &__header {
     display: flex;
     width: 100%;
     align-items: center;
     background: $white;
-    padding: 1rem 0;
+    padding: .5rem 0;
 
     .btn {
       margin: 0;
