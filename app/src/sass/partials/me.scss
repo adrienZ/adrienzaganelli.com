@@ -1,0 +1,21 @@
+.me {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  p {
+    flex: 1;
+    padding: 0 1rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    max-width: 650px;
+    line-height: 1.5;
+    margin: auto;
+  }
+
+  .carousel__progress {
+    width: 100%;
+  }
+}

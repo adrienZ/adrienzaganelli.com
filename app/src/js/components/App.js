@@ -3,6 +3,7 @@ import CarouselInterface from "@js/components/CarouselInterface" // eslint-disab
 import projects from "@js/models/data"
 import Post from '@js/components/Post' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
+import { arrowSvg } from '@js/models/utils'
 
 export default class App extends Component {
   constructor() {
@@ -30,7 +31,7 @@ export default class App extends Component {
             expandedView={this.state.expandedView} />
         }
         {this.state.expandedView &&
-          <button class="btn app-to-top" onClick={this.backToTop.bind(this)}>⬆</button>
+          <button class="app-to-top" onClick={this.backToTop.bind(this)}>{h(arrowSvg)}</button>
         }
       </div>
     )
@@ -54,13 +55,16 @@ export default class App extends Component {
       after: () => this.setState({
         expandedView: null,
       })
-    })
+    }, true)
   }
 
-  backToTop(config = {}) {
-    const scrollTop = scroll => scroll.animateScroll(0, {
+  backToTop(config = {}, toZero) {
+    const post = this.base.querySelector('.post')
+
+    const scrollTop = scroll => scroll.animateScroll(toZero ? 0 : post.offsetTop || 0, {
       easing: 'easeInOutQuart',
     })
     scrollTop(new SmoothScroll(null, config))
+    this.base.querySelector('.app-to-top').classList.add('hide')
   }
 }

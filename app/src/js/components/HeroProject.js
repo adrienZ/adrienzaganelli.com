@@ -1,6 +1,7 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
 import CarouselArrows from '@js/components/CarouselArrows' // eslint-disable-line
+import { carouselMask } from '@js/models/utils' // eslint-disable-line
 
 export default class HeroProject extends Component {
   // verry dirty
@@ -22,17 +23,22 @@ export default class HeroProject extends Component {
     return (
       <div class="carousel__main--container">
         <div class="carousel__main--text">
-          {!this.props.stopTimer &&
-            <CarouselArrows
-              next={this.props.next}
-              previous={this.props.previous}
-            />
-          }
 
-          <h1>{this.props.project.name}</h1>
-          <p>{this.props.project.description}</p>
+          <div style="display: flex;">
+            {!this.props.stopTimer && false &&
+              <CarouselArrows
+                next={this.props.next}
+                previous={this.props.previous}
+              />
+            }
+            <div>
+              <h1 class="carousel__title">{this.props.project.name.toLowerCase()}</h1>
+              <p class="carousel__description">{this.props.project.description}</p>
+            </div>
 
-          <div style="display: inline-block">
+          </div>
+
+          <div style="display: inline-block; margin: 0 auto;">
             {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} />}
             <div class="carousel__progress" style={{
               'animation-duration': this.props.interval + "ms",
@@ -42,7 +48,9 @@ export default class HeroProject extends Component {
 
         </div>
 
-        <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }}></div>
+        <div class="carousel__main--img-container">
+          <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }} ></div>
+        </div>
       </div>
     )
   }
