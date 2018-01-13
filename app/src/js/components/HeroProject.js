@@ -25,20 +25,20 @@ export default class HeroProject extends Component {
         <div class="carousel__main--text">
 
           <div style="display: flex;">
-            {!this.props.stopTimer &&
+            {!this.props.stopTimer && false &&
               <CarouselArrows
                 next={this.props.next}
                 previous={this.props.previous}
               />
             }
             <div>
-              <h1 class="carousel__title">{this.props.project.name}</h1>
+              <h1 class="carousel__title">{this.props.project.name.toLowerCase()}</h1>
               <p class="carousel__description">{this.props.project.description}</p>
             </div>
 
           </div>
 
-          <div style="display: inline-block; margin: auto;">
+          <div style="display: inline-block; margin: 0 auto;">
             {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} />}
             <div class="carousel__progress" style={{
               'animation-duration': this.props.interval + "ms",
@@ -49,7 +49,7 @@ export default class HeroProject extends Component {
         </div>
 
         <div class="carousel__main--img-container">
-          <img class="carousel__main--img" src={this.props.project.cover} />
+          <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }} ></div>
         </div>
       </div>
     )

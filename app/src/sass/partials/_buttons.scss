@@ -37,11 +37,9 @@ button {
 
 .btn {
   display: inline-block;
-  padding: 1rem 2rem;
-  color: $white;
-  border-radius: .5rem;
-  background-color: black;
+  padding: .5rem 1rem;
+  color: $black;
   position: relative;
   margin-top: 1rem;
-  border: thin solid $pimper;
+  border: thin solid $black;
 }

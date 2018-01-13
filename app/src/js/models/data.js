@@ -113,7 +113,7 @@ export default [
     slug: 'marketme',
     name: 'MARKET-ME.FR',
     file: 'marketme.md',
-    description: 'The MarketMe team (2 developers, 2 designers, 1 marketing assistant) and I build a creative marketplace in 2 months.',
+    description: 'My first internship. The MarketMe team (2 developers, 2 designers, 1 marketing assistant) and I build a creative marketplace in 2 months.',
     cover: 'src/media/img/carousel-img/marketme.png',
     date: 'July-September 2016',
     myRole: 'Intern full stack developer',

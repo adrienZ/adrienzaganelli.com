@@ -1,10 +1,12 @@
 .carousel {
   width: 92%;
-  height: 91vh;
-  margin: 4.5vh auto;
+  height: 80vh;
+  margin: 10vh auto;
   display: flex;
   flex-direction:column;
+  position: relative;
   align-items: center;
+  // padding-left: 2rem;
   border: 1px solid black;
 
   &__header {
@@ -19,21 +21,49 @@
     align-items: center;
   }
 
+  &__menu {
+    background: $white;
+    border: 1px solid $black;
+    padding: .35rem .5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 1.5rem;
+    width: 2.25rem;
+    justify-content: space-between;
+
+    &--container {
+      background: $white;
+      padding: .5rem 0;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &--line {
+      background-color: $black;
+      height: 1px;
+      width: 100%;
+    }
+  }
+
   &__aside {
-    text-align: center;
-
-    .number {
-      padding: .25rem 0;
-    }
-
-    .divider {
-      border-top: 1px solid black
-    }
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
 
     .pagination {
-      margin-left: -100%;
+      font-family: $fancy-font;
       background: $white;
       display: inline-block;
+      transform: translateY(-40%) translateX(-1rem);
+      padding: 1rem;
+
+      .big {
+        font-size: 3.6rem;
+      }
     }
   }
 
@@ -41,7 +71,6 @@
     // padding: 0 3rem;
     height: 100%;
     width: 100%;
-    flex-direction: row;
     display:flex;
     align-items: center;
 
@@ -55,8 +84,10 @@
     }
 
     &--text {
-      // height: 50%;
+      padding-left: 2rem;
       flex: 1;
+      height: 55%;
+      align-self: flex-end;
     }
 
     &--img {
@@ -65,8 +96,7 @@
       background-position: center center;
       background-size: contain;
       position: relative;
-      display: none;
-
+      height: 100%;
 
       &-container {
         background-color:rgba(211, 211, 211, .25);
@@ -77,12 +107,38 @@
         background: grey;
       }
     }
+
+    @media screen and (max-width: 860px) {
+      &--container {
+        flex-direction: column;
+      }
+
+      &--text {
+        margin-top: 0;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding-left: 5rem;
+      }
+
+      &--img {
+        &-container {
+          width: 100%;
+          height: 55%;
+          clip-path:  polygon(0% 100%,100% 100%,100% 0%,0 25%);
+        }
+      }
+    }
+
   }
 
   &__title {
     text-align: left;
-    letter-spacing: .05rem;
-    text-transform: uppercase;
+    font-size: 3.8rem;
+    text-transform: capitalize;
+    letter-spacing: -.125rem;
   }
 
   &__description {
@@ -96,16 +152,6 @@
     padding: 0 1rem;
     position: absolute;
     bottom: 3vh;
-  }
-
-  &__wire {
-    border: 1px solid $pimper;
-    padding: .15rem 1.5rem;
-    background: $white;
-    font-size: .75rem;
-    text-transform: uppercase;
-    position: relative;
-    opacity: .15;
   }
 
   &__progress {
