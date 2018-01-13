@@ -21,3 +21,34 @@ export const arrowSvg = (id = '') =>
       </g>
     </g>
   </svg>
+
+
+
+export const carouselMask = () => {
+  return (
+
+    <svg>
+      <defs>
+        <clipPath id="carousel__mask">
+          <polygon id="Mask" points="259.694836 0 851 0 851 648 1.13686838e-13 648"></polygon>
+        </clipPath>
+      </defs>
+
+    </svg>
+  )
+}
+/*
+  <defs>
+    <polygon id="path-1" points="259.694836 0 851 0 851 648 1.13686838e-13 648"></polygon>
+  </defs>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="---Home-Page" transform="translate(-710.000000, -131.000000)">
+      <g id="Image-container" transform="translate(710.000000, 131.000000)">
+        <mask id="mask-2" fill="white">
+          <use xlink=":" href="#path-1"></use>
+        </mask>
+        <use id="Mask" fill="#D8D8D8" xlink=":" href="#path-1"></use>
+      </g>
+    </g>
+  </g>
+  */

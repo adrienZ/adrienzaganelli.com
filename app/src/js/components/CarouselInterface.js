@@ -2,7 +2,6 @@ import { Component, h } from 'preact' // eslint-disable-line
 import Carousel from '@js/components/Carousel'
 import Scroll from '@js/models/scroll'
 import axios from 'axios'
-import showdown from 'showdown'
 import Hammer from 'hammerjs'
 
 export default class CarouselInterface extends Carousel {
@@ -68,9 +67,7 @@ export default class CarouselInterface extends Carousel {
         }
       },
     }).then(response => {
-      const converter = new showdown.Converter()
-      const blogPost = converter.makeHtml(response.data)
-      this.props.expandViewHandler(blogPost, this.state.index, this.onClosePost.bind(this))
+      this.props.expandViewHandler(response.data, this.state.index, this.onClosePost.bind(this))
       this._timer.stop()
       this.scrollManager.destroy()
       this.state.stopTimer = true

@@ -1,6 +1,7 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
 import CarouselArrows from '@js/components/CarouselArrows' // eslint-disable-line
+import { carouselMask } from '@js/models/utils' // eslint-disable-line
 
 export default class HeroProject extends Component {
   // verry dirty
@@ -48,8 +49,7 @@ export default class HeroProject extends Component {
         </div>
 
         <div class="carousel__main--img-container">
-          <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }}>
-          </div>
+          <img class="carousel__main--img" src={this.props.project.cover} />
         </div>
       </div>
     )

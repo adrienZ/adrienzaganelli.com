@@ -18,9 +18,10 @@ export default class Post extends Component {
         onWheel={this.onScrollHandler.bind(this)}>
 
         { this.state.modal.open &&
-          <div class="post__modal" onClick={this.closeModal.bind(this)} >
+          <section class="post__modal" onClick={this.closeModal.bind(this)} >
+            <p></p>
             <img class="post__modal--img" src={this.state.modal.src} />
-          </div>
+          </section>
         }
         <Sticky>
           <header class="post__header">
@@ -28,7 +29,9 @@ export default class Post extends Component {
             <ExternalLink href={this.props.project.link} class="btn">WEBSITE</ExternalLink>
           </header>
         </Sticky>
-        <div id="mardownContainer"></div>
+        <div id="blogPostContainer">
+          {this.props.expandedView}
+        </div>
         <div class="post__collaborators">
           {this.props.project.collaborators.map( c =>
             <div class="post__collaborator">
@@ -74,10 +77,9 @@ export default class Post extends Component {
   }
 
   componentDidMount() {
-    this.base.querySelector('#mardownContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
 
-    Array.from(this.base.querySelectorAll('#mardownContainer img')).map( img =>
+    Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img =>
       img.addEventListener('click', this.openModal.bind(this))
     )
   }

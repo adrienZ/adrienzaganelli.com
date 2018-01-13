@@ -45,52 +45,36 @@
     display:flex;
     align-items: center;
 
-    &--square {
-      position: absolute;
-      left: 1rem;
-      width: 30%;
-      top: #{$margin-carousel-square * 3};
-      height: #{100% - $margin-carousel-square};
-      margin: auto;
-      display: flex;
-      background: black;
-      color: $white;
-      z-index: 2;
-    }
-
     &--container {
       display: flex;
-      height: 80%;
-      flex-direction: column-reverse;
-      width: 80%;
+      height: 100%;
+      width: 100%;
       margin: auto;
       align-items: center;
       position: relative;
-
-      > div {
-        padding: 0 1rem;
-        width: 100%;
-      }
     }
 
     &--text {
-      height: 50%;
-      margin-top: 2rem;
-      text-align: center;
+      // height: 50%;
+      flex: 1;
     }
 
     &--img {
-      height: 100%;
+      width: 100%;
       background-repeat: no-repeat;
       background-position: center center;
       background-size: contain;
       position: relative;
+      display: none;
 
 
       &-container {
         background-color:rgba(211, 211, 211, .25);
         border: 2px solid lightgray;
-        height: 50%;
+        height: 100%;
+        clip-path:  polygon(0 100%,100% 100%,100% 0,25% 0);
+        width: 60%;
+        background: grey;
       }
     }
   }

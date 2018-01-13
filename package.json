@@ -50,7 +50,6 @@
     "preact-compat": "^3.17.0",
     "react-sticky-el": "^1.0.16",
     "scroll-to-js": "^1.0.5",
-    "showdown": "^1.8.6",
     "smooth-scroll": "^12.1.5"
   }
 }
