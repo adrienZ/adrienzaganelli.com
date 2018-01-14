@@ -12,10 +12,9 @@ const extractStaticSass = new ExtractTextPlugin({
 });
 
 const extractSass = new ExtractTextPlugin({
-  // filename: env.devMode
-  //   ? "src/css/[name].css"
-  //   : "src/css/[name].[contenthash].css",
-  filename: "src/css/[name].css",
+  filename: env.devMode
+    ? "src/css/[name].css"
+    : "src/css/[name].[contenthash].css",
   disable: env.devMode,
   allChunks: true
 });

@@ -31,6 +31,14 @@
   overflow: hidden;
 }
 
+
+.preloader {
+  img, video {
+    height: 1px;
+    width: 1px
+  }
+}
+
 @import 'partials/base';
 @import 'partials/carousel';
 @import 'partials/me';
