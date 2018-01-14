@@ -4,6 +4,8 @@ import projects from "@js/models/data"
 import Post from '@js/components/Post' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
 import { arrowSvg } from '@js/models/utils'
+import Router from '@js/models/router'
+
 
 export default class App extends Component {
   constructor() {
@@ -11,12 +13,16 @@ export default class App extends Component {
     this.state = {
       expandedView: null
     }
+    this.router = new Router({
+      'projects': this.preActivateProject.bind(this)
+    })
   }
 
   render() {
     return (
       <div>
         <CarouselInterface
+          forcedFocus={this.preActivateProject()}
           projects={[ "me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
           interval={20000}
@@ -66,5 +72,16 @@ export default class App extends Component {
     })
     scrollTop(new SmoothScroll(null, config))
     this.base.querySelector('.app-to-top').classList.add('hide')
+  }
+
+  preActivateProject() {
+    const hashes = window.location.hash.split('/')
+    const projectName = hashes.slice(-1)[0]
+    let project = projects.filter( p => p.slug === projectName)
+    project = project.length ? project[0] : false
+
+    if (project) {
+      return projects.indexOf(project) + 1
+    }
   }
 }

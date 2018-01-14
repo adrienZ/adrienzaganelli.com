@@ -39,7 +39,7 @@ export default class HeroProject extends Component {
           </div>
 
           <div style="display: inline-block; margin: 0 auto;">
-            {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} />}
+            {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
             <div class="carousel__progress" style={{
               'animation-duration': this.props.interval + "ms",
               'animation-play-state': this.props.stopTimer ? 'paused' : 'running'

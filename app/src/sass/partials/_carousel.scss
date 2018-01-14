@@ -1,5 +1,5 @@
 .carousel {
-  width: 92%;
+  width: $main-container;
   height: 80vh;
   margin: 10vh auto;
   display: flex;
@@ -100,11 +100,9 @@
 
       &-container {
         background-color:rgba(211, 211, 211, .25);
-        border: 2px solid lightgray;
         height: 100%;
         clip-path:  polygon(0 100%,100% 100%,100% 0,25% 0);
         width: 60%;
-        background: grey;
       }
     }
 

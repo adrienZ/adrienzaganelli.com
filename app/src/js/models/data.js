@@ -80,7 +80,7 @@ export default [
   {
     slug: 'pulsar',
     name: 'Pulsar One [Ø]',
-    file: 'pulsar.md',
+    file: 'pulsar.html',
     description: 'Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world',
     cover: 'src/media/img/carousel-img/pulsar.png',
     date: 'May 2016',
@@ -96,7 +96,7 @@ export default [
   {
     slug: 'Fidget',
     name: 'Fidget Cube',
-    file: 'fidget.md',
+    file: 'fidget.html',
     description: 'The Fidget cube is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.',
     cover: 'src/media/img/carousel-img/fidget.png',
     date: 'November 2016',
@@ -112,7 +112,7 @@ export default [
   {
     slug: 'marketme',
     name: 'MARKET-ME.FR',
-    file: 'marketme.md',
+    file: 'marketme.html',
     description: 'My first internship. The MarketMe team (2 developers, 2 designers, 1 marketing assistant) and I build a creative marketplace in 2 months.',
     cover: 'src/media/img/carousel-img/marketme.png',
     date: 'July-September 2016',
@@ -129,7 +129,7 @@ export default [
   {
     slug: 'cnje',
     name: 'CNJE',
-    file: 'cnje.md',
+    file: 'cnje.html',
     description: 'Freelance projects for the french Junior-Enterprise confederation',
     cover: 'src/media/img/carousel-img/cnje.png',
     date: 'July-August 2017',
@@ -142,7 +142,7 @@ export default [
   {
     slug: 'alium',
     name: 'Alium',
-    file: 'alium.md',
+    file: 'alium.html',
     cover: 'src/media/img/carousel-img/alium.jpg',
     date: 'April-May 2017',
     myRole: 'Front-end developer',
@@ -157,7 +157,7 @@ export default [
   {
     slug: 'skfb',
     name: 'Sketchfab',
-    file: 'skfb.md',
+    file: 'skfb.html',
     cover: 'src/media/img/carousel-img/skfb.png',
     date: 'July-October 2017',
     myRole: 'Intern front-end developer',

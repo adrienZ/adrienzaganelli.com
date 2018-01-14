@@ -3,6 +3,9 @@ import Carousel from '@js/components/Carousel'
 import Scroll from '@js/models/scroll'
 import axios from 'axios'
 import Hammer from 'hammerjs'
+import Router from '@js/models/router'
+
+const router = new Router({})
 
 export default class CarouselInterface extends Carousel {
   constructor(props) {
@@ -11,30 +14,6 @@ export default class CarouselInterface extends Carousel {
     this._xhr = {
       markdown: 'src/media/markdown/'
     }
-  }
-
-  componentDidUpdate() {
-    this.state.stopTimer
-      ? document.body.classList.remove('no-scroll')
-      : document.body.classList.add('no-scroll')
-  }
-
-  componentDidMount() {
-
-    this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
-    this.scrollManager.start()
-
-    const hammer = new Hammer(this.base, {
-      velocity: 0.8
-    })
-
-    hammer.on('swipe', e => {
-      e.deltaX < 0
-        ? this.next()
-        : this.previous()
-    })
-
-    window.onkeyup = this.onKeyUp.bind(this)
   }
 
   onKeyUp(e) {
@@ -51,10 +30,6 @@ export default class CarouselInterface extends Carousel {
       this.next()
       break
     }
-  }
-
-  componentWillUnmount() {
-    window.onkeyup = null
   }
 
   onLoadMoreHandler(e) {
@@ -79,6 +54,41 @@ export default class CarouselInterface extends Carousel {
     this.scrollManager.start()
     this.state.stopTimer = false
     this.resetTimeout()
+
+    router.setRoute('')
+  }
+
+  componentDidUpdate() {
+    this.state.stopTimer
+      ? document.body.classList.remove('no-scroll')
+      : document.body.classList.add('no-scroll')
+  }
+
+  componentWillUnmount() {
+    window.onkeyup = null
+  }
+
+  componentDidMount() {
+
+    this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
+    this.scrollManager.start()
+
+    const hammer = new Hammer(this.base, {
+      velocity: 0.8
+    })
+
+    hammer.on('swipe', e => {
+      e.deltaX < 0
+        ? this.next()
+        : this.previous()
+    })
+
+    window.onkeyup = this.onKeyUp.bind(this)
+
+    if (this.props.forcedFocus) {
+      this.setPosition(this.props.forcedFocus)
+      this.onLoadMoreHandler(document.createEvent('Event'))
+    }
   }
 }
 

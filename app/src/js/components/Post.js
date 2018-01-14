@@ -2,7 +2,9 @@ import { Component, h } from 'preact' // eslint-disable-line
 import Sticky from 'react-sticky-el' // eslint-disable-line
 import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
+import Router from '@js/models/router'
 
+const router = new Router({})
 const scroll = new SmoothScroll()
 
 export default class Post extends Component {
@@ -29,9 +31,7 @@ export default class Post extends Component {
             <ExternalLink href={this.props.project.link} class="btn">WEBSITE</ExternalLink>
           </header>
         </Sticky>
-        <div id="blogPostContainer">
-          {this.props.expandedView}
-        </div>
+        <div id="blogPostContainer"></div>
         <div class="post__collaborators">
           {this.props.project.collaborators.map( c =>
             <div class="post__collaborator">
@@ -41,8 +41,8 @@ export default class Post extends Component {
           )}
         </div>
 
-        Other project
         <footer class="post__footer">
+          <p class="post__footer--legend">Other Project</p>
           <div class="post__footer--prev">
             {this.props.previousProject.name}
           </div>
@@ -76,11 +76,17 @@ export default class Post extends Component {
       :  document.body.querySelector('.app-to-top').classList.remove('hide')
   }
 
-  componentDidMount() {
+  refreshImportedDom() {
+    this.base.querySelector('#blogPostContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
 
     Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img =>
       img.addEventListener('click', this.openModal.bind(this))
     )
+  }
+
+  componentDidMount() {
+    this.refreshImportedDom()
+    router.setRoute(`projects/${this.props.project.slug}`)
   }
 }

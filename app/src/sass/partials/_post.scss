@@ -26,13 +26,13 @@
 
   &__header {
     display: flex;
-    width: 100%;
+    width: $main-container;
+    margin: auto;
     align-items: center;
     background: $white;
-    padding: .5rem 0;
 
     .btn {
-      margin: 0;
+      margin: .5rem;
     }
   }
 
@@ -57,7 +57,14 @@
 
   &__footer {
     display: flex;
+    width: $main-container;
+    margin: auto;
+    flex-wrap: wrap;
     justify-content: space-between;
+
+    &--legend {
+      width: 100%;
+    }
 
     > div {
       padding: 1rem;
@@ -71,11 +78,15 @@
   opacity: 1;
 }
 
-#mardownContainer {
+#blogPostContainer {
   padding: 2em;
   box-shadow: 0 1rem 2rem lightgrey;
-  width: 92%;
+  width: $main-container;
   margin: auto;
+
+  i {
+    font-weight: 300;
+  }
 
   p, img {
     margin: 1rem 0;
