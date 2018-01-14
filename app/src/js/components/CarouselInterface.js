@@ -35,7 +35,7 @@ export default class CarouselInterface extends Carousel {
   onLoadMoreHandler(e) {
     e.preventDefault()
 
-    axios.get(this._xhr.markdown + this.state.activeItem.file, {
+    return axios.get(this._xhr.markdown + this.state.activeItem.file, {
       onDownloadProgress: function (progressEvent) {
         if (progressEvent.lengthComputable) {
           return (progressEvent.loaded / progressEvent.total) * 100
@@ -88,6 +88,9 @@ export default class CarouselInterface extends Carousel {
     if (this.props.forcedFocus) {
       this.setPosition(this.props.forcedFocus)
       this.onLoadMoreHandler(document.createEvent('Event'))
+        .then( () => {
+          router.clearRoute()
+        })
     }
   }
 }

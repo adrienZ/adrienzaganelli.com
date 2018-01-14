@@ -43,6 +43,7 @@
     "webpack-notifier": "^1.5.0"
   },
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.17.1",
     "bootstrap": "4.0.0-beta.3",
     "hammerjs": "^2.0.8",

@@ -1,8 +1,12 @@
 .post {
   margin-bottom: 3rem;
 
-  .sticky &__header{
-    border-bottom: 1px solid lightgray;
+  .sticky {
+      z-index: 1;
+
+      &__header{
+      border-bottom: 1px solid lightgray;
+    }
   }
 
   &__modal {
@@ -99,6 +103,7 @@
   img {
     max-width: 100%;
     margin: 1rem auto;
+    opacity: 0;
     display: block;
     max-height: 60vh;
     box-shadow: 0 .25rem .5rem rgb(145, 145, 145);

@@ -10,37 +10,16 @@ import Router from '@js/models/router'
 export default class App extends Component {
   constructor() {
     super()
+
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
     this.state = {
       expandedView: null
     }
     this.router = new Router({
       'projects': this.preActivateProject.bind(this)
     })
-  }
-
-  render() {
-    return (
-      <div>
-        <CarouselInterface
-          forcedFocus={this.preActivateProject()}
-          projects={[ "me", ...projects]}
-          expandViewHandler={this.enableExpandedView.bind(this)}
-          interval={20000}
-          disableExpandedView={this.disableExpandedView.bind(this)}
-        />
-        { this.state.expandedView &&
-          <Post
-            project={this.props.project}
-            previousProject={this.props.previousProject}
-            nextProject={this.props.nextProject}
-            onClosePost={this.props.onClosePost}
-            expandedView={this.state.expandedView} />
-        }
-        {this.state.expandedView &&
-          <button class="app-to-top" onClick={this.backToTop.bind(this)}>{h(arrowSvg)}</button>
-        }
-      </div>
-    )
   }
 
   enableExpandedView(postText, pIndex, onClosePost) {
@@ -83,5 +62,30 @@ export default class App extends Component {
     if (project) {
       return projects.indexOf(project) + 1
     }
+  }
+
+  render() {
+    return (
+      <div>
+        <CarouselInterface
+          forcedFocus={this.preActivateProject()}
+          projects={["me", ...projects]}
+          expandViewHandler={this.enableExpandedView.bind(this)}
+          interval={60000}
+          disableExpandedView={this.disableExpandedView.bind(this)}
+        />
+        {this.state.expandedView &&
+          <Post
+            project={this.props.project}
+            previousProject={this.props.previousProject}
+            nextProject={this.props.nextProject}
+            onClosePost={this.props.onClosePost}
+            expandedView={this.state.expandedView} />
+        }
+        {this.state.expandedView &&
+          <button class="app-to-top" onClick={this.backToTop.bind(this)}>{h(arrowSvg)}</button>
+        }
+      </div>
+    )
   }
 }

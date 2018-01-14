@@ -4,6 +4,7 @@ import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
 import Router from '@js/models/router'
 
+const Waypoint = window.Waypoint
 const router = new Router({})
 const scroll = new SmoothScroll()
 
@@ -80,8 +81,15 @@ export default class Post extends Component {
     this.base.querySelector('#blogPostContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
 
-    Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img =>
+    Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img => {
+      img.classList.add('animated')
       img.addEventListener('click', this.openModal.bind(this))
+      new Waypoint({
+        element: img,
+        handler: () => img.classList.add('fadeIn'),
+        offset: 150 + img.height * 1.5
+      })
+    }
     )
   }
 

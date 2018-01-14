@@ -40,16 +40,16 @@ export default class HeroProject extends Component {
 
           <div style="display: inline-block; margin: 0 auto;">
             {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
-            <div class="carousel__progress" style={{
-              'animation-duration': this.props.interval + "ms",
-              'animation-play-state': this.props.stopTimer ? 'paused' : 'running'
-            }}></div>
           </div>
 
         </div>
 
         <div class="carousel__main--img-container">
           <div class="carousel__main--img" style={{ 'background-image': `url(${this.props.project.cover})` }} ></div>
+          <div class="carousel__progress" style={{
+            'animation-duration': this.props.interval + "ms",
+            'animation-play-state': this.props.stopTimer ? 'paused' : 'running'
+          }}></div>
         </div>
       </div>
     )

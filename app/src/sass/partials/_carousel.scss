@@ -7,7 +7,7 @@
   position: relative;
   align-items: center;
   // padding-left: 2rem;
-  border: 1px solid black;
+  border: 1px solid $black;
 
   &__header {
     height: 0;
@@ -103,6 +103,7 @@
         height: 100%;
         clip-path:  polygon(0 100%,100% 100%,100% 0,25% 0);
         width: 60%;
+        overflow: hidden;
       }
     }
 
@@ -155,7 +156,8 @@
   &__progress {
     width: 100%;
     height: 5px;
-    background: $pimper;
+    margin-top: -5px;
+    background: $blue;
     animation-name: progress;
     animation-iteration-count: infinite;
     transform-origin: 0 0;
