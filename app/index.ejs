@@ -1,6 +1,7 @@
 <% const projects = require("@js/models/data").default %>
+<% const detectMedia = require("@js/models/utils").detectMedia %>
 <% const preloadedImgs = projects.map( p => {
-  return p.link
+  return detectMedia(p.cover, true)
 }) %>
 
 <html lang="en">
@@ -30,8 +31,8 @@
       </noscript>
 
       <div class="preloader" style="position: absolute; top: -99999px; left: -9999999px">
-        <% projects.map( (p, index) => { %>
-          <img src="<%= p.cover %>" width="1" height="1">
+        <% preloadedImgs.map( (p, index) => { %>
+          <%= p %>
         <% }) %>
       </div>
 

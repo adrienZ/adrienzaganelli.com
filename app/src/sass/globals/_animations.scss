@@ -1,2 +1,13 @@
-@import "node_modules/animate.css/source/base";
-@import "node_modules/animate.css/source/fading_entrances/fadeIn";
+// @import "node_modules/animate.css/source/base";
+// @import "node_modules/animate.css/source/fading_entrances/fadeIn";
+// @import "node_modules/animate.css/source/fading_entrances/fadeInUp";
+
+@keyframes progress {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}

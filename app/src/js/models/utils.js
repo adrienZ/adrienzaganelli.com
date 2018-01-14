@@ -34,18 +34,18 @@ export const carouselMask = () => {
     </svg>
   )
 }
-/*
-  <defs>
-    <polygon id="path-1" points="259.694836 0 851 0 851 648 1.13686838e-13 648"></polygon>
-  </defs>
-  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <g id="---Home-Page" transform="translate(-710.000000, -131.000000)">
-      <g id="Image-container" transform="translate(710.000000, 131.000000)">
-        <mask id="mask-2" fill="white">
-          <use xlink=":" href="#path-1"></use>
-        </mask>
-        <use id="Mask" fill="#D8D8D8" xlink=":" href="#path-1"></use>
-      </g>
-    </g>
-  </g>
-  */
+
+export const detectMedia = (fileName, toString = false) => {
+  const re = /(?:\.([^.]+))?$/
+  const extension = re.exec(fileName)[1]
+
+  if (extension === 'mp4') {
+    return toString
+      ? `<video class="carousel__main--video" src=${fileName} autoplay loop ></video>`
+      : <video class="carousel__main--video" src={fileName} autoplay loop ></video>
+  } else {
+    return toString
+      ? `<img class="carousel__main--img" src=${fileName} />`
+      : <img class="carousel__main--img" src={fileName} />
+  }
+}

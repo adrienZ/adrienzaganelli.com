@@ -21,9 +21,9 @@ export default class Post extends Component {
         onWheel={this.onScrollHandler.bind(this)}>
 
         { this.state.modal.open &&
-          <section class="post__modal" onClick={this.closeModal.bind(this)} >
+          <section class="post__modal animated fadeIn" onClick={this.closeModal.bind(this)} >
             <p></p>
-            <img class="post__modal--img" src={this.state.modal.src} />
+            <img class="post__modal--img animated fadeIn" src={this.state.modal.src} />
           </section>
         }
         <Sticky>
