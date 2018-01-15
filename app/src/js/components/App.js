@@ -64,9 +64,16 @@ export default class App extends Component {
     }
   }
 
+  easterEgg() {
+    this.setState({
+      easterEgg: true
+    })
+  }
+
   render() {
     return (
-      <div>
+      <div class="app__container">
+        <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg && 'hinge'}`}>ADRIEN ZAGANELLI</p>
         <CarouselInterface
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}
@@ -74,6 +81,9 @@ export default class App extends Component {
           interval={60000}
           disableExpandedView={this.disableExpandedView.bind(this)}
         />
+        {!this.state.expandedView &&
+          <button class="contact animated fadeIn">contact & about</button>
+        }
         {this.state.expandedView &&
           <Post
             project={this.props.project}

@@ -8,7 +8,8 @@
   p {
     flex: 1;
     padding: 0 1rem;
-    font-size: 1.8rem;
+    // font-size: 1.8rem;
+    font-size: calc( .5rem + 2vh);
     font-weight: 500;
     max-width: 650px;
     line-height: 1.5;
