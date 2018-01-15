@@ -2,6 +2,52 @@ button {
   cursor: pointer;
 }
 
+// reset
+[role="button"],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+            box-sizing: content-box;
+}
+
+/* Reset `button` and button-style `input` default styles */
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/* Make `a` like a button */
+[role="button"] {
+    color: inherit;
+    cursor: default;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: pre;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+
 .app-to-top {
     background: $pimper;
     border-radius: 3px;
@@ -12,7 +58,6 @@ button {
     opacity: 0.65;
     position: fixed;
     right: 1.5rem;
-    -webkit-transition: opacity 0.15s ease-out;
     transition: opacity 0.15s ease-out;
     width: 2.75rem;
     border: none;
@@ -42,4 +87,31 @@ button {
   position: relative;
   margin-top: 1rem;
   border: thin solid $black;
+
+  &.close {
+    background: $dark;
+    color: $white;
+    border: none;
+  }
+
+  &.visit {
+    // background: $white;
+    background: linear-gradient(to right, #fd746c, #ff9068);
+    color: $white;
+    border: none;
+  }
+
+  &.cta {
+  background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: $white;
+    border: none;
+    animation-duration: .2s;
+    animation-delay: .3s;
+
+    box-shadow:
+      -.5rem 0 2rem .1rem rgba(#4e54c8, .35),
+      -.5rem 0 4rem .1rem rgba(#4e54c8, .15),
+      .5rem 0 2rem .1rem rgba(#8f94fb, .35),
+      .5rem 0 4rem .1rem rgba(#8f94fb, .15);
+  }
 }

@@ -4,8 +4,13 @@
   .sticky {
       z-index: 1;
 
-      &__header{
-      border-bottom: 1px solid lightgray;
+      .post__header{
+        border-bottom: 1px solid lightgray;
+        border-top: 1px solid lightgray;
+
+        &--title {
+          display: block
+        }
     }
   }
 
@@ -24,7 +29,7 @@
       display: block;
       margin: auto;
       animation-duration: .25s;
-      animation-delay: .35s;
+      animation-delay: .15s;
       max-height: 90%;
       max-width: 100%;
     }
@@ -36,6 +41,13 @@
     margin: auto;
     align-items: center;
     background: $white;
+    justify-content: space-between;
+
+    &--title {
+      letter-spacing: 1px;
+      margin: 0;
+      display: none;
+    }
 
     .btn {
       margin: .5rem;
@@ -44,20 +56,25 @@
 
   &__collaborator {
     padding: 1.5rem;
+
+    a {
+      color: $white;
+      opacity: .7;
+      font-weight: normal;
+    }
+
     &s {
       margin: 2rem 0;
       display: flex;
       flex-wrap: wrap;
+      font-size: .85rem;
       background: url('src/media/img/texture/dark.jpg') no-repeat center center , $black;
       background-size: cover;
       text-align: center;
       justify-content: space-around;
       color: $white;
+      font-weight: bold;
 
-      a {
-      color: $white;
-      opacity: .7;
-      }
     }
   }
 
@@ -90,16 +107,18 @@
   width: $main-container;
   margin: auto;
 
+  h1, h2, h3, h4 {
+    font-family: $fancy-font;
+  }
+
   i {
     font-weight: 300;
   }
 
   p, img {
-    margin: 1rem 0;
-  }
-
-  p {
+    margin: 1.5rem 0;
     line-height: 1.5;
+
   }
 
   img {

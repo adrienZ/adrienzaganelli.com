@@ -44,3 +44,23 @@
 @import 'partials/me';
 @import 'partials/post';
 @import 'partials/buttons';
+
+.brandname {
+  top: 5%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.contact {
+  bottom: 5%;
+  transform: translateY(50%) translateX(-50%);
+}
+
+.brandname, .contact {
+  // font-family: $fancy-font;
+  font-size: .75rem;
+  text-transform: uppercase;
+  left: 50%;
+  position: absolute;
+  letter-spacing: .1rem;
+  text-align: center;
+}

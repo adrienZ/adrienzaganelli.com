@@ -28,8 +28,15 @@ export default class Post extends Component {
         }
         <Sticky>
           <header class="post__header">
-            <button class="btn" onClick={this.props.onClosePost}>CLOSE</button>
-            <ExternalLink href={this.props.project.link} class="btn">WEBSITE</ExternalLink>
+            <div class="post__header--links">
+              <button class="btn close" onClick={this.props.onClosePost}>CLOSE</button>
+              <ExternalLink href={this.props.project.link} class="btn visit">WEBSITE</ExternalLink>
+            </div>
+            <h4 class="post__header--title">{this.props.project.name}</h4>
+            <div class="post__header--controls">
+              <button class="btn">PREVIOUS</button>
+              <button class="btn">NEXT</button>
+            </div>
           </header>
         </Sticky>
         <div id="blogPostContainer"></div>
@@ -84,13 +91,14 @@ export default class Post extends Component {
     Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img => {
       img.classList.add('animated')
       img.addEventListener('click', this.openModal.bind(this))
-      new Waypoint({
-        element: img,
-        handler: () => img.classList.add('fadeIn'),
-        offset: 150 + img.height * 1.5
-      })
-    }
-    )
+      img.onload = function() {
+        new Waypoint({
+          element: img,
+          handler: () => img.classList.add('fadeIn'),
+          offset: 150 + img.height * 1.5
+        })
+      }
+    })
   }
 
   componentDidMount() {
