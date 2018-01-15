@@ -35,8 +35,8 @@ export default class HeroProject extends Component {
             <Motion key={this.props.index} style={{}}>
               {c =>
                 <div>
-                  <h1 id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
-                  <p class="carousel__description animated">{this.props.project.description}</p>
+                  <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
+                  <p class="carousel__description">{this.props.project.description}</p>
                   <div style="display: inline-block; margin: 0 auto;">
                     {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
                   </div>
@@ -46,8 +46,9 @@ export default class HeroProject extends Component {
           </div>
         </div>
 
-        <div class="carousel__main--img-container">
+        <div class={`carousel__main--img-container ${this.props.project.slug}`}>
           {detectMedia(this.props.project.cover)}
+
           <div class="carousel__progress" style={{
             'animation-duration': this.props.interval + "ms",
             'animation-play-state': this.props.stopTimer ? 'paused' : 'running'

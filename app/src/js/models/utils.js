@@ -41,7 +41,7 @@ export const detectMedia = (fileName, toString = false) => {
 
   if (extension === 'mp4') {
     return toString
-      ? `<video class="carousel__main--video" src=${fileName} autoplay loop ></video>`
+      ? `<video class="carousel__main--video" src=${fileName} autoplay ></video>`
       : <video class="carousel__main--video" src={fileName} autoplay loop ></video>
   } else {
     return toString

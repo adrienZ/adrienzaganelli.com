@@ -1,5 +1,6 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import Timer from "@js/models/timer"
+import { Motion, spring } from 'react-motion' // eslint-disable-line
 // ui components
 import HeroProject from '@js/components/HeroProject' // eslint-disable-line
 import Me from '@js/components/Me' // eslint-disable-line
@@ -68,18 +69,12 @@ export default class CarouselInterface extends Component {
   render() {
     return (
       <section class="carousel">
-        <header class="carousel__header">
-          <nav>
-            <ul class="carousel__header--menu">
-              { /* this.props.projects.map(p => <li>{p.label || p.name}</li>) */ }
-            </ul>
-          </nav>
-        </header>
-
         <div class="carousel__content">
           <aside class="carousel__aside">
             <div class="pagination">
-              <p class="number big">0{this.state.index + 1}</p>
+              <Motion key={this.state.index} style={{}}>
+                {c => <p data-id={this.state.index} key={c.key} class="number big animated fadeInLeft">0{this.state.index + 1}</p>}
+              </Motion>
               <p class="number divider">/0{this._projectsLength}</p>
             </div>
 
