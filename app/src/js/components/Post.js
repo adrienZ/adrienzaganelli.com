@@ -99,6 +99,12 @@ export default class Post extends Component {
         })
       }
     })
+
+    Array.from(this.base.querySelectorAll('#blogPostContainer a')).map(link => {
+      link.setAttribute('target', '_blank')
+      link.setAttribute('rel', 'noopener noreferrer')
+    })
+
   }
 
   componentDidMount() {

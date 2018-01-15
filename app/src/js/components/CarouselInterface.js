@@ -46,6 +46,7 @@ export default class CarouselInterface extends Carousel {
       this._timer.stop()
       this.scrollManager.destroy()
       this.state.stopTimer = true
+      this.hammer.destroy()
     })
   }
 
@@ -54,7 +55,7 @@ export default class CarouselInterface extends Carousel {
     this.scrollManager.start()
     this.state.stopTimer = false
     this.resetTimeout()
-
+    this.hammer.destroy()
     router.setRoute('')
   }
 
@@ -73,11 +74,11 @@ export default class CarouselInterface extends Carousel {
     this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
     this.scrollManager.start()
 
-    const hammer = new Hammer(this.base, {
+    this.hammer = new Hammer(this.base, {
       velocity: 0.8
     })
 
-    hammer.on('swipe', e => {
+    this.hammer.on('swipe', e => {
       e.deltaX < 0
         ? this.next()
         : this.previous()
