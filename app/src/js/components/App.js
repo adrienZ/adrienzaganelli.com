@@ -15,7 +15,8 @@ export default class App extends Component {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     this.state = {
-      expandedView: null
+      expandedView: null,
+      menu: false
     }
     this.router = new Router({
       'projects': this.preActivateProject.bind(this)
@@ -74,15 +75,42 @@ export default class App extends Component {
     this.carouselMethods = obj
   }
 
+  toggleMenu() {
+    this.setState({
+      menu: !this.state.menu
+    })
+  }
+
+  loadProject(e) {
+    const id = e.target.dataset.id
+    this.carouselMethods.onClosePost()
+    this.carouselMethods.onChange(null, id)
+    this.setState({
+      menu: false
+    })
+  }
+
   render() {
     return (
       <div class="app__container">
         <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg && 'hinge'}`}>ADRIEN ZAGANELLI</p>
+        {this.state.menu &&
+          <div class="app__menu">
+            <ul class="app__menu--list">
+              {projects.map((p, index) =>
+                <li class="app__menu--item">
+                  <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
+                </li>)
+              }
+            </ul>
+          </div>
+        }
         <CarouselInterface
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
           interval={60000}
+          toggleMenu={this.toggleMenu.bind(this)}
           sendMethods={this.getCarousel.bind(this)}
           disableExpandedView={this.disableExpandedView.bind(this)}
         />
