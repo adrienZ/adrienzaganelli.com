@@ -16,7 +16,8 @@ export default class App extends Component {
 
     this.state = {
       expandedView: null,
-      menu: false
+      menu: false,
+      about: false
     }
     this.router = new Router({
       'projects': this.preActivateProject.bind(this)
@@ -81,9 +82,17 @@ export default class App extends Component {
     })
   }
 
+  toggleAbout() {
+    this.setState({
+      about: !this.state.about
+    })
+  }
+
   loadProject(e) {
     const id = e.target.dataset.id
-    this.carouselMethods.onClosePost()
+    if (this.state.expandedView) {
+      this.carouselMethods.onClosePost()
+    }
     this.carouselMethods.onChange(null, id)
     this.setState({
       menu: false
@@ -94,16 +103,20 @@ export default class App extends Component {
     return (
       <div class="app__container">
         <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg && 'hinge'}`}>ADRIEN ZAGANELLI</p>
-        {this.state.menu &&
-          <div class="app__menu">
-            <ul class="app__menu--list">
-              {projects.map((p, index) =>
-                <li class="app__menu--item">
-                  <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
-                </li>)
-              }
-            </ul>
-          </div>
+
+        <div class={`app__menu ${this.state.menu ? 'open' : ''}`}>
+          <ul class="app__menu--list">
+            {projects.map((p, index) =>
+              <li class="app__menu--item">
+                <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
+              </li>)
+            }
+          </ul>
+        </div>
+
+        <div class={`app__about ${this.state.menu ? 'open' : ''}`}>
+
+        </div>
         }
         <CarouselInterface
           forcedFocus={this.preActivateProject()}
