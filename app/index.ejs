@@ -22,19 +22,19 @@
   </head>
 
   <body class="no-scroll">
-      <noscript>
-        <h1>Adrien Zaganelli</h1>
-        <p>Projects:</p>
-        <ul><% projects.map( (p, index) => { %>
-          <li>#<%= index %>: <a href="<%= p.link %>"><%= p.name %></a></li>
-        <% }) %></ul>
-      </noscript>
+    <noscript>
+      <h1>Adrien Zaganelli</h1>
+      <p>Projects:</p>
+      <ul><% projects.map( (p, index) => { %>
+        <li>#<%= index %>: <a href="<%= p.link %>"><%= p.name %></a></li>
+      <% }) %></ul>
+    </noscript>
 
-      <div class="preloader" style="position: absolute; top: -99999px; left: -9999999px">
-        <% preloadedImgs.map( (p, index) => { %>
-          <%= p %>
-        <% }) %>
-      </div>
+    <div class="preloader" style="position: absolute; top: -99999px; left: -9999999px">
+      <% preloadedImgs.map( (p, index) => { %>
+        <%= p %>
+      <% }) %>
+    </div>
 
     <div id="app"></div>
 

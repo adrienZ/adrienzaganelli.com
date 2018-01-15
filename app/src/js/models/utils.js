@@ -49,3 +49,7 @@ export const detectMedia = (fileName, toString = false) => {
       : <img class="carousel__main--img" src={fileName} />
   }
 }
+
+export const footerSvg = () =>
+  <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412.17 464.41">
+    <polygon class="cls-1" points="22.7 395.8 197.6 2 390 395.8 22.7 395.8"></polygon><polyline class="cls-2" points="197.6 2 277 164.6 302.5 216.8"></polyline><polyline class="cls-2" points="197.6 2 125.6 164.2 102.2 216.8"></polyline><line class="cls-3" x1="125.6" y1="164.2" x2="277" y2="164.2"></line><line class="cls-2" x1="125.6" y1="395.8" x2="277" y2="395.8"></line><line class="cls-2" x1="277" y1="164.6" x2="125.6" y2="395.8"></line><text class="cls-4" transform="translate(0 452.03)">ADRIEN Z</text><text class="cls-5" transform="translate(201.26 452.03)">A</text><text class="cls-4" transform="translate(229.87 452.03)">GANELLI</text></svg>

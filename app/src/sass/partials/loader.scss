@@ -1,0 +1,40 @@
+svg {
+  .cls-1,
+  .cls-2,
+  .cls-3 {
+    fill: none;
+    stroke-width: 4px;
+  }
+
+  .cls-1 {
+    stroke: #bec0c0;
+    stroke-linejoin: round;
+  }
+
+  .cls-1,
+  .cls-2 {
+    stroke-linecap: round;
+  }
+
+  .cls-2,
+  .cls-3 {
+    stroke: #231f20;
+    stroke-miterlimit: 10;
+  }
+
+  .cls-4,
+  .cls-5 {
+    isolation: isolate;
+    font-size: 2.5em;
+    fill: #231f20;
+    font-family:"Gotham";
+  }
+
+  .cls-5 {
+    letter-spacing: -0.02em;
+  }
+
+  .st0 {
+    fill: #FFFFFF;
+  }
+}

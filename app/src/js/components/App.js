@@ -70,6 +70,10 @@ export default class App extends Component {
     })
   }
 
+  getCarousel(obj) {
+    this.carouselMethods = obj
+  }
+
   render() {
     return (
       <div class="app__container">
@@ -79,6 +83,7 @@ export default class App extends Component {
           projects={["me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
           interval={60000}
+          sendMethods={this.getCarousel.bind(this)}
           disableExpandedView={this.disableExpandedView.bind(this)}
         />
         {!this.state.expandedView &&
@@ -88,6 +93,7 @@ export default class App extends Component {
           <Post
             project={this.props.project}
             previousProject={this.props.previousProject}
+            carouselMethods={this.carouselMethods}
             nextProject={this.props.nextProject}
             onClosePost={this.props.onClosePost}
             expandedView={this.state.expandedView} />

@@ -3,6 +3,7 @@ import Sticky from 'react-sticky-el' // eslint-disable-line
 import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
 import Router from '@js/models/router'
+import { footerSvg } from '../models/utils';
 
 const Waypoint = window.Waypoint
 const router = new Router({})
@@ -34,8 +35,8 @@ export default class Post extends Component {
             </div>
             <h4 class="post__header--title">{this.props.project.name}</h4>
             <div class="post__header--controls">
-              <button class="btn">PREVIOUS</button>
-              <button class="btn">NEXT</button>
+              <button class="btn" onClick={this.previous.bind(this)}>PREVIOUS</button>
+              <button class="btn" onClick={this.next.bind(this)}>NEXT</button>
             </div>
           </header>
         </Sticky>
@@ -51,13 +52,16 @@ export default class Post extends Component {
 
         <footer class="post__footer">
           <p class="post__footer--legend">Other Project</p>
-          <div class="post__footer--prev">
+          <button class="post__footer--prev" onClick={this.previous.bind(this)}>
             {this.props.previousProject.name}
-          </div>
-          <div class="post__footer--next">
+          </button>
+          <button class="post__footer--next" onClick={this.next.bind(this)}>
             {this.props.nextProject.name}
-          </div>
+          </button>
         </footer>
+        <div class="post__footer--end">
+          {h(footerSvg)}
+        </div>
       </section>
     )
   }
@@ -84,6 +88,16 @@ export default class Post extends Component {
       :  document.body.querySelector('.app-to-top').classList.remove('hide')
   }
 
+  next() {
+    this.props.carouselMethods.next()
+    this.props.onClosePost()
+  }
+
+  previous() {
+    this.props.carouselMethods.previous()
+    this.props.onClosePost()
+  }
+
   refreshImportedDom() {
     this.base.querySelector('#blogPostContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
@@ -104,10 +118,10 @@ export default class Post extends Component {
       link.setAttribute('target', '_blank')
       link.setAttribute('rel', 'noopener noreferrer')
     })
-
   }
 
   componentDidMount() {
+    // this.props.carouselMethods.previous()
     this.refreshImportedDom()
     router.setRoute(`projects/${this.props.project.slug}`)
   }

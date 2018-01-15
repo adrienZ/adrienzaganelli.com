@@ -1,5 +1,5 @@
 .post {
-  margin-bottom: 3rem;
+  // margin-bottom: 3rem;
 
   .sticky {
       z-index: 1;
@@ -84,9 +84,28 @@
     margin: auto;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 2rem;
+
+    button {
+      border: 1px solid black;
+      padding: 1rem 2rem;
+    }
 
     &--legend {
       width: 100%;
+    }
+
+    &--end {
+
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid lightgray;
+
+      svg {
+        height: 66%;
+      }
     }
 
     > div {

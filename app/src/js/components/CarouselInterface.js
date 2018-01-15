@@ -75,13 +75,21 @@ export default class CarouselInterface extends Carousel {
     })
 
     hammer.on('swipe', e => {
-      console.warn("hammerit");
       e.deltaX < 0
         ? this.next()
         : this.previous()
     })
 
     return hammer
+  }
+
+
+  componentWillMount() {
+    this.props.sendMethods({
+      next: this.next.bind(this),
+      previous: this.previous.bind(this),
+      setPosition: this.setPosition.bind(this),
+    })
   }
 
   componentDidMount() {
