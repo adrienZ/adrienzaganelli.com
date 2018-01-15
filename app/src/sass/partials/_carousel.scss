@@ -197,11 +197,11 @@
 
 
 
-    @media screen and (max-width: 860px) {
-    &__main {
-      &--container {
-        flex-direction: column;
-      }
+    @media screen and (max-width: $main-breakpoint) {
+      &__main {
+        &--container {
+          flex-direction: column;
+        }
 
       &--text {
         margin-top: 0;

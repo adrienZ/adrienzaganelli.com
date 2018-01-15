@@ -95,6 +95,25 @@
       border: 1px solid $black;
     }
   }
+
+  @media screen and (max-width: $main-breakpoint) {
+    &__header {
+      &--title {
+        display: none!important;
+      }
+
+      &--controls {
+        display: none;
+      }
+
+      &--links {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+
 }
 
 .fill {
