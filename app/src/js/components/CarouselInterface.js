@@ -88,8 +88,8 @@ export default class CarouselInterface extends Carousel {
     this.props.sendMethods({
       next: this.next.bind(this),
       previous: this.previous.bind(this),
-      onChange: this.onChange.bind(this),
-      onClosePost: this.onClosePost.bind(this)
+      onClosePost: this.onClosePost.bind(this),
+      setPosition: this.setPosition.bind(this)
     })
   }
 

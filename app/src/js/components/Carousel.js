@@ -19,9 +19,7 @@ export default class CarouselInterface extends Component {
     }
   }
 
-  onChange(e, id) {
-    if (id) return this.setPosition(id)
-
+  onChange(e) {
     const targetIndex = this.state.index + e.direction
     let newIndex = targetIndex
 
@@ -81,7 +79,7 @@ export default class CarouselInterface extends Component {
             </div>
 
             <div class="carousel__menu--container">
-              <div class="carousel__menu" onClick={this.props.toggleMenu}>
+              <div class="carousel__menu" tabindex="1" onClick={this.props.toggleMenu}>
                 <div class="carousel__menu--line"></div>
                 <div class="carousel__menu--line"></div>
                 <div class="carousel__menu--line"></div>

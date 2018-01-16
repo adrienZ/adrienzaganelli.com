@@ -25,25 +25,23 @@ export default class HeroProject extends Component {
       <div class="carousel__main--container">
         <div class="carousel__main--text">
 
-          <div style="display: flex;">
-            {!this.props.stopTimer && false &&
+          {!this.props.stopTimer &&
               <CarouselArrows
                 next={this.props.next}
                 previous={this.props.previous}
               />
-            }
-            <Motion key={this.props.index} style={{}}>
-              {c =>
-                <div>
-                  <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
-                  <p class="carousel__description">{this.props.project.description}</p>
-                  <div style="display: inline-block; margin: 0 auto;">
-                    {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
-                  </div>
+          }
+          <Motion key={this.props.index} style={{}}>
+            {c =>
+              <div>
+                <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
+                <p class="carousel__description">{this.props.project.description}</p>
+                <div style="display: inline-block; margin: 0 auto;">
+                  {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
                 </div>
-              }
-            </Motion>
-          </div>
+              </div>
+            }
+          </Motion>
         </div>
 
         <div class={`carousel__main--img-container ${this.props.project.slug}`}>

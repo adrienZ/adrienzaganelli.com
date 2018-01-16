@@ -31,8 +31,8 @@ export default class App extends Component {
 
     this.props = Object.assign(this.props, {
       project: projects[pIndex - 1],
-      previousProject: projects[pIndex - 1] || projects[projects.length - 1],
-      nextProject: projects[pIndex + 1] || projects[0],
+      previousProject: projects[pIndex - 2] || projects[projects.length - 1],
+      nextProject: projects[pIndex] || projects[0],
       onClosePost
     })
   }
@@ -89,11 +89,11 @@ export default class App extends Component {
   }
 
   loadProject(e) {
-    const id = e.target.dataset.id
+    const id = parseInt(e.target.dataset.id)
     if (this.state.expandedView) {
       this.carouselMethods.onClosePost()
     }
-    this.carouselMethods.onChange(null, id)
+    this.carouselMethods.setPosition(id)
     this.setState({
       menu: false
     })
@@ -117,7 +117,6 @@ export default class App extends Component {
         <div class={`app__about ${this.state.menu ? 'open' : ''}`}>
 
         </div>
-        }
         <CarouselInterface
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}

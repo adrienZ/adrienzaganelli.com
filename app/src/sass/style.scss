@@ -79,6 +79,7 @@
     font-weight: 500;
     justify-content: center;
     display: none;
+    z-index: 3;
 
     &.open {
       display: flex;

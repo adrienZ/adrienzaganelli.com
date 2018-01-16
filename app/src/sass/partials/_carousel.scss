@@ -6,7 +6,6 @@
   flex-direction:column;
   position: relative;
   align-items: center;
-  // padding-left: 2rem;
   border: 1px solid $black;
 
   &__content {
@@ -49,7 +48,9 @@
     position: absolute;
     height: 100%;
     top: 0;
+    width: 0;
     left: 0;
+    z-index: 2;
 
     .pagination {
       font-family: $fancy-font;
@@ -181,9 +182,19 @@
 
   &__arrow {
     margin-right: 1rem;
+    transform: rotate(-180deg);
+    display: flex;
+    flex-direction: column;
+    // position: absolute;
+    top: -15%;
+    justify-content: center;
+    align-items: center;
 
     button {
-      display: block;
+      position: relative;
+      stroke: $black;
+      fill: $black;
+      margin: .25rem;
     }
 
     svg {
@@ -217,7 +228,7 @@
       &--img {
         &-container {
           width: 100%;
-          height: 55%;
+          height: 50%;
           clip-path:  polygon(0% 100%,100% 100%,100% 0%,0 25%);
         }
       }
@@ -239,6 +250,7 @@
     }
 
     &__menu {
+      cursor: pointer;
       &--container {
         right: 0;
         top: 0;
