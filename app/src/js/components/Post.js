@@ -59,7 +59,7 @@ export default class Post extends Component {
         new Waypoint({
           element: img,
           handler: () => img.classList.add('fadeIn'),
-          offset: 150 + img.height * 1.5
+          offset: 175 + img.height * 1.5
         })
       }
     })

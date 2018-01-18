@@ -136,7 +136,7 @@ export default class App extends Component {
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
-          interval={60000}
+          interval={6000000}
           toggleMenu={this.toggleMenu.bind(this)}
           sendMethods={this.getCarousel.bind(this)}
           disableExpandedView={this.disableExpandedView.bind(this)}

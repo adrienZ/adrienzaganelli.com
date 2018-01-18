@@ -154,6 +154,15 @@
         }
       }
     }
+
+    #blogPostContainer {
+      img, iframe, twitterwidget {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        max-height: none;
+      }
+    }
   }
 
 }
