@@ -207,13 +207,11 @@
     }
   }
 
-
-
-    @media screen and (max-width: $main-breakpoint) {
-      &__main {
-        &--container {
-          flex-direction: column;
-        }
+  @media screen and (max-width: $main-breakpoint) {
+    &__main {
+      &--container {
+        flex-direction: column;
+      }
 
       &--text {
         margin-top: 0;
@@ -248,6 +246,7 @@
 
     &__aside {
       width: 100%;
+      z-index: 1;
     }
 
     &__menu {

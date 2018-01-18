@@ -15,57 +15,6 @@ export default class Post extends Component {
     this.state.modal = {}
   }
 
-  render() {
-    return (
-      <section
-        class="post"
-        onWheel={this.onScrollHandler.bind(this)}>
-
-        { this.state.modal.open &&
-          <section class="post__modal animated fadeIn" onClick={this.closeModal.bind(this)} >
-            <p></p>
-            <img class="post__modal--img animated fadeIn" src={this.state.modal.src} />
-          </section>
-        }
-        <Sticky>
-          <header class="post__header">
-            <div class="post__header--links">
-              <button class="btn close" onClick={this.props.onClosePost}>CLOSE</button>
-              <ExternalLink href={this.props.project.link} class="btn visit">WEBSITE</ExternalLink>
-            </div>
-            <h4 class="post__header--title">{this.props.project.name}</h4>
-            <div class="post__header--controls">
-              <button class="btn" onClick={this.previous.bind(this)}>PREVIOUS</button>
-              <button class="btn" onClick={this.next.bind(this)}>NEXT</button>
-            </div>
-          </header>
-        </Sticky>
-        <div id="blogPostContainer"></div>
-        <div class="post__collaborators">
-          {this.props.project.collaborators.map( c =>
-            <div class="post__collaborator">
-              <p>{c.role}</p>
-              <ExternalLink href={c.link}>{c.fullname}</ExternalLink>
-            </div>
-          )}
-        </div>
-
-        <footer class="post__footer">
-          <p class="post__footer--legend">Other Project</p>
-          <button class="post__footer--prev" onClick={this.footerPrevious.bind(this)}>
-            {this.props.previousProject.name}
-          </button>
-          <button class="post__footer--next" onClick={this.footerNext.bind(this)}>
-            {this.props.nextProject.name}
-          </button>
-        </footer>
-        <div class="post__footer--end">
-          {h(footerSvg)}
-        </div>
-      </section>
-    )
-  }
-
   openModal(e) {
     e.stopPropagation()
     this.setState({
@@ -101,8 +50,9 @@ export default class Post extends Component {
   refreshImportedDom() {
     this.base.querySelector('#blogPostContainer').innerHTML = this.props.expandedView
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
+    window.twttr && window.twttr.widgets.load()
 
-    Array.from(this.base.querySelectorAll('#blogPostContainer img')).map( img => {
+    Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, iframe')).map( img => {
       img.classList.add('animated')
       img.addEventListener('click', this.openModal.bind(this))
       img.onload = function() {
@@ -118,6 +68,7 @@ export default class Post extends Component {
       link.setAttribute('target', '_blank')
       link.setAttribute('rel', 'noopener noreferrer')
     })
+
   }
 
   footerPrevious() {
@@ -134,5 +85,55 @@ export default class Post extends Component {
     // this.props.carouselMethods.previous()
     this.refreshImportedDom()
     router.setRoute(`projects/${this.props.project.slug}`)
+  }
+
+  render() {
+    return (
+      <section
+        class="post"
+        onWheel={this.onScrollHandler.bind(this)}>
+
+        {this.state.modal.open &&
+          <section class="post__modal animated fadeIn" onClick={this.closeModal.bind(this)} >
+            <p></p>
+            <img class="post__modal--img animated fadeIn" src={this.state.modal.src} />
+          </section>
+        }
+        <Sticky>
+          <header class="post__header">
+            <div class="post__header--links">
+              <button class="btn close" onClick={this.props.onClosePost}>CLOSE</button>
+              <ExternalLink href={this.props.project.link} class="btn visit">WEBSITE</ExternalLink>
+            </div>
+            <h4 class="post__header--title">{this.props.project.name}</h4>
+            <div class="post__header--controls">
+              <button class="btn" onClick={this.previous.bind(this)}>PREVIOUS</button>
+              <button class="btn" onClick={this.next.bind(this)}>NEXT</button>
+            </div>
+          </header>
+        </Sticky>
+        <div id="blogPostContainer"></div>
+        <div class="post__collaborators">
+          {this.props.project.collaborators.map(c =>
+            <div class="post__collaborator">
+              <p>{c.role}</p>
+              <ExternalLink href={c.link}>{c.fullname}</ExternalLink>
+            </div>
+          )}
+        </div>
+
+        <footer class="post__footer">
+          <button class="post__footer--prev" onClick={this.footerPrevious.bind(this)}>
+            <span>Previous: </span><a>{this.props.previousProject.name.toUpperCase()}</a>
+          </button>
+          <button class="post__footer--next" onClick={this.footerNext.bind(this)}>
+            <span>Next: </span><a>{this.props.nextProject.name.toUpperCase()}</a>
+          </button>
+        </footer>
+        <div class="post__footer--end">
+          {h(footerSvg)}
+        </div>
+      </section>
+    )
   }
 }

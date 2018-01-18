@@ -64,7 +64,7 @@
     }
 
     &s {
-      margin: 2rem 0;
+      margin-top: 2rem;
       display: flex;
       flex-wrap: wrap;
       font-size: .85rem;
@@ -80,19 +80,33 @@
 
   &__footer {
     display: flex;
-    width: $main-container;
     margin: auto;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 2rem;
+    border-top: 1px solid lightgray;
+
 
     button {
-      border: 1px solid black;
-      padding: 1rem 2rem;
-    }
+      width: 50%;
+      height: 4rem;
+      opacity: 1;
+      border-top: 1px solid lightgray;
+      transition: opacity .15s ease-in-out;
 
-    &--legend {
-      width: 100%;
+      a {
+        text-decoration: underline !important;
+      }
+
+      &:last-of-type {
+        width: calc(50% - 1px);
+        border-left: 1px solid lightgray;
+      }
+
+      &:hover,
+      &:focus {
+        opacity: .3;
+      }
     }
 
     &--end {
@@ -131,6 +145,15 @@
         justify-content: space-between;
       }
     }
+
+    &__footer {
+      button {
+        width: 100%;
+        &:last-of-type {
+          width: 100%;
+        }
+      }
+    }
   }
 
 }
@@ -144,6 +167,8 @@
   box-shadow: 0 1rem 2rem lightgrey;
   width: $main-container;
   margin: auto;
+  background: url('src/media/img/texture/light.jpg') repeat-y center center , $white;
+
 
   h1, h2, h3, h4 {
     font-family: $fancy-font;
@@ -153,18 +178,26 @@
     font-weight: 300;
   }
 
-  p, img {
-    margin: 1.5rem 0;
-    line-height: 1.5;
-
+  img, iframe {
+    opacity: 0;
   }
 
-  img {
-    max-width: 100%;
+  img, iframe, twitterwidget {
+    max-width: 70%;
     margin: 1rem auto;
-    opacity: 0;
     display: block;
-    max-height: 60vh;
+    max-height: 50vh;
     box-shadow: 0 .25rem .5rem rgb(145, 145, 145);
   }
+
+  twitterwidget {
+    max-height: none;
+    box-shadow: none;
+  }
+
+  p, img, twitterwidget {
+    margin: 1.5rem auto;
+    line-height: 1.5;
+  }
+
 }
