@@ -164,4 +164,4 @@ export default [
     link: 'https://sketchfab.com',
     collaborators: []
   }
-]
+].map( (p, index) => Object.assign(p, { index }))

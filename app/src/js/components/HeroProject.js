@@ -44,7 +44,7 @@ export default class HeroProject extends Component {
           </Motion>
         </div>
 
-        <div class={`carousel__main--img-container ${this.props.project.slug}`}>
+        <div class={`carousel__main--img-container ${this.props.project.slug}`} onClick={this.props.onClickHandler}>
           {detectMedia(this.props.project.cover)}
 
           <div class="carousel__progress" style={{

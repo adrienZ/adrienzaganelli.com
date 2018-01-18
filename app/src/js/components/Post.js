@@ -52,10 +52,10 @@ export default class Post extends Component {
 
         <footer class="post__footer">
           <p class="post__footer--legend">Other Project</p>
-          <button class="post__footer--prev" onClick={this.previous.bind(this)}>
+          <button class="post__footer--prev" onClick={this.footerPrevious.bind(this)}>
             {this.props.previousProject.name}
           </button>
-          <button class="post__footer--next" onClick={this.next.bind(this)}>
+          <button class="post__footer--next" onClick={this.footerNext.bind(this)}>
             {this.props.nextProject.name}
           </button>
         </footer>
@@ -118,6 +118,16 @@ export default class Post extends Component {
       link.setAttribute('target', '_blank')
       link.setAttribute('rel', 'noopener noreferrer')
     })
+  }
+
+  footerPrevious() {
+    this.props.carouselMethods.onClosePost()
+    this.props.carouselMethods.setPosition(this.props.previousProject.index + 1)
+  }
+
+  footerNext() {
+    this.props.carouselMethods.onClosePost()
+    this.props.carouselMethods.setPosition(this.props.nextProject.index + 1)
   }
 
   componentDidMount() {

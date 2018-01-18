@@ -102,21 +102,36 @@ export default class App extends Component {
   render() {
     return (
       <div class="app__container">
-        <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg && 'hinge'}`}>ADRIEN ZAGANELLI</p>
+        <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg ? 'hinge' : ''}`}>ADRIEN ZAGANELLI</p>
 
-        <div class={`app__menu ${this.state.menu ? 'open' : ''}`}>
+        <div class={`app__menu big-modal ${this.state.menu ? 'open' : ''}`}>
+          <div class="app__menu--bg">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
           <ul class="app__menu--list">
             {projects.map((p, index) =>
               <li class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
               </li>)
             }
+            <li><button onClick={this.toggleMenu.bind(this)}>Close menu</button></li>
           </ul>
         </div>
 
-        <div class={`app__about ${this.state.menu ? 'open' : ''}`}>
+        <div class={`app__about big-modal ${this.state.about ? 'open' : ''}`}>
+          ABOUT ME
+          Hi, my name is Adrien Zaganelli, nice to meet you !
 
+          I am a student at HETIC, a french school teaching us how to code, design and do business on the Web. This winter 2017 i'm looking for a internship, if you are interested, please send me an e-mail at adrienzaganelli@gmail.com or contact me through my social networks.
+
+          You will find on this website some of my projects, most are school projects made by small teams (4-6) such as Puslar One [ø] others are real world project for instance Market-ME.
+
+          Last but not least, i am freelancing : I'll be pleased to collaborate with you in various projects or missions. If you have any further questions do not hesitate to contact me, I will answer you as soon as possible.
+          <button class="btn" onClick={this.toggleAbout.bind(this)}>Close about</button>
         </div>
+
         <CarouselInterface
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}
@@ -127,7 +142,7 @@ export default class App extends Component {
           disableExpandedView={this.disableExpandedView.bind(this)}
         />
         {!this.state.expandedView &&
-          <button class="contact animated fadeIn">contact & about</button>
+          <button class="contact animated fadeIn" onClick={this.toggleAbout.bind(this)} >contact & about</button>
         }
         {this.state.expandedView &&
           <Post
