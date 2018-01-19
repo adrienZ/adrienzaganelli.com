@@ -15,7 +15,8 @@ export default class CarouselInterface extends Component {
     this.state = {
       activeItem: props.projects[0],
       index: 0,
-      stopTimer: false
+      stopTimer: false,
+      direction: 0
     }
   }
 
@@ -29,7 +30,6 @@ export default class CarouselInterface extends Component {
       newIndex = 0
     }
 
-
     if (e.hasOwnProperty('speed')) {
       this.resetTimeout()
     } else {
@@ -38,6 +38,7 @@ export default class CarouselInterface extends Component {
       // return this.scrollManager.getScroll(null, { speed: 1 })
     }
     this.setPosition(newIndex)
+    this.state.direction = e.direction
   }
 
   setPosition(index) {
@@ -92,6 +93,7 @@ export default class CarouselInterface extends Component {
               ? <Me
                 stopTimer={this.state.stopTimer}
                 next={this.next.bind(this)}
+                direction={this.state.direction}
                 interval={this.props.interval}
                 previous={this.previous.bind(this)} />
               : <HeroProject

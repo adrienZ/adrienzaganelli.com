@@ -35,3 +35,15 @@
     transform: translateY(0);
   }
 }
+
+@keyframes appear {
+  0% {
+    opacity: .8;
+    transform: translateX(-4rem) scale(1.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}

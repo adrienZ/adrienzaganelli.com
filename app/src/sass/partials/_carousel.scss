@@ -82,14 +82,28 @@
       position: relative;
     }
 
+    &--wrapper {
+      z-index: 1;
+    }
+
     &--text {
       padding-left: 3rem;
       flex: 1;
       height: 55%;
       align-self: flex-end;
-      z-index: 1;
       position: relative;
+
+      &-line {
+        display: flex;
+        align-items: center;
+      }
     }
+
+    &--video,
+    &--img {
+      animation: appear .5s;
+    }
+
 
     &--video {
       min-width: 100%;
@@ -125,9 +139,10 @@
 
   &__title {
     text-align: left;
-    font-size: 3.8rem;
+    font-size: 3.25rem;
     text-transform: capitalize;
     letter-spacing: -.125rem;
+    margin: 0;
     position: relative;
 
     &::before {
@@ -156,6 +171,7 @@
   }
 
   &__description {
+    margin: .6rem 0 .5rem 0;
     line-height: 1.5;
     text-align: left;
   }
@@ -186,22 +202,32 @@
     transform: rotate(-180deg);
     display: flex;
     flex-direction: column;
-    // position: absolute;
     top: -15%;
     justify-content: center;
     align-items: center;
+    stroke-width: 2px;
 
     button {
       position: relative;
       stroke: $black;
       fill: $black;
-      margin: .25rem;
+      margin: .2rem;
+
+      &.active {
+        svg {
+          transform: scale(1.5);
+          stroke: $pimper;
+        }
+      }
     }
 
     svg {
       height: 1.5rem;
       width: 1.5rem;
+      transform: scale(1);
+      transition: .15s cubic-bezier(0.42, 0, 0, 1);
     }
+
     &--next {
       transform: rotate(180deg);
     }
@@ -215,7 +241,9 @@
 
       &--text {
         margin-top: 0;
-        width: 100%;
+        padding-top:3.5rem;
+        width: 80%;
+        margin: auto;
         height: 50%;
         display: flex;
         flex-direction: column;
@@ -224,7 +252,14 @@
         align-items: center;
       }
 
+      &--video {
+        max-width: 100%;
+      }
+
       &--img {
+        max-width: 150%;
+        min-height: 0;
+
         &-container {
           width: 100%;
           height: 50%;
@@ -237,11 +272,13 @@
       width: 250px;
       white-space: nowrap;
       overflow: hidden;
+      font-size: .8rem;
       text-overflow: ellipsis;
     }
 
     &__title {
-      font-size: 2.5rem;
+      flex: 1;
+      font-size: 2rem;
     }
 
     &__aside {
@@ -250,8 +287,18 @@
       z-index: 1;
     }
 
+    &__arrow {
+      stroke-width: 3px;
+
+      svg {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
     &__menu {
       cursor: pointer;
+
       &--container {
         right: 0;
         top: 0;

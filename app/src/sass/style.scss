@@ -45,6 +45,12 @@
 @import 'partials/modals';
 @import 'partials/me';
 @import 'partials/post';
+@import 'node_modules/hint/dist/hint';
+
+body {
+  background: $white;
+  color: $black;
+}
 
 .brandname {
   top: 5%;

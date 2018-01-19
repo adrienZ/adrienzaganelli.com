@@ -33,7 +33,7 @@ fs
   })
   .map(path => {
     // all these files are now entries
-    const stylesheet = path.replace(".scss", "") // + "-static";
+    const stylesheet = path.replace(".scss", ""); // + "-static";
     STYLES[`${stylesheet}`] = [`${urls.APP_ASSETS_URL}sass/${path}`];
   });
 
@@ -58,9 +58,9 @@ const VIEWS = fs
   .map(view => {
     // all these files are now outputs
     return new HtmlWebpackPlugin({
-      title: '🦄 Adrien Zaganelli - Portfolio MMXVIII',
+      title: "🦄 Adrien Zaganelli - Portfolio MMXVIII",
       template: `${urls.BASE_URL}/app/${view}`,
-      filename: `${view.replace('.ejs', '.html')}`,
+      filename: `${view.replace(".ejs", ".html")}`,
       inject: "body",
       showErrors: env.devMode ? true : false,
       minify: {

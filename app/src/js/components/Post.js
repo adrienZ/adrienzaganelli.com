@@ -52,16 +52,23 @@ export default class Post extends Component {
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
     window.twttr && window.twttr.widgets.load()
 
-    Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, iframe')).map( img => {
+    Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, .sketchfab-embed-wrapper')).map( img => {
       img.classList.add('animated')
       img.addEventListener('click', this.openModal.bind(this))
-      img.onload = function() {
+      if (img.nodeName === 'IMG') {
+        img.onload = function() {
+          new Waypoint({
+            element: img,
+            handler: () => img.classList.add('fadeIn'),
+            offset: 175 + img.height * 1.5
+          })
+        }
+      } else {
         new Waypoint({
           element: img,
           handler: () => img.classList.add('fadeIn'),
-          offset: 175 + img.height * 1.5
-        })
-      }
+          offset: 175 + img.clientHeight * 1.5
+        })      }
     })
 
     Array.from(this.base.querySelectorAll('#blogPostContainer a')).map(link => {

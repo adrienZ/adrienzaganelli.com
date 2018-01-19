@@ -9,14 +9,43 @@
     flex: 1;
     padding: 0 1rem;
     // font-size: 1.8rem;
-    font-size: calc( .5rem + 2vh);
+    font-size: calc( .75rem + 2vh);
     font-weight: 500;
     max-width: 650px;
     line-height: 1.5;
     margin: auto;
+    z-index: 1;
   }
+
+  .underline {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      animation: progress .5s ease-in-out;
+      transform-origin: 0 0;
+      height: 3px;
+      left: 0;
+      bottom: -4px;
+      background: $pimper;
+    }
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+
 
   .carousel__progress {
     width: 100%;
   }
+
+    @media screen and (max-width: $main-breakpoint) {
+      .carousel__arrow {
+        margin: 0;
+      }
+    }
+
 }

@@ -111,12 +111,14 @@ export default class App extends Component {
             <div></div>
           </div>
           <ul class="app__menu--list">
+            <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
+
             {projects.map((p, index) =>
               <li class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
               </li>)
             }
-            <li><button onClick={this.toggleMenu.bind(this)}>Close menu</button></li>
+            <li class="app__menu--item"><button onClick={this.toggleMenu.bind(this)}>Close menu</button></li>
           </ul>
         </div>
 

@@ -59,10 +59,26 @@ export default class CarouselInterface extends Carousel {
     router.setRoute('')
   }
 
+  colorArrow() {
+    const prev = this.base.querySelector('.carousel__arrow--prev')
+    const next = this.base.querySelector('.carousel__arrow--next')
+
+    if (!prev || !next) return false
+
+    prev.classList.remove('active')
+    next.classList.remove('active')
+
+    const arrow = this.state.direction > 0 ? next : prev
+    arrow.classList.add('active')
+    setTimeout(() => arrow.classList.remove('active'), 150)
+  }
+
   componentDidUpdate() {
     this.state.stopTimer
       ? document.body.classList.remove('no-scroll')
       : document.body.classList.add('no-scroll')
+
+    this.colorArrow()
   }
 
   componentWillUnmount() {

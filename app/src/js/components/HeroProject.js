@@ -25,28 +25,39 @@ export default class HeroProject extends Component {
       <div class="carousel__main--container">
         <div class="carousel__main--text">
 
-          {!this.props.stopTimer &&
-              <CarouselArrows
-                next={this.props.next}
-                previous={this.props.previous}
-              />
-          }
-          <Motion key={this.props.index} style={{}}>
-            {c =>
-              <div>
-                <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
-                <p class="carousel__description">{this.props.project.description}</p>
-                <div style="display: inline-block; margin: 0 auto;">
+          <div class="carousel__main--wrapper">
+            <div class="carousel__main--text-line">
+              {!this.props.stopTimer &&
+                    <CarouselArrows
+                      next={this.props.next}
+                      previous={this.props.previous}
+                    />
+              }
+              <Motion key={this.props.index} style={{}}>
+                {c =>
+                  <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
+                }
+              </Motion>
+            </div>
+
+            <p class="carousel__description">{this.props.project.description}</p>
+            <Motion key={this.props.index} style={{}}>
+              {c2 =>
+                <div key={c2.key} style="display: inline-block; margin: 0 auto;">
                   {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
                 </div>
-              </div>
-            }
-          </Motion>
+              }
+            </Motion>
+          </div>
+
         </div>
 
         <div class={`carousel__main--img-container ${this.props.project.slug}`} onClick={this.props.onClickHandler}>
-          {detectMedia(this.props.project.cover)}
-
+          <Motion key={this.props.index} style={{}}>
+            {c3 =>
+              detectMedia(this.props.project.cover, false, c3)
+            }
+          </Motion>
           <div class="carousel__progress" style={{
             'animation-duration': this.props.interval + "ms",
             'animation-play-state': this.props.stopTimer ? 'paused' : 'running'
