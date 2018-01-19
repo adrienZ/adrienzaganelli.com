@@ -67,7 +67,8 @@ button::-moz-focus-inner {
       pointer-events: none;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
 
@@ -98,6 +99,11 @@ button::-moz-focus-inner {
     background: linear-gradient(to right, #fd746c, #ff9068);
     color: $white;
     border: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
   }
 
   &.cta {
@@ -105,5 +111,11 @@ button::-moz-focus-inner {
     border: none;
     animation-duration: .2s;
     animation-delay: .3s;
+    border-radius: .5rem;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
   }
 }

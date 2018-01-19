@@ -17,6 +17,18 @@
     z-index: 1;
   }
 
+  a {
+    color: $black;
+    transition: color .15s ease-in-out;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $pimper;
+
+    }
+  }
+
   .underline {
     position: relative;
     &::before {
