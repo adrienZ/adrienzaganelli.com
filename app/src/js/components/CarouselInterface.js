@@ -69,8 +69,18 @@ export default class CarouselInterface extends Carousel {
     next.classList.remove('active')
 
     const arrow = this.state.direction > 0 ? next : prev
+    const colorIndex = this.state.direction ? 1 : 0
+    const color = this.state.index === 0
+      ? '#FF5252'
+      : this.state.activeItem.gradient[colorIndex]
+
     arrow.classList.add('active')
-    setTimeout(() => arrow.classList.remove('active'), 150)
+    arrow.style.stroke = color
+
+    setTimeout(() => {
+      arrow.classList.remove('active')
+      arrow.style.stroke = null
+    }, 150)
   }
 
   componentDidUpdate() {

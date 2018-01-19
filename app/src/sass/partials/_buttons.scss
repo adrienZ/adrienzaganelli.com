@@ -86,13 +86,30 @@ button::-moz-focus-inner {
   padding: .5rem 1rem;
   color: $black;
   position: relative;
+  outline-color: $black;
   margin-top: 1rem;
   border: thin solid $black;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
 
   &.close {
     background: $dark;
     color: $white;
     border: none;
+    display: inline-flex;
+
+    .st0 {
+      // fill: red;
+    }
+
+    svg {
+      margin-bottom: 3px;
+      height: 1.5rem;
+      stroke: white;
+      stroke-width: 1rem;
+      margin-right: .25rem;
+    }
   }
 
   &.visit {
@@ -112,6 +129,7 @@ button::-moz-focus-inner {
     animation-duration: .2s;
     animation-delay: .3s;
     border-radius: .5rem;
+    transition: .3s ease-out, box-shadow .2s ease-in;
 
     &:hover,
     &:focus {

@@ -1,7 +1,7 @@
 import { Component, h } from 'preact' // eslint-disable-line
 import LoadMoreButton from '@js/components/LoadMoreButton' // eslint-disable-line
 import CarouselArrows from '@js/components/CarouselArrows' // eslint-disable-line
-import { carouselMask, detectMedia } from '@js/models/utils' // eslint-disable-line
+import { carouselMask, detectMedia, closeIcon } from '@js/models/utils' // eslint-disable-line
 import { Motion, spring } from 'react-motion' // eslint-disable-line
 
 export default class HeroProject extends Component {
@@ -29,6 +29,7 @@ export default class HeroProject extends Component {
             <div class="carousel__main--text-line">
               {!this.props.stopTimer &&
                     <CarouselArrows
+                      gradient={this.props.project.gradient}
                       next={this.props.next}
                       previous={this.props.previous}
                     />
@@ -41,15 +42,16 @@ export default class HeroProject extends Component {
             </div>
 
             <p class="carousel__description">{this.props.project.description}</p>
-            <Motion key={this.props.index} style={{}}>
-              {c2 =>
-                <div key={c2.key} style="display: inline-block; margin: 0 auto;">
-                  {!this.props.stopTimer && <LoadMoreButton gradient={this.props.project.gradient} onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
-                </div>
+            <div style="display: inline-block; margin: 0 auto;">
+              {!this.props.stopTimer
+                ? <LoadMoreButton gradient={this.props.project.gradient} onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>
+                : <button class="btn close" onClick={this.props.onClosePost.bind(this)}>
+                  {closeIcon()}
+                  Close
+                </button>
               }
-            </Motion>
+            </div>
           </div>
-
         </div>
 
         <div class={`carousel__main--img-container ${this.props.project.slug}`} onClick={this.props.onClickHandler}>

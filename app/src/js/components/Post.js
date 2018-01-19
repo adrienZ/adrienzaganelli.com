@@ -3,7 +3,7 @@ import Sticky from 'react-sticky-el' // eslint-disable-line
 import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
 import Router from '@js/models/router'
-import { footerSvg } from '../models/utils';
+import { footerSvg, glowButtonStyle, closeIcon } from '../models/utils';
 
 const Waypoint = window.Waypoint
 const router = new Router({})
@@ -54,8 +54,8 @@ export default class Post extends Component {
 
     Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, .sketchfab-embed-wrapper')).map( img => {
       img.classList.add('animated')
-      img.addEventListener('click', this.openModal.bind(this))
       if (img.nodeName === 'IMG') {
+        img.addEventListener('click', this.openModal.bind(this))
         img.onload = function() {
           new Waypoint({
             element: img,
@@ -109,8 +109,11 @@ export default class Post extends Component {
         <Sticky>
           <header class="post__header">
             <div class="post__header--links">
-              <button class="btn close" onClick={this.props.onClosePost}>CLOSE</button>
-              <ExternalLink href={this.props.project.link} class="btn visit">WEBSITE</ExternalLink>
+              <button class="btn close" onClick={this.props.onClosePost}>
+                {closeIcon()}
+                CLOSE
+              </button>
+              <ExternalLink href={this.props.project.link} class="btn visit" style={glowButtonStyle(this.props.project.gradient)}>WEBSITE</ExternalLink>
             </div>
             <h4 class="post__header--title">{this.props.project.name}</h4>
             <div class="post__header--controls">

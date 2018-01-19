@@ -7,6 +7,7 @@ export default (props) =>
     <div class="me__text">
       {!props.stopTimer &&
         <CarouselArrows
+          gradient={[null, null]}
           next={props.next}
           previous={props.previous}
         />

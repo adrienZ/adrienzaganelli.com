@@ -44,6 +44,18 @@
       cursor: pointer;
       margin: .5rem auto;
       font-size: 1.5rem;
+      opacity: 1;
+      transition: opacity .15s ease-in-out;
+
+      &:hover {
+        opacity: .5;
+      }
+
+      svg {
+        height: 4rem;
+        margin-bottom: 2rem;
+        stroke-width: 1rem;
+      }
     }
   }
 }

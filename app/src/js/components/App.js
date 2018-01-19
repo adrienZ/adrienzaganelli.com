@@ -3,7 +3,7 @@ import CarouselInterface from "@js/components/CarouselInterface" // eslint-disab
 import projects from "@js/models/data"
 import Post from '@js/components/Post' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
-import { arrowSvg } from '@js/models/utils'
+import { arrowSvg, closeIcon } from '@js/models/utils'
 import Router from '@js/models/router'
 
 
@@ -111,16 +111,20 @@ export default class App extends Component {
             <div></div>
           </div>
           <ul class="app__menu--list">
-            <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
+            <li class="app__menu--item">
+              <button onClick={this.toggleMenu.bind(this)}>
+                {closeIcon()}
+              </button>
+            </li>
             <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item">
               Me
             </li>
+            <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
             {projects.map((p, index) =>
               <li class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
               </li>)
             }
-            <li class="app__menu--item"><button onClick={this.toggleMenu.bind(this)}>Close menu</button></li>
           </ul>
         </div>
 
@@ -142,6 +146,7 @@ export default class App extends Component {
           expandViewHandler={this.enableExpandedView.bind(this)}
           interval={6000000}
           toggleMenu={this.toggleMenu.bind(this)}
+          onClosePost={this.props.onClosePost}
           sendMethods={this.getCarousel.bind(this)}
           disableExpandedView={this.disableExpandedView.bind(this)}
         />

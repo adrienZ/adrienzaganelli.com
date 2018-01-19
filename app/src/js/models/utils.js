@@ -55,3 +55,23 @@ export const footerSvg = () =>
 export const hex2rgb = hex => {
   return ['0x' + hex[1] + hex[2] | 0, '0x' + hex[3] + hex[4] | 0, '0x' + hex[5] + hex[6] | 0];
 }
+
+export const glowButtonStyle = (gradient, shadow) =>
+  `
+  background: linear-gradient(to right, ${gradient[0]}, ${gradient[1]});
+  outline-color: ${gradient[0]};
+  ${ shadow
+    ? `box-shadow:
+      -.5rem 0 2rem .1rem rgba(${hex2rgb(gradient[0])}, .35),
+      -.5rem 0 4rem .1rem rgba(${hex2rgb(gradient[0])}, .15),
+      .5rem 0 2rem .1rem rgba(${hex2rgb(gradient[1])}, .35),
+      .5rem 0 4rem .1rem rgba(${hex2rgb(gradient[1])}, .15);`
+    : ''
+}
+`
+
+export const closeIcon = () =>
+  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+    viewBox="0 0 256 256" style="enable-background:new 0 0 256 256;">
+    <path class="st0" d="M137.1,128l75.5-75.5c2.5-2.5,2.5-6.6,0-9.1s-6.6-2.5-9.1,0L128,118.9L52.5,43.5C50,41,46,41,43.5,43.5 s-2.5,6.6,0,9.1l75.5,75.5l-75.5,75.5c-2.5,2.5-2.5,6.6,0,9.1c1.2,1.2,2.9,1.9,4.5,1.9s3.3-0.6,4.5-1.9l75.5-75.5l75.5,75.5 c1.2,1.2,2.9,1.9,4.5,1.9s3.3-0.6,4.5-1.9c2.5-2.5,2.5-6.6,0-9.1L137.1,128z"/>
+  </svg>

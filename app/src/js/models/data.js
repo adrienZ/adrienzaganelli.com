@@ -141,7 +141,7 @@ export default [
     collaborators: [
       buildCollaborator(12, 'Back-end developer'),
     ],
-    gradient: ["#000000", "#e74c3c"],
+    gradient: ["#cb2d3e", "#ef473a"],
   },
   {
     slug: 'alium',

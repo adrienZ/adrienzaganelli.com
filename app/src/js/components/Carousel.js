@@ -100,6 +100,7 @@ export default class CarouselInterface extends Component {
                 stopTimer={this.state.stopTimer}
                 project={this.state.activeItem}
                 index={this.state.index}
+                onClosePost={this.props.onClosePost}
                 interval={this.props.interval}
                 next={this.next.bind(this)}
                 previous={this.previous.bind(this)}
