@@ -44,7 +44,7 @@ export default class HeroProject extends Component {
             <Motion key={this.props.index} style={{}}>
               {c2 =>
                 <div key={c2.key} style="display: inline-block; margin: 0 auto;">
-                  {!this.props.stopTimer && <LoadMoreButton onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
+                  {!this.props.stopTimer && <LoadMoreButton gradient={this.props.project.gradient} onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>}
                 </div>
               }
             </Motion>

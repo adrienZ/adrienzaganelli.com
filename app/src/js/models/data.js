@@ -91,7 +91,8 @@ export default [
       buildCollaborator(1, 'Data manager'),
       buildCollaborator(2, 'Sound & Game designer'),
       buildCollaborator(3, 'Javascript developer'),
-    ]
+    ],
+    gradient: ["#3f5efb", "#FC466B"],
   },
   {
     slug: 'Fidget',
@@ -108,6 +109,7 @@ export default [
       buildCollaborator(5, 'UI designer'),
       buildCollaborator(6, 'Writter'),
     ],
+    gradient: ["#11998e", "#38ef7d"],
   },
   {
     slug: 'marketme',
@@ -124,7 +126,8 @@ export default [
       buildCollaborator(9, 'UX Designer'),
       buildCollaborator(10, 'Front-end Developper'),
       buildCollaborator(11, 'Marketing'),
-    ]
+    ],
+    gradient: ["#FF6A00", "#EE0979"],
   },
   {
     slug: 'cnje',
@@ -137,7 +140,8 @@ export default [
     link: 'https://junior-entreprises.com/',
     collaborators: [
       buildCollaborator(12, 'Back-end developer'),
-    ]
+    ],
+    gradient: ["#000000", "#e74c3c"],
   },
   {
     slug: 'alium',
@@ -154,7 +158,9 @@ export default [
       buildCollaborator(15, 'Back-end developer'),
       buildCollaborator(16, 'Front-end Developper'),
       buildCollaborator(17, 'Marketing & SEO'),
-    ]  },
+    ],
+    gradient: ["#4e54c8", "#8f94fb"],
+  },
   {
     slug: 'skfb',
     name: 'Sketchfab',
@@ -164,6 +170,7 @@ export default [
     date: 'July-October 2017',
     myRole: 'Intern front-end developer',
     link: 'https://sketchfab.com',
-    collaborators: []
+    collaborators: [],
+    gradient: ["#00c6ff", "#0072ff"],
   }
 ].map( (p, index) => Object.assign(p, { index }))
