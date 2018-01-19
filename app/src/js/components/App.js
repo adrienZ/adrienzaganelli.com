@@ -116,12 +116,10 @@ export default class App extends Component {
                 {closeIcon()}
               </button>
             </li>
-            <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item">
-              Me
-            </li>
             <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
+            <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item">Me</li>
             {projects.map((p, index) =>
-              <li class="app__menu--item">
+              <li data-id={index + 1} class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
               </li>)
             }

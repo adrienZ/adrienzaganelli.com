@@ -109,6 +109,16 @@ export default class CarouselInterface extends Carousel {
     return hammer
   }
 
+  setMenuItem(index) {
+    const items = Array.from(document.body.querySelectorAll('.app__menu--item'))
+    items.map( item => {
+      item.classList.remove('active')
+      if (parseInt(item.dataset.id) === index) {
+        item.classList.add('active')
+      }
+    })
+  }
+
 
   componentWillMount() {
     this.props.sendMethods({

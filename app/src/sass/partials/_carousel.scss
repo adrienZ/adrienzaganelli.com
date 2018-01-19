@@ -60,7 +60,14 @@
       transform: translateY(-40%) translateX(-1rem);
       padding: 1rem;
 
+      span {
+        display: block;
+        // animation-duration: .5s;
+        animation-timing-function: cubic-bezier(0.42, 0, 0.12, 0.85);
+      }
+
       .big {
+        display: flex;
         font-size: 3.6rem;
       }
     }

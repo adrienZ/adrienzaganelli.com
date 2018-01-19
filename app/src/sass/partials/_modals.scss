@@ -47,6 +47,10 @@
       opacity: 1;
       transition: opacity .15s ease-in-out;
 
+      &.active {
+        color: $pimper;
+      }
+
       &:hover {
         opacity: .5;
       }

@@ -134,7 +134,7 @@ export default [
     name: 'CNJE',
     file: 'cnje.html',
     description: 'Freelance projects for the french Junior-Enterprise confederation',
-    cover: 'src/media/img/carousel-img/cnje.png',
+    cover: 'src/media/img/carousel-img/cnje.jpg',
     date: 'July-August 2017',
     myRole: 'Front end Developer',
     link: 'https://junior-entreprises.com/',

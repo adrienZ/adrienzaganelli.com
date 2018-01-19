@@ -46,6 +46,8 @@ export default class CarouselInterface extends Component {
       throw new Error(`Wrong index value sent, this.projects contains ${this.__projectsLength__} items. value sent: ${index}`)
     }
 
+    this.setMenuItem(index)
+
     this.setState({
       index, activeItem: this.props.projects[index]
     })
@@ -74,7 +76,11 @@ export default class CarouselInterface extends Component {
           <aside class="carousel__aside">
             <div class="pagination">
               <Motion key={this.state.index} style={{}}>
-                {c => <p data-id={this.state.index} key={c.key} class="number big animated fadeInLeft">0{this.state.index + 1}</p>}
+                {c =>
+                  <p data-id={this.state.index} key={c.key} class="number big">
+                    <span class="animated fadeInDown">0</span>
+                    <span class="animated fadeInUp">{this.state.index + 1}</span>
+                  </p>}
               </Motion>
               <p class="number divider">/0{this._projectsLength}</p>
             </div>
