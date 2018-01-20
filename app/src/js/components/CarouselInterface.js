@@ -71,7 +71,7 @@ export default class CarouselInterface extends Carousel {
     const arrow = this.state.direction > 0 ? next : prev
     const colorIndex = this.state.direction ? 1 : 0
     const color = this.state.index === 0
-      ? '#FF5252'
+      ? '#3D5AFE'
       : this.state.activeItem.gradient[colorIndex]
 
     arrow.classList.add('active')
@@ -101,10 +101,18 @@ export default class CarouselInterface extends Carousel {
     })
 
     hammer.on('swipe', e => {
-      e.deltaX < 0
+      e.deltaY < 0
         ? this.next()
         : this.previous()
     })
+
+    hammer.get('pinch').set({ enable: true });
+    hammer.get('rotate').set({ enable: true });
+
+    // Enabling vertical or all directions for the pan and swipe recognizers:
+
+    hammer.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+    hammer.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 
     return hammer
   }
@@ -121,17 +129,19 @@ export default class CarouselInterface extends Carousel {
 
 
   componentWillMount() {
+    this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
+
     this.props.sendMethods({
       next: this.next.bind(this),
       previous: this.previous.bind(this),
       onClosePost: this.onClosePost.bind(this),
       setPosition: this.setPosition.bind(this),
+      scrollManager: this.scrollManager,
     })
   }
 
   componentDidMount() {
 
-    this.scrollManager = new Scroll(document.body, this.onChange.bind(this))
     this.scrollManager.start()
     this.hammer = this.hammerTime()
 

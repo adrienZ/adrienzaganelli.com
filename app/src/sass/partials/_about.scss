@@ -1,0 +1,52 @@
+.app__about {
+  background-color: $white;
+  line-height: 1.5;
+  padding: 1rem 0;
+  border: $modal-border solid $black;
+
+  &--container {
+    width: $about-container;
+    font-weight: 400;
+    max-width: 30rem;
+    margin: auto;
+    display: block;
+
+    a {
+      color: $pimper;
+    }
+  }
+
+  &--networks {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &--icon {
+    height: 2rem;
+    display: block;
+    opacity: 1;
+
+    &:hover,
+    &:focus {
+      opacity: .5;
+    }
+
+    svg {
+      height: 100%;
+      * {
+        fill: $black;
+      }
+    }
+
+    #Codepen_1_ {
+      fill: $black;
+    }
+  }
+
+  .close {
+    display: block;
+    fill: $black;
+    stroke: $black;
+  }
+}

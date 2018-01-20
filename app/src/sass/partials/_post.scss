@@ -22,7 +22,7 @@
     animation-duration: .15s;
     top: 0;
     display: flex;
-    background: url('src/media/img/texture/light.jpg') no-repeat center center , $white;
+    background: url('../src/media/img/texture/light.jpg') no-repeat center center , $white;
 
     &--img {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -63,12 +63,16 @@
       font-weight: normal;
     }
 
+    p {
+      letter-spacing: .5px;
+    }
+
     &s {
       margin-top: 2rem;
       display: flex;
       flex-wrap: wrap;
       font-size: .85rem;
-      background: url('src/media/img/texture/dark.jpg') no-repeat center center , $black;
+      background: url('../media/img/texture/dark.jpg') no-repeat center center , $black;
       background-size: cover;
       text-align: center;
       justify-content: space-around;
@@ -176,7 +180,7 @@
   box-shadow: 0 1rem 2rem lightgrey;
   width: $main-container;
   margin: auto;
-  background: url('src/media/img/texture/light.jpg') repeat-y center center , $white;
+  background: url('../media/img/texture/light.jpg') repeat-y center center , $white;
 
   h1, h2, h3, h4 {
     font-family: $fancy-font;
@@ -188,6 +192,7 @@
 
   img, .sketchfab-embed-wrapper {
     opacity: 0;
+    text-align: center;
   }
 
   img, iframe, twitterwidget {

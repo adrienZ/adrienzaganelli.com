@@ -41,7 +41,7 @@ export default class HeroProject extends Component {
               </Motion>
             </div>
 
-            <p class="carousel__description">{this.props.project.description}</p>
+            {!this.props.stopTimer && <p class="carousel__description">{this.props.project.description}</p>}
             <div style="display: inline-block; margin: 0 auto;">
               {!this.props.stopTimer
                 ? <LoadMoreButton gradient={this.props.project.gradient} onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>

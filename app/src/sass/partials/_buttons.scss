@@ -52,7 +52,7 @@ button::-moz-focus-inner {
     background: $pimper;
     border-radius: 3px;
     bottom: 1.5rem;
-    box-shadow: 0 10px 20px rgba(250, 148, 146, 0.19), 0 6px 6px rgba(255, 80, 77, 0.23);
+    box-shadow: 0 10px 20px rgba($pimper, 0.19), 0 6px 6px rgba($pimper, 0.23);
     display: table-cell;
     height: 2.75rem;
     opacity: 0.65;
@@ -94,27 +94,24 @@ button::-moz-focus-inner {
   align-items: center;
 
   &.close {
-    background: $dark;
-    color: $white;
+    background: $black;
+    color: white;
     border: none;
     display: inline-flex;
-
-    .st0 {
-      // fill: red;
-    }
+    stroke: white;
+    fill: white;
 
     svg {
       margin-bottom: 3px;
-      height: 1.5rem;
-      stroke: white;
-      stroke-width: 1rem;
+      height: 1.25rem;
+      stroke-width: 1.5rem;
       margin-right: .25rem;
     }
   }
 
   &.visit {
     background: linear-gradient(to right, #fd746c, #ff9068);
-    color: $white;
+    color: white;
     border: none;
 
     &:hover,
@@ -124,11 +121,11 @@ button::-moz-focus-inner {
   }
 
   &.cta {
-    color: $white;
+    color: white;
     border: none;
     animation-duration: .2s;
     animation-delay: .3s;
-    border-radius: .5rem;
+    border-radius: .35rem;
     transition: .3s ease-out, box-shadow .2s ease-in;
 
     &:hover,

@@ -3,8 +3,9 @@ import CarouselInterface from "@js/components/CarouselInterface" // eslint-disab
 import projects from "@js/models/data"
 import Post from '@js/components/Post' // eslint-disable-line
 import SmoothScroll from 'smooth-scroll'
-import { arrowSvg, closeIcon } from '@js/models/utils'
+import { arrowSvg, closeIcon, socialIcons } from '@js/models/utils'
 import Router from '@js/models/router'
+import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 
 
 export default class App extends Component {
@@ -70,6 +71,7 @@ export default class App extends Component {
     this.setState({
       easterEgg: true
     })
+    this.carouselMethods.setPosition(0)
   }
 
   getCarousel(obj) {
@@ -80,12 +82,20 @@ export default class App extends Component {
     this.setState({
       menu: !this.state.menu
     })
+
+    this.state.menu
+      ? this.carouselMethods.scrollManager.destroy()
+      : this.carouselMethods.scrollManager.start()
   }
 
   toggleAbout() {
     this.setState({
       about: !this.state.about
     })
+
+    this.state.menu
+      ? this.carouselMethods.scrollManager.destroy()
+      : this.carouselMethods.scrollManager.start()
   }
 
   loadProject(e) {
@@ -112,7 +122,7 @@ export default class App extends Component {
           </div>
           <ul class="app__menu--list">
             <li class="app__menu--item">
-              <button onClick={this.toggleMenu.bind(this)}>
+              <button class="close app__menu--close" onClick={this.toggleMenu.bind(this)}>
                 {closeIcon()}
               </button>
             </li>
@@ -121,21 +131,26 @@ export default class App extends Component {
             {projects.map((p, index) =>
               <li data-id={index + 1} class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name}</button>
-              </li>)
-            }
+              </li>
+            )}
           </ul>
         </div>
 
         <div class={`app__about big-modal ${this.state.about ? 'open' : ''}`}>
-          ABOUT ME
-          Hi, my name is Adrien Zaganelli, nice to meet you !
-
-          I am a student at HETIC, a french school teaching us how to code, design and do business on the Web. This winter 2017 i'm looking for a internship, if you are interested, please send me an e-mail at adrienzaganelli@gmail.com or contact me through my social networks.
-
-          You will find on this website some of my projects, most are school projects made by small teams (4-6) such as Puslar One [ø] others are real world project for instance Market-ME.
-
-          Last but not least, i am freelancing : I'll be pleased to collaborate with you in various projects or missions. If you have any further questions do not hesitate to contact me, I will answer you as soon as possible.
-          <button class="btn" onClick={this.toggleAbout.bind(this)}>Close about</button>
+          <div class="app__about--container">
+            <button class="close app__about--close" onClick={this.toggleAbout.bind(this)}>{closeIcon()} </button>
+            <h3>ABOUT ME</h3>
+            <p>Hi, my name is Adrien Zaganelli, nice to meet you !</p>
+            <p>I am 4th student at HETIC, learning how to code, design and do business on the Web. Learning new things everyday to master new skills.</p>
+            <p>This summer 2018 i'm looking for a internship, if you are interested, please send me an e-mail at <ExternalLink href="mailto:adrienzaganelli">adrienzaganelli@gmail.com</ExternalLink> or contact me through my social networks.</p>
+            <p>Last but not least, <ExternalLink href="https://www.malt.fr/profile/adrienzaganelli">i am available for freelancing</ExternalLink>.</p>
+            <div class="app__about--networks">
+              {socialIcons.map(
+                icon =>
+                  <ExternalLink href={icon.href} class="app__about--icon">{icon.svg}</ExternalLink>
+              )}
+            </div>
+          </div>
         </div>
 
         <CarouselInterface

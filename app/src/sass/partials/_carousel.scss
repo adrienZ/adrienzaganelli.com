@@ -91,6 +91,7 @@
 
     &--wrapper {
       z-index: 1;
+      width: 100%;
     }
 
     &--text {
@@ -149,7 +150,7 @@
     text-align: left;
     font-size: 3.25rem;
     text-transform: capitalize;
-    letter-spacing: -.125rem;
+    // letter-spacing:
     margin: 0;
     position: relative;
 
@@ -197,7 +198,7 @@
     height: 5px;
     position: absolute;
     bottom: 0;
-    background: $blue;
+    background: $pimper;
     box-shadow: 0px -1px 2px rgba($white, .5);
     animation-name: progress;
     animation-iteration-count: infinite;
@@ -207,7 +208,7 @@
 
   &__arrow {
     margin-right: 1rem;
-    transform: rotate(-180deg);
+    // transform: rotate(-180deg);
     display: flex;
     flex-direction: column;
     top: -15%;
@@ -218,6 +219,7 @@
     button {
       position: relative;
       stroke: $black;
+      outline: none;
       fill: $black;
       margin: .2rem;
 

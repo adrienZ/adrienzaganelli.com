@@ -68,7 +68,8 @@ export default class Post extends Component {
           element: img,
           handler: () => img.classList.add('fadeIn'),
           offset: 175 + img.clientHeight * 1.5
-        })      }
+        })
+      }
     })
 
     Array.from(this.base.querySelectorAll('#blogPostContainer a')).map(link => {
