@@ -22,9 +22,9 @@
 
     polyline,
     line {
-      animation: dash 1s ease-out 0s normal paused 1 forwards;
       stroke-dasharray: 1200;
       stroke-dashoffset: 1200;
+      transition: stroke-dashoffset 2s .25s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
   }
 
@@ -32,12 +32,12 @@
     opacity: 0;
 
     polygon {
-      animation: glow 1s ease-in-out 0s normal running 1 forwards;
+      animation: glow .75s ease-in-out 0s normal running 1 forwards;
     }
 
     polyline,
     line {
-      animation-play-state: running;
+      stroke-dashoffset: 0;
     }
   }
 }
