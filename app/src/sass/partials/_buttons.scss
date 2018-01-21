@@ -2,13 +2,17 @@ button {
   cursor: pointer;
 }
 
+[tabindex="1"],button, a {
+  outline-color: $pimper !important;
+}
+
 // reset
 [role="button"],
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button {
-            box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 /* Reset `button` and button-style `input` default styles */
@@ -86,7 +90,6 @@ button::-moz-focus-inner {
   padding: .5rem 1rem;
   color: $black;
   position: relative;
-  outline-color: $black;
   margin-top: 1rem;
   border: thin solid $black;
   text-transform: uppercase;
