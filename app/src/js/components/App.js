@@ -115,17 +115,10 @@ export default class App extends Component {
         <p onClick={this.easterEgg.bind(this)} class={`brandname animated ${this.state.easterEgg ? 'hinge' : ''}`}>ADRIEN ZAGANELLI</p>
 
         <div class={`app__menu big-modal ${this.state.menu ? 'open' : ''}`}>
-          <div class="app__menu--bg">
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-          <ul class="app__menu--list">
-            <li class="app__menu--item">
-              <button class="close app__menu--close" onClick={this.toggleMenu.bind(this)}>
-                {closeIcon()}
-              </button>
-            </li>
+          <button class="close app__menu--close" onClick={this.toggleMenu.bind(this)}>
+            {closeIcon()}
+          </button>
+          <ul class="app__menu--list big-modal__container">
             <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
             <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item">Me</li>
             {projects.map((p, index) =>
@@ -137,18 +130,20 @@ export default class App extends Component {
         </div>
 
         <div class={`app__about big-modal ${this.state.about ? 'open' : ''}`}>
-          <div class="app__about--container">
-            <button class="close app__about--close" onClick={this.toggleAbout.bind(this)}>{closeIcon()} </button>
-            <h3>ABOUT ME</h3>
-            <p>Hi, my name is Adrien Zaganelli, nice to meet you !</p>
-            <p>I am 4th student at HETIC, learning how to code, design and do business on the Web. Learning new things everyday to master new skills.</p>
-            <p>This summer 2018 i'm looking for a internship, if you are interested, please send me an e-mail at <ExternalLink href="mailto:adrienzaganelli">adrienzaganelli@gmail.com</ExternalLink> or contact me through my social networks.</p>
-            <p>Last but not least, <ExternalLink href="https://www.malt.fr/profile/adrienzaganelli">i am available for freelancing</ExternalLink>.</p>
-            <div class="app__about--networks">
-              {socialIcons.map(
-                icon =>
-                  <ExternalLink href={icon.href} class="app__about--icon">{icon.svg}</ExternalLink>
-              )}
+          <button class="close app__about--close" onClick={this.toggleAbout.bind(this)}>{closeIcon()} </button>
+          <div class="app__about--container big-modal__container">
+            <div class="app__about--text">
+              <h3>ABOUT ME</h3>
+              <p>Hi, my name is Adrien Zaganelli, nice to meet you !</p>
+              <p>I am 4th student at HETIC, learning how to code, design and do business on the Web. Learning new things everyday to master new skills.</p>
+              <p>This summer 2018 i'm looking for a internship, if you are interested, please send me an e-mail at <ExternalLink href="mailto:adrienzaganelli">adrienzaganelli@gmail.com</ExternalLink> or contact me through my social networks.</p>
+              <p>Last but not least, <ExternalLink href="https://www.malt.fr/profile/adrienzaganelli">i am available for freelancing</ExternalLink>.</p>
+              <div class="app__about--networks">
+                {socialIcons.map(
+                  icon =>
+                    <ExternalLink href={icon.href} class="app__about--icon">{icon.svg}</ExternalLink>
+                )}
+              </div>
             </div>
           </div>
         </div>

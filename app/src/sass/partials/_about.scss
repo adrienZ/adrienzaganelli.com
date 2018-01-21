@@ -5,15 +5,18 @@
   border: $modal-border solid $black;
 
   &--container {
-    width: $about-container;
     font-weight: 400;
-    max-width: 30rem;
-    margin: auto;
-    display: block;
 
     a {
       color: $pimper;
     }
+  }
+
+  &--text {
+    width: $about-container;
+    margin: auto;
+    display: block;
+    max-width: 35rem;
   }
 
   &--networks {
