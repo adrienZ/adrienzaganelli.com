@@ -13,7 +13,7 @@ export default (props) =>
         />
       }
       <p>
-        I’m a french Web developer and a 4th year student at <ExternalLink href="http://hetic.net/" title="HETIC, école web">HETIC</ExternalLink>.
+        I’m a Paris-based Web developer and a 4th year student at <ExternalLink href="http://hetic.net/" title="HETIC, école web">HETIC</ExternalLink>.
         I'm currently looking for a 6 months <ExternalLink href="mailto:adrienzaganelli@gmail.com" target="_blank" class="underline" title="adrienzaganelli@gmail.com">internship</ExternalLink>.
         Also available for any freelance projects, I'm open for job opportunities.
       </p>

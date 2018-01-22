@@ -52,7 +52,7 @@ export default class Post extends Component {
     scroll.animateScroll(this.base.offsetTop, { easing: 'easeInOutQuart' })
     window.twttr && window.twttr.widgets.load()
 
-    Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, .sketchfab-embed-wrapper')).map( img => {
+    Array.from(this.base.querySelector('#blogPostContainer').querySelectorAll('img, .sketchfab-embed-wrapper, video')).map( img => {
       img.classList.add('animated')
       if (img.nodeName === 'IMG') {
         img.addEventListener('click', this.openModal.bind(this))

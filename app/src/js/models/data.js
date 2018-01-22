@@ -81,9 +81,9 @@ export default [
     slug: 'pulsar',
     name: 'Pulsar One [Ø]',
     file: 'pulsar.html',
-    description: 'Pulsar one is a game where the story evolves depending on your choices, you are the chosen one who have to save the world',
+    description: 'Pulsar one is a text-based game where the story evolves depending on your choices, you are the chosen one who have to save the world',
     cover: 'src/media/img/carousel-img/pulsar.jpg',
-    date: 'May 2016',
+    period: 'May 2016',
     myRole: 'Lead developer',
     link: 'https://adrienzaganelli.com/projects/pulsar_one/',
     collaborators: [
@@ -100,7 +100,7 @@ export default [
     file: 'fidget.html',
     description: 'The Fidget cube is an unusually addicting, high-quality desk toy designed to help you focus. Fidget at work, in class, and at home in style.',
     cover: 'src/media/img/carousel-img/fidget.jpg',
-    date: 'November 2016',
+    period: 'November 2016',
     myRole: 'Webgl developer',
     link: 'https://suongkevintan.github.io/hetic-p2019-11/',
     collaborators: [
@@ -117,7 +117,7 @@ export default [
     file: 'marketme.html',
     description: 'My first internship. The MarketMe team (2 developers, 2 designers, 1 marketing assistant) and I build a creative marketplace in 2 months.',
     cover: 'src/media/img/carousel-img/marketme.mp4',
-    date: 'July-September 2016',
+    period: 'July-September 2016',
     myRole: 'Intern full stack developer',
     link: 'https://www.market-me.fr/',
     collaborators: [
@@ -135,7 +135,7 @@ export default [
     file: 'cnje.html',
     description: 'Freelance projects for the french Junior-Enterprise confederation',
     cover: 'src/media/img/carousel-img/cnje.jpg',
-    date: 'July-August 2017',
+    period: 'July-August 2017',
     myRole: 'Front end Developer',
     link: 'https://junior-entreprises.com/',
     collaborators: [
@@ -149,7 +149,7 @@ export default [
     file: 'alium.html',
     description: 'One semester to build a hight quality bike brand for a real client. Modern design and a flexible wordpress website.',
     cover: 'src/media/img/carousel-img/alium.mp4',
-    date: 'April-May 2017',
+    period: 'April-May 2017',
     myRole: 'Front-end developer',
     link: 'https://www.aliumbikes.fr/fr/',
     collaborators: [
@@ -167,7 +167,7 @@ export default [
     file: 'skfb.html',
     description: 'Second summer internship, 3 months dive into the WebGL world and the startup ecosystem. Sketchfab is about 3D and community.',
     cover: 'src/media/img/carousel-img/skfb.jpg',
-    date: 'July-October 2017',
+    period: 'July-October 2017',
     myRole: 'Intern front-end developer',
     link: 'https://sketchfab.com',
     collaborators: [],
