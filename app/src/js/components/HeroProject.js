@@ -36,7 +36,7 @@ export default class HeroProject extends Component {
               }
               <Motion key={this.props.index} style={{}}>
                 {c =>
-                  <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toLowerCase()}</h1>
+                  <h1 data-id={this.props.index} key={c.key} class="carousel__title animated">{this.props.project.name.toUpperCase()}</h1>
                 }
               </Motion>
             </div>
@@ -44,7 +44,10 @@ export default class HeroProject extends Component {
             {!this.props.stopTimer && <p class="carousel__description">{this.props.project.description}</p>}
             <div style="display: inline-block; margin: 0 auto;">
               {!this.props.stopTimer
-                ? <LoadMoreButton gradient={this.props.project.gradient} onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>
+                ? <LoadMoreButton
+                  id={this.props.project.slug}
+                  gradient={this.props.project.gradient}
+                  onClickHandler={this.props.onClickHandler} >case study</LoadMoreButton>
                 : <button class="btn close" onClick={this.props.onClosePost.bind(this)}>
                   {closeIcon()}
                   Close

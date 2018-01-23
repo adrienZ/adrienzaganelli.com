@@ -58,7 +58,7 @@ export const hex2rgb = hex => {
 
 export const glowButtonStyle = (gradient, shadow) =>
   `
-  background: linear-gradient(to right, ${gradient[0]}, ${gradient[1]});
+  background-image: linear-gradient(to right, ${gradient[0]}, ${gradient[1]});
   outline-color: ${gradient[0]};
   ${ shadow
     ? `box-shadow:

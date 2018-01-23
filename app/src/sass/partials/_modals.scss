@@ -36,7 +36,7 @@
 
   .close {
     margin: 0 auto 2rem auto;
-    fill: $white;
+    fill: $light;
 
     svg {
       height: 3rem;
@@ -48,12 +48,12 @@
 .app {
 
   &__menu {
-    color: $white;
+    color: $light;
     background-color: $black;
-    border: $modal-border solid $white;
+    border: $modal-border solid $light;
 
     .close {
-      stroke: $white;
+      stroke: $light;
     }
 
     .st0 {

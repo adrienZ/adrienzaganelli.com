@@ -1,6 +1,6 @@
 .post {
   scroll-behavior: smooth;
-  background: url('../media/img/texture/light.jpg') repeat-y center center , white;
+  background: url('../media/img/texture/light.jpg') repeat-y center center , $white;
 
   .sticky {
       z-index: 1;
@@ -9,6 +9,7 @@
         border: 1px solid rgba($black, .15);
         width: $post-container;
         max-width: $main-container;
+        background: $white;
 
         &--title {
           display: block
@@ -24,7 +25,7 @@
     animation-duration: .15s;
     top: 0;
     display: flex;
-    background: url('../media/img/texture/light.jpg') no-repeat center center , $white;
+    background: url('../media/img/texture/light.jpg') no-repeat center center , $light;
 
     &--img {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -43,7 +44,7 @@
     max-width: $main-container;
     margin: auto;
     align-items: center;
-    background: $white;
+    background: $light;
     justify-content: space-between;
     transition: width .3s ease-in-out;
 
@@ -62,7 +63,7 @@
     padding: 1.5rem;
 
     a {
-      color: $white;
+      color: $light;
       opacity: .7;
       font-weight: normal;
     }
@@ -79,7 +80,7 @@
       background-size: cover;
       text-align: center;
       justify-content: space-around;
-      color: $white;
+      color: $light;
       font-weight: bold;
 
     }

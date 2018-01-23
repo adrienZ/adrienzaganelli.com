@@ -17,7 +17,7 @@
   }
 
   &__menu {
-    background: $white;
+    background: $light;
     border: 1px solid $black;
     padding: .35rem .5rem;
     display: flex;
@@ -27,7 +27,7 @@
     justify-content: space-between;
 
     &--container {
-      background: $white;
+      background: $light;
       padding: .5rem 0;
       cursor: pointer;
       position: absolute;
@@ -54,7 +54,7 @@
 
     .pagination {
       font-family: $fancy-font;
-      background: $white;
+      background: $light;
       display: inline-block;
       overflow: hidden;
       transform: translateY(-40%) translateX(-1rem);
@@ -110,7 +110,7 @@
     &--video,
     &--img {
       animation: appear .5s;
-      background: $white;
+      background: $light;
     }
 
 
@@ -148,7 +148,7 @@
 
   &__title {
     text-align: left;
-    font-size: 3.25rem;
+    font-size: 2.7rem;
     text-transform: capitalize;
     // letter-spacing:
     margin: 0;
@@ -161,7 +161,7 @@
       width: 100%;
       height: 100%;
       background: $black;
-      animation: progress reverse .3s .13s forwards ease-in-out;
+      animation: progress reverse .3s .13s forwards cubic-bezier(0.47, 0, 0.745, 0.715);
       transform-origin: 0 0;
     }
 
@@ -173,8 +173,8 @@
       z-index: 2;
       width: 100%;
       height: 100%;
-      background: $white;
-      animation: progress reverse .3s  forwards ease-in-out;
+      background: $light;
+      animation: progress reverse .3s  forwards cubic-bezier(0.47, 0, 0.745, 0.715);
       transform-origin: 0 0;
     }
   }
@@ -188,7 +188,7 @@
 
 
   &__footer {
-    background: $white;
+    background: $light;
     padding: 0 1rem;
     position: absolute;
     bottom: 3vh;
@@ -200,7 +200,7 @@
     position: absolute;
     bottom: 0;
     background: $pimper;
-    box-shadow: 0px -1px 2px rgba($white, .5);
+    box-shadow: 0px -1px 2px rgba($light, .5);
     animation-name: progress;
     animation-iteration-count: infinite;
     transform-origin: 0 0;
@@ -226,7 +226,7 @@
 
       &.active {
         svg {
-          transform: scale(1.5);
+          transform: scale(1.25);
         }
       }
     }

@@ -8,7 +8,7 @@ import style from '@sass/style.scss' // eslint-disable-line
 window.onload = () => {
   const loader = document.querySelector('.loader')
   loader.classList.add('loaded')
-  setTimeout(() => loader.remove(), 1800)
+  setTimeout(() => loader.remove(), 1000)
 
   render(
     <App />,

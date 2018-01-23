@@ -104,9 +104,7 @@ export default class App extends Component {
       this.carouselMethods.onClosePost()
     }
     this.carouselMethods.setPosition(id)
-    this.setState({
-      menu: false
-    })
+    this.toggleMenu()
   }
 
   render() {
