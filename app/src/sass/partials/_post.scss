@@ -1,12 +1,14 @@
 .post {
   scroll-behavior: smooth;
+  background: url('../media/img/texture/light.jpg') repeat-y center center , white;
 
   .sticky {
       z-index: 1;
 
       .post__header{
-        border: 1px solid lightgray;
-        max-width: 780px;
+        border: 1px solid rgba($black, .15);
+        width: $post-container;
+        max-width: $main-container;
 
         &--title {
           display: block
@@ -22,7 +24,7 @@
     animation-duration: .15s;
     top: 0;
     display: flex;
-    background: url('../src/media/img/texture/light.jpg') no-repeat center center , $white;
+    background: url('../media/img/texture/light.jpg') no-repeat center center , $white;
 
     &--img {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -38,10 +40,12 @@
   &__header {
     display: flex;
     width: $main-container;
+    max-width: $main-container;
     margin: auto;
     align-items: center;
     background: $white;
     justify-content: space-between;
+    transition: width .3s ease-in-out;
 
     &--title {
       letter-spacing: 1px;
@@ -87,8 +91,6 @@
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    border-top: 1px solid lightgray;
-
 
     button {
       width: 50%;
@@ -157,66 +159,45 @@
         }
       }
     }
-
-    #blogPostContainer {
-      img, iframe, twitterwidget {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        max-height: none;
-      }
-    }
   }
 
-}
-
-.fill {
-  opacity: 1;
 }
 
 #blogPostContainer {
-  padding: 5rem 0;
+  padding: 2rem 0;
   width: 100%;
   margin: auto;
-  background: url('../media/img/texture/light.jpg') repeat-y center center , white;
-
-  h1, h2, h3, h4 {
-    font-family: $fancy-font;
-  }
 
   i {
     font-weight: 300;
   }
 
-  h3, h2, p, ul {
-    max-width: 780px;
-    margin: auto;
+  h3, h2, p, ul, img, video, .twitter-tweet, .sketchfab-embed-wrapper {
+    max-width: $post-container;
+    // tweeter overide margin
+    margin: 2rem auto;
+    width: 80%;
+    display: block;
+  }
+
+  p, li {
+    line-height: 1.58;
+    font-size: 1.18rem;
+    letter-spacing: -.003em;
+  }
+
+  iframe {
+    width: 100%;
   }
 
   img, .sketchfab-embed-wrapper {
     opacity: 0;
     text-align: center;
-  }
-
-  img, iframe, twitterwidget, video {
-    max-width: 780px;
     width: 100%;
-    margin: 1rem auto;
-    display: block;
   }
 
-  h3 {
-    margin-top: 3.5rem;
+  h1, h2, h3, h4 {
+    font-family: $fancy-font;
+    margin-top: 2.5rem;
   }
-
-  twitterwidget {
-    max-height: none;
-    box-shadow: none;
-  }
-
-  p, img, twitterwidget {
-    margin: 1.5rem auto;
-    line-height: 1.5;
-  }
-
 }

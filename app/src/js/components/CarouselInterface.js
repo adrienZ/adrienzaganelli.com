@@ -46,7 +46,10 @@ export default class CarouselInterface extends Carousel {
       this._timer.stop()
       this.scrollManager.destroy()
       this.state.stopTimer = true
-      this.hammer && this.hammer.destroy()
+      if (this.hammer) {
+        this.hammer = this.hammer.destroy()
+        this.base.style = null
+      }
     })
   }
 
@@ -137,6 +140,7 @@ export default class CarouselInterface extends Carousel {
       onClosePost: this.onClosePost.bind(this),
       setPosition: this.setPosition.bind(this),
       scrollManager: this.scrollManager,
+      onLoadMoreHandler: this.onLoadMoreHandler.bind(this)
     })
   }
 

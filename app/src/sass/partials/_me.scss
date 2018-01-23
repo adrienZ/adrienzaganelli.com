@@ -1,8 +1,9 @@
 .me {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
 
   p {
@@ -44,6 +45,57 @@
     }
   }
 
+  &__networks {
+    position: relative;
+    max-width: calc(650px - 2rem);
+    width: 100%;
+
+    &--container {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      flex: 1;
+      left: 1.5rem;
+      top: 2rem;
+    }
+
+    &--icon {
+      margin: 0 1rem;
+      height: 2rem;
+      display: block;
+      animation-duration: .5s;
+      animation-timing-function: ease-out;
+
+      @for $i from 1 to 10 {
+        &:nth-of-type(#{$i}) {
+          animation-delay: #{.1 * $i}s
+        }
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      svg {
+        height: 100%;
+
+        * {
+          fill: $black;
+          transition: .15s;
+        }
+
+          &:hover {
+            * {
+              fill: $pimper;
+            }
+          }
+      }
+    }
+  }
+
   &__text {
     display: flex;
     align-items: center;
@@ -57,6 +109,10 @@
     @media screen and (max-width: $main-breakpoint) {
       .carousel__arrow {
         margin: 0;
+      }
+
+      &__networks {
+        display: none;
       }
     }
 

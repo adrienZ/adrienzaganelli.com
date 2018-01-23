@@ -119,8 +119,8 @@ export default class App extends Component {
             {closeIcon()}
           </button>
           <ul class="app__menu--list big-modal__container">
-            <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>About</li>
-            <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item">Me</li>
+            <li class="app__menu--item" onClick={this.toggleAbout.bind(this)}>ABOUT ME</li>
+            <li data-id="0" onClick={this.loadProject.bind(this)} class="app__menu--item active">HOME</li>
             {projects.map((p, index) =>
               <li data-id={index + 1} class="app__menu--item">
                 <button data-id={index + 1} onClick={this.loadProject.bind(this)}>{p.name.toUpperCase()}</button>
@@ -152,7 +152,7 @@ export default class App extends Component {
           forcedFocus={this.preActivateProject()}
           projects={["me", ...projects]}
           expandViewHandler={this.enableExpandedView.bind(this)}
-          interval={6000000}
+          interval={15000}
           toggleMenu={this.toggleMenu.bind(this)}
           onClosePost={this.props.onClosePost}
           sendMethods={this.getCarousel.bind(this)}

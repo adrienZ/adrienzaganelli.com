@@ -60,6 +60,10 @@ body {
 .contact {
   bottom: 5%;
   transform: translateY(50%) translateX(-50%);
+
+    @media screen and (max-width: $main-breakpoint) {
+      display: none;
+    }
 }
 
 .brandname, .contact {

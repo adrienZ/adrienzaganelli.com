@@ -82,11 +82,23 @@ export default class Post extends Component {
   footerPrevious() {
     this.props.carouselMethods.onClosePost()
     this.props.carouselMethods.setPosition(this.props.previousProject.index + 1)
+
+    setTimeout( () => {
+      if (document.body.querySelector('.carousel__load-more')) {
+        this.props.carouselMethods.onLoadMoreHandler(document.createEvent('event'))
+      }
+    }, 750)
   }
 
   footerNext() {
     this.props.carouselMethods.onClosePost()
     this.props.carouselMethods.setPosition(this.props.nextProject.index + 1)
+
+    setTimeout(() => {
+      if (document.body.querySelector('.carousel__load-more')) {
+        this.props.carouselMethods.onLoadMoreHandler(document.createEvent('event'))
+      }
+    }, 750)
   }
 
   componentDidMount() {
@@ -118,8 +130,8 @@ export default class Post extends Component {
             </div>
             <h4 class="post__header--title">{this.props.project.name}</h4>
             <div class="post__header--controls">
-              <button class="btn" onClick={this.previous.bind(this)}>PREVIOUS</button>
-              <button class="btn" onClick={this.next.bind(this)}>NEXT</button>
+              <button class="btn" onClick={this.footerPrevious.bind(this)}>PREVIOUS</button>
+              <button class="btn" onClick={this.footerNext.bind(this)}>NEXT</button>
             </div>
           </header>
         </Sticky>
