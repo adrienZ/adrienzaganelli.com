@@ -183,6 +183,7 @@
     margin: .6rem 0 .5rem 0;
     line-height: 1.5;
     text-align: left;
+    min-height: 6rem;
   }
 
 
@@ -281,6 +282,7 @@
       width: 250px;
       white-space: nowrap;
       overflow: hidden;
+      min-height: 0;
       font-size: .8rem;
       text-overflow: ellipsis;
     }
