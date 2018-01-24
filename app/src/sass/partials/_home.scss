@@ -1,0 +1,73 @@
+
+.project.adrien {
+  background: $page-gradient;
+
+  .project__preview {
+    padding-left: $arrow-size;
+    padding-top: 10rem;
+    position: relative;
+    .avatar {
+      left: 35vw;
+      opacity: .15;
+      position: relative;
+      top: 25vh;
+      transition: opacity .15s ease-out;
+      width: 30vh;
+
+      &:hover{
+        opacity: .3;
+      }
+    }
+    .presentation-text {
+      font-family: $gotham;
+      font-size: 1.8em;
+      font-weight: 500;
+      letter-spacing: 1px;
+      line-height: 1.5;
+      position: absolute;
+      text-align: left;
+      top: 50%;
+      transform: translateY(-75%);
+      width: 100%;
+
+
+      .underline {
+        position: relative;
+        &::before {
+          //animation: line-left 1s ease-out 1s normal running 1;
+          background-color:$pimper;
+          bottom: -6px;
+          content: '';
+          height: 3px;
+          position: absolute;
+          transform: scaleX(0);
+          transform-origin:  center left;
+          transition: transform $scroll-fade $scroll-fade;
+          width: 100%;
+
+        }
+      }
+      &::before {
+        color: $pimper;
+        content: 'Hello there !';
+        font: normal .6em $fenton;
+        letter-spacing: 1.5px;
+        opacity: .75;
+        position: absolute;
+        top: -1em;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .presentation-text {
+    font-size: 1.4em !important;
+  }
+
+  .project.adrien .project__preview {
+    padding-left: 0;
+    width: 60%;
+  }
+}

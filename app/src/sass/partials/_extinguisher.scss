@@ -1,0 +1,75 @@
+
+/* Transition Layer */
+.cd-transition-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+.cd-transition-layer .bg-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-2%);
+  /* its dimentions will be overwritten using jQuery to proportionally fit the viewport */
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+.cd-transition-layer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.cd-transition-layer.visible .bg-layer {
+  transform: translateY(-50%) translateX(-98%);
+}
+.cd-transition-layer.opening .bg-layer,
+.cd-transition-layer.closing .bg-layer {
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+
+/* --------------------------------
+
+Fire Extinguisher Effect
+
+-------------------------------- */
+
+.cd-transition-layer .bg-layer {
+  // sprite composed of 25 frames */
+  opacity: 0;
+  background-image: url('../media/img/extinguisher.png');
+  width: 2500%;
+}
+
+.cd-transition-layer.opening .bg-layer {
+  opacity: .1;
+  animation: cd-sequence 0.5s steps(24) forwards, cd-sequence-fadeout 1s ease-in-out forwards ;
+}
+
+
+@keyframes cd-sequence {
+  0% {
+    // translateX(-2%) is used to horizontally center the first frame inside the viewport */
+    transform: translateY(-50%) translateX(-2%);
+  }
+  100% {
+    // translateX(-98%) (2% + 96) is used to horizontally center the last frame inside the viewport  */
+    transform: translateY(-50%) translateX(-98%);
+  }
+}
+@keyframes cd-sequence-fadeout {
+  0% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 0;
+  }
+}

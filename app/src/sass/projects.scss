@@ -1,0 +1,25 @@
+// sass/
+// |
+// |-- modules/
+// |   |-- functions.scss
+// |
+// |-- globals/
+// |   |-- typography.scss
+// |   |-- colors.scss
+// |
+// |-- partials/             # Partials
+// |   |-- _base.sass           # imports for all mixins + global project variables
+// |   |-- _reset.scss          # reset
+// |   |-- _header.scss         # reset
+// |   |-- _footer.scss         # reset
+// |   ...
+// |
+// |-- vendor/               # CSS or Sass from other projects
+// |   |-- _colorpicker.scss
+// |   ...
+// |
+// `-- style.scss            # primary Sass file
+
+
+@import 'partials/_base';
+@import 'partials/_ajax-base';

@@ -1,0 +1,245 @@
+.project-hero-ui {
+  font-family: $fenton;
+  font-weight: bold;
+  left: 5%;
+  letter-spacing: 2px;
+  position: absolute;
+  text-transform: lowercase;
+  top: 0;
+  width: $project-hero-container;
+  z-index: 2;
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .navigation {
+    align-items:  center ;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+
+  }
+
+
+  .close-focus {
+    height: 3rem;
+    left: 0;
+    margin: auto;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    width: 3rem;
+  }
+
+
+  .nav-list {
+    ul {
+      display: flex;
+    }
+
+    li {
+      cursor: pointer;
+      margin: 0 1em;
+      opacity: .35;
+      transition: opacity .15s ease-in-out;
+
+      &:not(.active):hover {
+        opacity: .75;
+      }
+
+      &.active {
+        color: $pimper;
+        opacity: 1;
+      }
+
+    }
+
+  }
+
+  .brand-name {
+    text-align: right;
+  }
+
+  .lab,
+  .current-project {
+    position: absolute;
+    text-align: center;
+    top: 50vh;
+  }
+
+  .lab {
+    height: 100vh;
+    right: 0;
+    text-align: center;
+    top: 0;
+    writing-mode: vertical-rl;
+  }
+
+  .current-project {
+    height: 100vh;
+    left: 0;
+    text-align: center;
+    top: 0;
+    transform:  rotate(180deg);
+    writing-mode: vertical-rl;
+  }
+
+  .contact {
+    align-items:  center;
+    display: flex;
+    justify-content:  space-between;
+    position: absolute;
+    top: 90vh;
+    width: 100%;
+
+    .social {
+      display: flex;
+    }
+
+    li {
+      margin: 0 .5em;
+    }
+
+    img {
+      height: 1.5em;
+      opacity: .8;
+    }
+
+    .about {
+      position: relative;
+
+      &::before {
+        background: $white;
+        bottom: -2px;
+        content: '';
+        height: 2px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+
+
+  }
+
+  .nav-arrows {
+    left: 20%;
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+  }
+
+  img,
+  svg {
+    cursor: pointer;
+    margin: .5em 0;
+    transform: translateY(0);
+    transition: .3s;
+    width: $arrow-size;
+
+    &.intro {
+      animation: bounce .6s cubic-bezier(.165, .84, .44, 1) infinite alternate;
+      animation-delay: 0;
+    }
+
+    &.active {
+      &.next {
+        transform: translateY(15%);
+      }
+
+      &.previous {
+        transform: translateY(-15%);
+      }
+
+      path {
+        stroke: $pimper;
+      }
+  }
+
+    path {
+      stroke: $white;
+      stroke-linecap: round;
+      stroke-width: 4;
+    }
+  }
+}
+
+@media only screen and (max-width: 625px) {
+  .project-hero-ui  .nav-arrows {
+    left: 15%;
+  }
+  .project-hero-ui  .nav-arrows {
+    img,
+    svg {
+      width: 2rem;
+    }
+  }
+
+}
+@media only screen and (max-width: 550px) {
+  .lab,
+  .current-project,
+  .nav-list {
+    display: none;
+  }
+  .contact .social li {
+    margin: 0 .25em;
+  }
+  .project-hero-ui  .nav-arrows {
+    left: 0%;
+  }
+  .project-hero-ui .nav-hamburger {
+    display: block;
+  }
+
+}
+@media only screen and (max-width: 450px) {
+  .nav-arrows {
+    display: none;
+  }
+}
+
+.nav-hamburger {
+  border: 1px solid $pimper;
+  cursor: pointer;
+  display: none;
+  padding: .25em .5em;
+  transition: opacity .15s ease-in-out;
+
+  &:hover {
+    opacity: .7;
+  }
+
+  .line {
+    background-color: $white;
+    display: block;
+    height: 2px;
+    margin: 4px auto;
+    transition: .3s ease-in-out;
+    width: 2em;
+  }
+
+
+  &.open {
+    .line:nth-child(2) {
+      opacity: 0;
+    }
+
+   .line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+   .line:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+@keyframes bounce {
+  0% {transform: translateY(15%);}
+  100% {transform: translateY(-15%);}
+}

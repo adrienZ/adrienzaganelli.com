@@ -1,45 +1,38 @@
 {
-  "extends": "eslint:recommended",
+  "extends": "airbnb",
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "jquery": false,
+    "jquery" : false,
     "node": false,
     "es6": true,
     "mocha": false
   },
-  "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "rules": {
-    "no-console": "warn",
     "valid-jsdoc": ["error", {
       "requireReturn": false,
       "requireReturnType": false,
       "requireParamDescription": false,
       "requireReturnDescription": false
     }],
-    "indent": ["error", 2],
-    "curly": ["error", "multi-line"],
-    "space-infix-ops": ["error", {
-      "int32Hint": false
-    }],
-    "no-multiple-empty-lines": ["error", {
-      "max": 5,
-      "maxEOF": 1
-    }],
+    "indent": ["error", 4],
+    "prefer-template" : 0,
+    "no-trailing-spaces": 0,
+    "no-mixed-operators": 0,
+    "no-restricted-syntax" : 0,
+    "curly" : 0,
+    "no-new": 0,
+    "func-names": ["error", "never"],
+    "space-infix-ops": ["error", {"int32Hint": false}],
+    "no-param-reassign":0,
+    "no-multiple-empty-lines": ["error", { "max": 5, "maxEOF": 1 }],
+    "radix": ["error", "as-needed"],
     "require-jsdoc": ["error", {
-      "require": {
-        "FunctionDeclaration": false,
-        "MethodDefinition": false,
-        "ClassDeclaration": false
-      }
+        "require": {
+            "FunctionDeclaration": false,
+            "MethodDefinition": false,
+            "ClassDeclaration": false
+        }
     }]
-  },
-  "settings": { "import/resolver": "webpack" }
-
+  }
 }

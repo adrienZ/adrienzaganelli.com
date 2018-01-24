@@ -1,12 +1,13 @@
 severity: error
 files:
-ignore:
+ ignore:
     - 'sass/vendor/**/*.scss'
 rules:
-  indentation: 4
+  indentation:
+      - size: 4
   clean-import-paths:
       - leading-underscore: true
-      - filename-extension: false
+      -  filename-extension: false
 
 linters:
   BorderZero:

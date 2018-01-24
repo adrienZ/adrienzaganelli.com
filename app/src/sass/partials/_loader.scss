@@ -1,20 +1,22 @@
 .loader {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  display: flex;
   align-items: center;
+  background: $page-gradient;
+  background-size: 100% 100%;
+  display: flex;
+  height: 100vh;
   justify-content: center;
-  top: 0;
-  background: $light;
-  z-index: 3;
+  left: 0;
   opacity: 1;
-  pointer-events: none;
-  transition: opacity .25s .75s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  position: absolute;
+  top: 0;
+  transition: opacity .3s ease-out 1.1s;
+  width: 100%;
+  z-index: 5;
 
   svg {
-    height: 9rem;
-    width: auto;
+    filter: invert(100%);
+    height: 33.33333%;
+    vertical-align: middle;
 
     polygon {
       animation: glow 1s ease-in-out 0s normal running infinite;
@@ -22,26 +24,42 @@
 
     polyline,
     line {
+      animation: dash 1s ease-out 0s normal paused 1 forwards;
       stroke-dasharray: 1200;
       stroke-dashoffset: 1200;
-      transition: stroke-dashoffset 2s .25s cubic-bezier(0.39, 0.575, 0.565, 1);
     }
   }
 
   &.loaded {
     opacity: 0;
-
     polygon {
-      animation: glow .75s ease-in-out 0s normal running 1 forwards;
+      animation: glow 1s ease-in-out 0s normal running 1 forwards;
     }
 
     polyline,
     line {
-      stroke-dashoffset: 0;
+      animation-play-state: running;
     }
   }
 }
 
-.st0 {
-  fill: $light;
+@keyframes dash {
+  0% {
+    stroke-dashoffset: -1200;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes glow {
+  0% {
+    opacity: 0;
+    transform: translateY(-$loader-slide);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

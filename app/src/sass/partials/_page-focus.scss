@@ -1,0 +1,109 @@
+.project-ui-focus {
+  display: none;
+  position: fixed;
+  top: 0;
+  transition: $focus-delay;
+  z-index: 5;
+
+
+
+  .to-top {
+    background: #FF5252;
+    border-radius: 3px;
+    bottom: 1.5rem;
+    box-shadow: 0 10px 20px rgba(255, 80, 77, 0.19), 0 6px 6px rgba(255, 80, 77, 0.23);
+    box-sizing: border-box;
+    display: table-cell;
+    height: 2.75rem;
+    opacity: 0.5;
+    position: fixed;
+    right: 1.5rem;
+    -webkit-transition: opacity 0.15s ease-out;
+    transition: opacity 0.15s ease-out;
+    width: 2.75rem;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    svg {
+      display: block;
+      margin: auto;
+      margin-top: 35%;
+      width: 50%;
+      stroke-width:20;
+    }
+  }
+
+  .prev,
+  .next {
+    margin-top: 45vh;
+    position: absolute;
+    text-align: center;
+    top: 0;
+
+    &::before {
+      background: $pimper;
+      content: '';
+      height: 2px;
+      position: absolute;
+      top: .35rem;
+      width: 100%;
+    }
+
+    &:hover {
+      img {
+        transform: translateX(0%);
+      }
+
+      a {
+        text-decoration: underline;
+      }
+  }
+
+    a {
+      color: $pimper;
+      font-family: $gotham;
+      font-weight: bold;
+      padding-left: 1rem;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    img {
+      margin: 10px 0;
+      transform: translateX(-200%);
+      transition: transform .3s ease-out;
+      width: 7.5vw;
+    }
+  }
+
+  .prev {
+    &::before {
+      left: -90%;
+    }
+  }
+
+  .next {
+    left: 92.5vw;
+
+    &::before {
+      right: -90%;
+    }
+
+
+    img {
+      transform: translateX(200%);
+    }
+  }
+
+
+
+
+}
+
+@media only screen and (max-width: 900px) {
+  .project-ui-focus aside{
+  display: none!important;
+  }
+}

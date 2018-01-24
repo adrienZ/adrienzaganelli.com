@@ -1,0 +1,48 @@
+.all-links {
+  align-items: center;
+  background: $page-gradient;
+  display: none;
+  height: 90vh;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  top: 13vh;
+  width: 100vw;
+
+
+  &.show {
+    display: flex;
+    z-index: 3;
+  }
+
+  nav {
+    margin: auto;
+    width: 80%;
+  }
+
+  a {
+    border-left: .25em solid rgba(255, 255, 255, .15);
+    color: $white;
+    font-family: $gotham;
+    font-size: 2rem;
+    line-height: 2;
+    padding-left: 1rem;
+    position: relative;
+    text-decoration: none;
+
+    &.active {
+      border-left: .25em solid $pimper;
+      color: $pimper;
+    }
+
+    &::before {
+      content:'';
+      width: 100%;
+      height: .5rem;
+      //background:$white;
+      position: absolute;
+      top: .5em;
+
+    }
+  }
+}

@@ -1,0 +1,138 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  background: white;
+
+}
+a{
+  color: white;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.main-header {
+  width: 100%;
+  background: grey;
+  padding: 2em 0;
+  color: white;
+  background: linear-gradient(to left, #4776E6 , #8E54E9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.main-header h1 {
+  font-size: 2rem;
+  margin: .25rem 0;
+}
+.main-header a {
+  border: 1px solid white;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.main-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  width: 80%;
+
+}
+
+
+.container {
+  width: 80%;
+  margin: auto;
+}
+
+.grid {
+  margin-top: 10vh;
+}
+
+.grid .label-grid {
+  display: flex;
+  /*justify-content: space-around;*/
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.grid .label-projects {
+  padding-left: 1rem;
+  align-items: center;;
+  display: flex;
+  height: 3rem;
+  margin: .5rem auto;
+  border-radius: 3px;
+  background: #4776E6;
+  color: white;
+}
+
+.label-projects img {
+  width: 2rem;
+  height: 2rem;
+  margin-right: .5rem;
+  border-radius: 50%;
+  background: red;
+
+}
+
+.grid .item {
+  margin: 2rem;
+  width: 300px;
+}
+.item .tags {
+  padding: 0;
+  list-style: none;
+  display: flex;
+  margin: .5rem;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.item .tags li {
+  font-size: .8rem;
+  margin-right: 1em;
+  background: #E8EAF6;
+  padding: .15rem .35rem;
+  color: black;
+  border-radius: 25px;
+}
+.item .tags li:last-of-type {
+  margin-right: 0;
+}
+
+.item .illu {
+  width: 100%;
+  height: 225px;
+  background-size: cover!important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: box-shadow .15s;
+}
+.item .illu:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.item .text {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.text h5 {
+  font-size: 1em;
+  margin: 1.15rem 0;
+}
+
+.text a {
+  text-decoration: none;
+  background: #FF5252;
+  padding: .25rem .5rem;
+  border-radius: 3px;
+  transition: opacity 0.15s;
+}
+
+.text a:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,139 @@
+#pulsar-one-ajax .reengage {
+
+  .prev {
+    background: url('../media/img/hero-covers/fidget-cube.jpg') center center no-repeat, $grey;
+  }
+
+  .next {
+    background: url('../media/img/hero-covers/market-me.jpg') center center no-repeat, $grey;
+  }
+}
+
+#market-me-ajax .reengage {
+
+  .prev {
+    background: url('../media/img/hero-covers/pulsar-one.jpg') center center no-repeat, $grey;
+  }
+
+  .next {
+    background: url('../media/img/hero-covers/fidget-cube.jpg') center center no-repeat, $grey;
+  }
+}
+
+#fidget-cube-ajax .reengage {
+  .prev {
+    background: url('../media/img/hero-covers/market-me.jpg') center center no-repeat, $grey;
+  }
+
+  .next {
+    background: url('../media/img/hero-covers/pulsar-one.jpg') center center no-repeat, $grey;
+  }
+}
+
+.end-content {
+  width: 100%;
+
+  .team {
+    @extend .project__infos;
+    background: $grey url('../media/img/texture/texture-odd.jpg') left top;
+    background-size: cover;
+    list-style: none;
+    margin-bottom: 0!important;
+
+    .name {
+      color: $white;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .logo {
+    background: $white;
+    box-sizing: border-box;
+    height: 4rem;
+    margin-top: $reengage-btn-size;
+
+    svg {
+      display: block;
+      height: 2.5rem;
+      margin: auto;
+      padding-top: .75rem;
+    }
+  }
+}
+
+.reengage {
+
+  .prev::before {
+    content: 'PREVIOUS PROJECT';
+  }
+
+  .next::before {
+    content: 'NEXT PROJECT';
+  }
+
+  .prev,
+  .next {
+    background-size: cover!important;
+    box-sizing: border-box;
+    color: $white;
+    float: left;
+    font-family: $gotham;
+    font-weight: 500;
+    height: $reengage-btn-size;
+    letter-spacing: 3px;
+    line-height: $reengage-btn-size;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 50%;
+
+    &::before {
+      background: $white;
+      border: thin solid lightgrey;
+      color: $grey;
+      font-weight: 500;
+      height: 100%;
+      left: 0;
+      opacity: 1;
+      position: absolute;
+      transition: opacity .15s ease-in-out;
+      width: 100%;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .reengage {
+
+    .prev::before {
+      content: none;
+    }
+
+    .next::before {
+      content: none;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .reengage {
+
+    .prev,
+    .next {
+      width: 100%!important;
+    }
+  }
+  .end-content .logo {
+    margin-top: #{$reengage-btn-size * 2};
+  }
+}

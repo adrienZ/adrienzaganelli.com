@@ -1,0 +1,40 @@
+{
+  "name": "hetic-p2019-11",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Adrien Zaganelli <adrienzaganelli@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "source",
+    "spec",
+    "lib",
+    "examples",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/vendor/libs/",
+    "test",
+    "tests"
+  ],
+  "path": {
+    "js": "_js/",
+    "css": "_css/"
+  },
+  "devDependencies": {
+  },
+  "moduleType": [],
+  "dependencies": {
+    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#^10.2.0"
+  }
+}

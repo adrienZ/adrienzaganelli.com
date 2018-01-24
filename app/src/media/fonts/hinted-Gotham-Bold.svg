@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170731 at Tue Aug 14 21:23:29 2007
+Created by FontForge 20161013 at Tue Aug 14 21:23:29 2007
  By ,,,
 Copyright (C) 2000, 2007 Hoefler &#38; Frere-Jones. http://www.typography.com
 </metadata>
@@ -20,7 +20,7 @@ Copyright (C) 2000, 2007 Hoefler &#38; Frere-Jones. http://www.typography.com
     cap-height="700"
     bbox="-54 -297 1195 1017"
     underline-thickness="50"
-    underline-position="-200"
+    underline-position="-150"
     unicode-range="U+0020-FB04"
   />
 <missing-glyph 
@@ -204,7 +204,7 @@ d="M68 0v730h152v-270q67 86 157 86q86 0 134 -53t48 -146v-347h-152v299q0 53 -24 8
     <glyph glyph-name="i" unicode="i" horiz-adv-x="302" 
 d="M71 595v135h160v-135h-160zM75 0v536h152v-536h-152z" />
     <glyph glyph-name="j" unicode="j" horiz-adv-x="302" 
-d="M71 595v135h160v-135h-160zM55 -163q-34 0 -66 6v119q18 -3 32 -3q54 0 54 62v515h152v-527q0 -172 -172 -172z" />
+d="M71 595v135h160v-135h-160zM55 -163q-35 0 -66 6v119q18 -3 32 -3q54 0 54 62v515h152v-527q0 -172 -172 -172z" />
     <glyph glyph-name="k" unicode="k" horiz-adv-x="592" 
 d="M68 0v730h152v-389l178 195h182l-204 -211l211 -325h-174l-140 219l-53 -56v-163h-152z" />
     <glyph glyph-name="l" unicode="l" horiz-adv-x="302" 
@@ -267,7 +267,7 @@ d="M281 595v135h146v-135h-146zM73 595v135h146v-135h-146z" />
 d="M414 -12q-151 0 -256 105.5t-105 254.5v2q0 149 106 255.5t257 106.5t256 -105.5t105 -254.5v-2q0 -149 -106 -255.5t-257 -106.5zM414 28q136 0 228.5 94t92.5 228v2q0 134 -91.5 227t-227.5 93t-228.5 -94t-92.5 -228v-2q0 -134 91.5 -227t227.5 -93zM419 156
 q-84 0 -140.5 57t-56.5 140v2q0 83 56.5 141t143.5 58q91 0 152 -59l-55 -64q-48 43 -97 43q-47 0 -78.5 -34.5t-31.5 -83.5v-2q0 -49 31 -83.5t79 -34.5q49 0 99 45l56 -56q-64 -69 -158 -69z" />
     <glyph glyph-name="ordfeminine" unicode="&#xaa;" horiz-adv-x="390" 
-d="M153 399q-44 0 -72.5 24t-28.5 66v2q0 46 32 70t87 24q36 0 72 -12v5q0 54 -64 54q-38 0 -81 -16l-21 63q53 24 114 24q67 0 100 -33q32 -32 32 -94v-171h-81v32q-33 -38 -89 -38zM49 277v66h278v-66h-278zM178 457q29 0 47.5 14.5t18.5 37.5v15q-27 11 -54 11
+d="M153 399q-44 0 -72.5 24t-28.5 66v2q0 46 32 70t87 24q36 0 72 -12v5q0 54 -64 54q-38 0 -81 -16l-21 63q53 24 114 24q67 0 100 -33q32 -32 32 -94v-171h-81v32q-33 -38 -89 -38zM49 277v66h278v-66h-278zM178 457q29 0 47.5 14.5t18.5 37.5v15q-28 11 -54 11
 q-57 0 -57 -40v-2q0 -16 12.5 -26t32.5 -10z" />
     <glyph glyph-name="guillemotleft" unicode="&#xab;" horiz-adv-x="645" 
 d="M481 40l-168 224v8l168 224l116 -56l-130 -171l130 -171zM209 40l-168 224v8l168 224l116 -56l-130 -171l130 -171z" />

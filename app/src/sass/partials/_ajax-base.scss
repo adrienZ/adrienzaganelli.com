@@ -1,0 +1,114 @@
+article.project__fullcontent {
+  margin-top: -43vh;
+
+  .container {
+    margin: auto;
+    width: $project-content-container;
+  }
+
+  .chapter {
+    box-sizing: border-box;
+    font-family: $gotham;
+    min-height: 100vh;
+    padding: 5vh 0;
+    width: 100%;
+
+    .project-illu {
+      box-shadow: 0 10px 20px rgba(0, 0 ,0 , .19), 0 6px 6px rgba(0, 0, 0, .23);
+      cursor: pointer;
+      display: block;
+      margin: 10vh auto;
+      min-width: 250px;
+      position: relative;
+      transition: box-shadow .15s ease-in-out;
+      width: 60%;
+
+      &.-m {
+        max-width: 250px;
+        width: auto;
+      }
+
+      &:hover {
+        box-shadow: 0 19px 38px rgba(0, 0, 0, .3), 0 15px 12px rgba(0, 0 , 0, .22);
+      }
+    }
+
+    .chapter__title {
+      font-size: 2.5em;
+      font-weight: bold;
+      letter-spacing: 5px;
+      margin-bottom: 1em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    &:nth-child(even) {
+      background: $white url('../media/img/texture/texture-even.jpg');
+      background-size: 50%;
+      color: $black-content;
+    }
+
+    &:nth-child(odd) {
+      background: $grey url('../media/img/texture/texture-odd.jpg') center center;
+      background-size: 100%;
+      color: $white;
+    }
+  }
+
+  .project__infos {
+    display: flex;
+    flex-wrap: wrap;
+    font-family: $fenton;
+    justify-content: space-around;
+    letter-spacing: 1px;
+    margin-bottom: 5vh;
+    text-align: center;
+
+    li {
+      margin: 2em;
+    }
+
+    .title {
+      font-weight: bold;
+      line-height: 1.5;
+      text-transform: capitalize;
+    }
+
+    .name {
+      font-size: .8em;
+      font-weight: 500;
+      opacity: .8;
+
+    }
+  }
+
+  .visit {
+    background: $white;
+    border: 1px solid $grey;
+    color: $grey;
+    display: block;
+    font-weight: 300;
+    margin: 2em auto;
+    outline-color: $pimper;
+    padding: 1em 3em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .15s ease-out;
+    width: 180px;
+
+    &:hover {
+      border-color: $pimper;
+      color: $pimper;
+    }
+  }
+
+  .intro__preview {
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+
+@import 'partials/_footer';
