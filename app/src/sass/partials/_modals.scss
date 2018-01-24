@@ -37,6 +37,11 @@
   .close {
     margin: 0 auto 2rem auto;
     fill: $light;
+    transition: opacity .15s ease-in-out;
+
+    &:hover {
+      opacity: .25;
+    }
 
     svg {
       height: 3rem;
@@ -69,17 +74,19 @@
       text-transform: uppercase;
       z-index: 1;
       font-size: 2rem;
-      margin: auto;
       display: block;
       transition: transform .3s .1s;
     }
 
     &--item {
-      cursor: pointer;
       margin: .5rem auto;
       font-size: 1.5rem;
       opacity: 1;
       transition: opacity .15s ease-in-out;
+
+      button {
+        cursor: pointer;
+      }
 
       &.active {
         color: $pimper;

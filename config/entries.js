@@ -61,6 +61,7 @@ const VIEWS = fs
       title: "🦄 Adrien Zaganelli - Portfolio MMXVIII",
       template: `${urls.BASE_URL}/app/${view}`,
       filename: `${view.replace(".ejs", ".html")}`,
+      favicon: 'app/favicon.png',
       inject: "body",
       showErrors: env.devMode ? true : false,
       minify: {

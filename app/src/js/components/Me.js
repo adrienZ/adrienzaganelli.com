@@ -4,7 +4,7 @@ import ExternalLink from '@js/components/ExternalLink' // eslint-disable-line
 import { socialIcons } from '@js/models/utils'
 
 const social = socialIcons.filter( (s, index) => {
-  return [0, 1, 5].indexOf(index) > -1
+  return [0, 1, 3, 5].indexOf(index) > -1
 })
 
 

@@ -30,8 +30,6 @@ export default class CarouselInterface extends Component {
       newIndex = 0
     }
 
-    this.resetTimeout()
-
     this.setPosition(newIndex)
     this.state.direction = e.direction
   }
@@ -46,6 +44,8 @@ export default class CarouselInterface extends Component {
     this.setState({
       index, activeItem: this.props.projects[index]
     })
+
+    this.resetTimeout()
   }
 
   previous() {

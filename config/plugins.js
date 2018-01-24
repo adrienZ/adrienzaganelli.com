@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const fs = require("fs");
 const path = require("path");
 const WebpackNotifierPlugin = require('webpack-notifier');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 const env = require("./env");
 const entries = require("./entries");
@@ -16,7 +17,8 @@ const mainConfigPlugins = [
   // build css from scss import
   ...entries.VIEWS,
   // new WebpackNotifierPlugin({ excludeWarnings: true }),
-  loaders.extractSass
+  loaders.extractSass,
+  new FaviconsWebpackPlugin(path.resolve(urls.APP_URL, 'favicon.png'))
 ];
 const staticSassConfigPlugins = [loaders.extractStaticSass];
 
