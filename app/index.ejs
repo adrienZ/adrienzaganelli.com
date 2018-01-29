@@ -3,6 +3,7 @@
 <% const preloadedImgs = projects.map( p => {
   return detectMedia(p.cover, true)
 }) %>
+<% const urlProd = "https://adrienzaganelli.com/" %>
 
 <html lang="en">
   <head>
@@ -17,20 +18,20 @@
     <!-- Google / Search Engine Tags -->
     <meta itemprop="name" content="🦄 Adrien Zaganelli - Portfolio MMXVIII">
     <meta itemprop="description" content="Adrien Zaganelli's Portfolio, student at HETIC">
-    <meta itemprop="image" content="<%= projects[0].cover %>" >
+    <meta itemprop="image" content="<%= urlProd + projects[0].cover %>" >
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://adrienzaganelli.com">
     <meta property="og:type" content="website">
     <meta property="og:title" content="🦄 Adrien Zaganelli - Portfolio MMXVIII">
     <meta property="og:description" content="Adrien Zaganelli's Portfolio, student at HETIC">
-    <meta property="og:image" content="<%= projects[0].cover %>">
+    <meta property="og:image" content="<%= urlProd + projects[0].cover %>">
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="🦄 Adrien Zaganelli - Portfolio MMXVIII">
     <meta name="twitter:description" content="Adrien Zaganelli's Portfolio, student at HETIC">
-    <meta name="twitter:image" content="<%= projects[0].cover %>">
+    <meta name="twitter:image" content="<%= urlProd + projects[0].cover %>">
 
     <!-- Meta Tags Generated via http://heymeta.com -->
 
