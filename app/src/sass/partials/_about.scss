@@ -17,6 +17,12 @@
     margin: auto;
     display: block;
     max-width: 35rem;
+
+    i {
+      font-weight: 400;
+      font-style: normal;
+      color: $black;
+    }
   }
 
   &--networks {

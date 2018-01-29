@@ -83,10 +83,7 @@
       font-size: 1.5rem;
       opacity: 1;
       transition: opacity .15s ease-in-out;
-
-      button {
-        cursor: pointer;
-      }
+      cursor: pointer;
 
       &.active {
         color: $pimper;
