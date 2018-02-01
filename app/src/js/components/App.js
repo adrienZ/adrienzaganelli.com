@@ -132,13 +132,13 @@ export default class App extends Component {
           <div class="app__about--container big-modal__container">
             <div class="app__about--text">
               <h3>ABOUT ME</h3>
-              <p>Hi, my name is Adrien Zaganelli, nice to meet you !</p>
+              <p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
 
               <p>I am currently a student at HETIC, learning how to code, design and do business on the Web. I like to try new things everyday to master new skills.</p>
 
               <p>I worked 3 months at <ExternalLink href="https://agence-me.com"><i>AgenceMe</i></ExternalLink> and 4 months at <ExternalLink href="https://sketchfab.com"><i>Sketchfab</i></ExternalLink>.</p>
 
-              <p><b>In 2018 I'm looking for a internship from July to December.</b></p>
+              <p><b>In 2018 I'm looking for an internship from July to December.</b></p>
 
               <p>Last but not least, Iʼm available for freelance: <ExternalLink href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com</ExternalLink>
               </p>
