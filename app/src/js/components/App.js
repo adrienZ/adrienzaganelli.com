@@ -138,7 +138,7 @@ export default class App extends Component {
 
               <p>I worked 3 months at <ExternalLink href="https://agence-me.com"><i>AgenceMe</i></ExternalLink> and 4 months at <ExternalLink href="https://sketchfab.com"><i>Sketchfab</i></ExternalLink>.</p>
 
-              <p><b>In 2018 I'm looking for an internship from July to December.</b></p>
+              <p><b>In 2019 I'm looking for an apprenticeship from January in Paris.</b></p>
 
               <p>Last but not least, Iʼm available for freelance: <ExternalLink href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com</ExternalLink>
               </p>
