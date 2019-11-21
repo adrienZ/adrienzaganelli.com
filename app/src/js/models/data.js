@@ -72,11 +72,34 @@ const collaborators = [
     fullname: 'Raphael Piacitelli',
     link: 'https://www.linkedin.com/in/raphael-piacitelli-4649a7106/'
   },
+  {
+    fullname: 'Guillaume Gouessan',
+    link: 'https://guillaumegouessan.com/'
+  },
+  {
+    fullname: 'Mathilde Lier',
+    link: 'https://fr.linkedin.com/in/mathilde-lier-1407a771'
+  },
 ]
 
 const buildCollaborator = (id, role) => Object.assign(collaborators[id], { role })
 
 export default [
+  {
+    slug: 'devialet',
+    name: 'Devialet',
+    file: 'devialet.html',
+    description: 'Promotional page for the new Devialet speaker: Phantom Premier',
+    cover: 'src/media/img/carousel-img/devialet.mp4',
+    period: 'September 2019',
+    myRole: 'front-end developer',
+    link: 'https://www.devialet.com/fr-fr/phantom-premier-implosive-sound',
+    collaborators: [
+      buildCollaborator(18, 'WebGL developer'),
+      buildCollaborator(19, 'Designer'),
+    ],
+    gradient: ["#5398C9", "#E32845"],
+  },
   {
     slug: 'pulsar',
     name: 'Pulsar One [Ø]',
@@ -142,23 +165,23 @@ export default [
     ],
     gradient: ["#4e54c8", "#8f94fb"],
   },
-  {
-    slug: 'Fidget',
-    name: 'Fidget Cube',
-    file: 'fidget.html',
-    description: 'Clean interface and WebGL. The Fidget cube is an unusually addicting, high-quality desk toy designed to help you focus.',
-    cover: 'src/media/img/carousel-img/fidget.jpg',
-    period: 'November 2016',
-    myRole: 'Webgl developer',
-    link: 'https://suongkevintan.github.io/hetic-p2019-11/',
-    collaborators: [
-      buildCollaborator(4, 'Javascript developer'),
-      buildCollaborator(0, 'Leader & UX designer'),
-      buildCollaborator(5, 'UI designer'),
-      buildCollaborator(6, 'Writter'),
-    ],
-    gradient: ["#11998e", "#38ef7d"],
-  },
+  // {
+  //   slug: 'Fidget',
+  //   name: 'Fidget Cube',
+  //   file: 'fidget.html',
+  //   description: 'Clean interface and WebGL. The Fidget cube is an unusually addicting, high-quality desk toy designed to help you focus.',
+  //   cover: 'src/media/img/carousel-img/fidget.jpg',
+  //   period: 'November 2016',
+  //   myRole: 'Webgl developer',
+  //   link: 'https://suongkevintan.github.io/hetic-p2019-11/',
+  //   collaborators: [
+  //     buildCollaborator(4, 'Javascript developer'),
+  //     buildCollaborator(0, 'Leader & UX designer'),
+  //     buildCollaborator(5, 'UI designer'),
+  //     buildCollaborator(6, 'Writter'),
+  //   ],
+  //   gradient: ["#11998e", "#38ef7d"],
+  // },
   {
     slug: 'cnje',
     name: 'CNJE',
