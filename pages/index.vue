@@ -16,13 +16,13 @@
         >
           Documentation
         </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
+        <nuxt-link
+          to="/blog/"
           target="_blank"
           class="button--grey"
         >
-          GitHub
-        </a>
+          Blog
+        </nuxt-link>
       </div>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import axios from 'axios'
 
 export default {
   mode: 'universal',
@@ -37,8 +38,18 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/proxy', '@nuxtjs/axios'],
+  markdownit: {
+    injected: true,
+  },
+  proxy: {
+    '/api': {
+      target: 'http://localhost:8080/api',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    },
+  },
   /*
   ** Build configuration
   */
@@ -46,7 +57,17 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend(config, ctx) {
     }
-  }
+  },
+
+  generate: {
+    async routes() {
+      const posts = await axios.get('http://localhost:8080/api/articles/list')
+      return posts.data.items.map(post => ({
+        route: `/blog/${post.slug}`,
+        payload: post,
+      }))
+    },
+  },
 }

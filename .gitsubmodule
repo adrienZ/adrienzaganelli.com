@@ -1,3 +1,3 @@
 [submodule "cms"]
 	path = cms
-	url = https://github.com/adrienZ/zigzag-cms
+	url = https://github.com/adrienZ/zigzag-cms.git
