@@ -2,40 +2,24 @@
   <div class="container">
     <div>
       <logo />
-      <h1 class="title">
-        adrienzaganelli.com
-      </h1>
-      <h2 class="subtitle">
-        Personal portfolio
-      </h2>
+      <h1 class="title">adrienzaganelli.com</h1>
+      <h2 class="subtitle">Personal portfolio</h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <nuxt-link
-          to="/blog/"
-          target="_blank"
-          class="button--grey"
-        >
-          Blog
-        </nuxt-link>
+        <nuxt-link to="/projects/" target="_blank" class="button--green">Projects</nuxt-link>
+        <nuxt-link to="/blog/" target="_blank" class="button--grey">Blog</nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Logo from "~/components/Logo.vue";
 
 export default {
   components: {
     Logo
   }
-}
+};
 </script>
 
 <style>
@@ -49,8 +33,8 @@ export default {
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
   font-weight: 300;
   font-size: 100px;
