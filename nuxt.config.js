@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export default {
   mode: 'universal',
   /*
@@ -38,17 +36,10 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/markdownit', '@nuxtjs/proxy', '@nuxtjs/axios'],
+  modules: ['@nuxtjs/markdownit', '@nuxtjs/axios'],
   markdownit: {
     injected: true,
-  },
-  proxy: {
-    '/api': {
-      target: 'http://localhost:8080/api',
-      pathRewrite: {
-        '^/api': '/'
-      }
-    },
+    html: true,
   },
   /*
   ** Build configuration
@@ -58,16 +49,22 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      config.resolve.alias['@cms'] = __dirname + '/zigzag-cms'
+      config.resolve.alias['@api'] = __dirname + '/zigzag-cms/api'
     }
   },
 
   generate: {
     async routes() {
-      const posts = await axios.get('http://localhost:8080/api/articles/list')
-      return posts.data.items.map(post => ({
-        route: `/blog/${post.slug}`,
-        payload: post,
-      }))
+      const fs = require('fs');
+      const path = require('path');
+      return fs.readdirSync('./zigzag-cms/api/articles/').map(file => {
+
+        return {
+          route: `/blog/${path.parse(file).name}`,
+          payload: require('./zigzag-cms/api/articles/' + file)
+        }
+      })
     },
   },
 }
