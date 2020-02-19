@@ -1,5 +1,5 @@
 <template>
-  <article>
+  <article class="page-post">
     <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
     <h1>{{post.title}}</h1>
@@ -19,5 +19,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.page-post {
+  max-width: 580px;
+  margin: auto;
+  padding: 0 20px;
+}
 </style>
