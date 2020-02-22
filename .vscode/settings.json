@@ -10,6 +10,6 @@
     // only from the root of
     // your workspace
     ".nuxt": true, // this excludes the folder
-    "zigzag-cms": true // this excludes the folder
+    "static/zigzag-cms": true // this excludes the folder
   }
 }

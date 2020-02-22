@@ -1,3 +1,5 @@
+const cmsPath = __dirname + '/static/zigzag-cms'
+
 export default {
   mode: 'universal',
   /*
@@ -49,8 +51,8 @@ export default {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      config.resolve.alias['@cms'] = __dirname + '/zigzag-cms'
-      config.resolve.alias['@api'] = __dirname + '/zigzag-cms/api'
+      config.resolve.alias['@cms'] = cmsPath
+      config.resolve.alias['@api'] = cmsPath + '/api'
     }
   },
 
@@ -58,10 +60,10 @@ export default {
     async routes() {
       const fs = require('fs');
       const path = require('path');
-      return fs.readdirSync('./zigzag-cms/api/articles/').map(file =>
+      return fs.readdirSync(cmsPath + '/api/articles/').map(file =>
         ({
           route: `/blog/${path.parse(file).name}`,
-          payload: require('./zigzag-cms/api/articles/' + file),
+          payload: require(cmsPath + '/api/articles/' + file),
         })
       ).filter(post => post.payload.published)
     },
