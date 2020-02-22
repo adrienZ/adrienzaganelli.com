@@ -1,4 +1,4 @@
-const cmsPath = __dirname + '/static/zigzag-cms'
+const cmsPath = __dirname + '/zigzag-cms'
 
 export default {
   mode: 'universal',
