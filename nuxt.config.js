@@ -58,16 +58,12 @@ export default {
     async routes() {
       const fs = require('fs');
       const path = require('path');
-      return fs.readdirSync('./zigzag-cms/api/articles/').map(file => {
-        const payload = require('./zigzag-cms/api/articles/' + file)
-
-        console.log(payload.title);
-
-        return {
+      return fs.readdirSync('./zigzag-cms/api/articles/').map(file =>
+        ({
           route: `/blog/${path.parse(file).name}`,
-          payload,
-        }
-      })
+          payload: require('./zigzag-cms/api/articles/' + file),
+        })
+      ).filter(post => post.payload.published)
     },
   },
 }

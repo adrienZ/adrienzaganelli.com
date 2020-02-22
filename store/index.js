@@ -23,7 +23,7 @@ export const actions = {
       const post = posts(filename)
       post.slug = path.parse(filename).name
       return post
-    })
+    }).filter(post => post.published)
     await commit('setBlogPosts', posts);
 
     // parse PROJECTS
@@ -32,7 +32,7 @@ export const actions = {
       const project = projects(filename)
       project.slug = path.parse(filename).name
       return project
-    })
+    }).filter(project => project.published)
     await commit('setCaseStudies', projects);
   },
 };
