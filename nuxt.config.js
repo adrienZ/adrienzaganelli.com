@@ -59,10 +59,13 @@ export default {
       const fs = require('fs');
       const path = require('path');
       return fs.readdirSync('./zigzag-cms/api/articles/').map(file => {
+        const payload = require('./zigzag-cms/api/articles/' + file)
+
+        console.log(payload.title);
 
         return {
           route: `/blog/${path.parse(file).name}`,
-          payload: require('./zigzag-cms/api/articles/' + file)
+          payload,
         }
       })
     },
