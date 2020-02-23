@@ -1,0 +1,3 @@
+[submodule "static/zigzag-cms"]
+	path = static/zigzag-cms
+	url = https://github.com/adrienZ/zigzag-cms
