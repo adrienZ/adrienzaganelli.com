@@ -4,7 +4,7 @@
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
       <h1>{{post.title}}</h1>
-      <div v-html="$md.render(post.body)"></div>
+      <div v-html="$md.render(article)"></div>
     </article>
   </section>
 </template>
@@ -20,9 +20,14 @@ export default {
       post = store.getters.getPost(params.slug);
     }
 
-    post.body = post.body.split("](/medias/").join("](/zigzag-cms/api/medias/");
-
     return { post };
+  },
+  computed: {
+    article() {
+      return this.post.body
+        .split("](/medias/")
+        .join("](/zigzag-cms/api/medias/");
+    }
   }
 };
 </script>
