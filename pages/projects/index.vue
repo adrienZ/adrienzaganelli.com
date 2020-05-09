@@ -4,6 +4,7 @@
     <ul>
       <li :key="project.date" v-for="project in caseStudies">
         <h3>{{project.title}}</h3>
+        <p>{{project.meta.summary}}</p>
         <nuxt-link :to="'/projects/' + project.slug">Voir le projetcs</nuxt-link>
       </li>
     </ul>

@@ -1,56 +1,41 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">adrienzaganelli.com</h1>
-      <h2 class="subtitle">Personal portfolio</h2>
-      <div class="links">
-        <nuxt-link to="/projects/" target="_blank" class="button--green">Projects</nuxt-link>
-        <nuxt-link to="/blog/" target="_blank" class="button--grey">Blog</nuxt-link>
-      </div>
-    </div>
+    <c-header />
+
+    <c-home-block bgColor="#9575CD">
+      Hello !
+    </c-home-block>
+    <c-home-block bgColor="#7E57C2">
+      <fieldset>
+        <button :key="'post' + index" v-for="(project, index) in $store.state.caseStudies">
+          {{project.title}}
+        </button>
+      </fieldset>
+    </c-home-block>
+    <c-home-block bgColor="#673AB7">
+      <fieldset>
+        <button :key="'post' + index" v-for="(post, index) in $store.state.blogPosts">
+          {{post.title}}
+          <br>
+          {{post.metadata.date}}
+        </button>
+      </fieldset>
+    </c-home-block>
+    <c-home-block bgColor="#5E35B1  ">
+      The lab
+    </c-home-block>
   </div>
 </template>
 
+
 <script>
-import Logo from "~/components/Logo.vue";
+import cHeader from '@/components/c-header.vue'
+import cHomeBlock from '@/components/c-home-block.vue'
 
 export default {
   components: {
-    Logo
+    cHeader,
+    cHomeBlock
   }
-};
+}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
