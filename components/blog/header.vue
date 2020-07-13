@@ -1,0 +1,25 @@
+<template>
+  <header class="bg-gray-200 py-2 px-4">
+    <div class="flex items-center justify-between">
+        <h1 class="text-2xl" v-if="$nuxt.$route.name === 'blog'">Adrien Zagnelli's Blog</h1>
+        <h2 class="text-2xl" v-else>
+          <nuxt-link to="/blog/">Adrien Zagnelli's Blog</nuxt-link>
+        </h2>
+
+        <a class="ml-6" :href="$store.state.backendBase + '/feed/'">
+          <span class="text-xs leading-none align-bottom">RSS</span>
+          <svg class="w-4 h-4 inline-block fill-current">
+            <use xlink:href="#icon-rss" x="0" y="0"/>
+          </svg>
+        </a>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style>
+
+</style>

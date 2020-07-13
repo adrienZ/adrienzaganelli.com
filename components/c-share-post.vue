@@ -1,16 +1,14 @@
 <template>
-  <section class="c-share-post">
-    <a class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
-      <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
-      Share on Facebook
+  <section class="c-share-post flex justify-between">
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
+      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
     </a>
-    <a class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
-      <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
-      Share on Twitter
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
+      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-twitter" x="0" y="0"/></svg>
+
     </a>
-    <a class="block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
-      <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
-      Share on Linkedin
+    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
+      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-linkedin" x="0" y="0"/></svg>
     </a>
   </section>
 </template>

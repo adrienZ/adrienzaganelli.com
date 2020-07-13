@@ -1,6 +1,7 @@
-import path from 'path'
+const backendBase = 'http://localhost:8888/zogzog'
 
 export const state = () => ({
+  backendBase,
   posts: [],
   projects: [],
 });
@@ -20,16 +21,18 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({ commit }) {
 
+    const apiBase = backendBase + '/wp-json'
+
     // parse PROJECTS
-    const projects = await fetch('http://localhost:8888/zogzog/wp-json/wp/v2/project');
+    const projects = await fetch(apiBase + '/wp/v2/project');
     await commit('setProjects', await projects.json());
 
     // parse POSTS
-    const posts = await fetch('http://localhost:8888/zogzog/wp-json/wp/v2/posts');
+    const posts = await fetch(apiBase + '/wp/v2/posts');
     await commit('setPosts', await posts.json());
 
     // parse author
-    const author = await fetch('http://localhost:8888/zogzog/wp-json/wp/v2/users/1');
+    const author = await fetch(apiBase + '/wp/v2/users/1');
     await commit('setAuthor', await author.json());
   },
 };
