@@ -2,6 +2,7 @@ const cmsPath = __dirname + '/static/zigzag-cms'
 
 export default {
   mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -24,6 +25,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/css/tailwind.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -34,15 +36,17 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/tailwindcss',
   ],
+  tailwindcss: {
+    configPath: '~/config/tailwind.config.js',
+    cssPath: '~/assets/css/tailwind.css',
+    exposeConfig: false
+  },
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/markdownit', '@nuxtjs/axios'],
-  markdownit: {
-    injected: true,
-    html: true,
-  },
+  modules: ['@nuxtjs/axios'],
   /*
   ** Build configuration
   */
@@ -50,10 +54,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
-      config.resolve.alias['@cms'] = cmsPath
-      config.resolve.alias['@api'] = cmsPath + '/api'
-    }
+    extend(config, ctx) {}
   },
 
   generate: {

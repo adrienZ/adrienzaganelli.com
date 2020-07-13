@@ -3,44 +3,45 @@
     <article class="post-content">
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
-      <h1>{{post.title}}</h1>
-      <div v-html="$md.render(article)"></div>
+      <h1 class="">{{post.title.rendered}}</h1>
+      <div class="cms-block" v-html="post.content.rendered"></div>
+
+      <cAboutTheAuthor />
+      <cHireMe />
+
+      <cSharePost :postTitle="post.title.rendered" :url="'example.com' || post.link"/>
+
     </article>
   </section>
 </template>
 
 <script>
+import cAboutTheAuthor from '@/components/c-about-the-author.vue'
+import cHireMe from '@/components/c-hire-me.vue'
+import cSharePost from '@/components/c-share-post.vue'
+
 export default {
   async asyncData({ isDev, params, payload, store }) {
     let post;
 
     if (payload) {
       post = payload;
-    } else if (store.state.blogPosts.length) {
+    } else if (store.state.posts.length) {
       post = store.getters.getPost(params.slug);
     }
 
     return { post };
   },
-  computed: {
-    article() {
-      return this.post.body
-        .split("](/medias/")
-        .join("](/zigzag-cms/api/medias/");
-    }
-  }
+  components: {
+    cAboutTheAuthor,
+    cHireMe,
+    cSharePost,
+  },
+  computed: {}
 };
 </script>
 
 <style lang="scss" scoped>
-.page-post {
-  background: #1a202c;
-  color: #fff;
-
-  a {
-    color: inherit;
-  }
-}
 
 .post-content {
   max-width: 580px;

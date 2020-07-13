@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
-    "@nuxtjs/markdownit": "^1.2.7",
     "@nuxtjs/style-resources": "^1.0.0",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.13.3"
   },
   "devDependencies": {
+    "@nuxtjs/tailwindcss": "^2.0.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2"
   }

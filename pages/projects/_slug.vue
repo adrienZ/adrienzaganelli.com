@@ -23,17 +23,11 @@ export default {
   async asyncData({ params, payload, store }) {
     if (payload) {
       return { project: payload };
-    } else if (store.state.caseStudies.length) {
+    } else if (store.state.projects.length) {
       return { project: store.getters.getProject(params.slug) };
     }
   },
-  computed: {
-    caseStudy() {
-      return this.project.body
-        .split("](/medias/")
-        .join("](/zigzag-cms/api/medias/");
-    }
-  }
+  computed: {}
 };
 </script>
 

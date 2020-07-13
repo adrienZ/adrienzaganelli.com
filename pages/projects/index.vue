@@ -2,9 +2,9 @@
   <div>
     <h1>Projects</h1>
     <ul>
-      <li :key="project.date" v-for="project in caseStudies">
-        <h3>{{project.title}}</h3>
-        <p>{{project.meta.summary}}</p>
+      <li :key="project.date" v-for="project in projects">
+        <h3>{{project.title.rendered}}</h3>
+        <!-- <p>{{project.meta.summary}}</p> -->
         <nuxt-link :to="'/projects/' + project.slug">Voir le projetcs</nuxt-link>
       </li>
     </ul>
@@ -14,8 +14,8 @@
 <script>
 export default {
   computed: {
-    caseStudies() {
-      return this.$store.state.caseStudies;
+    projects() {
+      return this.$store.state.projects;
     }
   }
 };

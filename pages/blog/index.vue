@@ -2,9 +2,8 @@
   <div>
     <h1>Blog</h1>
     <ul>
-      <li :key="post.date" v-for="post in blogPosts">
-        <h3>{{post.title}}</h3>
-        <p>{{post.body.substring(0, 100)}}...</p>
+      <li :key="post.date" v-for="post in posts">
+        <h3>{{post.title.rendered}}</h3>
         <nuxt-link :to="'/blog/' + post.slug">Lire la suite</nuxt-link>
       </li>
     </ul>
@@ -14,8 +13,8 @@
 <script>
 export default {
   computed: {
-    blogPosts() {
-      return this.$store.state.blogPosts;
+    posts() {
+      return this.$store.state.posts;
     }
   }
 };
