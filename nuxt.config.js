@@ -1,4 +1,4 @@
-const cmsPath = __dirname + '/static/zigzag-cms'
+import axios from 'axios'
 
 export default {
   mode: 'universal',
@@ -59,14 +59,19 @@ export default {
 
   generate: {
     async routes() {
-      const fs = require('fs');
-      const path = require('path');
-      return fs.readdirSync(cmsPath + '/api/articles/').map(file =>
-        ({
-          route: `/blog/${path.parse(file).name}`,
-          payload: require(cmsPath + '/api/articles/' + file),
-        })
-      ).filter(post => post.payload.published)
+      const projects = await axios.get('http://localhost:8888/zogzog/wp-json/wp/v2/project');
+      const posts = await axios.get('http://localhost:8888/zogzog/wp-json/wp/v2/posts');
+
+      const projectsRoutes = projects.data.map( project => ({
+        route: `/project/` + project.slug,
+        payload: project,
+      }))
+      const postsRoutes = posts.data.map( post => ({
+        route: `/blog/` + post.slug,
+        payload: post,
+      }))
+
+      return [...postsRoutes, ...projectsRoutes]
     },
   },
 }

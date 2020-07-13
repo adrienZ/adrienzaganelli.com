@@ -8,7 +8,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "export": "nuxt export"
+
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
