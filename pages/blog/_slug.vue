@@ -3,7 +3,7 @@
     <article class="post-content">
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
-      <h1 class="text-xl">{{post.title.rendered}}</h1>
+      <h1 class="text-3xl font-extrabold">{{post.title.rendered}}</h1>
       <div class="cms-block" v-html="post.content.rendered"></div>
 
       <div class="mt-4">
@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 
 .post-content {
-  max-width: 580px;
+  max-width: 720px;
   margin: auto;
   padding: 0 20px;
 }

@@ -2,19 +2,9 @@
   <section class="page-project project">
     <article class="project-content">
       <nuxt-link to="/projects/">Retour au projects</nuxt-link>
-      <h1>{{project.title}}</h1>
-      <pre>{{project}}</pre>
-      <div v-html="$md.render(caseStudy)"></div>
+      <h1>{{project.title.rendered}}</h1>
+      <div v-html="project.content.rendered"></div>
     </article>
-
-    <div class="project-team">
-      <ul>
-        <li v-for="(collaborator, index) in project.meta.team" :key="'collaborator' + index">
-          <p>{{collaborator.collaborator}}</p>
-          <p>{{collaborator.role}}</p>
-        </li>
-      </ul>
-    </div>
   </section>
 </template>
 
