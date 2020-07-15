@@ -3,7 +3,7 @@
     <nuxt-link :to="'/projects/' + slug" class="block sticky right-0 top-0" style="top: 30%">
       <cThumbnail class="c-showcase__media" ref="media" :media="media" />
     </nuxt-link>
-    <cList v-bind:media.sync="media" v-bind:slug.sync="slug"/>
+    <cList v-on:update="onProjectChange"/>
   </section>
 </template>
 
@@ -11,48 +11,57 @@
 import cThumbnail from '@/components/showcase/thumbnail.vue'
 import cList from '@/components/showcase/list.vue'
 
+import withMouse from '@/mixins/withMouse'
+
 export default {
+  created() {
+    this.onFrame = this.onFrame.bind(this)
+  },
   components: {
     cThumbnail,
     cList,
   },
+  mixins: [withMouse],
   data() {
     return {
       media: {},
       slug: null,
     }
   },
-  created() {
-    this.onMouseMove = this.onMouseMove.bind(this)
-  },
   mounted() {
-    window.addEventListener('mousemove', this.onMouseMove)
-    this.smoothedMovement = {
-      x: 0,
-      y: 0,
-    }
+    // start preview mouse track
+    this.smoothMouse = {x: 0, y: 0}
+    this.lastRender = 0
+    window.requestAnimationFrame(this.onFrame)
   },
   beforeDestroy() {
-    window.removeEventListener('mousemove', this.onMouseMove)
+    // stop preview mouse track
+    window.cancelAnimationFrame(this.onFrame)
   },
   methods: {
-    onMouseMove(e) {
-      const {screenX, screenY} = e
+    onFrame() {
+      const now = Date.now()
 
-      const center = {
-        y: window.innerHeight / 2,
-        x: window.innerWidth / 2,
+      if ((now - this.lastRender) > this.$store.state.RAF_DELTA_TIME) {
+        this.followMouse()
       }
 
-      const movement = {
-        x: (screenX - center.x) / 5,
-        y: (screenY - center.y) / 5,
+      window.requestAnimationFrame(this.onFrame)
+    },
+    onProjectChange(project) {
+      this.media = project.acf.showcase_image
+      this.slug = project.slug
+    },
+    followMouse() {
+      if( !this._isBeingDestroyed) {
+        const mouse = this.$mouse.movement;
+        this.smoothMouse.x += ((mouse.x / 5) - this.smoothMouse.x) * 0.1
+        this.smoothMouse.y += ((mouse.y / 5) - this.smoothMouse.y) * 0.1
+
+
+        this.$refs.media.$el.style.transform = `translate3D(${ this.smoothMouse.x}px, ${this.smoothMouse.y}px, 0)`
+        this.lastRender = Date.now()
       }
-
-      this.smoothedMovement.x += (movement.x - this.smoothedMovement.x) * 0.1
-      this.smoothedMovement.y += (movement.y - this.smoothedMovement.y) * 0.1
-
-      this.$refs.media.$el.style.transform = `translate3D(${ this.smoothedMovement.x}px, ${this.smoothedMovement.y}px, 0)`
     }
   }
 }

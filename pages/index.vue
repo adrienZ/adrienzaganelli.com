@@ -10,11 +10,14 @@
 import cHeader from '@/components/c-header.vue'
 import cShowcase from '@/components/home/showcase.vue'
 
+import withPageTransition from '@/mixins/withPageTransition'
+
 export default {
   components: {
     cHeader,
     cShowcase,
   },
+  mixins: [withPageTransition],
   mounted() {
     if (process.browser) {
       // const Scrollbar = require('smooth-scrollbar').default

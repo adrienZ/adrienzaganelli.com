@@ -1,7 +1,7 @@
 <template>
   <ul class="c-list">
     <li class="c-list__item" :key="index" v-for="(p, index) in $store.state.projects">
-      <nuxt-link @mouseover.native="onHover(p)" :to="/projects/ + p.slug" class="inline-block mb-8 relative overflow-hidden">
+      <nuxt-link @mouseover.native="onHover($event, p)" :to="/projects/ + p.slug" class="inline-block mb-8 relative overflow-hidden">
 
       <div class="relative">
         <h2 class="c-list__item__title text-left leading-tight font-mono text-6xl">{{p.title.rendered}}</h2>
@@ -13,11 +13,37 @@
 </template>
 
 <script>
+
+const useTimer = (duration, callback) => {
+  const interval = window.setTimeout(callback, duration)
+
+  return {
+    reset: () => window.clearTimeout(interval)
+  }
+}
+
 export default {
+  created() {
+    this.onBlur = this.onBlur.bind(this)
+  },
   methods: {
-    onHover(project) {
-      this.$emit('update:media', project.acf.showcase_image)
-      this.$emit('update:slug', project.slug)
+    onHover(e, project) {
+      const item = e.currentTarget
+
+      // loading state
+      item.style.cursor = 'progress';
+
+      // reset action event
+      item.addEventListener('mouseleave', this.onBlur)
+
+      // delay before doing action
+      this.timer = useTimer(200, () => {
+        this.$emit('update', project)
+        item.style.cursor = null;
+      })
+    },
+    onBlur() {
+      this.timer.reset()
     }
   }
 }

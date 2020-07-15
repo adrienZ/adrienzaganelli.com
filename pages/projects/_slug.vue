@@ -1,7 +1,7 @@
 <template>
   <section class="page-project project">
     <article class="project-content">
-      <nuxt-link to="/projects/">Retour au projects</nuxt-link>
+      <nuxt-link to="/">Retour a la home</nuxt-link>
       <h1>{{project.title.rendered}}</h1>
       <div v-html="project.content.rendered"></div>
     </article>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import withPageTransition from '@/mixins/withPageTransition'
+
 export default {
   async asyncData({ params, payload, store }) {
     if (payload) {
@@ -17,6 +19,7 @@ export default {
       return { project: store.getters.getProject(params.slug) };
     }
   },
+  mixins: [withPageTransition],
   computed: {}
 };
 </script>

@@ -1,6 +1,7 @@
 const backendBase = 'http://localhost:8888/zogzog'
 
 export const state = () => ({
+  RAF_DELTA_TIME: 20,
   backendBase,
   posts: [],
   projects: [],
