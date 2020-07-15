@@ -28,7 +28,7 @@
 import cAboutTheAuthor from '@/components/c-about-the-author.vue'
 import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
-import Signature from '@/components/signature.vue'
+import Signature from '@/components/common/signature.vue'
 
 export default {
   layout: 'blog',
