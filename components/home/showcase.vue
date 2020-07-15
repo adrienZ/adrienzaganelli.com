@@ -55,8 +55,8 @@ export default {
     followMouse() {
       if( !this._isBeingDestroyed) {
         const mouse = this.$mouse.movement;
-        this.smoothMouse.x += ((mouse.x / 5) - this.smoothMouse.x) * 0.1
-        this.smoothMouse.y += ((mouse.y / 5) - this.smoothMouse.y) * 0.1
+        this.smoothMouse.x += ((mouse.x / 10) - this.smoothMouse.x) * 0.1
+        this.smoothMouse.y += ((mouse.y / 10) - this.smoothMouse.y) * 0.1
 
 
         this.$refs.media.$el.style.transform = `translate3D(${ this.smoothMouse.x}px, ${this.smoothMouse.y}px, 0)`
