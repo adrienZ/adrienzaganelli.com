@@ -26,10 +26,10 @@ export default {
     window.removeEventListener('resize', this.onResize)
   },
   methods: {
-    onMouseMove({screenX, screenY}) {
+    onMouseMove({clientX  , clientY }) {
       this.$mouse.position = {
-        x: screenX,
-        y: screenY,
+        x: clientX,
+        y: clientY,
       }
 
       this.$mouse.movement = {

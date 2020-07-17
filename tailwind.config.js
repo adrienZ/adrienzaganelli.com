@@ -5,12 +5,7 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
-  theme: {
-    fontFamily: {
-      sans: ['Cinzel'],
-      mono: ['Cinzel', 'Yeseva One'].reverse(),
-    },
-  },
+  theme: {},
   variants: {},
   plugins: [],
   purge: {

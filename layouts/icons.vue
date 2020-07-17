@@ -49,7 +49,7 @@
         <line stroke="#231f20" stroke-miterlimit="10" stroke-linecap="round" fill="none" stroke-width="4px" x1="125.6" y1="164.2" x2="277" y2="164.2"></line>
         <line stroke="#231f20" stroke-miterlimit="10" stroke-linecap="round" fill="none" stroke-width="4px" x1="125.6" y1="395.8" x2="277" y2="395.8"></line>
         <line stroke="#231f20" stroke-miterlimit="10" stroke-linecap="round" fill="none" stroke-width="4px" x1="277" y1="164.6" x2="125.6" y2="395.8"></line>
-        <text fill="#231f20" isolation="isolate" font-size="2.5em" font-family="Gotham" transform="translate(0 452.03)">ADRIEN ZAGANELLI</text>
+        <text fill="#231f20" isolation="isolate" font-size="2.5em" transform="translate(0 452.03)">ADRIEN ZAGANELLI</text>
       </symbol>
     </defs>
   </svg>

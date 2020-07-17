@@ -12,6 +12,7 @@ import cThumbnail from '@/components/showcase/thumbnail.vue'
 import cList from '@/components/showcase/list.vue'
 
 import withMouse from '@/mixins/withMouse'
+import gsap from 'gsap'
 
 export default {
   created() {
@@ -55,11 +56,16 @@ export default {
     followMouse() {
       if( !this._isBeingDestroyed) {
         const mouse = this.$mouse.movement;
+
         this.smoothMouse.x += ((mouse.x / 10) - this.smoothMouse.x) * 0.1
         this.smoothMouse.y += ((mouse.y / 10) - this.smoothMouse.y) * 0.1
 
+        gsap.set(this.$refs.media.$el, {
+          x: this.smoothMouse.x + 'px',
+          y: this.smoothMouse.y + 'px',
+          force3D: true,
+        })
 
-        this.$refs.media.$el.style.transform = `translate3D(${ this.smoothMouse.x}px, ${this.smoothMouse.y}px, 0)`
         this.lastRender = Date.now()
       }
     }

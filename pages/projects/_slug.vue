@@ -10,6 +10,7 @@
 
 <script>
 import withPageTransition from '@/mixins/withPageTransition'
+import withScrollbar from '@/mixins/withScrollbar'
 
 export default {
   async asyncData({ params, payload, store }) {
@@ -19,7 +20,7 @@ export default {
       return { project: store.getters.getProject(params.slug) };
     }
   },
-  mixins: [withPageTransition],
+  mixins: [withPageTransition, withScrollbar],
   computed: {}
 };
 </script>
