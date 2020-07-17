@@ -15,19 +15,18 @@ export default  {
 
       this.scrollbarFixedEls = document.querySelectorAll('[data-scrollbar-fixed]')
 
-      this.scrollbar.addListener(({ offset }) => {
-        [...this.scrollbarFixedEls].map(fixed => {
-          console.log(fixed);
+      if (!window.document.documentMode) {
 
-          // not ie
-          if (!window.document.documentMode) {
-            gsap.set(fixed, {
-              // x: offset.x + 'px',
-              y: offset.y + 'px',
-            })
-          }
-        })
-      });
+        this.scrollbar.addListener(({ offset }) => {
+          [...this.scrollbarFixedEls].map(fixed => {
+
+              gsap.set(fixed, {
+                // x: offset.x + 'px',
+                y: offset.y + 'px',
+              })
+          })
+        });
+      }
     })
   },
   beforeDestroy() {

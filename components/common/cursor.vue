@@ -15,6 +15,11 @@ export default {
     this.onFrame = this.onFrame.bind(this)
     this.cloneMouseMove = this.onMouseMove.bind({})
   },
+  data() {
+    return {
+      hidden: false,
+    }
+  },
   mounted() {
     document.body.classList.add('no-cursor')
     // start preview mouse track
@@ -72,10 +77,36 @@ export default {
     },
     updateCursorState(e) {
       const { target } = e
+      this.cloneMouseMove(e)
+
+
+      // handle IFRAMES
+      if (target.tagName === 'IFRAME' && !this.hidden) {
+        this.hide()
+      }
+      if (target.tagName !== 'IFRAME' && this.hidden) {
+        this.show()
+      }
+
 
       // console.log(target.classList);
-      this.cloneMouseMove(e)
     },
+    hide() {
+      const { position } = this.$mouse
+      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.15, onComplete: () => {
+        document.body.classList.remove('no-cursor')
+      }
+      })
+      this.hidden = true
+    },
+    show() {
+      const { position } = this.$mouse
+      this.tl = gsap.to(this.$el, { autoAlpha: 1, duration: 0.15, onComplete: () => {
+        document.body.classList.add('no-cursor')
+      }
+      })
+      this.hidden = false
+    }
   }
 }
 </script>
@@ -86,7 +117,7 @@ export default {
   }
 
   .c-cursor {
-    z-index: 1000;
+    z-index: 100;
     pointer-events: none;
     // mix-blend-mode: exclusion;
     position: fixed;

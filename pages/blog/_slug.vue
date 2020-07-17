@@ -1,9 +1,9 @@
 <template>
   <section class="page-post">
-    <article class="post-content">
+    <article class="cms-container">
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
-      <h1 class="text-3xl font-extrabold">{{post.title.rendered}}</h1>
+      <h1 class="text-5xl font-extrabold">{{post.title.rendered}}</h1>
       <div class="cms-block" v-html="post.content.rendered"></div>
 
       <div class="mt-4">
@@ -29,6 +29,7 @@ import cAboutTheAuthor from '@/components/c-about-the-author.vue'
 import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
 import Signature from '@/components/common/signature.vue'
+import Prism from 'prismjs'
 
 export default {
   layout: 'blog',
@@ -43,6 +44,9 @@ export default {
     }
     return { post };
   },
+  mounted() {
+    Prism.highlightAll()
+  },
   components: {
     cAboutTheAuthor,
     cHireMe,
@@ -54,28 +58,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.post-content {
-  max-width: 720px;
-  margin: auto;
-  padding: 0 20px;
-}
-
-.cms-block /deep/ {
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h5,
-  pre,
-  iframe {
-    margin-top: 1rem;
-  }
-
-  img {
-    max-width: 100%;
-  }
-}
 </style>

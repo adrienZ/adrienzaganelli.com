@@ -25,7 +25,9 @@ export default {
   ** Global CSS
   */
   css: [
-    '~/assets/css/tailwind.css'
+    'prismjs/themes/prism-okaidia.css',
+    '~/assets/css/tailwind.css',
+    '~/assets/scss/main.scss',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -51,10 +53,18 @@ export default {
   ** Build configuration
   */
   build: {
+    extractCSS: true,
+    analyze: {
+      analyzerMode: 'static'
+    },
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {}
+  },
+
+  styleResources: {
+    // scss: ['./assets/scss/main.scss']
   },
 
   generate: {

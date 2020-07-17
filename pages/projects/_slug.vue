@@ -1,26 +1,46 @@
 <template>
   <section class="page-project project">
-    <article class="project-content">
+    <article class="cms-container">
       <nuxt-link to="/">Retour a la home</nuxt-link>
-      <h1>{{project.title.rendered}}</h1>
-      <div v-html="project.content.rendered"></div>
+      <h1 class="text-5xl ">{{project.title.rendered}}</h1>
+      <div class="cms-block" v-html="project.content.modified"></div>
     </article>
   </section>
+
 </template>
 
 <script>
 import withPageTransition from '@/mixins/withPageTransition'
 import withScrollbar from '@/mixins/withScrollbar'
+import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
+import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
 
 export default {
   async asyncData({ params, payload, store }) {
+    let project = {}
+
     if (payload) {
-      return { project: payload };
+      project = payload;
     } else if (store.state.projects.length) {
-      return { project: store.getters.getProject(params.slug) };
+      project = store.getters.getProject(params.slug);
     }
+
+    if (project.content && project.content.rendered) {
+      let modified = new String(project.content.rendered)
+
+      // lazyload and options twitter embeds
+      modified = writeAsyncTwitterEmbeds(modified)
+      // laztsizes on image and iframes
+      modified = writeLazyWpImages(modified)
+      // modified = writeLaztyIframes(modified)
+      modified = writeLazyWpVideos(modified)
+
+      project.content.modified = modified
+    }
+
+    return { project }
   },
-  mixins: [withPageTransition, withScrollbar],
+  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages],
   computed: {}
 };
 </script>
@@ -35,31 +55,4 @@ export default {
   }
 }
 
-.project-content {
-  max-width: 580px;
-  margin: auto;
-  padding: 10rem 20px;
-}
-
-.project /deep/ {
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h5,
-  pre,
-  iframe {
-    margin-top: 2rem;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  pre {
-    overflow: scroll;
-  }
-}
 </style>

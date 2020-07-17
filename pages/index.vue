@@ -27,8 +27,5 @@ export default {
 
 
 <style lang="scss">
-  // smootscroll
-  body, html {
-    height: 100%;
-  }
+
 </style>
