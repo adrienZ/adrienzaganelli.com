@@ -29,7 +29,8 @@ import cAboutTheAuthor from '@/components/c-about-the-author.vue'
 import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
 import Signature from '@/components/common/signature.vue'
-import Prism from 'prismjs'
+
+import withCodeHighlight from '@/mixins/withCodeHighlight'
 
 export default {
   layout: 'blog',
@@ -44,9 +45,7 @@ export default {
     }
     return { post };
   },
-  mounted() {
-    Prism.highlightAll()
-  },
+  mixins: [withCodeHighlight],
   components: {
     cAboutTheAuthor,
     cHireMe,
@@ -57,5 +56,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 </style>

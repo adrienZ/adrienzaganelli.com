@@ -8,6 +8,12 @@
   // font
   @apply text-xl font-normal;
 
+  code:not([class]) {
+    @apply font-mono bg-gray-200 text-pink-700 rounded-sm;
+    padding: 2px 4px;
+    font-size: 80%;
+  }
+
   a {
     @apply underline;
 
@@ -16,7 +22,7 @@
     }
   }
 
-  ul {
+  ul, ol {
     list-style: initial;
     padding-left: 20px;
   }

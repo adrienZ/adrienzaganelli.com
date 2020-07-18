@@ -25,7 +25,6 @@ export default {
   ** Global CSS
   */
   css: [
-    'prismjs/themes/prism-okaidia.css',
     '~/assets/css/tailwind.css',
     '~/assets/scss/main.scss',
   ],
@@ -76,6 +75,7 @@ export default {
         route: `/project/` + project.slug,
         payload: project,
       }))
+
       const postsRoutes = posts.data.map( post => ({
         route: `/blog/` + post.slug,
         payload: post,
