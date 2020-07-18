@@ -69,8 +69,8 @@ export default {
 
   generate: {
     async routes() {
-      const projects = await axios.get('http://localhost:8888/zogzog/wp-json/wp/v2/project');
-      const posts = await axios.get('http://localhost:8888/zogzog/wp-json/wp/v2/posts');
+      const projects = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/project');
+      const posts = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/posts');
 
       const projectsRoutes = projects.data.map( project => ({
         route: `/project/` + project.slug,
