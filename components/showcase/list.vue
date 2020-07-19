@@ -1,6 +1,6 @@
 <template>
   <ul class="c-list">
-    <li class="c-list__item text-center" :key="index" v-for="(p, index) in $store.state.projects">
+    <li class="c-list__item text-left" :key="index" v-for="(p, index) in $store.state.projects">
       <nuxt-link @mouseover.native="onHover($event, p)" :to="/projects/ + p.slug" class="inline-block mb-8 relative overflow-hidden">
 
       <div class="relative">
@@ -26,11 +26,20 @@ export default {
   created() {
     this.onBlur = this.onBlur.bind(this)
   },
+  data() {
+    return {
+      currentProjectSlug: null
+    }
+  },
   methods: {
     onHover(e, project) {
       const item = e.currentTarget
 
+      // dont emit if already active
+      if (this.currentProjectSlug === project.slug) return
+
       // loading state
+      // ...
 
       // reset action event
       item.addEventListener('mouseleave', this.onBlur)
@@ -38,6 +47,7 @@ export default {
       // delay before doing action
       this.timer = useTimer(100, () => {
         this.$emit('update', project)
+        this.currentProjectSlug = project.slug
       })
     },
     onBlur() {

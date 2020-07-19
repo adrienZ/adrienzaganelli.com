@@ -52,7 +52,7 @@ export default {
   ** Build configuration
   */
   build: {
-    extractCSS: true,
+    extractCSS: process.env.NODE_ENV === 'production',
     analyze: {
       analyzerMode: 'static'
     },

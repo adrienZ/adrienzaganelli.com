@@ -63,6 +63,7 @@ export default {
         gsap.set(this.$refs.media.$el, {
           x: this.smoothMouse.x + 'px',
           y: this.smoothMouse.y + 'px',
+          rotateZ: ((Math.abs(this.smoothMouse.y) - Math.abs(this.smoothMouse.x)) / 20) + 'deg',
           force3D: true,
         })
 
@@ -73,9 +74,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
   .c-showcase__media {
-    width: 40vw;
+    width: 50vw;
     top: 0;
     /* height: 40vh; */
     background: lightgrey;
