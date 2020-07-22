@@ -87,9 +87,6 @@ export default {
       if (target.tagName !== 'IFRAME' && this.hidden) {
         this.show()
       }
-
-
-      // console.log(target.classList);
     },
     hide() {
       const { position } = this.$mouse
@@ -113,7 +110,7 @@ export default {
 
 <style lang="scss">
   .no-cursor * {
-    cursor: none;
+    // cursor: none;
   }
 
   .c-cursor {

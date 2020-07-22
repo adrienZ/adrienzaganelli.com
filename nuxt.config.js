@@ -59,7 +59,16 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      // shader loader
+      config.module.rules.push(
+        {
+          test: /\.(glsl|frag|vert)$/,
+          exclude: /(node_modules|bower_components)/,
+          use: ['raw-loader', 'glslify-loader'],
+        }
+      )
+    }
   },
 
   styleResources: {

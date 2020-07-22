@@ -21,7 +21,7 @@ export default {
     cShowcase,
     cHero,
   },
-  mixins: [withPageTransition, withScrollbar],
+  mixins: [withPageTransition],
 }
 </script>
 

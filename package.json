@@ -16,10 +16,13 @@
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/style-resources": "^1.0.0",
     "curtainsjs": "^6.2.2",
+    "glslify-loader": "^2.0.0",
     "gsap": "^3.4.0",
+    "imagesloaded": "^4.1.4",
     "lazysizes": "^5.2.2",
     "nuxt": "^2.13.3",
     "prismjs": "^1.20.0",
+    "raw-loader": "^4.0.1",
     "smooth-scrollbar": "^8.5.2"
   },
   "devDependencies": {
