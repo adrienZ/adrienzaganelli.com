@@ -27,6 +27,9 @@ export default {
     cAbout,
     cSignature,
   },
+  beforeDestroy() {
+    this.$bus.$emit('cursor-default')
+  },
   mixins: [withPageTransition],
 }
 </script>

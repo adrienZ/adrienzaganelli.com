@@ -60,7 +60,7 @@ export default {
       item.addEventListener('mouseleave', this.cancel)
 
       // delay before doing action
-      this.timer = useTimer(100, () => {
+      this.timer = useTimer(120, () => {
         this.$emit('update', [project, index])
         this.currentProjectSlug = project.slug
       })
