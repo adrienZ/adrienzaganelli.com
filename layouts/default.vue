@@ -1,7 +1,7 @@
 <template>
   <div>
     <Icons />
-    <!-- <CustomCursor /> -->
+    <CustomCursor />
     <nuxt />
   </div>
 </template>
@@ -13,7 +13,7 @@ import CustomCursor from '@/components/common/cursor.vue'
 export default {
   components: {
     Icons,
-    // CustomCursor,
+    CustomCursor,
   }
 }
 </script>

@@ -1,6 +1,9 @@
 <template>
   <section class="c-showcase relative">
-    <nuxt-link :to="'/projects/' + slug" class="block sticky right-0 top-0" style="top: 30%">
+    <h3 class="text-4xl">Selected Works:</h3>
+
+
+    <nuxt-link :to="'/projects/' + slug" class="block sticky right-0 top-0" style="top: 15%" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
       <cThumbnail :index="index" class="c-showcase__media" ref="media" :media="media" />
     </nuxt-link>
     <cList v-on:update="onProjectChange"/>
@@ -34,7 +37,7 @@ export default {
     // start preview mouse track
     this.smoothMouse = {x: 0, y: 0}
     this.lastRender = 0
-    // window.requestAnimationFrame(this.onFrame)
+    window.requestAnimationFrame(this.onFrame)
   },
   beforeDestroy() {
     // stop preview mouse track

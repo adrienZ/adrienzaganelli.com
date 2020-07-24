@@ -79,6 +79,10 @@
     min-width: 60%;
   }
 
+  .sketchfab-embed-wrapper iframe {
+    width: 100%;
+  }
+
   // prism overide
   code[class*="language-"], pre[class*="language-"] {
     @apply text-base;

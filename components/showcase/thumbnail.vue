@@ -29,49 +29,51 @@ export default {
     },
     index: Number,
   },
-  head: {
-    script: [
-      { src: 'https://cdn.jsdelivr.net/npm/curtainsjs@4.3.0/libs/curtains.min.js'}
-    ]
-  },
-  watch: {
-    index() {
-      const {
-        webgl,
-        tl
-      } = this
-      webgl.plane.playVideos()
-      webgl.webGLCurtain.resize()
+  // head: {
+  //   script: [
+  //     { src: 'https://cdn.jsdelivr.net/npm/curtainsjs@4.3.0/libs/curtains.min.js'}
+  //   ]
+  // },
+  // watch: {
+  //   index() {
+  //     const {
+  //       webgl,
+  //       tl
+  //     } = this
+  //     webgl.webGLCurtain.resize()
 
-      tl.clear()
-      tl.to(webgl.plane.uniforms.brightness, {
-        duration: 0.2,
-        value: 0,
-        onComplete: () => {
-          webgl.texture.current.setSource(webgl.planeElement.children[this.index]);
+  //     // if window has been resized between plane creation and image loading, we need to trigger a resize
+  //     webgl.plane.planeResize();
 
-        }
-      }).to(webgl.plane.uniforms.brightness, {
-        value: 1,
-        duration: 0.6,
+  //     tl.clear()
+  //     tl.to(webgl.plane.uniforms.brightness, {
+  //       duration: 0.2,
+  //       value: 0,
+  //       onComplete: () => {
+  //         webgl.texture.current.setSource(webgl.planeElement.children[this.index]);
 
-      })
+  //       }
+  //     }).to(webgl.plane.uniforms.brightness, {
+  //       value: 1,
+  //       duration: 0.6,
 
-    }
-  },
-  mounted() {
-    const webgl = new WEBGL({
-      canvas: "canvas",
-      planeElement: document.getElementsByClassName("plane")[0]
-    });
-    webgl.initPlane();
-    this.webgl = webgl
-    this.tl = new gsap.timeline();
-  }
+  //     })
+
+  //   }
+  // },
+  // mounted() {
+  //   const webgl = new WEBGL({
+  //     canvas: "canvas",
+  //     planeElement: document.getElementsByClassName("plane")[0]
+  //   });
+  //   webgl.initPlane();
+  //   this.webgl = webgl
+  //   this.tl = new gsap.timeline();
+  // }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .c-thumbnail__canvas,
 .c-thumbnail__preloader {
   position: absolute;
@@ -82,8 +84,8 @@ export default {
 }
 
 
-img,
-video
+.c-thumbnail__preloader img,
+.c-thumbnail__preloader video
 {
   // height: 1px;
   // max-height: 1px;
@@ -92,6 +94,7 @@ video
   // position: absolute;
   // left: -9999px;
   pointer-events: none;
+  display: none;
   opacity: 0;
 }
 </style>

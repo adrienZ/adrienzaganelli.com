@@ -4,7 +4,7 @@
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
       <h1 class="text-5xl font-extrabold">{{post.title.rendered}}</h1>
-      <div class="cms-block" v-html="post.content.rendered"></div>
+      <div class="cms-block" ref="cms_block" v-html="post.content.rendered"></div>
 
       <div class="mt-4">
         <cAboutTheAuthor />
@@ -56,5 +56,5 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 </style>

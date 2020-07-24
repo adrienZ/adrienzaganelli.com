@@ -18,6 +18,10 @@ export default {
   data() {
     return {
       hidden: false,
+      hovering: false,
+      inner__scale: 0,
+      outer__scale: 0.5,
+      outer__opacity: 0,
     }
   },
   mounted() {
@@ -27,6 +31,39 @@ export default {
     this.smoothMouseOuter = {x: 0, y: 0}
     this.lastRender = 0
     window.addEventListener('mousemove', this.updateCursorState)
+
+    window.addEventListener('mousedown', () => {
+      gsap.to(this, { inner__scale: 1, duration: 0.1})
+    })
+
+    window.addEventListener('mouseup', () => {
+      gsap.to(this, { inner__scale: 0, duration: 0.1})
+    })
+
+    this.hoverTl = null
+
+    this.$bus.$on('cursor-hover', () => {
+      if (this.hoverTl) this.hoverTl.kill()
+
+      this.hovering = true
+
+      gsap.to(this, {
+        duration: 0.5,
+        outer__scale: 1,
+        outer__opacity: 1,
+      })
+    })
+
+    this.$bus.$on('cursor-default', () => {
+      if (this.hoverTl) this.hoverTl.kill()
+
+      gsap.to(this, {
+        duration: 0.5,
+        outer__scale: 0.5,
+        outer__opacity: 0,
+        onComplete: () => this.hovering = false
+      })
+    })
 
     window.requestAnimationFrame(this.onFrame)
   },
@@ -53,19 +90,32 @@ export default {
         const mouse = this.$mouse.position;
         this.smoothMouseInner.x += (mouse.x - this.smoothMouseInner.x) * 0.4
         this.smoothMouseInner.y += (mouse.y - this.smoothMouseInner.y) * 0.4
-        this.smoothMouseOuter.x += (mouse.x - this.smoothMouseOuter.x) * 0.3
-        this.smoothMouseOuter.y += (mouse.y - this.smoothMouseOuter.y) * 0.3
+
+        // if (this.hovering) {
+          this.smoothMouseOuter.x += (mouse.x - this.smoothMouseOuter.x) * 0.3
+          this.smoothMouseOuter.y += (mouse.y - this.smoothMouseOuter.y) * 0.3
+        // }
 
         const { height, width } = this
 
-        gsap.set(this.$refs.inner, {
+
+
+        const innerOptions = {
           x: this.smoothMouseInner.x - (width/2),
           y: this.smoothMouseInner.y - (height/2),
-        })
-        gsap.set(this.$refs.outer, {
+          scale: 1 - (0.5 * this.inner__scale),
+        }
+
+        gsap.set(this.$refs.inner, innerOptions)
+
+        const outerOptions = {
           x: this.smoothMouseOuter.x - (width/2),
           y: this.smoothMouseOuter.y - (height/2),
-        })
+          scale: this.outer__scale,
+          opacity: this.outer__opacity,
+        }
+
+        gsap.set(this.$refs.outer, outerOptions)
 
         this.lastRender = Date.now()
       }
@@ -90,14 +140,18 @@ export default {
     },
     hide() {
       const { position } = this.$mouse
-      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.15, onComplete: () => {
+      if (this.tl) this.tl.kill()
+      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.5, onComplete: () => {
         document.body.classList.remove('no-cursor')
       }
       })
       this.hidden = true
+
+      return this.tl
     },
     show() {
       const { position } = this.$mouse
+      if (this.tl) this.tl.kill()
       this.tl = gsap.to(this.$el, { autoAlpha: 1, duration: 0.15, onComplete: () => {
         document.body.classList.add('no-cursor')
       }
@@ -116,7 +170,7 @@ export default {
   .c-cursor {
     z-index: 100;
     pointer-events: none;
-    // mix-blend-mode: exclusion;
+    mix-blend-mode: difference;
     position: fixed;
     top: 0;
     left: 0;
@@ -125,11 +179,15 @@ export default {
       height: 50%;
       left: 25%;
       top: 25%;
-      background: red;
+      background: rgba(#d81b60, 0.75);
+      transform-origin: center center;
+      will-change: tranform;
     }
 
     &__outer {
-      border: 1px solid red;
+      border: 1px solid #d81b60;
+      transform-origin: center center;
+      will-change: tranform;
     }
   }
 </style>

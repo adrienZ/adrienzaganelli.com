@@ -9,7 +9,10 @@ export default  {
 
       const defaults = {
         syncCallbacks: true,
+        damping: 0.03,
       }
+
+      this.Scrollbar = Scrollbar
 
       this.scrollbar = Scrollbar.init(document.body, defaults);
 
