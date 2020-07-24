@@ -1,7 +1,7 @@
 const backendBase = 'https://adrienzaganelli.com/cms'
 
 export const state = () => ({
-  RAF_DELTA_TIME: 20,
+  RAF_DELTA_TIME: 15,
   backendBase,
   posts: [],
   projects: [],

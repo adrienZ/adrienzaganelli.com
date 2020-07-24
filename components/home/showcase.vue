@@ -3,8 +3,8 @@
     <h3 class="text-4xl">Selected Works:</h3>
 
 
-    <nuxt-link :to="'/projects/' + slug" class="block sticky right-0 top-0" style="top: 15%" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
-      <cThumbnail :index="index" class="c-showcase__media" ref="media" :media="media" />
+    <nuxt-link :to="'/projects/' + slug" ref="media" class="block right-0 top-0" style="top: 15%" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
+      <cThumbnail :index="index" class="c-showcase__media" :media="media" />
     </nuxt-link>
     <cList v-on:update="onProjectChange"/>
   </section>
@@ -37,11 +37,11 @@ export default {
     // start preview mouse track
     this.smoothMouse = {x: 0, y: 0}
     this.lastRender = 0
-    window.requestAnimationFrame(this.onFrame)
+    gsap.ticker.add(this.onFrame);
   },
   beforeDestroy() {
     // stop preview mouse track
-    window.cancelAnimationFrame(this.onFrame)
+    gsap.ticker.remove(this.onFrame);
   },
   methods: {
     onFrame() {
@@ -50,8 +50,6 @@ export default {
       if ((now - this.lastRender) > this.$store.state.RAF_DELTA_TIME) {
         this.followMouse()
       }
-
-      window.requestAnimationFrame(this.onFrame)
     },
     onProjectChange([project, index ]) {
       this.media = project.acf.showcase_image

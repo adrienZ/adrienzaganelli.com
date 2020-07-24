@@ -23,8 +23,7 @@
     "nuxt": "^2.13.3",
     "prismjs": "^1.20.0",
     "raw-loader": "^4.0.1",
-    "smooth-scrollbar": "^8.5.2",
-    "studiometa-background-cover": "^1.0.4"
+    "smooth-scrollbar": "^8.5.2"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^2.0.0",

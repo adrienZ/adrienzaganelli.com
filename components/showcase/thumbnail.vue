@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-grey-0 c-thumbnail">
-    <div id="canvas" class="c-thumbnail__canvas border" ref="canvas"></div>
-    <div ref="box">
+    <div id="canvas" class="c-thumbnail__canvas" ref="canvas"></div>
+    <div class="c-thumbnail__flow" ref="box">
       <cMedia crossorigin="anonymous" :src="media.url" :type="media.type"/>
     </div>
     <div class="c-thumbnail__preloader plane" ref="texture">
@@ -82,6 +82,16 @@ export default {
   bottom: 0;
   left: 0;
 }
+
+.c-thumbnail__canvas {
+  height: 200px;
+  height: 300px;
+}
+
+
+// .c-thumbnail__flow {
+//     clip-path: polygon(0 100%,85% 100%,100% 0,15% 0);
+// }
 
 
 .c-thumbnail__preloader img,

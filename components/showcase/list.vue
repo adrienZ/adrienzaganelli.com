@@ -2,7 +2,7 @@
   <ul class="c-list">
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
 
-    <li class="c-list__item text-left mb-8" :key="index" v-for="(p, index) in $store.state.projects">
+    <li class="c-list__item text-left mb-10" :key="index" v-for="(p, index) in $store.state.projects">
       <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/projects/ + p.slug" class="inline-block border relative overflow-hidden">
 
       <div class="relative">

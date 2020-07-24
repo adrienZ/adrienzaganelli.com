@@ -64,15 +64,14 @@ export default {
         onComplete: () => this.hovering = false
       })
     })
-
-    window.requestAnimationFrame(this.onFrame)
+    gsap.ticker.add(this.onFrame);
   },
   beforeDestroy() {
     document.body.classList.remove('no-cursor')
 
     window.removeEventListener('mousemove', this.updateCursorState)
     // stop preview mouse track
-    window.cancelAnimationFrame(this.onFrame)
+    gsap.ticker.remove(this.onFrame);
   },
   methods: {
     onFrame() {
@@ -81,8 +80,6 @@ export default {
       if ((now - this.lastRender) > this.$store.state.RAF_DELTA_TIME) {
         this.moveCursor()
       }
-
-      window.requestAnimationFrame(this.onFrame)
     },
     moveCursor() {
       if( !this._isBeingDestroyed) {
@@ -185,7 +182,7 @@ export default {
     }
 
     &__outer {
-      border: 1px solid #d81b60;
+      border: 2px solid #d81b60;
       transform-origin: center center;
       will-change: tranform;
     }

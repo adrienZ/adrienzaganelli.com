@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="flex">
     <li>
       <a href="#">
         <svg class="w-4 h-4 inline-block fill-current">
@@ -7,21 +7,21 @@
         </svg>
       </a>
     </li>
-    <li>
+    <li class="ml-2">
       <a href="#">
         <svg class="w-4 h-4 inline-block fill-current">
           <use xlink:href="#icon-github" x="0" y="0"/>
         </svg>
       </a>
     </li>
-    <li>
+    <li class="ml-2">
       <a href="#">
         <svg class="w-4 h-4 inline-block fill-current">
           <use xlink:href="#icon-linkedin" x="0" y="0"/>
         </svg>
       </a>
     </li>
-    <li>
+    <li class="ml-2">
       <a href="#">
         <svg class="w-4 h-4 inline-block fill-current">
           <use xlink:href="#icon-send" x="0" y="0"/>
