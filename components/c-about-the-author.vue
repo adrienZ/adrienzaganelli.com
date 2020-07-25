@@ -1,6 +1,6 @@
 <template>
   <section class="c-about-the-author">
-    <div class="mx-auto flex p-6 bg-white rounded-lg shadow-xl">
+    <div class="mx-auto flex">
       <nuxt-link to="/" class="flex-shrink-0">
         <img class="h-12 w-12 rounded-full" src="https://twivatar.glitch.me/adri_zag" alt="Author photo">
       </nuxt-link>

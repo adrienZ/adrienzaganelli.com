@@ -1,13 +1,13 @@
 <template>
-  <section class="c-share-post flex justify-between">
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
+  <section class="c-share-post flex">
+    <a class="facebook bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
       Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
     </a>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
+    <a class="twitter ml-4 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
       Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-twitter" x="0" y="0"/></svg>
 
     </a>
-    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
+    <a class="linkedin ml-4 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
       Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-linkedin" x="0" y="0"/></svg>
     </a>
   </section>
@@ -61,6 +61,27 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .facebook {
+    background-color: #2d88ff;
+    &:hover,
+    &:focus {
+      background-color: darken(#2d88ff, 10%);
+    }
+  }
+  .twitter {
+    background-color: #1da1f2;
+    &:hover,
+    &:focus {
+      background-color: darken(#1da1f2, 10%);
+    }
+  }
+  .linkedin {
+    background-color: #0077b5;
+    &:hover,
+    &:focus {
+      background-color: darken(#0077b5, 10%);
+    }
+  }
 
 </style>

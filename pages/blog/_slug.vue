@@ -4,18 +4,25 @@
       <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
       <h1 class="text-5xl font-extrabold">{{post.title.rendered}}</h1>
+      <figure>
+        <img
+          class="block w-full mx-auto"
+          :src="heroImg[0].media_details.sizes.medium_large.source_url"
+          :alt="heroImg[0].alt_text"
+        />
+        <figcaption class="text-center mt-2 italic" v-html="heroImg[0].caption.rendered"></figcaption>
+      </figure>
+
       <div class="cms-block" ref="cms_block" v-html="post.content.rendered"></div>
 
-      <div class="mt-4">
-        <cAboutTheAuthor />
-      </div>
-
-      <div class="mt-4">
-        <cHireMe />
-      </div>
 
       <div class="mt-4">
         <cSharePost :postTitle="post.title.rendered" :url="'example.com' || post.link"/>
+      </div>
+
+      <div class="mt-4 p-6 rounded-lg shadow-xl">
+        <cAboutTheAuthor />
+        <cHireMe class="mt-8" />
       </div>
 
       <Signature />
@@ -52,7 +59,11 @@ export default {
     cSharePost,
     Signature,
   },
-  computed: {}
+  computed: {
+    heroImg() {
+      return this.post._embedded?.['wp:featuredmedia']
+    },
+  }
 };
 </script>
 

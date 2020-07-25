@@ -1,5 +1,5 @@
 <template>
-  <section class="c-hire-me flex bg-white items-center p-6 rounded-lg shadow-xl text-black">
+  <section class="c-hire-me flex items-center text-black">
       <header class="flex items-center w-1/3">
         <div class="c-hire-me__ping w-4 h-4 rounded-full bg-green-400"></div>
         <h5 class="ml-3 text-xl text-gray-900 leading-tight">Hire me !</h5>

@@ -29,7 +29,7 @@ export const actions = {
     await commit('setProjects', await projects.json());
 
     // parse POSTS
-    const posts = await fetch(apiBase + '/wp/v2/posts');
+    const posts = await fetch(apiBase + '/wp/v2/posts?_embed');
     await commit('setPosts', await posts.json());
 
     // parse author
