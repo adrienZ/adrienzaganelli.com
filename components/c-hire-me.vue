@@ -7,7 +7,7 @@
 
       <div class="w-2/3">
         <p class="text-sm">I'm available for full-time contract in Paris, contact me here: <a href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com</a></p>
-        <p class="text-xs mt-1">You you want to learn more about me, <a href="#">Click here</a></p>
+        <p class="text-xs mt-1">You you want to learn more about me, <nuxt-link to="/">Click here</nuxt-link></p>
       </div>
   </section>
 </template>

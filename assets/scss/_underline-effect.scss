@@ -1,0 +1,58 @@
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+.underline-effect {
+
+  @mixin text-line-gradient($size: 8%, $color: red, $transition-duration: 0.3s) {
+    $transparent-offset: strip-units($size) + 0.01 + unquote('%');
+
+    background-image: linear-gradient(to top, $color 0%, $color $size, transparent  $transparent-offset);
+    // allow animation by no repeating
+    background-repeat: no-repeat;
+    transition: background-size $transition-duration;
+  }
+
+
+
+  &--hover {
+    @include text-line-gradient(8%, green);
+    background-size: 0 100%;
+    // box-decoration-break: clone;
+
+    &:hover {
+      background-size: 100% 100%;
+    }
+  }
+
+  &--link {
+    @include text-line-gradient(1px, currentColor);
+    transition: none;
+    display: inline;
+
+    &:hover {
+      animation: underline-reset 0.45s $easeInQuad both;
+    }
+  }
+
+}
+
+
+@keyframes underline-reset {
+  0% {
+    background-size: 100% 100%;
+    background-position: bottom right;
+  }
+  50% {
+    background-size: 0 100%;
+    background-position: bottom right;
+  }
+  50.01% {
+    background-position: bottom left;
+
+  }
+  100% {
+    background-size: 100% 100%;
+    background-position: bottom left;
+  }
+}

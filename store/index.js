@@ -44,5 +44,17 @@ export const getters = {
   },
   getProject: state => slug => {
     return state.projects.filter(project => project.slug === slug)[0]
+  },
+  getNextProject: state => project => {
+    const { projects } = state
+
+    const current = projects.map(p => p.slug).indexOf(project.slug)
+    let nextIndex = current + 1
+
+    if (current === projects.length) {
+      nextIndex = 0
+    }
+
+    return projects[nextIndex]
   }
 }

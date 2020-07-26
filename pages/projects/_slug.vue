@@ -43,7 +43,10 @@ export default {
     return { project }
   },
   mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
-  computed: {}
+  computed: {},
+  mounted() {
+    console.log(this.$store.getters.getNextProject(this.project));
+  }
 };
 </script>
 
