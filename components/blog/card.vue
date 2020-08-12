@@ -3,15 +3,16 @@
     <nuxt-link :to="postUrl" v-if="thumbnail && thumbnail[0]">
       <figure>
         <img
-          :src="thumbnail[0].media_details.sizes.medium_large.source_url"
+          class="w-100"
+          :src="thumbnail[0].media_details.sizes.blog_preview.source_url"
           :alt="thumbnail[0].alt_text"
         />
       </figure>
     </nuxt-link>
-    <nuxt-link :to="postUrl"><h3 class="font-bold text-xl">{{post.title.rendered}}</h3></nuxt-link>
-    <div v-html="post.excerpt.rendered"></div>
-    <nuxt-link :to="postUrl">Read more</nuxt-link>
-    <time class="block italic" :datetime="post.date">{{date}}</time>
+    <nuxt-link :to="postUrl"><h3 class="font-bold mt-3 text-xl">{{post.title.rendered}}</h3></nuxt-link>
+    <div class="mt-1" v-html="post.excerpt.rendered"></div>
+    <nuxt-link class="mt-3 block" :to="postUrl">Read more &rarr;</nuxt-link>
+    <time class="block italic mt-1" :datetime="post.date">{{date}}</time>
   </div>
 
 </template>

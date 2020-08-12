@@ -31,6 +31,12 @@ export default {
     '~/assets/css/tailwind.css',
     '~/assets/scss/main.scss',
   ],
+
+  server: {
+    port: 8000, // par défaut : 3000
+    host: '0.0.0.0' // par défaut : localhost
+  },
+
   /*
   ** Plugins to load before mounting the App
   */

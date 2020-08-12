@@ -7,7 +7,7 @@
       <figure>
         <img
           class="block w-full mx-auto"
-          :src="heroImg[0].media_details.sizes.medium_large.source_url"
+          :src="heroImg[0].media_details.sizes.full.source_url"
           :alt="heroImg[0].alt_text"
         />
         <figcaption class="text-center mt-2 italic" v-html="heroImg[0].caption.rendered"></figcaption>

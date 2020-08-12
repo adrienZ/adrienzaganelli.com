@@ -138,7 +138,7 @@ export default {
     hide() {
       const { position } = this.$mouse
       if (this.tl) this.tl.kill()
-      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.5, onComplete: () => {
+      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.25, onComplete: () => {
         document.body.classList.remove('no-cursor')
       }
       })

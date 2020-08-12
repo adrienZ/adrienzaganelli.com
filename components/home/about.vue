@@ -4,7 +4,7 @@
 
       <div class="sm:flex sm:-mx-3">
         <div class="sm:w-1/4 sm:px-3">
-          <img class="lazyload w-full" data-src="https://twivatar.glitch.me/adri_zag">
+          <img class="lazyload w-full" data-src="https://pbs.twimg.com/profile_images/827316811280613376/SFcivfp6_400x400.jpg">
         </div>
         <div class="sm:w-3/4 sm:px-3">
           <p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
@@ -29,13 +29,13 @@
             </li>
             <li>
               &rarr; <cExternal
-                href="https://medium.com/free-code-camp/time-saving-css-techniques-to-create-responsive-images-ebb1e84f90d5">
-                Time-saving CSS techniques to create responsive images</cExternal>
+                href="https://medium.com/free-code-camp/how-to-make-your-app-work-offline-with-the-power-of-javascript-685d968bcfbb">
+                How to make your app work offline with the power of JavaScript</cExternal>
             </li>
             <li>
               &rarr; <cExternal
-                href="https://medium.com/free-code-camp/time-saving-css-techniques-to-create-responsive-images-ebb1e84f90d5">
-                Time-saving CSS techniques to create responsive images</cExternal>
+                href="https://www.freecodecamp.org/news/how-to-share-variables-across-html-css-and-javascript-using-webpack/">
+                How to share variables across HTML, CSS, and JavaScript using Webpack</cExternal>
             </li>
           </ul>
 

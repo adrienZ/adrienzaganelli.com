@@ -5,7 +5,19 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
-  theme: {},
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Gilroy', 'sans-serif'],
+      },
+      colors: {
+        white: "#fafafa",
+        pimper: "#D81B60",
+        light: "#EFEBE9",
+        black: "#3E2723",
+      }
+    }
+  },
   variants: {},
   plugins: [],
   purge: {

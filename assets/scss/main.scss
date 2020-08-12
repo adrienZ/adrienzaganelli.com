@@ -1,6 +1,7 @@
 // smootscroll
 body, html {
   height: 100%;
+  @apply bg-light;
 }
 
 @import 'sass-easing/_easings';
