@@ -2,7 +2,7 @@
   <ul class="c-list">
 
     <li class="c-list__item text-left mb-10" :key="index" v-for="(p, index) in $store.state.projects">
-      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/projects/ + p.slug" class="inline-block border relative overflow-hidden">
+      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block border relative overflow-hidden">
 
       <div class="relative">
         <h2 class="c-list__item__title leading-tight font-sans text-6xl"><span>{{(index + 1 < 10) ? "0" + (index + 1) : index + 1}}</span> {{p.title.rendered}}</h2>

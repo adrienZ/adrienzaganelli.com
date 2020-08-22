@@ -48,13 +48,25 @@
 
     <div>
       <h4>Get in touch</h4>
-      <ul>
-        <li><cExternal>Twitter</cExternal></li>
-        <li><cExternal>Linkedin</cExternal></li>
-        <li><cExternal>Github</cExternal></li>
-        <li><cExternal>Codepen</cExternal></li>
-        <li><cExternal>E-mail</cExternal></li>
-      </ul>
+      <div class="md:flex justify-between items-end pb-16">
+        <ul>
+          <!-- Links -->
+          <li><cExternal href="https://twitter.com/adri_zag">Twitter</cExternal></li>
+          <li><cExternal href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin</cExternal></li>
+          <li><cExternal href="https://github.com/adrienZ">Github</cExternal></li>
+          <li><cExternal href="https://codepen.io/adri_zag">Codepen</cExternal></li>
+          <li><cExternal href="mailto:adrienzaganelli@gmail.com">E-mail</cExternal></li>
+          <!-- End Links -->
+        </ul>
+
+        <!-- Logo footer -->
+        <div class="text-center">
+          <svg class="w-12 h-12 inline-block"><use xlink:href="#icon-logo" x="0" y="0"/></svg>
+        </div>
+        <!-- End Logo footer -->
+
+      </div>
+
     </div>
   </section>
 </template>

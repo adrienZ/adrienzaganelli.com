@@ -1,7 +1,7 @@
 <template>
   <div class="c-card">
     <nuxt-link :to="postUrl" v-if="thumbnail && thumbnail[0]">
-      <figure>
+      <figure class="shadow-md">
         <img
           class="w-100"
           :src="thumbnail[0].media_details.sizes.blog_preview.source_url"
