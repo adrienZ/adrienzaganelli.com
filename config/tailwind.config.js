@@ -9,6 +9,8 @@ module.exports = {
     extend: {
       fontFamily: {
         display: ['Gilroy', 'sans-serif'],
+        sans: ['Oxygen', 'sans-serif'],
+        serif: ['IBM Plex Serif', 'serif']
       },
       colors: {
         white: "#fafafa",

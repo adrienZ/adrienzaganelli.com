@@ -1,6 +1,6 @@
 <template>
   <section class="c-showcase relative">
-    <h3 class="text-4xl">Selected Works:</h3>
+    <h3 class="landing-title">Selected Works:</h3>
 
 
     <nuxt-link :to="'/projects/' + slug" ref="media" class="block right-0 top-0" style="top: 15%" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">

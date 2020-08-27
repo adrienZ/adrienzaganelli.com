@@ -25,12 +25,29 @@ export default {
     }
   },
   mounted() {
-    document.body.classList.add('no-cursor')
+    this.hide()
+    const supportsTouch = 'ontouchstart' in window || navigator.msMaxTouchPoints;
+
+    if (supportsTouch) {
+      // no cursor
+      this.$el.parentElement.removeChild(this.$el)
+      this.$destroy()
+      return false
+    }
+
+
+    // show custom cursor on first mouse move
+    const once = () => {
+      this.smoothMouseInner = this.smoothMouseOuter = this.$mouse.position
+      this.show()
+      window.removeEventListener('mousemove', once)
+    }
+    window.addEventListener('mousemove', once)
+
     // start preview mouse track
     this.smoothMouseInner = {x: 0, y: 0}
     this.smoothMouseOuter = {x: 0, y: 0}
     this.lastRender = 0
-    window.addEventListener('mousemove', this.updateCursorState)
 
     window.addEventListener('mousedown', () => {
       gsap.to(this, { inner__scale: 1, duration: 0.1})
@@ -64,18 +81,20 @@ export default {
         onComplete: () => this.hovering = false
       })
     })
+
+    this.$bus.$on('cursor-show', this.show)
+    this.$bus.$on('cursor-hide', this.hide)
+
     gsap.ticker.add(this.onFrame);
   },
   beforeDestroy() {
-    document.body.classList.remove('no-cursor')
-
-    window.removeEventListener('mousemove', this.updateCursorState)
     // stop preview mouse track
     gsap.ticker.remove(this.onFrame);
   },
   methods: {
     onFrame() {
       const now = Date.now()
+      console.log(now);
 
       if ((now - this.lastRender) > this.$store.state.RAF_DELTA_TIME) {
         this.moveCursor()
@@ -85,17 +104,14 @@ export default {
       if( !this._isBeingDestroyed) {
 
         const mouse = this.$mouse.position;
+
         this.smoothMouseInner.x += (mouse.x - this.smoothMouseInner.x) * 0.4
         this.smoothMouseInner.y += (mouse.y - this.smoothMouseInner.y) * 0.4
 
-        // if (this.hovering) {
-          this.smoothMouseOuter.x += (mouse.x - this.smoothMouseOuter.x) * 0.3
-          this.smoothMouseOuter.y += (mouse.y - this.smoothMouseOuter.y) * 0.3
-        // }
+        this.smoothMouseOuter.x += (mouse.x - this.smoothMouseOuter.x) * 0.3
+        this.smoothMouseOuter.y += (mouse.y - this.smoothMouseOuter.y) * 0.3
 
         const { height, width } = this
-
-
 
         const innerOptions = {
           x: this.smoothMouseInner.x - (width/2),
@@ -122,19 +138,6 @@ export default {
       this.width = this.$el.offsetWidth
       this.height = this.$el.offsetHeight
     },
-    updateCursorState(e) {
-      const { target } = e
-      this.cloneMouseMove(e)
-
-
-      // handle IFRAMES
-      if (target.tagName === 'IFRAME' && !this.hidden) {
-        this.hide()
-      }
-      if (target.tagName !== 'IFRAME' && this.hidden) {
-        this.show()
-      }
-    },
     hide() {
       const { position } = this.$mouse
       if (this.tl) this.tl.kill()
@@ -160,17 +163,14 @@ export default {
 </script>
 
 <style lang="scss">
-  .no-cursor * {
-    // cursor: none;
-  }
-
   .c-cursor {
     z-index: 100;
     pointer-events: none;
-    mix-blend-mode: difference;
+    // mix-blend-mode: difference;
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 0;
 
     &__inner {
       height: 50%;

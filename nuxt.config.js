@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { join } from 'path'
 
 export default {
   mode: 'universal',
@@ -17,10 +18,10 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
       { httpEquiv: 'x-ua-compatible ', content: 'ie=edge' },
       { name: 'twitter:dnt', content: 'on' },
-
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,600;1,600&family=Oxygen:wght@400;600;700&display=swap'}
     ]
   },
   /*
@@ -69,6 +70,20 @@ export default {
     analyze: process.env.NODE_ENV === 'production' ? {
       analyzerMode: 'static'
     } : false,
+
+    // postcss: {
+    //   plugins: {
+    //     'postcss-import': {},
+    //     'postcss-url': {},
+    //     'postcss-preset-env': this.preset,
+    //     'cssnano': { preset: 'default' }, // disabled in dev mode
+    //     tailwindcss: join(__dirname, 'config/tailwind.config.js'),
+    //     'postcss-pxtorem': {
+    //       propList: ['*', '!border*']
+    //     }
+    //   },
+    // },
+
     /*
     ** You can extend webpack config here
     */
@@ -94,7 +109,7 @@ export default {
       const posts = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/posts?_embed');
 
       const projectsRoutes = projects.data.map( project => ({
-        route: `/project/` + project.slug,
+        route: `/case-study/` + project.slug,
         payload: project,
       }))
 

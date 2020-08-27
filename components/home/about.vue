@@ -1,12 +1,13 @@
 <template>
   <section>
-      <h3 class="text-4xl">About &amp; Contact</h3>
+      <h3 class="landing-title">About &amp; Contact</h3>
 
       <div class="sm:flex sm:-mx-3">
-        <div class="sm:w-1/4 sm:px-3">
-          <img class="lazyload w-full" data-src="https://pbs.twimg.com/profile_images/827316811280613376/SFcivfp6_400x400.jpg">
+        <div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
+          <img class="lazyload w-full shadow-xl rounded-md" :data-src="require('~/assets/img/portrait.jpg')" />
         </div>
-        <div class="sm:w-3/4 sm:px-3">
+
+        <div class="sm:w-2/3 sm:px-3 text-xl sm:-mt-1">
           <p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
 
           <p class="mt-4">HETIC graduate, I learned how to code, design and do business on the Web. I like to try new
@@ -21,18 +22,18 @@
           </p>
 
           <p class="mt-4">When I can, I write some articles for tech publishers, find them below: </p>
-          <ul style="font-size: 90%;">
-            <li>
+          <ul class="italic text-lg">
+            <li class="my-3 sm:my-0">
               &rarr; <cExternal
                 href="https://medium.com/free-code-camp/time-saving-css-techniques-to-create-responsive-images-ebb1e84f90d5">
                 Time-saving CSS techniques to create responsive images</cExternal>
             </li>
-            <li>
+            <li class="my-3 sm:my-0">
               &rarr; <cExternal
                 href="https://medium.com/free-code-camp/how-to-make-your-app-work-offline-with-the-power-of-javascript-685d968bcfbb">
                 How to make your app work offline with the power of JavaScript</cExternal>
             </li>
-            <li>
+            <li class="my-3 sm:my-0">
               &rarr; <cExternal
                 href="https://www.freecodecamp.org/news/how-to-share-variables-across-html-css-and-javascript-using-webpack/">
                 How to share variables across HTML, CSS, and JavaScript using Webpack</cExternal>
@@ -45,29 +46,6 @@
           </p>
         </div>
       </div>
-
-    <div>
-      <h4>Get in touch</h4>
-      <div class="md:flex justify-between items-end pb-16">
-        <ul>
-          <!-- Links -->
-          <li><cExternal href="https://twitter.com/adri_zag">Twitter</cExternal></li>
-          <li><cExternal href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin</cExternal></li>
-          <li><cExternal href="https://github.com/adrienZ">Github</cExternal></li>
-          <li><cExternal href="https://codepen.io/adri_zag">Codepen</cExternal></li>
-          <li><cExternal href="mailto:adrienzaganelli@gmail.com">E-mail</cExternal></li>
-          <!-- End Links -->
-        </ul>
-
-        <!-- Logo footer -->
-        <div class="text-center">
-          <svg class="w-12 h-12 inline-block"><use xlink:href="#icon-logo" x="0" y="0"/></svg>
-        </div>
-        <!-- End Logo footer -->
-
-      </div>
-
-    </div>
   </section>
 </template>
 

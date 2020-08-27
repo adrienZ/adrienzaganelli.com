@@ -1,3 +1,5 @@
+@import 'tailwindcss/base';
+
 // smootscroll
 body, html {
   height: 100%;
@@ -6,6 +8,7 @@ body, html {
 
 @import 'sass-easing/_easings';
 
+@import 'typography';
 @import 'cms';
 @import 'code-highlight';
 @import 'underline-effect';
