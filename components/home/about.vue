@@ -26,7 +26,7 @@
           <p class="mt-4">HETIC graduate, I learned how to code, design and do business on the Web. I like to try new
             things everyday on this (very) curious world.</p>
 
-          <p class="mt-4">From Paris to Montréal, I've joinder several nice places, companies and agencies as well, such as:
+          <p class="mt-4">From Paris to Montréal, I've joined several nice places. Companies and agencies as well, such as:
             <cExternal href="https://agence-me.com"><i>AgenceMe</i></cExternal>,
             <cExternal href="https://sketchfab.com"><i>Sketchfab</i></cExternal>,
             <cExternal href="https://akufen.ca"><i>Akufen Studio</i></cExternal>,
@@ -76,7 +76,12 @@ export default {
   mounted() {
     this.rellax = new Rellax('.rellax', {
       // default tailwind breakpoints
-      breakpoints: [640, 768, 1024, 1280]
+      breakpoints: [640, 768, 1024, 1280],
+      round: true,
+      callback: function(positions) {
+        // callback every position change
+        console.log(positions);
+      }
     })
   },
   beforeDestroy() {
@@ -84,3 +89,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.underline-effect--link  {
+  // padding-bottom: 1px;
+}
+</style>
