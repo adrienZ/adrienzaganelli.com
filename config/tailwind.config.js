@@ -8,15 +8,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Gilroy', 'sans-serif'],
-        sans: ['Oxygen', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'sans-serif'],
         serif: ['IBM Plex Serif', 'serif']
       },
       colors: {
         white: "#fafafa",
-        pimper: "#D81B60",
-        light: "#EFEBE9",
-        black: "#3E2723",
+        pimper: "#00897B",
+        light: "#F5F5F5",
+        black: "#263238",
       }
     }
   },

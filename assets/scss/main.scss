@@ -3,7 +3,11 @@
 // smootscroll
 body, html {
   height: 100%;
-  @apply bg-light;
+  @apply bg-light text-black;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 @import 'sass-easing/_easings';

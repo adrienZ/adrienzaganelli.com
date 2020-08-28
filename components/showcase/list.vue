@@ -1,15 +1,15 @@
 <template>
   <ul class="c-list">
 
-    <li class="c-list__item text-left mb-3 sm:mb-10" :key="index" v-for="(p, index) in $store.state.projects">
-      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block border relative overflow-hidden">
-
-      <div class="relative">
-        <h2 class="c-list__item__title leading-tight font-sans text-3xl sm:text-6xl"><span>{{(index + 1 < 10) ? "0" + (index + 1) : index + 1}}</span> {{p.title.rendered}}</h2>
-      </div>
+    <li class="c-list__item text-left mb-3 sm:mb-8" :key="index" v-for="(p, index) in $store.state.projects">
+      <nuxt-link event="" @click.native.prevent="onSelectCallback(index)" @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block">
+        <div class="relative">
+          <h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
+            <span class="inline-block c-list__item__index tracking-wide">{{formatIndex(index)}}</span>
+            <span class="inline-block c-list__item__text ">{{p.title.rendered}}</span>
+          </h2>
+        </div>
     </nuxt-link>
-    <!-- <p>{{p.acf.summary}}</p> -->
-
     </li>
   </ul>
 
@@ -28,6 +28,9 @@ const useTimer = (duration, callback) => {
 export default {
   created() {
     this.cancel = this.cancel.bind(this)
+  },
+  props: {
+    onSelectCallback: Function
   },
   data() {
     return {
@@ -64,6 +67,10 @@ export default {
         this.currentProjectSlug = project.slug
       })
     },
+    formatIndex(number) {
+      // 0x
+      return (number + 1 < 10) ? "0" + (number + 1) : number + 1
+    },
     cancel() {
       this.timer.reset()
     },
@@ -73,29 +80,20 @@ export default {
 
 
 <style lang="scss" scoped>
-  .c-list__item__title {
-    transition: 0.5s;
-    font-family: serif;
-    letter-spacing: 1px;
-
-    span {
-      -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black;
-
-      background-clip: text;
-      color: transparent;
-
-      background-color: transparent;
-      transition: 1s;
-
-      &:hover {
-        background-color: red;
-      -webkit-text-stroke-color: red;
-
-      }
+  .c-list__item {
+    &:hover &__index,
+    &:focus &__index
+    {
+      -webkit-text-stroke-color: theme('colors.pimper');
     }
+  }
 
+  .c-list__item__index {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: theme('colors.black');
 
-
+    background-clip: text;
+    color: transparent;
+    background-color: transparent;
   }
 </style>

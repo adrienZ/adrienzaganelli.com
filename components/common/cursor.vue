@@ -49,13 +49,9 @@ export default {
     this.smoothMouseOuter = {x: 0, y: 0}
     this.lastRender = 0
 
-    window.addEventListener('mousedown', () => {
-      gsap.to(this, { inner__scale: 1, duration: 0.1})
-    })
-
-    window.addEventListener('mouseup', () => {
-      gsap.to(this, { inner__scale: 0, duration: 0.1})
-    })
+    window.addEventListener('mousemove', this.updateCursorState)
+    window.addEventListener('mousedown', this.onMouseDown)
+    window.addEventListener('mouseup', this.onMouseUp)
 
     this.hoverTl = null
 
@@ -89,6 +85,10 @@ export default {
   },
   beforeDestroy() {
     // stop preview mouse track
+    window.removeEventListener('mousemove', this.updateCursorState)
+    window.removeEventListener('mousedown', this.onMouseDown)
+    window.removeEventListener('mouseup', this.onMouseDown)
+
     gsap.ticker.remove(this.onFrame);
   },
   methods: {
@@ -132,18 +132,34 @@ export default {
         this.lastRender = Date.now()
       }
     },
+    updateCursorState(e) {
+      const { target } = e
+      this.cloneMouseMove(e)
+
+
+      // handle IFRAMES
+      if (target.tagName === 'IFRAME' && !this.hidden) {
+        this.hide()
+      }
+      if (target.tagName !== 'IFRAME' && this.hidden) {
+        this.show()
+      }
+    },
     // overide
     onResize() {
       this.width = this.$el.offsetWidth
       this.height = this.$el.offsetHeight
     },
+    onMouseDown() {
+      gsap.to(this, { inner__scale: 1, duration: 0.1})
+    },
+    onMouseUp() {
+      gsap.to(this, { inner__scale: 0, duration: 0.1})
+    },
     hide() {
       const { position } = this.$mouse
       if (this.tl) this.tl.kill()
-      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.25, onComplete: () => {
-        document.body.classList.remove('no-cursor')
-      }
-      })
+      this.tl = gsap.to(this.$el, { autoAlpha: 0, duration: 0.25 })
       this.hidden = true
 
       return this.tl
@@ -151,10 +167,7 @@ export default {
     show() {
       const { position } = this.$mouse
       if (this.tl) this.tl.kill()
-      this.tl = gsap.to(this.$el, { autoAlpha: 1, duration: 0.15, onComplete: () => {
-        document.body.classList.add('no-cursor')
-      }
-      })
+      this.tl = gsap.to(this.$el, { autoAlpha: 1, duration: 0.15 })
       this.hidden = false
     }
   }
@@ -165,7 +178,6 @@ export default {
   .c-cursor {
     z-index: 100;
     pointer-events: none;
-    // mix-blend-mode: difference;
     position: fixed;
     top: 0;
     left: 0;
@@ -175,13 +187,13 @@ export default {
       height: 50%;
       left: 25%;
       top: 25%;
-      background: rgba(#d81b60, 0.75);
       transform-origin: center center;
       will-change: tranform;
+      @apply bg-pimper bg-opacity-75;
     }
 
     &__outer {
-      border: 2px solid #d81b60;
+      @apply border-2 border-pimper;
       transform-origin: center center;
       will-change: tranform;
     }

@@ -2,13 +2,23 @@
   <div class="c-footer">
     <h4 class="landing-title mb-2">👋 Get in touch</h4>
     <div class="md:flex justify-between items-end pb-16">
-      <ul class="text-3xl font-bold leading-relaxed">
+      <ul class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed">
         <!-- Links -->
-        <li><cExternal href="https://twitter.com/adri_zag">Twitter</cExternal></li>
-        <li><cExternal href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin</cExternal></li>
-        <li><cExternal href="https://github.com/adrienZ">Github</cExternal></li>
-        <li><cExternal href="https://codepen.io/adri_zag">Codepen</cExternal></li>
-        <li><cExternal href="mailto:adrienzaganelli@gmail.com">E-mail</cExternal></li>
+        <li class="md:mr-5">
+          <cExternal href="https://twitter.com/adri_zag">Twitter.</cExternal>
+        </li>
+        <li class="md:mr-5">
+          <cExternal href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin.</cExternal>
+        </li>
+        <li class="md:mr-5">
+          <cExternal href="https://github.com/adrienZ">Github.</cExternal>
+        </li>
+        <li class="md:mr-5">
+          <cExternal href="https://codepen.io/adri_zag">Codepen.</cExternal>
+        </li>
+        <li class="md:mr-5">
+          <cExternal href="mailto:adrienzaganelli@gmail.com">E-mail.</cExternal>
+        </li>
         <!-- End Links -->
       </ul>
 

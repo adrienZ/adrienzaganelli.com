@@ -1,6 +1,6 @@
 <template>
   <section class="c-hero text-2xl">
-    <div>
+    <div class="c-hero__container relative z-10">
 
       <p class="landing-title">Welcome :)</p>
 
@@ -15,33 +15,52 @@
       </ul>
     </div>
 
-    <div class="yo">
-      <div class="yo2"></div>
+    <div
+        class="bubble-1 rellax"
+        data-rellax-speed="-5"
+        data-rellax-xs-speed="-3"
+        data-rellax-percentage="0.5"
+      >
+      <div class="circle w-full  bg-light shadow-xl "></div>
+      <div class="circle w-2/3  bg-light shadow-lg"></div>
+      <div class="circle w-1/3  bg-light shadow-md"></div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.c-hero {
+.c-hero__container {
   max-width: 760px;
 }
 
-.yo {
-  width: 20vw;
-  height: 20vw;
-  position: absolute;
-  background: linear-gradient(#FC877C, #FFEBEA);
-  @apply rounded-full;
-  top: 0;
-  right: -0vw;
+.circle {
+  @apply rounded-full absolute;
 
-  @apply flex items-center justify-center;
+  &.w-full {
+    height: 100%;
+  }
+  &.w-2\/3 {
+    top: (100% - (100%/(3/2))) / 2;
+    left: (100%- (100%/(3/2))) / 2;
+    height: (100%/(3/2));
+  }
+  &.w-1\/3 {
+    top: (100%/3);
+    left: (100%/3);
+    height: (100%/3);
+  }
 }
 
-.yo2 {
-  height: 80%;
-  width: 80%;
-  @apply rounded-full;
-  background: linear-gradient(#FFEBEA, #FC877C);
+.bubble-1 {
+  position: absolute;
+  height: 50vw;
+  width: 50vw;
+  right: -25vw;
+  top: 30vw;
+
+  @screen md {
+    right: -15vw;
+    top: 0vw;
+  }
 }
 </style>

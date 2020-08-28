@@ -14,13 +14,13 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { hid: 'description', name: 'description', content: 'Adrien Zaganelli. Front-end developer made in 🇫🇷' },
       { httpEquiv: 'x-ua-compatible ', content: 'ie=edge' },
       { name: 'twitter:dnt', content: 'on' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,600;1,600&family=Oxygen:wght@400;600;700&display=swap'}
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,600;1,600&family=IBM+Plex+Sans:wght@400;600;700&display=swap'}
     ]
   },
   /*
@@ -65,7 +65,7 @@ export default {
   ** Build configuration
   */
   build: {
-    extractCSS: false || process.env.NODE_ENV === 'production',
+    extractCSS: false,
     analyze: process.env.NODE_ENV === 'production' ? {
       analyzerMode: 'static'
     } : false,

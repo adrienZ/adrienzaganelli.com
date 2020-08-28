@@ -65,7 +65,6 @@
 <script>
 import cExternal from '@/components/common/external.vue'
 
-import Rellax from 'rellax'
 import withLazyImages from '@/mixins/withLazyImages'
 
 export default {
@@ -73,25 +72,5 @@ export default {
   components: {
     cExternal,
   },
-  mounted() {
-    this.rellax = new Rellax('.rellax', {
-      // default tailwind breakpoints
-      breakpoints: [640, 768, 1024, 1280],
-      round: true,
-      callback: function(positions) {
-        // callback every position change
-        console.log(positions);
-      }
-    })
-  },
-  beforeDestroy() {
-    this.rellax.destroy()
-  }
 }
 </script>
-
-<style lang="scss" scoped>
-.underline-effect--link  {
-  // padding-bottom: 1px;
-}
-</style>
