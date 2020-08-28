@@ -11,26 +11,24 @@
     "static": "nuxt build --target static && nuxt export"
   },
   "browserslist": [
-    "cover 99.5%, not dead"
+    "cover 95%, not dead"
   ],
   "dependencies": {
-    "@nuxtjs/axios": "^5.9.5",
-    "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/tailwindcss": "^3.0.2",
     "curtainsjs": "^6.2.2",
-    "glslify-loader": "^2.0.0",
     "gsap": "^3.4.0",
-    "imagesloaded": "^4.1.4",
     "lazysizes": "^5.2.2",
     "nuxt": "^2.13.3",
     "prismjs": "^1.20.0",
-    "raw-loader": "^4.0.1",
+    "rellax": "^1.12.1",
     "sass-easing": "^1.0.3",
     "smooth-scrollbar": "^8.5.2",
     "splitting": "^1.0.6"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^2.0.0",
-    "node-sass": "^4.13.1",
+    "glslify-loader": "^2.0.0",
+    "node-sass": "^4.14.1",
+    "raw-loader": "^4.0.1",
     "sass-loader": "^8.0.2"
   }
 }

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { join } from 'path'
 
 export default {
   mode: 'universal',
@@ -61,28 +60,15 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: ['@nuxtjs/axios'],
+  modules: [],
   /*
   ** Build configuration
   */
   build: {
-    extractCSS: process.env.NODE_ENV === 'production',
+    extractCSS: false || process.env.NODE_ENV === 'production',
     analyze: process.env.NODE_ENV === 'production' ? {
       analyzerMode: 'static'
     } : false,
-
-    // postcss: {
-    //   plugins: {
-    //     'postcss-import': {},
-    //     'postcss-url': {},
-    //     'postcss-preset-env': this.preset,
-    //     'cssnano': { preset: 'default' }, // disabled in dev mode
-    //     tailwindcss: join(__dirname, 'config/tailwind.config.js'),
-    //     'postcss-pxtorem': {
-    //       propList: ['*', '!border*']
-    //     }
-    //   },
-    // },
 
     /*
     ** You can extend webpack config here
@@ -97,10 +83,6 @@ export default {
         }
       )
     }
-  },
-
-  styleResources: {
-    // scss: ['./assets/scss/main.scss']
   },
 
   generate: {

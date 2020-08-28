@@ -94,7 +94,6 @@ export default {
   methods: {
     onFrame() {
       const now = Date.now()
-      console.log(now);
 
       if ((now - this.lastRender) > this.$store.state.RAF_DELTA_TIME) {
         this.moveCursor()

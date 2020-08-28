@@ -4,10 +4,23 @@
 
       <div class="sm:flex sm:-mx-3">
         <div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
-          <img class="lazyload w-full shadow-xl rounded-md" :data-src="require('~/assets/img/portrait.jpg')" />
+          <img
+            alt=""
+            class="lazyload w-full shadow-xl rounded-md rellax"
+            :data-src="require('~/assets/img/portrait.jpg')"
+            data-rellax-speed="0.5"
+            data-rellax-xs-speed="0"
+            data-rellax-mobile-speed="0"
+            data-rellax-tablet-speed="0"
+            data-rellax-percentage="0.5" />
         </div>
 
-        <div class="sm:w-2/3 sm:px-3 text-xl sm:-mt-1">
+        <div class="sm:w-2/3 sm:px-3 text-xl sm:-mt-1 rellax"
+            data-rellax-speed="-0.25"
+            data-rellax-xs-speed="0"
+            data-rellax-mobile-speed="0"
+            data-rellax-tablet-speed="0"
+            data-rellax-percentage="0">
           <p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
 
           <p class="mt-4">HETIC graduate, I learned how to code, design and do business on the Web. I like to try new
@@ -52,12 +65,22 @@
 <script>
 import cExternal from '@/components/common/external.vue'
 
+import Rellax from 'rellax'
 import withLazyImages from '@/mixins/withLazyImages'
 
 export default {
   mixins: [withLazyImages],
   components: {
     cExternal,
+  },
+  mounted() {
+    this.rellax = new Rellax('.rellax', {
+      // default tailwind breakpoints
+      breakpoints: [640, 768, 1024, 1280]
+    })
+  },
+  beforeDestroy() {
+    this.rellax.destroy()
   }
 }
 </script>

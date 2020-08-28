@@ -29,6 +29,6 @@ import cExternal from '@/components/common/external.vue'
 export default {
   components: {
     cExternal,
-  }
+  },
 }
 </script>
