@@ -1,6 +1,6 @@
 <template>
-  <header class="c-header py-2 px-4">
-    <div class="container sm:w-3/4 w-5/6 flex mx-auto items-center justify-between">
+  <header class="c-header py-2 px-4 mb-16">
+    <div class="container flex mx-auto items-center justify-between">
         <h1 class="text-2xl" v-if="$nuxt.$route.name === 'blog'">Adrien Zagnelli's Blog</h1>
         <h2 class="text-2xl" v-else>
           <nuxt-link to="/blog/">Adrien Zagnelli's Blog</nuxt-link>

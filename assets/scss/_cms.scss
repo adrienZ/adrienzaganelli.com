@@ -17,8 +17,9 @@
   a {
     @apply underline;
 
-    &:hover {
-      @apply text-gray-500;
+    &:hover,
+    &:focus {
+      @apply text-gray-600;
     }
   }
 
@@ -44,7 +45,7 @@
   // h5,
   // h6
   {
-    @apply font-bold font-serif;
+    @apply font-bold;
   }
 
   p,
@@ -74,6 +75,10 @@
     display: block;
     // 16:9
     padding-top: 56.25%;
+  }
+
+  figcaption {
+    @apply text-center mt-2 italic;
   }
 
   iframe {

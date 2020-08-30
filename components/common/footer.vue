@@ -1,7 +1,9 @@
 <template>
   <div class="c-footer">
-    <h4 class="landing-title mb-2">👋 Get in touch</h4>
-    <div class="md:flex justify-between items-end pb-16">
+    <div class="border w-full border-black border-opacity-25 mb-5 sm:mb-10"></div>
+
+    <h4 class="landing-title">👋 Get in touch</h4>
+    <div class="-mt-4 sm:mt-0 md:flex justify-between items-end pb-16">
       <ul class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed">
         <!-- Links -->
         <li v-if="$nuxt.$route.name !== 'index'" class="md:mr-5">

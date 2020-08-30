@@ -1,14 +1,16 @@
 <template>
-  <section class="c-share-post flex">
-    <a class="facebook bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
-      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
+  <section class="c-share-post sm:flex">
+    <a class="facebook text-center sm:text-left block sm:inline-block bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
+      <span class="inline-block align-middle">Share on </span>
+      <svg class="w-4 h-4 ml-1 inline-block align-middle fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
     </a>
-    <a class="twitter ml-4 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
-      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-twitter" x="0" y="0"/></svg>
-
+    <a class="twitter text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="TwitterShareUrl" target="_blank">
+      <span class="inline-block align-middle">Share on </span>
+      <svg class="w-4 h-4 ml-1 inline-block fill-current"><use xlink:href="#icon-twitter" x="0" y="0"/></svg>
     </a>
-    <a class="linkedin ml-4 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
-      Share on <svg class="w-4 h-4 inline-block fill-current"><use xlink:href="#icon-linkedin" x="0" y="0"/></svg>
+    <a class="linkedin text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="LinkedinShareUrl" target="_blank">
+      <span class="inline-block align-middle">Share on </span>
+      <svg class="w-4 h-4 ml-1 inline-block fill-current"><use xlink:href="#icon-linkedin" x="0" y="0"/></svg>
     </a>
   </section>
 </template>

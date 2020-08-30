@@ -32,7 +32,9 @@
 </template>
 
 <style>
-.c-my-networks li:hover svg {
-  fill: red;
+.c-my-networks a:hover svg,
+.c-my-networks a:focus svg
+{
+  fill: theme('colors.pimper');
 }
 </style>

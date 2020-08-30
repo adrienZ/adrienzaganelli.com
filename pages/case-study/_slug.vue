@@ -3,16 +3,18 @@
     <div ref="scale_overlay" class="mixin-scale-overlay"></div>
     <article class="cms-container">
       <nuxt-link to="/">Retour a la home</nuxt-link>
-      <h1 class="text-5xl ">{{project.title.rendered}}</h1>
+      <h1 class="text-4xl sm:text-5xl">{{project.title.rendered}}</h1>
       <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
     </article>
 
+    <cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8"/>
   </section>
 
 </template>
 
 <script>
 import cNextProject from '@/components/project/next-project.vue'
+import cBackToTop from '@/components/common/back-to-top.vue'
 
 
 import withPageTransition from '@/mixins/withPageTransition'
@@ -51,8 +53,26 @@ export default {
   },
   mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
   components: {
-    cNextProject
+    cNextProject,
+    cBackToTop,
   },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      const backToTop = this.$refs.back_to_top
+
+      if (window.scrollY > 0) {
+        backToTop.show()
+      } else {
+        backToTop.hide()
+      }
+    }
+  }
 };
 </script>
 

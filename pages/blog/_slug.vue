@@ -1,9 +1,9 @@
 <template>
   <section class="page-post">
     <article class="cms-container">
-      <nuxt-link to="/blog/">Retour au articles</nuxt-link>
 
-      <h1 class="text-5xl font-extrabold">{{post.title.rendered}}</h1>
+      <h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">{{post.title.rendered}}</h1>
+
       <figure>
         <img
           class="block w-full mx-auto"
@@ -15,19 +15,22 @@
 
       <div class="cms-block" ref="cms_block" v-html="post.content.rendered"></div>
 
+      <div class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"></div>
 
-      <div class="mt-4">
-        <cSharePost :postTitle="post.title.rendered" :url="'example.com' || post.link"/>
+      <div>
+        <cSharePost :postTitle="post.title.rendered" :url="'https://adrienzaganelli.com' + $route.path"/>
       </div>
 
-      <div class="mt-4 p-6 rounded-lg shadow-xl">
-        <cAboutTheAuthor />
-        <cHireMe class="mt-8" />
+      <div class="mt-8">
+        <cHireMe />
+        <cAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
       </div>
 
-      <cFooter class="sm:mt-20 mt-10" />
+      <cFooter class="sm:mt-16 mt-10" />
 
     </article>
+
+    <cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8"/>
   </section>
 </template>
 
@@ -36,6 +39,7 @@ import cAboutTheAuthor from '@/components/c-about-the-author.vue'
 import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
 import cFooter from '@/components/common/footer.vue'
+import cBackToTop from '@/components/common/back-to-top.vue'
 
 import withCodeHighlight from '@/mixins/withCodeHighlight'
 
@@ -58,11 +62,29 @@ export default {
     cHireMe,
     cSharePost,
     cFooter,
+    cBackToTop,
   },
   computed: {
     heroImg() {
       return this.post._embedded?.['wp:featuredmedia']
     },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+  methods: {
+    onScroll() {
+      const backToTop = this.$refs.back_to_top
+
+      if (window.scrollY > 0) {
+        backToTop.show()
+      } else {
+        backToTop.hide()
+      }
+    }
   }
 };
 </script>

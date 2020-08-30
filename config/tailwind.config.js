@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['IBM Plex Sans', 'sans-serif'],
-        serif: ['IBM Plex Serif', 'serif']
+        serif: ['Lora', 'serif']
       },
       colors: {
         white: "#fafafa",

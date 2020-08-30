@@ -41,6 +41,10 @@
         <path d="M0,149.344v85.344c117.632,0,213.344,95.68,213.344,213.312h85.312C298.656,283.328,164.672,149.344,0,149.344z"/>
 		    <path d="M0,0v85.344C200,85.344,362.688,248,362.688,448H448C448,200.96,247.04,0,0,0z"/>
       </symbol>
+      <symbol id="icon-arrow-top" viewBox="0 0 20 20">
+        <title>Arrow Top</title>
+        <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+      </symbol>
       <symbol id="icon-logo" viewBox="0 0 412.17 464.41">
         <title>Logo</title>
         <polygon stroke-linecap="round" stroke="#bec0c0" stroke-linejoin="round" fill="none" stroke-width="4px" points="22.7 395.8 197.6 2 390 395.8 22.7 395.8"></polygon>
