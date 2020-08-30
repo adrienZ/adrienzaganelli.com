@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-gray-200 py-2 px-4">
+  <header class="c-header py-2 px-4">
     <div class="container sm:w-3/4 w-5/6 flex mx-auto items-center justify-between">
         <h1 class="text-2xl" v-if="$nuxt.$route.name === 'blog'">Adrien Zagnelli's Blog</h1>
         <h2 class="text-2xl" v-else>
@@ -16,10 +16,12 @@
   </header>
 </template>
 
-<script>
-export default {}
-</script>
-
-<style>
-
+<style scoped>
+.c-header {
+  background-color: #EFEBE9;
+}
+.container {
+  max-width: 980px;
+  @apply px-4;
+}
 </style>

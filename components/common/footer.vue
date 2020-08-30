@@ -4,26 +4,29 @@
     <div class="md:flex justify-between items-end pb-16">
       <ul class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed">
         <!-- Links -->
-        <li class="md:mr-5">
-          <cExternal href="https://twitter.com/adri_zag">Twitter.</cExternal>
+        <li v-if="$nuxt.$route.name !== 'index'" class="md:mr-5">
+          <nuxt-link class="underline-effect--hover inline-block" to="/">Portfolio.</nuxt-link>
         </li>
         <li class="md:mr-5">
-          <cExternal href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin.</cExternal>
+          <cExternal class="underline-effect--hover inline-block" href="https://twitter.com/adri_zag">Twitter.</cExternal>
         </li>
         <li class="md:mr-5">
-          <cExternal href="https://github.com/adrienZ">Github.</cExternal>
+          <cExternal class="underline-effect--hover inline-block" href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin.</cExternal>
         </li>
         <li class="md:mr-5">
-          <cExternal href="https://codepen.io/adri_zag">Codepen.</cExternal>
+          <cExternal class="underline-effect--hover inline-block" href="https://github.com/adrienZ">Github.</cExternal>
         </li>
         <li class="md:mr-5">
-          <cExternal href="mailto:adrienzaganelli@gmail.com">E-mail.</cExternal>
+          <cExternal class="underline-effect--hover inline-block" href="https://codepen.io/adri_zag">Codepen.</cExternal>
+        </li>
+        <li class="md:mr-5">
+          <cExternal class="underline-effect--hover inline-block" href="mailto:adrienzaganelli@gmail.com">E-mail.</cExternal>
         </li>
         <!-- End Links -->
       </ul>
 
       <!-- Logo footer -->
-      <div class="text-center">
+      <div class="text-center mt-8 sm:mt-0">
         <svg class="w-12 h-12 inline-block"><use xlink:href="#icon-logo" x="0" y="0"/></svg>
       </div>
       <!-- End Logo footer -->

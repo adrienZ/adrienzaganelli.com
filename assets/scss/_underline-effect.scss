@@ -16,11 +16,11 @@
 
 
   &--hover {
-    @include text-line-gradient(8%, green);
+    @include text-line-gradient(7%, currentColor);
     background-size: 0 100%;
     // box-decoration-break: clone;
 
-    &:hover {
+    &:hover, &:focus {
       background-size: 100% 100%;
     }
   }

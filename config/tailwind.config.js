@@ -13,13 +13,15 @@ module.exports = {
       },
       colors: {
         white: "#fafafa",
-        pimper: "#00897B",
+        pimper: "#536DFE",
         light: "#F5F5F5",
         black: "#263238",
       }
     }
   },
-  variants: {},
+  variants: {
+    textColor: ['group-hover', 'hover', 'focus', 'group-focus']
+  },
   plugins: [],
   purge: {
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css

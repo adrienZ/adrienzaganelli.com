@@ -24,7 +24,8 @@
     "rellax": "^1.12.1",
     "sass-easing": "^1.0.3",
     "smooth-scrollbar": "^8.5.2",
-    "splitting": "^1.0.6"
+    "splitting": "^1.0.6",
+    "waypoints": "^4.0.1"
   },
   "devDependencies": {
     "glslify-loader": "^2.0.0",

@@ -44,7 +44,7 @@
   // h5,
   // h6
   {
-    @apply font-bold;
+    @apply font-bold font-serif;
   }
 
   p,
@@ -72,6 +72,7 @@
   .lazyload[data-src]::before {
     content: '';
     display: block;
+    // 16:9
     padding-top: 56.25%;
   }
 

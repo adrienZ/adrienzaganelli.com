@@ -25,7 +25,7 @@
         <cHireMe class="mt-8" />
       </div>
 
-      <Signature />
+      <cFooter class="sm:mt-20 mt-10" />
 
     </article>
   </section>
@@ -35,7 +35,7 @@
 import cAboutTheAuthor from '@/components/c-about-the-author.vue'
 import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
-import Signature from '@/components/common/signature.vue'
+import cFooter from '@/components/common/footer.vue'
 
 import withCodeHighlight from '@/mixins/withCodeHighlight'
 
@@ -57,7 +57,7 @@ export default {
     cAboutTheAuthor,
     cHireMe,
     cSharePost,
-    Signature,
+    cFooter,
   },
   computed: {
     heroImg() {

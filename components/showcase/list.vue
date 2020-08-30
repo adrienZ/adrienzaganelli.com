@@ -84,7 +84,8 @@ export default {
     &:hover &__index,
     &:focus &__index
     {
-      -webkit-text-stroke-color: theme('colors.pimper');
+      -webkit-text-stroke-color: transparent;
+      @apply bg-pimper;
     }
   }
 

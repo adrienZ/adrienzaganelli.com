@@ -70,6 +70,8 @@ export default {
     this.$bus.$on('cursor-default', () => {
       if (this.hoverTl) this.hoverTl.kill()
 
+      this.$el.classList.remove('c-cursor__difference')
+
       gsap.to(this, {
         duration: 0.5,
         outer__scale: 0.5,
@@ -77,6 +79,11 @@ export default {
         onComplete: () => this.hovering = false
       })
     })
+
+    this.$bus.$on('cursor-difference', () => {
+      this.$el.classList.add('c-cursor__difference')
+    })
+
 
     this.$bus.$on('cursor-show', this.show)
     this.$bus.$on('cursor-hide', this.hide)
@@ -196,6 +203,11 @@ export default {
       @apply border-2 border-pimper;
       transform-origin: center center;
       will-change: tranform;
+    }
+
+
+    &__difference {
+      mix-blend-mode: difference;
     }
   }
 </style>

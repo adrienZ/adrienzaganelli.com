@@ -12,7 +12,7 @@
 import cShowcase from '@/components/home/showcase.vue'
 import cHero from '@/components/home/hero.vue'
 import cAbout from '@/components/home/about.vue'
-import cFooter from '@/components/home/footer.vue'
+import cFooter from '@/components/common/footer.vue'
 
 import Rellax from 'rellax'
 
@@ -35,7 +35,7 @@ export default {
       })
     }
   },
-  beforeDestroy() {
+  destroyed() {
     if (!document.documentMode) {
       this.rellax.destroy()
       this.$bus.$emit('cursor-default')

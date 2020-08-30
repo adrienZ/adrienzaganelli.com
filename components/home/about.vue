@@ -5,6 +5,8 @@
       <div class="sm:flex sm:-mx-3">
         <div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
           <img
+            @mouseenter="$bus.$emit('cursor-difference')"
+            @mouseout="$bus.$emit('cursor-default')"
             alt=""
             class="lazyload w-full shadow-xl rounded-md rellax"
             :data-src="require('~/assets/img/portrait.jpg')"
@@ -54,7 +56,7 @@
           </ul>
 
           <p class="mt-4">Last but not least, <b>I'm looking for a new job in Paris this fall.</b> you can contact me here:
-            <cExternal class="underline-effect--link" href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com
+            <cExternal class="text-pimper underline-effect--link" href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com
             </cExternal>
           </p>
         </div>
