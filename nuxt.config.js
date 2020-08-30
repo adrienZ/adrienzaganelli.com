@@ -44,7 +44,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/bus'
+    '~/plugins/bus',
+    '~/plugins/waypoints.client',
   ],
   /*
   ** Nuxt.js dev-modules

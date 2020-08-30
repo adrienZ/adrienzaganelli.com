@@ -20,10 +20,7 @@ import cList from '@/components/showcase/list.vue'
 
 // libs
 import gsap from 'gsap'
-if (process.browser) {
-  const Waypoints = require('waypoints/lib/noframework.waypoints.js')
-  require('waypoints/lib/shortcuts/inview.js')
-}
+
 // helpers
 import withMouse from '@/mixins/withMouse'
 
@@ -49,17 +46,15 @@ export default {
     this.smoothMouse = {x: 0, y: 0}
     this.lastRender = 0
 
-    if (process.browser) {
-      const waypoint = new Waypoint.Inview({
-        element: this.$el,
-        enter: () => {
-          gsap.ticker.add(this.onFrame)
-        },
-        exited: () => {
-          gsap.ticker.remove(this.onFrame);
-        }
-      });
-    }
+    const waypoint = new this.$waypoint.Inview({
+      element: this.$el,
+      enter: () => {
+        gsap.ticker.add(this.onFrame)
+      },
+      exited: () => {
+        gsap.ticker.remove(this.onFrame);
+      }
+    });
   },
   beforeDestroy() {
     // stop preview mouse track

@@ -70,13 +70,13 @@ export default {
     },
   },
   mounted() {
-    window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('scroll', this.handleBackToTop)
   },
   destroyed() {
-    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('scroll', this.handleBackToTop)
   },
   methods: {
-    onScroll() {
+    handleBackToTop() {
       const backToTop = this.$refs.back_to_top
 
       if (window.scrollY > 0) {

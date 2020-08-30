@@ -51,19 +51,19 @@ export default {
 
     return { project, nextProject }
   },
+  mounted() {
+    window.addEventListener('scroll', this.handleBackToTop)
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleBackToTop)
+  },
   mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
   components: {
     cNextProject,
     cBackToTop,
   },
-  mounted() {
-    window.addEventListener('scroll', this.onScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.onScroll)
-  },
   methods: {
-    onScroll() {
+    handleBackToTop() {
       const backToTop = this.$refs.back_to_top
 
       if (window.scrollY > 0) {

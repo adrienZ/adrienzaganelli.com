@@ -3,13 +3,11 @@
     <div class="c-hero__container relative z-10">
 
       <div class="text-2xl">
-        <p class="landing-title">Welcome :)</p>
-        <p>My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.colorz.fr/" class="hover:text-pimper focus:text-pimper" title="Colorz: Agence digitale et web à Paris" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Colorz</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
+        <p class="landing-title" ref="title">Welcome :)</p>
+        <p ref="intro">My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.colorz.fr/" class="hover:text-pimper focus:text-pimper" title="Colorz: Agence digitale et web à Paris" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Colorz</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
       </div>
 
-
-
-      <ul class="mt-5 leading-relaxed">
+      <ul ref="list" class="mt-5 leading-relaxed">
         <li class="group">
           <span>📩</span>
           <a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="mailto:adrienzaganelli@gmail.com" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Contact me</a>
@@ -20,6 +18,7 @@
     </div>
 
     <div
+        ref="bubble"
         class="bubble-1 rellax"
         data-rellax-speed="-5"
         data-rellax-xs-speed="-3"
@@ -68,3 +67,41 @@
   }
 }
 </style>
+
+<script>
+import gsap from 'gsap'
+
+function randomIntFromInterval(min, max) { // min and max included
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+export default {
+  mounted() {
+    const { bubble, title, intro, list } = this.$refs
+    const tl = new gsap.timeline({
+      paused: true
+    })
+
+    tl.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.200 }, 0)
+    tl.fromTo(intro, { opacity: 0 }, { opacity: 1, duration: 0.250 }, 0.2)
+    tl.fromTo(bubble.children, { scale: 0, y: 0 }, { scale: 1, y: 0, duration: 0.150, stagger: 0.1 }, 0.15)
+    tl.fromTo(list.children, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.200, stagger: 0.1 }, 0.3)
+
+    tl.timeScale(0.5)
+
+
+    this.waypoint = new this.$waypoint.Inview({
+      element: this.$el,
+      enter : direction => {
+        tl.play()
+        this.waypoint.destroy()
+
+        gsap.fromTo(bubble.children, {rotateZ: 0}, { rotateZ: 360, duration: randomIntFromInterval(20, 40), stagger: () => randomIntFromInterval(1,15), repeat: -1 })
+      },
+    });
+  },
+  destroyed() {
+    this.waypoint.destroy()
+  }
+}
+</script>
