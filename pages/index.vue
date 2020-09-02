@@ -17,7 +17,7 @@ import cFooter from '@/components/common/footer.vue'
 import Rellax from 'rellax'
 
 import withPageTransition from '@/mixins/withPageTransition'
-import withScrollbar from '@/mixins/withScrollbar'
+import withPageAnimation from '@/mixins/withPageAnimation'
 
 export default {
   components: {
@@ -41,7 +41,7 @@ export default {
       this.$bus.$emit('cursor-default')
     }
   },
-  mixins: [withPageTransition],
+  mixins: [withPageTransition, withPageAnimation],
 }
 </script>
 

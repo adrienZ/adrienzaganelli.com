@@ -62,7 +62,7 @@ import cHeader from '@/components/home/header.vue'
 
 
 import withPageTransition from '@/mixins/withPageTransition'
-import withScrollbar from '@/mixins/withScrollbar'
+import withPageAnimation from '@/mixins/withPageAnimation'
 import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
 import withMediaModal from '@/mixins/withMediaModal'
@@ -101,7 +101,7 @@ export default {
   destroyed() {
     window.removeEventListener('scroll', this.handleBackToTop)
   },
-  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
+  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal, withPageAnimation],
   components: {
     cNextProject,
     cBackToTop,
