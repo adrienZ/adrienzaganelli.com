@@ -6,9 +6,12 @@
       <cHeader class="opacity-75"/>
 
       <div class="project-header leading-tight uppercase tracking-tight mt-20">
-        <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
-        <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
-        <h1 class="text-5xl sm:text-6xl font-bold">{{project.title.rendered}}</h1>
+
+        <div ref="titles">
+          <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
+          <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
+          <h1 class="text-5xl sm:text-6xl font-bold">{{project.title.rendered}}</h1>
+        </div>
 
         <p class="mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4">{{project.acf.summary}}</p>
       </div>
@@ -60,9 +63,9 @@ import cBackToTop from '@/components/common/back-to-top.vue'
 import cFooter from '@/components/common/footer.vue'
 import cHeader from '@/components/home/header.vue'
 
+import gsap from 'gsap'
 
 import withPageTransition from '@/mixins/withPageTransition'
-import withPageAnimation from '@/mixins/withPageAnimation'
 import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
 import withMediaModal from '@/mixins/withMediaModal'
@@ -97,11 +100,37 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleBackToTop)
+    const { titles } = this.$refs
+    const tl = new gsap.timeline({
+      paused: true,
+      ease: "circ.out"
+    })
+
+    tl
+      .fromTo(titles.children,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, stagger: 0.12 }
+      )
+      .to(Array.from(titles.children).slice(0, -1),
+        { opacity: 0, duration: .15, y: -1, stagger: 0.1 },
+        0.35,
+      )
+
+
+    this.waypoint = new this.$waypoint.Inview({
+      element: this.$el,
+      enter : direction => {
+        tl.play()
+        this.waypoint.destroy()
+      },
+    });
+
   },
   destroyed() {
+    this.waypoint.destroy()
     window.removeEventListener('scroll', this.handleBackToTop)
   },
-  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal, withPageAnimation],
+  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
   components: {
     cNextProject,
     cBackToTop,
