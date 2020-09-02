@@ -17,7 +17,7 @@ import 'prismjs/plugins/treeview/prism-treeview.css'
 
 export default {
   mounted() {
-    console.log(Object.keys(Prism.plugins));
+    // console.log(Object.keys(Prism.plugins));
     Prism.highlightAll()
   }
 }

@@ -1,11 +1,11 @@
 <template>
   <section class="c-showcase relative">
-    <h3 class="landing-title">Selected Works:</h3>
+    <h3 ref="title" class="landing-title">Selected Works:</h3>
 
-    <div class="flex justify-between items-start">
+    <div class="sm:flex justify-between items-start">
       <cList class="flex-grow-0 flex-shrink-0" ref="list" :onSelectCallback="onProjectSelect" v-on:update="onProjectChange"/>
 
-      <nuxt-link event="" :to="'/projects/' + slug"  ref="media" @click.native.prevent="onProjectSelect(index)" class="c-showcase__media inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
+      <nuxt-link event="" :to="'/projects/' + slug"  ref="media" @click.native.prevent="onProjectSelect(index)" class="c-showcase__media sm:hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
         <cThumbnail :index="index" :media="media" />
       </nuxt-link>
     </div>
@@ -46,17 +46,43 @@ export default {
     this.smoothMouse = {x: 0, y: 0}
     this.lastRender = 0
 
-    const waypoint = new this.$waypoint.Inview({
+
+    const { media, title, list } = this.$refs
+    const tl = new gsap.timeline({
+      paused: true,
+    })
+
+    tl.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.200 }, 0)
+    tl.fromTo(media.$el, { opacity: 0 }, { opacity: 1, duration: 0.250 }, 0.2)
+    tl.fromTo(list.$el.children, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.12 }, 0.2)
+
+    tl.timeScale(0.85)
+
+    this.fadeWaypoint = new this.$waypoint.Inview({
+      element: this.$el,
+      enter : direction => {
+        tl.play()
+        this.fadeWaypoint.destroy()
+      },
+    });
+
+
+    this.rafWaypoint = new this.$waypoint.Inview({
       element: this.$el,
       enter: () => {
-        gsap.ticker.add(this.onFrame)
+        // dont follow mouse under 1280px (tailwind xl)
+        if (document.documentElement.clientWidth >= 1280) {
+          gsap.ticker.add(this.onFrame)
+        }
       },
       exited: () => {
         gsap.ticker.remove(this.onFrame);
       }
     });
   },
-  beforeDestroy() {
+  destroyed() {
+    this.fadeWaypoint.destroy()
+    this.rafWaypoint.destroy()
     // stop preview mouse track
     gsap.ticker.remove(this.onFrame);
   },
@@ -120,9 +146,14 @@ export default {
 
 <style lang="scss" scoped>
   .c-showcase__media {
-    width: 55%;
     max-width: 720px;
-    will-change: transform;
-    backface-visibility: hidden;
+    width: 100%;
+
+    @screen md {
+      will-change: transform;
+      backface-visibility: hidden;
+      width: 55%;
+      top: 2vw;
+    }
   }
 </style>

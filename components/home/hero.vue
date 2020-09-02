@@ -79,16 +79,15 @@ export default {
   mounted() {
     const { bubble, title, intro, list } = this.$refs
     const tl = new gsap.timeline({
-      paused: true
+      paused: true,
     })
 
     tl.fromTo(title, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.200 }, 0)
     tl.fromTo(intro, { opacity: 0 }, { opacity: 1, duration: 0.250 }, 0.2)
-    tl.fromTo(bubble.children, { scale: 0, y: 0 }, { scale: 1, y: 0, duration: 0.150, stagger: 0.1 }, 0.15)
-    tl.fromTo(list.children, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.200, stagger: 0.1 }, 0.3)
+    tl.fromTo(bubble.children, { scale: 0, y: 0 }, { scale: 1, y: 0, duration: 0.35, stagger: 0.1 }, 0.25)
+    tl.fromTo(list.children, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.12 }, 0.2)
 
-    tl.timeScale(0.5)
-
+    tl.timeScale(0.85)
 
     this.waypoint = new this.$waypoint.Inview({
       element: this.$el,

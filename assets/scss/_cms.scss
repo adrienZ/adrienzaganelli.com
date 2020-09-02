@@ -48,18 +48,22 @@
     @apply font-bold;
   }
 
-  p,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h5,
-  pre,
-  img,
-  video,
-  iframe {
-    margin-top: 2rem;
+  * + {
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h5,
+    pre,
+    img,
+    video,
+    iframe,
+    figure,
+    .twitter-tweet {
+      margin-top: 2rem;
+    }
   }
 
   img, iframe, video {
@@ -97,5 +101,13 @@
   // center tweet embed
   .twitter-tweet-rendered {
     @apply mx-auto;
+  }
+
+  .twitter-tweet:not(.twitter-tweet-rendered) {
+    p {
+      margin-top: 0;
+    }
+
+    @apply border-2 p-6 border-black rounded-lg;
   }
 }
