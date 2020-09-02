@@ -5,7 +5,7 @@
     <div class="cms-container">
       <cHeader class="opacity-75"/>
 
-      <div class="project-header leading-tight uppercase tracking-tight mt-20">
+      <div class="project-header leading-tight uppercase tracking-tight mt-10 sm:mt-20">
 
         <div ref="titles">
           <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
@@ -22,11 +22,11 @@
           <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
         </article>
 
-        <aside class="sm:w-4/3 text-sm">
+        <aside class="sm:w-4/3 text-sm mb-10">
           <p><span class="font-semibold">When: </span><time>{{project.acf.time_period}}</time></p>
           <p><span class="font-semibold">My role: </span><span>{{project.acf.role}}</span></p>
 
-          <div>
+          <div v-if="project.acf.team.length">
             <span class="font-semibold block">The team: </span>
             <ul>
               <li :key="teammate.collaborator[0].ID" v-for="teammate in project.acf.team">
@@ -35,13 +35,13 @@
             </ul>
           </div>
 
-          <div class="inline-block sm:sticky mt-6 project-cta">
+          <div class="inline-block sm:sticky mt-2 sm:mt-6 project-cta">
 
             <div class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1">
               <a class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</a>
             </div>
 
-            <div class="mt-2">
+            <div class="mt-2 hidden sm:block">
               <nuxt-link class="font-semibold underline" to="/">Back to Home</nuxt-link>
             </div>
 
