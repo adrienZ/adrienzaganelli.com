@@ -7,7 +7,9 @@ body, html {
   @apply bg-light text-black font-sans;
 }
 
-html {
+#__nuxt {
+  position: relative;
+  width: 100%;
   overflow-x: hidden;
 }
 
