@@ -18,13 +18,11 @@
 
 
       <div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
-        <main class="sm:w-3/4 sm:mr-4 flex-shrink-0">
-          <article>
+          <article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
             <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
           </article>
-        </main>
 
-        <aside class="sm:w-4/3 text-sm mb-10 sm:mb-0">
+        <aside class="sm:w-4/3 sticky top-0 text-sm mb-10 sm:mb-0">
           <p><span class="font-semibold">When: </span><time>{{project.acf.time_period}}</time></p>
           <p><span class="font-semibold">My role: </span><span>{{project.acf.role}}</span></p>
 

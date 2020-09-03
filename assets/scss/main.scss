@@ -7,12 +7,6 @@ body, html {
   @apply bg-light text-black font-sans;
 }
 
-#__nuxt {
-  position: relative;
-  width: 100%;
-  overflow-x: hidden;
-}
-
 @import 'sass-easing/_easings';
 
 @import 'typography';
