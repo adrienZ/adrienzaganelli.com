@@ -1,8 +1,8 @@
 <template>
-  <ul class="c-list">
+  <ul class="c-list font-semibold">
 
     <li class="c-list__item text-left mb-3 sm:mb-8" :key="index" v-for="(p, index) in $store.state.projects">
-      <nuxt-link event="" @click.native.prevent="onSelectCallback(index)" @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block">
+      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block">
         <div class="relative">
           <h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
             <span class="inline-block c-list__item__index tracking-wide">{{formatIndex(index)}}</span>
@@ -28,9 +28,6 @@ const useTimer = (duration, callback) => {
 export default {
   created() {
     this.cancel = this.cancel.bind(this)
-  },
-  props: {
-    onSelectCallback: Function
   },
   data() {
     return {
@@ -81,11 +78,11 @@ export default {
 
 <style lang="scss" scoped>
   .c-list__item {
-    &:hover &__index,
-    &:focus &__index
-    {
-      -webkit-text-stroke-color: transparent;
-      @apply bg-pimper;
+      &.active &__index,
+      &.active &__index
+      {
+        -webkit-text-stroke-color: transparent;
+        @apply bg-pimper;
     }
   }
 
@@ -96,5 +93,7 @@ export default {
     background-clip: text;
     color: transparent;
     background-color: transparent;
+
+    transition: 0.2s cubic-bezier(0.47, 0, 0.745, 0.715);
   }
 </style>

@@ -5,7 +5,7 @@
     <div class="cms-container">
       <cHeader class="opacity-75"/>
 
-      <div class="project-header leading-tight uppercase tracking-tight mt-10 sm:mt-20">
+      <div class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12">
 
         <div ref="titles">
           <span class="block text-4xl sm:text-5xl font-bold">{{project.title.rendered}}</span>
@@ -13,16 +13,16 @@
           <h1 class="text-5xl sm:text-6xl font-bold">{{project.title.rendered}}</h1>
         </div>
 
-        <p class="mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4">{{project.acf.summary}}</p>
+        <p class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4">{{project.acf.summary}}</p>
       </div>
 
 
-      <div class="flex-col-reverse sm:flex-row flex mt-12">
+      <div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
         <article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
           <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
         </article>
 
-        <aside class="sm:w-4/3 text-sm mb-10">
+        <aside class="sm:w-4/3 text-sm mb-10 sm:mb-0">
           <p><span class="font-semibold">When: </span><time>{{project.acf.time_period}}</time></p>
           <p><span class="font-semibold">My role: </span><span>{{project.acf.role}}</span></p>
 
@@ -35,7 +35,7 @@
             </ul>
           </div>
 
-          <div class="inline-block sm:sticky mt-2 sm:mt-6 project-cta">
+          <div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
 
             <div class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1">
               <a class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</a>
@@ -68,7 +68,7 @@ import gsap from 'gsap'
 import withPageTransition from '@/mixins/withPageTransition'
 import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
-import withMediaModal from '@/mixins/withMediaModal'
+// import withMediaModal from '@/mixins/withMediaModal'
 
 export default {
   async asyncData({ params, payload, store }) {
@@ -130,7 +130,7 @@ export default {
     this.waypoint.destroy()
     window.removeEventListener('scroll', this.handleBackToTop)
   },
-  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages, withMediaModal],
+  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages],
   components: {
     cNextProject,
     cBackToTop,

@@ -3,9 +3,9 @@
     <h3 ref="title" class="landing-title">Selected Works:</h3>
 
     <div class="sm:flex justify-between items-start">
-      <cList class="flex-grow-0 flex-shrink-0" ref="list" :onSelectCallback="onProjectSelect" v-on:update="onProjectChange"/>
+      <cList class="flex-grow-0 flex-shrink-0" ref="list" v-on:update="onProjectChange"/>
 
-      <nuxt-link event="" :to="'/projects/' + slug"  ref="media" @click.native.prevent="onProjectSelect(index)" class="c-showcase__media sm:hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" aria-label="Showcase project preview">
+      <nuxt-link :to="'/projects/' + slug"  ref="media" class="c-showcase__media mt-2 sm:mt-0 sm:hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" aria-label="Showcase project preview">
         <cThumbnail :index="index" :media="media" />
       </nuxt-link>
     </div>
@@ -98,6 +98,14 @@ export default {
       this.media = project.acf.showcase_image
       this.slug = project.slug
       this.index = index
+
+      Array.from(this.$refs.list.$el.children).forEach((el, k) => {
+        k === index
+        ? el.classList.add('active')
+        : el.classList.remove('active')
+      })
+
+      this.$refs.list.$el.children[index].class
     },
     followMouse() {
       if( !this._isBeingDestroyed) {
