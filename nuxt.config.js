@@ -7,6 +7,7 @@ export default {
   ** Headers of the page
   */
   head: {
+    __dangerouslyDisableSanitizers: ['script'],
     title: 'Adrien Zaganelli Portfolio 💻',
     htmlAttrs: {
       lang: 'en',

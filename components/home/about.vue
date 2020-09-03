@@ -25,18 +25,17 @@
             data-rellax-percentage="0">
           <p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
 
-          <p class="mt-4">HETIC graduate, I learned how to code, design and do business on the Web. I like to try new
-            things everyday on this (very) curious world.</p>
+          <p class="mt-4">HETIC graduate, I learned how to code, design and do business on the Web. I like to try new things everyday on this (very) curious world.</p>
 
-          <p class="mt-4">From Paris to Montréal, I've joined several nice places. Companies and agencies as well, such as:
+          <p class="mt-4">From Paris to Montréal, I've worked in several nice places. Both Companies and agencies, such as:
             <cExternal href="https://agence-me.com"><i>AgenceMe</i></cExternal>,
             <cExternal href="https://sketchfab.com"><i>Sketchfab</i></cExternal>,
             <cExternal href="https://akufen.ca"><i>Akufen Studio</i></cExternal>,
             <cExternal href="https://hki.paris"><i>HelloHikimori</i></cExternal>,
-            <cExternal href="https://colorz.fr"><i>Colorz</i></cExternal>.
+            and <cExternal href="https://colorz.fr"><i>Colorz</i></cExternal>.
           </p>
 
-          <p class="mt-4">When I can, I write some articles for tech publishers, find them below: </p>
+          <p class="mt-4">In my spare time, I write some articles for tech publishers, find them below: </p>
           <ul class="italic text-lg">
             <li class="my-3 sm:my-0">
               &rarr; <cExternal
@@ -65,8 +64,10 @@
 </template>
 
 <script>
+// components
 import cExternal from '@/components/common/external.vue'
 
+// mixins
 import withLazyImages from '@/mixins/withLazyImages'
 
 export default {

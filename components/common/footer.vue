@@ -6,7 +6,7 @@
     <div class="-mt-4 sm:mt-0 md:flex justify-between items-end pb-16">
       <ul class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed">
         <!-- Links -->
-        <li v-if="$nuxt.$route.name !== 'index'" class="md:mr-5">
+        <li v-if="$nuxt.$route.path !== '/'" class="md:mr-5">
           <nuxt-link class="underline-effect--hover inline-block" to="/">Portfolio.</nuxt-link>
         </li>
         <li class="md:mr-5">

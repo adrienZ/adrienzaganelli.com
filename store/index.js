@@ -51,7 +51,7 @@ export const getters = {
     const current = projects.map(p => p.slug).indexOf(project.slug)
     let nextIndex = current + 1
 
-    if (current === projects.length) {
+    if (current === projects.length - 1) {
       nextIndex = 0
     }
 

@@ -13,7 +13,7 @@
         <figcaption class="text-center mt-2 italic" v-html="heroImg[0].caption.rendered"></figcaption>
       </figure>
 
-      <div class="cms-block" ref="cms_block" v-html="post.content.rendered"></div>
+      <div class="cms-block mt-5" ref="cms_block" v-html="post.content.rendered"></div>
 
       <div class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"></div>
 

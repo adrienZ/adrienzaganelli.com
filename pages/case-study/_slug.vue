@@ -50,7 +50,7 @@
       </div>
 
 
-      <cNextProject :project="nextProject" class="mt-5 sm:mt-10"/>
+      <cNextProject :project="nextProject" class="mt-5 sm:mt-16"/>
       <cFooter class="sm:mt-16 mt-10" />
     </div>
 
