@@ -18,9 +18,11 @@
 
 
       <div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
-        <article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
-          <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
-        </article>
+        <main class="sm:w-3/4 sm:mr-4 flex-shrink-0">
+          <article>
+            <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
+          </article>
+        </main>
 
         <aside class="sm:w-4/3 text-sm mb-10 sm:mb-0">
           <p><span class="font-semibold">When: </span><time>{{project.acf.time_period}}</time></p>
@@ -38,16 +40,19 @@
           <div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
 
             <div class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1">
-              <a class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</a>
+              <cExternal @mouseover.native="$bus.$emit('cursor-default')" class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</cExternal>
             </div>
 
             <div class="mt-2 hidden sm:block">
-              <nuxt-link class="font-semibold underline" to="/">Back to Home</nuxt-link>
+              <nuxt-link @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" class="font-semibold underline" to="/">Back to Home</nuxt-link>
             </div>
 
           </div>
         </aside>
       </div>
+
+
+      <cNextProject :project="nextProject" class="mt-5 sm:mt-10"/>
       <cFooter class="sm:mt-16 mt-10" />
     </div>
 
@@ -62,6 +67,7 @@ import cNextProject from '@/components/project/next-project.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
 import cFooter from '@/components/common/footer.vue'
 import cHeader from '@/components/home/header.vue'
+import cExternal from '@/components/common/external.vue'
 
 import gsap from 'gsap'
 
@@ -136,6 +142,7 @@ export default {
     cBackToTop,
     cFooter,
     cHeader,
+    cExternal,
   },
   methods: {
     handleBackToTop() {
