@@ -15,6 +15,7 @@ export const writeLazyWpVideos = str => {
   return str.replace(videoRegExp, str => {
     let res = str
     res = res.replace('<video', '<video class="lazyload"' )
+    res = res.replace('src="', 'data-src="' )
     return res
   })
 }

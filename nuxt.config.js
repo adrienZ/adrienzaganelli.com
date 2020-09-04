@@ -15,7 +15,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Adrien Zaganelli. Front-end developer made in 🇫🇷' },
+      { hid: 'description', name: 'description', content: 'Adrien Zaganelli. Front-end developer made in France 🇫🇷' },
       { httpEquiv: 'x-ua-compatible ', content: 'ie=edge' },
       { name: 'twitter:dnt', content: 'on' },
     ],
@@ -28,7 +28,7 @@ export default {
         innerHTML: `
         var host = window.location.hostname;
 
-        if(host !== "adrienzaganelli.com")
+        if(host === "adrienzaganelli.com")
         {
             window.addEventListener('load', function() {
               (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-71779539-1', 'auto'); ga('send', 'pageview');

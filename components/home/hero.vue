@@ -8,12 +8,12 @@
       </div>
 
       <ul ref="list" class="mt-5 leading-relaxed">
-        <li class="group">
+        <li class="group flex">
           <span>📩</span>
           <a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="mailto:adrienzaganelli@gmail.com" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Contact me</a>
         </li>
-        <li class="group"><span>✏️</span><nuxt-link title="my blog" class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" to='/blog'>Blog</nuxt-link></li>
-        <li class="group">⚙️<a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="https://zigzag-components.netlify.app/" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Components</a><span></span></li>
+        <li class="group flex"><span>✏️</span><nuxt-link title="my blog" class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" to='/blog'>Blog</nuxt-link></li>
+        <li class="group flex">⚙️<a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="https://zigzag-components.netlify.app/" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Components</a><span></span></li>
       </ul>
     </div>
 
@@ -24,7 +24,7 @@
         data-rellax-xs-speed="-3"
         data-rellax-percentage="0.5"
       >
-      <div class="circle w-full  bg-light shadow-xl "></div>
+      <div class="circle w-full bg-light shadow-xl "></div>
       <div class="circle w-2/3  bg-light shadow-lg"></div>
       <div class="circle w-1/3  bg-light shadow-md"></div>
     </div>

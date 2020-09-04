@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       media: this.$store.state.projects[0].acf.showcase_image,
-      slug: null,
+      slug: this.$store.state.projects[0].slug,
       index: 0,
       isLoading: false,
     }

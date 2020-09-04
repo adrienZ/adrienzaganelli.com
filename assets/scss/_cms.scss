@@ -14,6 +14,21 @@
     font-size: 80%;
   }
 
+  blockquote
+  {
+    font-style: normal;
+    border-left: 4px solid #CCC;
+    @apply pl-2 text-lg;
+
+    cite {
+      @apply text-base opacity-50;
+    }
+
+    p {
+      @apply italic;
+    }
+  }
+
   a {
     @apply underline;
 
@@ -74,6 +89,11 @@
     @apply h-auto;
   }
 
+  .blocks-gallery-grid {
+    padding: 0;
+    list-style: none;
+  }
+
   .lazyload[data-src]::before {
     content: '';
     display: block;
@@ -82,7 +102,7 @@
   }
 
   figcaption {
-    @apply text-center mt-2 italic;
+    @apply text-center mt-2 italic text-base;
   }
 
   iframe {

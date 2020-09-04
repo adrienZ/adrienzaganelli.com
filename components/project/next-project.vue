@@ -9,7 +9,9 @@
       </div>
 
       <div class="md:w-2/3 sm:w-1/2 sm:px-3 mt-3 sm:mt-0" @mouseover="$bus.$emit('cursor-difference')" @mouseleave="$bus.$emit('cursor-default')">
-        <nuxt-link :to="'/case-study/' + project.slug" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')"><cMedia :src="project.acf.showcase_image.url" :type="project.acf.showcase_image.type" /></nuxt-link>
+        <nuxt-link :to="'/case-study/' + project.slug" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')">
+          <cMedia src="" :data-src="project.acf.showcase_image.url" :type="project.acf.showcase_image.type" class="lazyload" />
+        </nuxt-link>
       </div>
     </div>
   </section>

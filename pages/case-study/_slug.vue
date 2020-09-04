@@ -22,7 +22,7 @@
             <div ref="cms_block" class="cms-block" v-html="project.content.modified"></div>
           </article>
 
-        <aside class="sm:w-4/3 sticky top-0 text-sm mb-10 sm:mb-0">
+        <aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
           <p><span class="font-semibold">When: </span><time>{{project.acf.time_period}}</time></p>
           <p><span class="font-semibold">My role: </span><span>{{project.acf.role}}</span></p>
 
@@ -72,6 +72,8 @@ import gsap from 'gsap'
 import withPageTransition from '@/mixins/withPageTransition'
 import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
+import withCodeHighlight from '@/mixins/withCodeHighlight'
+
 // import withMediaModal from '@/mixins/withMediaModal'
 
 export default {
@@ -134,7 +136,7 @@ export default {
     this.waypoint.destroy()
     window.removeEventListener('scroll', this.handleBackToTop)
   },
-  mixins: [withPageTransition, withTwitterEmbeds, withLazyImages],
+  mixins: [withPageTransition, withCodeHighlight, withTwitterEmbeds, withLazyImages],
   components: {
     cNextProject,
     cBackToTop,
