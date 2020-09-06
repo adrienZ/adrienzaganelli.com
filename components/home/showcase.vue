@@ -5,7 +5,7 @@
     <div class="sm:flex justify-between items-start">
       <cList class="flex-grow-0 flex-shrink-0" ref="list" v-on:update="onProjectChange"/>
 
-      <nuxt-link :to="'/case-study/' + slug"  ref="media" class="c-showcase__media mt-2 sm:mt-0 sm:hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" aria-label="Showcase project preview">
+      <nuxt-link :to="'/case-study/' + slug"  ref="media" class="c-showcase__media mt-2 sm:mt-0 hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" aria-label="Showcase project preview">
         <cThumbnail :index="index" :media="media" />
       </nuxt-link>
     </div>
@@ -79,6 +79,26 @@ export default {
         gsap.ticker.remove(this.onFrame);
       }
     });
+
+
+    // preload medias with ajax
+    document.documentElement.clientWidth >= 1280 && window.addEventListener('load', () => {
+      this.$store.state.projects.forEach(p => {
+        switch (p.acf.showcase_image.type) {
+          case "image":
+            const image = new Image()
+            image.crossOrigin = 'anonymous'
+            image.src = p.acf.showcase_image.url
+            break;
+          case "video":
+            const video = document.createElement('video')
+            video.crossOrigin = 'anonymous'
+            video.src = p.acf.showcase_image.url
+            video.load()
+            break;
+        }
+      })
+    })
   },
   destroyed() {
     this.fadeWaypoint.destroy()
