@@ -1,0 +1,3 @@
+[build]
+  command = "nuxt build --target static && nuxt export"
+  publish = "dist/"
