@@ -1,5 +1,11 @@
 <template>
-  <section class="page-home ">
+  <section class="page-home">
+    <div class="w-full absolute h-screen">
+      <div class="overflow-x-scroll">
+        <c-bubble ref="bubble" />
+      </div>
+    </div>
+
     <div class="container sm:w-3/4 w-5/6 mx-auto">
       <c-hero class="sm:pt-20 pt-10" />
       <c-showcase class="sm:mt-20 mt-10" />
@@ -13,6 +19,7 @@
 <script>
 import cShowcase from '@/components/home/showcase.vue'
 import cHero from '@/components/home/hero.vue'
+import cBubble from '@/components/home/bubble.vue'
 import cAbout from '@/components/home/about.vue'
 import cFooter from '@/components/common/footer.vue'
 
@@ -24,6 +31,7 @@ export default {
   components: {
     cShowcase,
     cHero,
+    cBubble,
     cAbout,
     cFooter,
   },
@@ -51,6 +59,5 @@ export default {
 .page-home {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
 }
 </style>
