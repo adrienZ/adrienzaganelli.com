@@ -51,6 +51,5 @@ export default {
 .page-home {
   position: relative;
   width: 100%;
-  overflow-x: hidden;
 }
 </style>

@@ -5,6 +5,7 @@ body, html {
   height: 100%;
   width: 100%;
   @apply bg-light text-black font-sans;
+  overflow-x: hidden;
 }
 
 @import 'sass-easing/_easings';
