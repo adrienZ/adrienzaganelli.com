@@ -18,6 +18,16 @@ export default {
       { hid: 'description', name: 'description', content: 'Adrien Zaganelli. Front-end developer made in France 🇫🇷' },
       { httpEquiv: 'x-ua-compatible ', content: 'ie=edge' },
       { name: 'twitter:dnt', content: 'on' },
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        content: 'website'
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: '/og-image.jpg'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },

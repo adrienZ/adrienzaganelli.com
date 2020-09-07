@@ -64,12 +64,35 @@ export default {
     cFooter,
     cBackToTop,
   },
+  head() {
+    return {
+      title: this.post.title.rendered,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.post.excerpt.rendered.replace(/(<([^>]+)>)/gi, "")
+        },
+        {
+          hid: 'og:type',
+          name: 'og:type',
+          content: 'article'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.heroImg[0].media_details.sizes.full.source_url
+        }
+      ]
+    }
+  },
   computed: {
     heroImg() {
       return this.post._embedded?.['wp:featuredmedia']
     },
   },
   mounted() {
+    console.log(this.post);
     window.addEventListener('scroll', this.handleBackToTop)
   },
   destroyed() {
