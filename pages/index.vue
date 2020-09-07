@@ -27,6 +27,24 @@ export default {
     cAbout,
     cFooter,
   },
+  head: {
+    meta: [
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        content: 'website'
+      },
+      {
+        hid: 'og:image',
+        hid: 'og:image',
+        content: '/og-image.jpg'
+      },
+      {
+        hid: 'og:image',
+        hid: 'og:image',
+      },
+    ]
+  },
   mounted() {
     if (!document.documentMode) {
       this.rellax = new Rellax('.rellax', {
