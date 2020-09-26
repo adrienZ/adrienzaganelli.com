@@ -1,5 +1,5 @@
 <template>
-  <section class="page-home ">
+  <section class="page-home">
     <div class="container sm:w-3/4 w-5/6 mx-auto">
       <c-hero class="sm:pt-20 pt-10" />
       <c-showcase class="sm:mt-20 mt-10" />
@@ -48,9 +48,16 @@ export default {
 
 
 <style lang="scss">
+// scroll container
+// overflow-x hidden
+// BUT
+// keep position sticky
 .page-home {
-  position: relative;
+  position: absolute;
   width: 100%;
+  height: 100%;
+  overflow-y: scroll;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 </style>
