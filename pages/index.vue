@@ -33,6 +33,7 @@ export default {
         // default tailwind breakpoints
         breakpoints: [768, 1024, 1280],
         round: true,
+        wrapper: this.$el,
       })
     }
   },
