@@ -1,6 +1,8 @@
 <template>
   <section class="page-post">
-    <article class="cms-container">
+    <cProgressBar ref="progress_bar"/>
+
+    <article ref="article" class="cms-container">
 
       <h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">{{post.title.rendered}}</h1>
 
@@ -14,7 +16,9 @@
       </figure>
 
       <div class="cms-block mt-5" ref="cms_block" v-html="post.content.rendered"></div>
+    </article>
 
+    <div class="cms-container">
       <div class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"></div>
 
       <div>
@@ -27,8 +31,7 @@
       </div>
 
       <cFooter class="sm:mt-16 mt-10" />
-
-    </article>
+    </div>
 
     <cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8"/>
   </section>
@@ -40,8 +43,14 @@ import cHireMe from '@/components/c-hire-me.vue'
 import cSharePost from '@/components/c-share-post.vue'
 import cFooter from '@/components/common/footer.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
+import cProgressBar from '@/components/blog/ProgressBar.vue'
 
 import withCodeHighlight from '@/mixins/withCodeHighlight'
+
+
+function clamp(num, min, max) {
+  return num <= min ? min : num >= max ? max : num;
+}
 
 export default {
   layout: 'blog',
@@ -63,6 +72,7 @@ export default {
     cSharePost,
     cFooter,
     cBackToTop,
+    cProgressBar,
   },
   head() {
     return {
@@ -93,21 +103,28 @@ export default {
   },
   mounted() {
     console.log(this.post);
-    window.addEventListener('scroll', this.handleBackToTop)
+    window.addEventListener('scroll', this.onScroll)
   },
   destroyed() {
-    window.removeEventListener('scroll', this.handleBackToTop)
+    window.removeEventListener('scroll', this.onScroll)
   },
   methods: {
-    handleBackToTop() {
-      const backToTop = this.$refs.back_to_top
+    onScroll() {
+      const progressBar = this.$refs.progress_bar
+      const article = this.$refs.article
 
+      const readProgress = (window.scrollY - article.offsetTop) / article.offsetHeight
+
+
+      progressBar.value = clamp(readProgress, 0, 1)
+
+      const backToTop = this.$refs.back_to_top
       if (window.scrollY > 0) {
-        backToTop.show()
+        backToTop.hidden && backToTop.show()
       } else {
-        backToTop.hide()
+        !backToTop.hidden && backToTop.hide()
       }
-    }
+    },
   }
 };
 </script>

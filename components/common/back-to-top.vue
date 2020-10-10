@@ -7,13 +7,33 @@
 </template>
 
 <script>
+import gsap from 'gsap'
+
 export default {
+  beforeMount() {
+    this.reducedMotion = !!window.matchMedia('(prefers-reduced-motion: reduce)').matches.length
+  },
+  data() {
+    return {
+      hidden: true,
+    }
+  },
   methods: {
     show() {
-      this.$el.classList.remove('opacity-0')
+      this.hidden = false
+      if (this.reducedMotion) {
+        this.$el.classList.remove('opacity-0')
+      } else {
+        gsap.fromTo(this.$el, { opacity: 0, y: 100}, { opacity: 1, y: 0, duration: 0.250})
+      }
     },
     hide() {
-      this.$el.classList.add('opacity-0')
+      this.hidden = true
+      if (this.reducedMotion) {
+        this.$el.classList.addEventListener('opacity-0')
+      } else {
+        gsap.to(this.$el, { opacity: 0, y: 30, duration: 0.150})
+      }
     },
     resetScroll() {
       document.body.scrollIntoView({
