@@ -110,14 +110,13 @@ export default {
   },
   methods: {
     onScroll() {
+      // handle reading progress
       const progressBar = this.$refs.progress_bar
       const article = this.$refs.article
-
       const readProgress = (window.scrollY - article.offsetTop) / article.offsetHeight
-
-
       progressBar.value = clamp(readProgress, 0, 1)
 
+      // handle backtop
       const backToTop = this.$refs.back_to_top
       if (window.scrollY > 0) {
         backToTop.hidden && backToTop.show()

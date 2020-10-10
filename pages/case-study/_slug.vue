@@ -146,12 +146,12 @@ export default {
   },
   methods: {
     handleBackToTop() {
+      // handle backtop
       const backToTop = this.$refs.back_to_top
-
       if (window.scrollY > 0) {
-        backToTop.show()
+        backToTop.hidden && backToTop.show()
       } else {
-        backToTop.hide()
+        !backToTop.hidden && backToTop.hide()
       }
     }
   }
