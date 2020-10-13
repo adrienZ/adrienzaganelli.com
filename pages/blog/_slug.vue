@@ -47,6 +47,7 @@ import cProgressBar from '@/components/blog/ProgressBar.vue'
 
 import withCodeHighlight from '@/mixins/withCodeHighlight'
 
+import gsap from 'gsap'
 
 function clamp(num, min, max) {
   return num <= min ? min : num >= max ? max : num;
@@ -113,8 +114,12 @@ export default {
       // handle reading progress
       const progressBar = this.$refs.progress_bar
       const article = this.$refs.article
-      const readProgress = (window.scrollY - article.offsetTop) / article.offsetHeight
-      progressBar.value = clamp(readProgress, 0, 1)
+      const readProgress = ((window.innerHeight / 2) + window.scrollY - article.offsetTop) / article.offsetHeight
+
+      gsap.to(
+        progressBar,
+        { value: clamp(readProgress, 0, 1), duration: 0.5, ease: 'power4.out' }
+      )
 
       // handle backtop
       const backToTop = this.$refs.back_to_top

@@ -1,5 +1,5 @@
 <template>
-  <div class="ProgressBar sticky z-50 origin-left top-0 h-2 w-full bg-pimper"></div>
+  <div class="ProgressBar fixed z-50 origin-left left-0 top-0 h-2 w-full bg-pimper"></div>
 </template>
 
 <style scoped>
