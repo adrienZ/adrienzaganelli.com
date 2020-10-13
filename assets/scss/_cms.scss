@@ -1,7 +1,6 @@
 .cms-container {
-  max-width: 980px;
   // center content and margins
-  @apply mx-auto px-4 pb-10;
+  @apply max-w-4xl mx-auto px-4 pb-10;
 }
 
 .cms-block {

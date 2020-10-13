@@ -50,7 +50,11 @@ export default {
 
 <style lang="scss" scoped>
 // nuxt target static has a lot of limitations for routing...
-.page-home .c-footer li:first-child {
+.c-footer li:first-child {
   display: none;
+
+  .page-home & {
+    display: block;
+  }
 }
 </style>
