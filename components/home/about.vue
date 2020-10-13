@@ -54,7 +54,7 @@
             </li>
           </ul>
 
-          <p class="mt-4">Last but not least, <b>I'm looking for a new job in Paris this fall.</b> you can contact me here:
+          <p v-if="$store.state.NEED_JOB" class="mt-4">Last but not least, <b>I'm looking for a new job in Paris this fall.</b> you can contact me here:
             <cExternal class="text-pimper underline-effect--link" href="mailto:adrienzaganelli@gmail.com">adrienzaganelli@gmail.com
             </cExternal>
           </p>

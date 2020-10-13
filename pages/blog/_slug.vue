@@ -26,7 +26,7 @@
       </div>
 
       <div class="mt-8">
-        <cHireMe />
+        <cHireMe v-if="$store.state.NEED_JOB"/>
         <cAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
       </div>
 
