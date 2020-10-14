@@ -2,7 +2,7 @@
   <div>
     <Icons />
     <Header />
-    <nuxt />
+    <nuxt class="layout-blog"/>
   </div>
 </template>
 

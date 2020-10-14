@@ -161,12 +161,9 @@ export default {
 <style lang="scss" scoped>
 .page-project {
 
-  .main-container {
-    max-width: 680px;
-  }
-
   .cms-container {
     padding-bottom: 0;
+    @apply max-w-5xl;
   }
 
   .mixin-scale-overlay {

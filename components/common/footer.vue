@@ -6,22 +6,22 @@
     <div class="-mt-4 sm:mt-0 md:flex justify-between items-end pb-16">
       <ul class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed">
         <!-- Links -->
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="website">
           <nuxt-link class="underline-effect--hover inline-block" to="/">Portfolio.</nuxt-link>
         </li>
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="twitter">
           <cExternal class="underline-effect--hover inline-block" href="https://twitter.com/adri_zag">Twitter.</cExternal>
         </li>
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="linkedin">
           <cExternal class="underline-effect--hover inline-block" href="https://www.linkedin.com/in/adrienzaganelli/">Linkedin.</cExternal>
         </li>
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="github">
           <cExternal class="underline-effect--hover inline-block" href="https://github.com/adrienZ">Github.</cExternal>
         </li>
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="codepen">
           <cExternal class="underline-effect--hover inline-block" href="https://codepen.io/adri_zag">Codepen.</cExternal>
         </li>
-        <li class="md:mr-5">
+        <li class="md:mr-5" data-type="email">
           <cExternal class="underline-effect--hover inline-block" href="mailto:adrienzaganelli@gmail.com">E-mail.</cExternal>
         </li>
         <!-- End Links -->
@@ -50,11 +50,13 @@ export default {
 
 <style lang="scss" scoped>
 // nuxt target static has a lot of limitations for routing...
-.c-footer li:first-child {
+.page-home .c-footer li[data-type="website"] {
   display: none;
-
-  .page-home & {
-    display: block;
-  }
 }
+
+.layout-blog .c-footer li[data-type="linkedin"] {
+  display: none;
+}
+
+
 </style>
