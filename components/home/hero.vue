@@ -4,7 +4,7 @@
 
       <div class="text-2xl">
         <p class="landing-title" ref="title">Welcome :)</p>
-        <p ref="intro">My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.colorz.fr/" class="hover:text-pimper focus:text-pimper" title="Colorz: Agence digitale et web à Paris" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Colorz</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
+        <p ref="intro">My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.leetchi.com/" class="hover:text-pimper focus:text-pimper" title="Leetchi - La cagnotte en ligne sécurisée - Création Gratuite" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Leetchi</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
       </div>
 
       <ul ref="list" class="mt-5 leading-relaxed">
