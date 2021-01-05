@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "@nuxtjs/tailwindcss": "^3.0.2",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "curtainsjs": "^6.2.2",
     "gsap": "^3.4.0",
     "lazysizes": "^5.2.2",
