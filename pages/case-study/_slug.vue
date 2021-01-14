@@ -1,7 +1,5 @@
 <template>
   <section class="page-project project">
-    <div ref="scale_overlay" class="mixin-scale-overlay"></div>
-
     <div class="cms-container">
       <cHeader class="opacity-75"/>
 
@@ -56,6 +54,7 @@
 
 
     <cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8"/>
+    <cImageModale />
   </section>
 
 </template>
@@ -66,6 +65,7 @@ import cBackToTop from '@/components/common/back-to-top.vue'
 import cFooter from '@/components/common/footer.vue'
 import cHeader from '@/components/home/header.vue'
 import cExternal from '@/components/common/external.vue'
+import cImageModale from '@/components/project/image-modale.vue'
 
 import gsap from 'gsap'
 
@@ -73,8 +73,6 @@ import withPageTransition from '@/mixins/withPageTransition'
 import withTwitterEmbeds, {writeAsyncTwitterEmbeds} from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {writeLazyWpImages, writeLaztyIframes ,writeLazyWpVideos} from '@/mixins/withLazyImages'
 import withCodeHighlight from '@/mixins/withCodeHighlight'
-
-// import withMediaModal from '@/mixins/withMediaModal'
 
 export default {
   async asyncData({ params, payload, store }) {
@@ -131,6 +129,22 @@ export default {
       },
     });
 
+    [...this.$refs.cms_block.querySelectorAll('.wp-block-image, .wp-block-video')].forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        this.$bus.$emit('cursor-difference')
+        this.$bus.$emit('cursor-hover')
+      })
+      el.addEventListener('mouseout', () => this.$bus.$emit('cursor-default'))
+
+      const _this = this
+      el.addEventListener('click', function () {
+        const src = this.querySelector('[src]').src
+        const type = this.className.split('wp-block-')[1].split(' ')[0]
+        _this.$bus.$emit('preview-open', src, type)
+      })
+    })
+
+
   },
   destroyed() {
     this.waypoint.destroy()
@@ -143,6 +157,7 @@ export default {
     cFooter,
     cHeader,
     cExternal,
+    cImageModale,
   },
   methods: {
     handleBackToTop() {
@@ -153,7 +168,7 @@ export default {
       } else {
         !backToTop.hidden && backToTop.hide()
       }
-    }
+    },
   }
 };
 </script>
@@ -224,14 +239,6 @@ export default {
         @apply shadow-xl;
 
         transition: opacity .5s;
-      }
-
-      &.scaled {
-        z-index: 2;
-      }
-
-      &.scaled:before {
-        opacity: 1;
       }
     }
   }
