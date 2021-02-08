@@ -3,7 +3,7 @@
     <a v-if="osShareEnabled" href="#" class="text-center sm:text-left block sm:inline-block border-pimper border-2 text-pimper text-white font-bold py-2 px-4 rounded" @click="nativeShare">
       <span class="inline-block align-middle">Share this post</span>
     </a>
-    <a class="facebook text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 bg-gray-500 text-white font-bold py-2 px-4 rounded" @click="openModal" :href="facebookShareUrl" target="_blank">
+    <a class="facebook text-center sm:text-left block sm:inline-block bg-gray-500 text-white font-bold py-2 px-4 rounded" :class="{ 'sm:ml-4 mt-2 sm:mt-0': osShareEnabled}" @click="openModal" :href="facebookShareUrl" target="_blank">
       <span class="inline-block align-middle">Share on </span>
       <svg class="w-4 h-4 ml-1 inline-block align-middle fill-current"><use xlink:href="#icon-facebook" x="0" y="0"/></svg>
     </a>
