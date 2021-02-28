@@ -9,6 +9,7 @@ analytics.install = function (Vue) {
   splitbee.init({
     scriptUrl: prefixUrl + "/bee.js",
     apiUrl: prefixUrl + "/_hive",
+    token: 'FONCSL17THB4',
   })
   Vue.prototype.$analytics = splitbee
 }
