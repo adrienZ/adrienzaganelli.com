@@ -73,6 +73,7 @@ export default {
   */
   plugins: [
     '~/plugins/bus',
+    '~/plugins/analytics.client',
     '~/plugins/waypoints.client',
   ],
   /*
