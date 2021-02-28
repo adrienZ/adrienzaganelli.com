@@ -2,7 +2,16 @@
   command = "nuxt build --target static && nuxt export"
   publish = "dist/"
 
+[[redirects]]
+  from = "/bee.js"
+  to = "https://cdn.splitbee.io/sb.js"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
 
 [[redirects]]
-  /bee.js  https://cdn.splitbee.io/sb.js  200
-  /_hive/*  https://hive.splitbee.io/:splat  200
+  from = "/_hive/*"
+  to = "https://hive.splitbee.io/:splat "
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
