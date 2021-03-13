@@ -10,8 +10,8 @@
   headers = {X-From = "Netlify"}
 
 [[redirects]]
-  from = "/_hive/*"
-  to = "https://hive.splitbee.io/:splat "
+  from = "https://hive.adrienzaganelli.com/*"
+  to = "https://hive.splitbee.io/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}

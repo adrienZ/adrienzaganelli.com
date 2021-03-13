@@ -78,9 +78,6 @@ export default {
   */
   build: {
     extractCSS: false,
-    analyze: process.env.NODE_ENV === 'production' ? {
-      analyzerMode: 'static'
-    } : false,
 
     /*
     ** You can extend webpack config here
