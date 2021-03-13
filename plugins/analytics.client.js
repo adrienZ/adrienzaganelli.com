@@ -5,7 +5,9 @@ import Vue from 'vue'
 const analytics = {}
 
 analytics.install = function (Vue) {
-  splitbee.init()
+  splitbee.init({
+    scriptUrl: '/bee.php'
+  })
   Vue.prototype.$analytics = splitbee
 }
 
