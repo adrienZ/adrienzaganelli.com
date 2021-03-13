@@ -6,7 +6,8 @@ const analytics = {}
 
 analytics.install = function (Vue) {
   splitbee.init({
-    scriptUrl: '/bee.php'
+    scriptUrl: '/bee.php',
+    apiUrl: "/_hive",
   })
   Vue.prototype.$analytics = splitbee
 }
