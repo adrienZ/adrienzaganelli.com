@@ -6,8 +6,8 @@ const analytics = {}
 
 analytics.install = function (Vue) {
   splitbee.init({
-    scriptUrl: '/bee.php',
-    apiUrl: "https://zigzag-preprod.netlify.app/_hive",
+    scriptUrl: 'https://zigzag-proxy.netlify.app/bee.js',
+    apiUrl: "https://zigzag-proxy.netlify.app/_hive",
   })
   Vue.prototype.$analytics = splitbee
 }
