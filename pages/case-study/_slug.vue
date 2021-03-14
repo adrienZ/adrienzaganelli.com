@@ -90,7 +90,7 @@ export default {
 
       // lazyload and options twitter embeds
       modified = writeAsyncTwitterEmbeds(modified)
-      // laztsizes on image and iframes
+      // lazysizes on image and iframes
       modified = writeLazyWpImages(modified)
       // modified = writeLaztyIframes(modified)
       modified = writeLazyWpVideos(modified)
