@@ -103,7 +103,6 @@ export default {
     },
   },
   mounted() {
-    console.log(this.post);
     window.addEventListener('scroll', this.onScroll)
   },
   destroyed() {

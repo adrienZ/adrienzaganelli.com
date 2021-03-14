@@ -4,7 +4,6 @@ export const writeLazyWpImages = str => {
   const imageRegExp = /<figure.*class\s*=\s*["'].*wp-block-image.*["']\s*>(.*)<\/figure>/gi
   return str.replace(imageRegExp, str => {
     let res = str
-    console.log('oy', res);
     res = res.replace('src="', 'data-src="')
     res = res.replace('data-src="http://', 'data-src="https://' )
     res = res.replace('srcset="', 'data-srcset="')
