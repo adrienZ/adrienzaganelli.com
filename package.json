@@ -16,7 +16,7 @@
   "dependencies": {
     "@nuxtjs/tailwindcss": "^3.4.2",
     "@splitbee/web": "^0.2.4",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "curtainsjs": "^6.2.2",
     "gsap": ">=3.6.0",
     "lazysizes": "^5.3.0",
