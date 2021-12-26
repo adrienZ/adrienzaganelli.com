@@ -4,11 +4,11 @@ import Prism from 'prismjs'
 import 'prismjs/themes/prism-okaidia.css'
 
 // plugin line number
-import 'prismjs/plugins/line-numbers/prism-line-numbers';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
 import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
 
 // plugin treeview
-import 'prismjs/plugins/treeview/prism-treeview';
+import 'prismjs/plugins/treeview/prism-treeview.js';
 import 'prismjs/plugins/treeview/prism-treeview.css'
 
 // import 'prismjs/plugins/toolbar/prism-toolbar.js'
