@@ -1,7 +1,7 @@
 <template>
   <header class="c-header py-2 px-4 mb-16">
     <div class="container flex mx-auto items-center justify-between">
-        <h1 class="text-2xl" v-if="$nuxt.$route.name === 'blog'">Adrien Zagnelli's Blog</h1>
+        <h1 class="text-2xl" v-if="$route.name === 'blog'">Adrien Zagnelli's Blog</h1>
         <h2 class="text-2xl" v-else>
           <nuxt-link to="/blog/">Adrien Zagnelli's Blog</nuxt-link>
         </h2>
@@ -15,6 +15,8 @@
     </div>
   </header>
 </template>
+
+<script></script>
 
 <style scoped>
 .c-header {

@@ -1,7 +1,9 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
+import { defineNuxtConfig } from '@nuxt/bridge'
+import type { WP_REST_API_Posts } from 'wp-types';
 
-export default {
-  mode: 'universal',
+export default defineNuxtConfig({
+  ssr: true,
   target: 'static',
   /*
   ** Headers of the page
@@ -45,6 +47,15 @@ export default {
     '~/assets/scss/main.scss',
   ],
 
+  bridge: {
+    nitro: true,
+    vite: false,
+  },
+
+  typescript: {
+    strict: true,
+  },
+
   server: {
     port: 8000, // par défaut : 3000
     host: '0.0.0.0' // par défaut : localhost
@@ -67,7 +78,8 @@ export default {
   tailwindcss: {
     configPath: '~/config/tailwind.config.js',
     cssPath: '~/assets/css/tailwind.css',
-    exposeConfig: false
+    exposeConfig: false,
+    viewer: false,
   },
   /*
   ** Nuxt.js modules
@@ -82,7 +94,8 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) {
+    // @ts-ignore
+    extend(config) {
       // shader loader
       config.module.rules.push(
         {
@@ -95,11 +108,12 @@ export default {
   },
 
   generate: {
-    async routes() {
-      const projects = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/project');
-      const posts = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/posts?_embed');
+    // @ts-ignore
+    async routes() : Promise<any[]> {
+      const projects : AxiosResponse<WP_REST_API_Posts> = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/project');
+      const posts : AxiosResponse<WP_REST_API_Posts> = await axios.get('https://adrienzaganelli.com/cms/wp-json/wp/v2/posts?_embed');
 
-      const projectsRoutes = projects.data.map( project => ({
+      const projectsRoutes = projects.data.map(project => ({
         route: `/case-study/` + project.slug,
         payload: project,
       }))
@@ -112,4 +126,4 @@ export default {
       return [...postsRoutes, ...projectsRoutes]
     },
   },
-}
+})

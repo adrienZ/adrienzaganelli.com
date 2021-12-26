@@ -1,6 +1,6 @@
 [build]
-  command = "nuxt build --target static && nuxt export"
-  publish = "dist/"
+  command = "yarn build"
+  publish = ".output/"
 
 [[redirects]]
   from = "/bee.php"

@@ -46,7 +46,6 @@ export default {
     this.smoothMouse = {x: 0, y: 0}
     this.lastRender = 0
 
-
     const { media, title, list } = this.$refs
     const tl = new gsap.timeline({
       paused: true,

@@ -6,3 +6,5 @@
     <span class="inline-block ml-1 align-middle">Back to home</span>
   </nuxt-link>
 </template>
+
+<script></script>
