@@ -4,6 +4,10 @@
   "description": "Personal portfolio",
   "author": "AdrienZ",
   "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": "16.13.1"
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -30,8 +34,8 @@
   },
   "devDependencies": {
     "glslify-loader": "^2.0.0",
-    "node-sass": "^4.14.1",
     "raw-loader": "^4.0.2",
+    "sass": "^1.45.1",
     "sass-loader": "^8.0.2"
   }
 }
