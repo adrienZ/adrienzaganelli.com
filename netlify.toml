@@ -2,6 +2,10 @@
   command = "yarn build"
   publish = ".output/"
 
+[build.environment]
+  NETLIFY_USE_YARN = "true"
+  NODE_VERSION = "16.13.1"
+
 [[redirects]]
   from = "/bee.php"
   to = "https://cdn.splitbee.io/sb.js"
