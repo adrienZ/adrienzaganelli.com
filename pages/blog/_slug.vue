@@ -61,6 +61,9 @@ export default {
 
     if (payload) {
       post = payload;
+      post.title.rendered = post.title.rendered.replace(/&#(\d+);/g, function(match, dec) {
+				return String.fromCharCode(dec);
+      });
     } else if (store.state.posts.length) {
       post = store.getters.getPost(params.slug);
     }
