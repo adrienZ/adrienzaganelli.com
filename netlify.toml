@@ -2,6 +2,10 @@
   command = "nuxt build --target static && nuxt export"
   publish = "dist/"
 
+[context.production]
+  environment = { NODE_VERSION = "16.13.0" }
+
+
 [[redirects]]
   from = "/bee.php"
   to = "https://cdn.splitbee.io/sb.js"
