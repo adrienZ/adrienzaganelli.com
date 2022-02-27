@@ -13,10 +13,9 @@
     font-size: 80%;
   }
 
-  blockquote
-  {
+  blockquote {
     font-style: normal;
-    border-left: 4px solid #CCC;
+    border-left: 4px solid #ccc;
     @apply pl-2 text-lg;
 
     cite {
@@ -37,7 +36,8 @@
     }
   }
 
-  ul, ol {
+  ul,
+  ol {
     list-style: initial;
     padding-left: 20px;
   }
@@ -46,19 +46,24 @@
     @apply font-bold;
   }
 
-  h1 { @apply text-5xl; }
-  h2 { @apply text-4xl; }
-  h3 { @apply text-3xl; }
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
   // h4 { @apply text-2xl; }
   // h5 { @apply text-xl; }
 
   h1,
   h2,
-  h3
-  // h4,
-  // h5,
-  // h6
-  {
+  h3 {
+    // h4,
+    // h5,
+    // h6
     @apply font-bold;
   }
 
@@ -81,11 +86,14 @@
     }
   }
 
-  img, iframe, video {
+  img,
+  iframe,
+  video {
     @apply max-w-full mx-auto;
   }
 
-  img, video {
+  img,
+  video {
     @apply h-auto;
   }
 
@@ -95,7 +103,7 @@
   }
 
   .lazyload[data-src]::before {
-    content: '';
+    content: "";
     display: block;
     // 16:9
     padding-top: 56.25%;
@@ -114,7 +122,8 @@
   }
 
   // prism overide
-  code[class*="language-"], pre[class*="language-"] {
+  code[class*="language-"],
+  pre[class*="language-"] {
     @apply text-base;
   }
 
@@ -129,5 +138,23 @@
     }
 
     @apply border-2 p-6 border-black rounded-lg;
+  }
+
+  .wp-block-table {
+    table,
+    th,
+    td {
+      @apply border-black border;
+    }
+
+    th,
+    td {
+      @apply px-4 py-4;
+    }
+
+    th {
+      border-bottom-width: 2px;
+      @apply border-black font-bold;
+    }
   }
 }

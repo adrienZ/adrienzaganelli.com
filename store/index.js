@@ -30,8 +30,17 @@ export const actions = {
     await commit('setProjects', await projects.json());
 
     // parse POSTS
-    const posts = await fetch(apiBase + '/wp/v2/posts?_embed');
-    await commit('setPosts', await posts.json());
+    const postsRaw = await (await fetch(apiBase + '/wp/v2/posts?_embed')).json();
+    
+    // fix html entities in title
+    const posts = postsRaw.map(post => {
+      post.title.rendered = post.title.rendered.replace(/&#(\d+);/g, function(match, dec) {
+				return String.fromCharCode(dec);
+      });
+      
+      return post
+    })
+    await commit('setPosts', posts);
 
     // parse author
     const author = await fetch(apiBase + '/wp/v2/users/1');

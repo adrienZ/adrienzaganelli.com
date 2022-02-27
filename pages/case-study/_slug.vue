@@ -218,7 +218,7 @@ export default {
     }
   }
 
-  .cms-block /deep/ {
+  .cms-block:v-deep {
     a {
       color: inherit;
     }
