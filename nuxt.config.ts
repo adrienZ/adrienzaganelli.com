@@ -1,7 +1,7 @@
 import axios from 'axios'
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default {
-  mode: 'universal',
+export default defineNuxtConfig({
   target: 'static',
   /*
   ** Headers of the page
@@ -112,4 +112,4 @@ export default {
       return [...postsRoutes, ...projectsRoutes]
     },
   },
-}
+})
