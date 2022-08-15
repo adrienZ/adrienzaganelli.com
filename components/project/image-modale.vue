@@ -19,7 +19,7 @@ export default {
     }
   },
   mounted() {
-    this.$bus.$on('preview-open', this.open)
+    this.$bus.on('preview-open', this.open)
   },
   destroy() {
     this.close()

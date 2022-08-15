@@ -55,7 +55,7 @@ export default {
 
     this.hoverTl = null
 
-    this.$bus.$on('cursor-hover', () => {
+    this.$bus.on('cursor-hover', () => {
       if (this.hoverTl) this.hoverTl.kill()
 
       this.hovering = true
@@ -67,7 +67,7 @@ export default {
       })
     })
 
-    this.$bus.$on('cursor-default', () => {
+    this.$bus.on('cursor-default', () => {
       if (this.hoverTl) this.hoverTl.kill()
 
       this.$el.classList.remove('c-cursor__difference')
@@ -80,13 +80,13 @@ export default {
       })
     })
 
-    this.$bus.$on('cursor-difference', () => {
+    this.$bus.on('cursor-difference', () => {
       this.$el.classList.add('c-cursor__difference')
     })
 
 
-    this.$bus.$on('cursor-show', this.show)
-    this.$bus.$on('cursor-hide', this.hide)
+    this.$bus.on('cursor-show', this.show)
+    this.$bus.on('cursor-hide', this.hide)
 
     gsap.ticker.add(this.onFrame);
   },

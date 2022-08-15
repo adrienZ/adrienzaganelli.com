@@ -4,16 +4,16 @@
 
       <div class="text-2xl">
         <p class="landing-title" ref="title">Welcome :)</p>
-        <p ref="intro">My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.leetchi.com/" class="hover:text-pimper focus:text-pimper" title="Leetchi - La cagnotte en ligne sécurisée - Création Gratuite" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Leetchi</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
+        <p ref="intro">My name is Adrien Zaganelli. I’m a french Web developer working at <a href="https://www.leetchi.com/" class="hover:text-pimper focus:text-pimper" title="Leetchi - La cagnotte en ligne sécurisée - Création Gratuite" rel="noopener noreferrer" target="_blank" @mouseover="$bus.emit('cursor-hover')" @mouseleave="$bus.emit('cursor-default')">Leetchi</a> and <a href="https://hetic.net/" class="hover:text-pimper focus:text-pimper" title="HETIC, école web" rel="noopener noreferrer" target="_blank" @mouseover="$bus.emit('cursor-hover')" @mouseleave="$bus.emit('cursor-default')">HETIC</a> graduate. I mostly work with Javascript and CSS, building fast and reliable website and applications.</p>
       </div>
 
       <ul ref="list" class="mt-5 leading-relaxed">
         <li class="group flex">
           <span>📩</span>
-          <a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="mailto:adrienzaganelli@gmail.com" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Contact me</a>
+          <a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="mailto:adrienzaganelli@gmail.com" target="_blank" @mouseover="$bus.emit('cursor-hover')" @mouseleave="$bus.emit('cursor-default')">Contact me</a>
         </li>
-        <li class="group flex"><span>✏️</span><nuxt-link title="my blog" class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" to='/blog'>Blog</nuxt-link></li>
-        <li class="group flex">⚙️<a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="https://zigzag-components.netlify.app/" target="_blank" @mouseover="$bus.$emit('cursor-hover')" @mouseleave="$bus.$emit('cursor-default')">Components</a><span></span></li>
+        <li class="group flex"><span>✏️</span><nuxt-link title="my blog" class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" @mouseover.native="$bus.emit('cursor-hover')" @mouseleave.native="$bus.emit('cursor-default')" to='/blog'>Blog</nuxt-link></li>
+        <li class="group flex">⚙️<a class="hover:text-pimper focus:text-pimper underline ml-3 inline-block" title="adrienzaganelli@gmail.com" rel="noopener noreferrer" href="https://zigzag-components.netlify.app/" target="_blank" @mouseover="$bus.emit('cursor-hover')" @mouseleave="$bus.emit('cursor-default')">Components</a><span></span></li>
       </ul>
     </div>
 

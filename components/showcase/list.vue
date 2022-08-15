@@ -2,7 +2,7 @@
   <ul class="c-list font-semibold">
 
     <li class="c-list__item text-left mb-3 sm:mb-8" :key="index" v-for="(p, index) in $store.state.projects">
-      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.$emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block">
+      <nuxt-link @focus.native="onFocus($event, p, index)" @mouseover.native="onHover($event, p, index)" @mouseleave.native="$bus.emit('cursor-default')" :to="/case-study/ + p.slug" class="inline-block">
         <div class="relative">
           <h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
             <span class="inline-block c-list__item__index tracking-wide">{{formatIndex(index)}}</span>
@@ -37,14 +37,14 @@ export default {
   },
   methods: {
     onHover(e, project, index) {
-      this.$bus.$emit('cursor-hover')
+      this.$bus.emit('cursor-hover')
       this.update(...arguments)
     },
     onFocus() {
       this.update(...arguments)
     },
     onMouseOut() {
-      this.$bus.$emit('cursor-default')
+      this.$bus.emit('cursor-default')
     },
     update(e, project, index) {
       const item = e.currentTarget

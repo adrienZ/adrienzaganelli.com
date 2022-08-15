@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-grey-0 c-thumbnail" @mouseenter="$bus.$emit('cursor-difference')" @mouseout="$bus.$emit('cursor-default')">
+  <div class="w-full bg-grey-0 c-thumbnail" @mouseenter="$bus.emit('cursor-difference')" @mouseout="$bus.emit('cursor-default')">
     <cMedia crossorigin="anonymous" :src="media.url" :type="media.type"/>
   </div>
 </template>

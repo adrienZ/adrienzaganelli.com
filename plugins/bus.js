@@ -1,9 +1,8 @@
 import Vue from 'vue'
+import mitt from "mitt";
 
-const eventBus = {}
-
-eventBus.install = function (Vue) {
-  Vue.prototype.$bus = new Vue()
-}
-
-Vue.use(eventBus)
+Vue.use({
+  install: function (Vue) {
+    Vue.prototype.$bus = mitt();
+  },
+});

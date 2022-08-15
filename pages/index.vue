@@ -40,7 +40,7 @@ export default {
   destroyed() {
     if (!document.documentMode) {
       this.rellax.destroy()
-      this.$bus.$emit('cursor-default')
+      this.$bus.emit('cursor-default')
     }
   },
   mixins: [withPageTransition],

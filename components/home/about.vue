@@ -5,8 +5,8 @@
       <div class="sm:flex sm:-mx-3">
         <div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
           <img
-            @mouseenter="$bus.$emit('cursor-difference')"
-            @mouseout="$bus.$emit('cursor-default')"
+            @mouseenter="$bus.emit('cursor-difference')"
+            @mouseout="$bus.emit('cursor-default')"
             alt=""
             class="lazyload w-full shadow-xl rounded-md rellax"
             :data-src="require('~/assets/img/portrait.jpg')"

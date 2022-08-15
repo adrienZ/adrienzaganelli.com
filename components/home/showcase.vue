@@ -5,7 +5,7 @@
     <div class="sm:flex justify-between items-start">
       <cList class="flex-grow-0 flex-shrink-0" ref="list" v-on:update="onProjectChange"/>
 
-      <nuxt-link :to="'/case-study/' + slug"  ref="media" class="c-showcase__media mt-2 sm:mt-0 hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" aria-label="Showcase project preview">
+      <nuxt-link :to="'/case-study/' + slug"  ref="media" class="c-showcase__media mt-2 sm:mt-0 hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0" @mouseover.native="$bus.emit('cursor-hover')" @mouseleave.native="$bus.emit('cursor-default')" aria-label="Showcase project preview">
         <cThumbnail :index="index" :media="media" />
       </nuxt-link>
     </div>

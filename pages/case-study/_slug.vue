@@ -36,11 +36,11 @@
           <div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
 
             <div class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1">
-              <cExternal @mouseover.native="$bus.$emit('cursor-default')" class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</cExternal>
+              <cExternal @mouseover.native="$bus.emit('cursor-default')" class="bg-pimper text-white px-4 text-xl font-semibold py-2" :href="project.acf.url">See project</cExternal>
             </div>
 
             <div class="mt-2 hidden sm:block">
-              <nuxt-link @mouseover.native="$bus.$emit('cursor-hover')" @mouseleave.native="$bus.$emit('cursor-default')" class="font-semibold underline" to="/">Back to Home</nuxt-link>
+              <nuxt-link @mouseover.native="$bus.emit('cursor-hover')" @mouseleave.native="$bus.emit('cursor-default')" class="font-semibold underline" to="/">Back to Home</nuxt-link>
             </div>
 
           </div>
@@ -131,16 +131,16 @@ export default {
 
     [...this.$refs.cms_block.querySelectorAll('.wp-block-image, .wp-block-video')].forEach(el => {
       el.addEventListener('mouseenter', () => {
-        this.$bus.$emit('cursor-difference')
-        this.$bus.$emit('cursor-hover')
+        this.$bus.emit('cursor-difference')
+        this.$bus.emit('cursor-hover')
       })
-      el.addEventListener('mouseout', () => this.$bus.$emit('cursor-default'))
+      el.addEventListener('mouseout', () => this.$bus.emit('cursor-default'))
 
       const _this = this
       el.addEventListener('click', function () {
         const src = this.querySelector('[src]').src
         const type = this.className.split('wp-block-')[1].split(' ')[0]
-        _this.$bus.$emit('preview-open', src, type)
+        _this.$bus.emit('preview-open', src, type)
       })
     })
 
