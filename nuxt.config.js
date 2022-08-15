@@ -78,20 +78,6 @@ export default {
   */
   build: {
     extractCSS: false,
-
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {
-      // shader loader
-      config.module.rules.push(
-        {
-          test: /\.(glsl|frag|vert)$/,
-          exclude: /(node_modules|bower_components)/,
-          use: ['raw-loader', 'glslify-loader'],
-        }
-      )
-    }
   },
 
   generate: {
