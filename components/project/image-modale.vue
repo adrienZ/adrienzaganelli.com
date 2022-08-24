@@ -1,15 +1,12 @@
 <script>
-import FixScroll from '@/lib/FixScroll'
 import cMedia from '@/components/showcase/media.vue'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import gsap from 'gsap'
 
 export default {
   components: {
     cMedia
-  },
-  beforeMount() {
-    this.scrollUtil = new FixScroll()
   },
   data() {
     return {
@@ -25,10 +22,10 @@ export default {
     this.close()
   },
   methods: {
-    open(src, type) {
-      this.isOpen = true
-      this.scrollUtil.fix()
+    open({src, type}) {
 
+      this.isOpen = true
+      disableBodyScroll(document.body)
 
       this.mediaSrc = src
       this.mediaType = type
@@ -61,7 +58,7 @@ export default {
         onComplete: () => {
           this.mediaSrc = ""
           this.mediaType = ""
-          this.scrollUtil.unFix()
+          enableBodyScroll(document.body)
           this.isOpen = false
         }
       })

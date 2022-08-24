@@ -140,7 +140,8 @@ export default {
       el.addEventListener('click', function () {
         const src = this.querySelector('[src]').src
         const type = this.className.split('wp-block-')[1].split(' ')[0]
-        _this.$bus.emit('preview-open', src, type)
+        console.log(src, type)
+        _this.$bus.emit('preview-open', {src, type})
       })
     })
 
