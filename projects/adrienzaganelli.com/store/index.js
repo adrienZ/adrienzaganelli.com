@@ -1,4 +1,5 @@
 const backendBase = 'https://adrienzaganelli.com/cms'
+import axios from 'axios'
 
 export const state = () => ({
 	RAF_DELTA_TIME: 15,
@@ -25,11 +26,11 @@ export const actions = {
 		const apiBase = backendBase + '/wp-json'
 
 		// parse PROJECTS
-		const projects = await fetch(apiBase + '/wp/v2/project')
-		await commit('setProjects', await projects.json())
+		const projects = await axios.get(apiBase + '/wp/v2/project')
+		await commit('setProjects', await projects.data)
 
 		// parse POSTS
-		const postsRaw = await (await fetch(apiBase + '/wp/v2/posts?_embed')).json()
+		const postsRaw = (await axios.get(apiBase + '/wp/v2/posts?_embed')).data
 
 		// fix html entities in title
 		const posts = postsRaw.map((post) => {
@@ -45,8 +46,8 @@ export const actions = {
 		await commit('setPosts', posts)
 
 		// parse author
-		const author = await fetch(apiBase + '/wp/v2/users/1')
-		await commit('setAuthor', await author.json())
+		const author = await axios.get(apiBase + '/wp/v2/users/1')
+		await commit('setAuthor', await author.data)
 	},
 }
 
