@@ -1,5 +1,5 @@
 [build]
-  base = "project/adrienzaganelli.com/"
+  base = "projects/adrienzaganelli.com/"
   command = "nuxt build --target static && nuxt export"
   publish = "dist/"
 
