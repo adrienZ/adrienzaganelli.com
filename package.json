@@ -1,0 +1,29 @@
+{
+	"name": "adrienzaganelli",
+	"version": "1.0.0",
+	"private": true,
+	"engines": {
+		"node": "16.13.0"
+	},
+	"scripts": {
+		"preinstall": "yarn -v",
+		"postinstall": "npx simple-git-hooks"
+	},
+	"workspaces": [
+		"packages/*",
+		"projects/*"
+	],
+	"engineStrict": true,
+	"volta": {
+		"node": "16.13.0",
+		"yarn": "1.22.18"
+	},
+	"simple-git-hooks": {
+		"pre-commit": "npx pretty-quick --staged"
+	},
+	"devDependencies": {
+		"prettier": "^2.7.1",
+		"simple-git-hooks": "^2.8.1",
+		"turbo": "^1.6.3"
+	}
+}
