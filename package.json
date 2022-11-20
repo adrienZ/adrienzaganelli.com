@@ -9,10 +9,15 @@
 		"preinstall": "yarn -v",
 		"postinstall": "npx simple-git-hooks"
 	},
-	"workspaces": [
-		"packages/*",
-		"projects/*"
-	],
+	"workspaces": {
+		"packages": [
+			"packages/*",
+			"projects/*"
+		],
+		"nohoist": [
+			"**"
+		]
+	},
 	"engineStrict": true,
 	"volta": {
 		"node": "16.13.0",

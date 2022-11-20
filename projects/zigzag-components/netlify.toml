@@ -1,0 +1,6 @@
+[build]
+  command = "build-storybook"
+  publish = "storybook-static/"
+
+[context.production]
+  environment = { NODE_VERSION = "16.13.0" }
