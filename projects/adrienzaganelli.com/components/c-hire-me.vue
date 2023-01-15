@@ -25,10 +25,6 @@
 	</section>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss">
 .c-hire-me {
 	z-index: 1;

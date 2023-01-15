@@ -8,20 +8,14 @@
 	</div>
 </template>
 
-<script>
-import gsap from 'gsap'
+<script setup>
 import cMedia from '@/components/showcase/media.vue'
 
-export default {
-	components: {
-		cMedia,
+defineProps({
+	media: {
+		type: Object,
+		default: () => ({}),
 	},
-	props: {
-		media: {
-			type: Object,
-			default: () => ({}),
-		},
-		index: Number,
-	},
-}
+	index: Number,
+})
 </script>

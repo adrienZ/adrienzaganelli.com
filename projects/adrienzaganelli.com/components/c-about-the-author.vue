@@ -24,14 +24,8 @@
 	</section>
 </template>
 
-<script>
+<script lang="ts" setup>
 import MyNetworks from '@/components/my-networks.vue'
-
-export default {
-	components: {
-		MyNetworks,
-	},
-}
 </script>
 
 <style></style>

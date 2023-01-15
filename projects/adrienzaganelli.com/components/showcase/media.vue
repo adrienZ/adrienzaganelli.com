@@ -19,8 +19,6 @@
 	/>
 </template>
 
-<script>
-export default {
-	props: ['type', 'src'],
-}
+<script lang="ts" setup>
+defineProps(['type', 'src'])
 </script>

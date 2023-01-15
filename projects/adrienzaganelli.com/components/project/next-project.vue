@@ -42,15 +42,10 @@
 	</section>
 </template>
 
-<script>
+<script lang="ts" setup>
 import cMedia from '@/components/showcase/media.vue'
 
-export default {
-	props: {
-		project: Object,
-	},
-	components: {
-		cMedia,
-	},
-}
+defineProps({
+	project: Object,
+})
 </script>

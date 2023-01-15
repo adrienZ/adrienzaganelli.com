@@ -69,14 +69,8 @@
 	</div>
 </template>
 
-<script>
+<script setup>
 import cExternal from '@/components/common/external.vue'
-
-export default {
-	components: {
-		cExternal,
-	},
-}
 </script>
 
 <style lang="scss" scoped>

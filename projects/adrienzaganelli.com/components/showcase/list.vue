@@ -27,7 +27,12 @@
 	</ul>
 </template>
 
-<script>
+<script setup>
+import { reactive } from 'vue'
+import { $bus } from '../../plugins/bus'
+
+const emit = defineEmits(['update'])
+
 const useTimer = (duration, callback) => {
 	const interval = window.setTimeout(callback, duration)
 
@@ -36,53 +41,54 @@ const useTimer = (duration, callback) => {
 	}
 }
 
-export default {
-	created() {
-		this.cancel = this.cancel.bind(this)
-	},
-	data() {
-		return {
-			currentProjectSlug: null,
-			currentIndex: 0,
-		}
-	},
-	methods: {
-		onHover(e, project, index) {
-			this.$bus.emit('cursor-hover')
-			this.update(...arguments)
-		},
-		onFocus() {
-			this.update(...arguments)
-		},
-		onMouseOut() {
-			this.$bus.emit('cursor-default')
-		},
-		update(e, project, index) {
-			const item = e.currentTarget
+let timer = null
 
-			// dont emit if already active
-			if (this.currentProjectSlug === project.slug) return
+const state = reactive({
+	currentProjectSlug: null,
+	currentIndex: 0,
+})
 
-			// loading state
-			// ...
+function update(e, project, index) {
+	const item = e.currentTarget
 
-			// reset action event
-			item.addEventListener('mouseleave', this.cancel)
+	// dont emit if already active
+	if (state.currentProjectSlug === project.slug) return
 
-			// delay before doing action
-			this.timer = useTimer(120, () => {
-				this.$emit('update', [project, index])
-				this.currentProjectSlug = project.slug
-			})
-		},
-		formatIndex(number) {
-			// 0x
-			return number + 1 < 10 ? '0' + (number + 1) : number + 1
-		},
-		cancel() {
-			this.timer.reset()
-		},
-	},
+	// loading state
+	// ...
+
+	if (item) {
+		// reset action event
+		item.addEventListener('mouseleave', cancel)
+	}
+
+	// delay before doing action
+	timer = useTimer(120, () => {
+		emit('update', [project, index])
+		state.currentProjectSlug = project.slug
+	})
+}
+
+function onHover(e, project, index) {
+	$bus.emit('cursor-hover')
+	update(...arguments)
+}
+
+function onFocus() {
+	update(...arguments)
+}
+
+function onMouseOut() {
+	$bus.emit('cursor-default')
+}
+
+function formatIndex(indexToFormat) {
+	// 0x
+	return indexToFormat + 1 < 10 ? '0' + (indexToFormat + 1) : indexToFormat + 1
+}
+
+function cancel() {
+	timer?.reset()
 }
 </script>
 

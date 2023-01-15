@@ -8,8 +8,9 @@
 					@mouseenter="$bus.emit('cursor-difference')"
 					@mouseout="$bus.emit('cursor-default')"
 					alt=""
-					class="lazyload w-full shadow-xl rounded-md rellax"
-					:data-src="require('~/assets/img/portrait.jpg')"
+					class="w-full shadow-xl rounded-md rellax"
+					loading="lazy"
+					src="~/assets/img/portrait.jpg"
 					data-rellax-speed="0.5"
 					data-rellax-xs-speed="0"
 					data-rellax-mobile-speed="0"
@@ -29,8 +30,14 @@
 				<p>Hi, my name is Adrien Zaganelli, nice to meet you!</p>
 
 				<p class="mt-4">
-					HETIC graduate, I learned how to code, design and do business on the
-					Web. I like to try new things everyday on this (very) curious world.
+					<cExternal
+						href="https://hetic.net/"
+						class="hover:text-pimper focus:text-pimper"
+					>
+						HETIC
+					</cExternal>
+					graduate, I learned how to code, design and do business on the Web. I
+					like to try new things everyday on this (very) curious world.
 				</p>
 
 				<p class="mt-4">
@@ -43,8 +50,10 @@
 					<cExternal href="https://akufen.ca"><i>Akufen Studio</i></cExternal>
 					,
 					<cExternal href="https://hki.paris"><i>HelloHikimori</i></cExternal>
-					, and
+					,
 					<cExternal href="https://colorz.fr"><i>Colorz</i></cExternal>
+					, and
+					<cExternal href="https://www.leetchi.com/"><i>Leetchi</i></cExternal>
 					.
 				</p>
 

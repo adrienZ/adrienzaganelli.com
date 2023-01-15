@@ -2,34 +2,23 @@
 	<section class="c-hero text-2xl">
 		<div class="c-hero__container relative z-10">
 			<div class="text-2xl">
-				<p class="landing-title" ref="title">Welcome :)</p>
-				<p ref="intro">
-					My name is Adrien Zaganelli. I’m a french Web developer working at
+				<p class="landing-title" ref="title">Hello there 👋</p>
+				<p ref="intro" class="inline">
+					My name is Adrien Zaganelli. I’m a web developer working at
 					<a
-						href="https://www.leetchi.com/"
+						href="https://www.amexglobalbusinesstravel.com/fr/neo-voyages-notes-de-frais/"
 						class="hover:text-pimper focus:text-pimper"
-						title="Leetchi - La cagnotte en ligne sécurisée - Création Gratuite"
+						title="Neo - Voyages d'affaires et notes de frais"
 						rel="noopener noreferrer"
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
 					>
-						Leetchi
+						Neo Technology Group.
 					</a>
-					and
-					<a
-						href="https://hetic.net/"
-						class="hover:text-pimper focus:text-pimper"
-						title="HETIC, école web"
-						rel="noopener noreferrer"
-						target="_blank"
-						@mouseover="$bus.emit('cursor-hover')"
-						@mouseleave="$bus.emit('cursor-default')"
-					>
-						HETIC
-					</a>
-					graduate. I mostly work with Javascript and CSS, building fast and
-					reliable website and applications.
+
+					I mostly work with Typescript and CSS, building fast and reliable
+					websites and applications.
 				</p>
 			</div>
 
