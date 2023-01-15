@@ -27,7 +27,7 @@
 		"pre-commit": "npx pretty-quick --staged"
 	},
 	"devDependencies": {
-		"prettier": "^2.7.1",
+		"prettier": "^2.8.2",
 		"simple-git-hooks": "^2.8.1",
 		"turbo": "^1.6.3"
 	}
