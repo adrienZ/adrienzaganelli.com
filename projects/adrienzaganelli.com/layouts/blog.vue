@@ -2,18 +2,13 @@
 	<div>
 		<Icons />
 		<Header />
-		<nuxt class="layout-blog" />
+		<div class="layout-blog">
+			<slot />
+		</div>
 	</div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import Icons from '@/layouts/icons.vue'
 import Header from '@/components/blog/header.vue'
-
-export default {
-	components: {
-		Icons,
-		Header,
-	},
-}
 </script>

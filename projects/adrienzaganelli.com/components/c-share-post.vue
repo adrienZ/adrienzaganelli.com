@@ -45,8 +45,8 @@
 	</section>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+export default defineComponent({
 	props: {
 		url: String,
 		postTitle: String,
@@ -77,7 +77,7 @@ export default {
 		},
 		nativeShare(e) {
 			e.preventDefault()
-			const { url, postTitle } = this._props
+			const { url, postTitle } = this
 
 			navigator.share({
 				title: postTitle,
@@ -87,7 +87,7 @@ export default {
 	},
 	computed: {
 		facebookShareUrl() {
-			const { url, postTitle } = this._props
+			const { url, postTitle } = this
 			const params = this.serializeObject({
 				u: url,
 				quote: postTitle + ' by Adrien Zaganelli',
@@ -95,14 +95,14 @@ export default {
 			return 'https://www.facebook.com/sharer/sharer.php?' + params
 		},
 		TwitterShareUrl() {
-			const { url, postTitle } = this._props
+			const { url, postTitle } = this
 			const params = this.serializeObject({
 				text: postTitle + ' @adri_zag\n\n' + url,
 			})
 			return 'https://twitter.com/intent/tweet?' + params
 		},
 		LinkedinShareUrl() {
-			const { url, postTitle } = this._props
+			const { url, postTitle } = this
 			const params = this.serializeObject({
 				url,
 			})
@@ -115,7 +115,7 @@ export default {
 			 */
 		},
 	},
-}
+})
 </script>
 
 <style lang="scss" scoped>

@@ -89,7 +89,7 @@
 					</li>
 				</ul>
 
-				<p v-if="$store.state.NEED_JOB" class="mt-4">
+				<p v-if="$store.$state.NEED_JOB" class="mt-4">
 					Last but not least,
 					<b>I'm looking for a new job in Paris this fall.</b>
 					you can contact me here:
@@ -105,17 +105,6 @@
 	</section>
 </template>
 
-<script>
-// components
+<script lang="ts" setup>
 import cExternal from '@/components/common/external.vue'
-
-// mixins
-import withLazyImages from '@/mixins/withLazyImages'
-
-export default {
-	mixins: [withLazyImages],
-	components: {
-		cExternal,
-	},
-}
 </script>

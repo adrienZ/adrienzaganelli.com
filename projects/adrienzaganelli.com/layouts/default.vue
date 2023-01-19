@@ -1,9 +1,9 @@
 <template>
-	<div>
+	<main>
+		<slot />
 		<Icons />
 		<CustomCursor />
-		<nuxt />
-	</div>
+	</main>
 </template>
 
 <script>

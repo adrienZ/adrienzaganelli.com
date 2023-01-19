@@ -11,13 +11,13 @@
 			<div class="ml-4 pt-2">
 				<div class="flex items-center">
 					<h4 class="mr-4 text-xl text-gray-900 leading-tight">
-						{{ $store.state.author.name }}
+						{{ author.name }}
 					</h4>
 					<MyNetworks class="hidden sm:flex" />
 				</div>
 
 				<p class="text-md text-gray-600 leading-relaxed">
-					{{ $store.state.author.description }}
+					{{ author.description }}
 				</p>
 			</div>
 		</div>
@@ -26,6 +26,11 @@
 
 <script lang="ts" setup>
 import MyNetworks from '@/components/my-networks.vue'
+import { useStore } from '@/store/globalStore'
+const store = useStore()
+const { data: author } = await useAsyncData('cache_author', () =>
+	$fetch(store.backendBase + '/wp/v2/users/1')
+)
 </script>
 
 <style></style>

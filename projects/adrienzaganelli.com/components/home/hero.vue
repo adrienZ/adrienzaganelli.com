@@ -1,5 +1,5 @@
 <template>
-	<section class="c-hero text-2xl">
+	<section ref="root" class="c-hero text-2xl">
 		<div class="c-hero__container relative z-10">
 			<div class="text-2xl">
 				<p class="landing-title" ref="title">Hello there 👋</p>
@@ -118,64 +118,70 @@
 }
 </style>
 
-<script>
+<script lang="ts" setup>
 import gsap from 'gsap'
+import { root } from 'postcss'
 
-function randomIntFromInterval(min, max) {
+function randomIntFromInterval(min: number, max: number) {
 	// min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-export default {
-	mounted() {
-		const { bubble, title, intro, list } = this.$refs
-		const tl = new gsap.timeline({
-			paused: true,
-		})
+const list = ref()
+const title = ref()
+const intro = ref()
+const bubble = ref()
+const root = ref()
+const waypoint = ref()
 
-		tl.fromTo(
-			title,
-			{ opacity: 0, y: 20 },
-			{ opacity: 1, y: 0, duration: 0.2 },
-			0
-		)
-		tl.fromTo(intro, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
-		tl.fromTo(
-			bubble.children,
-			{ scale: 0, y: 0 },
-			{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
-			0.25
-		)
-		tl.fromTo(
-			list.children,
-			{ opacity: 0, y: 10 },
-			{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
-			0.2
-		)
+onMounted(() => {
+	const tl = new gsap.timeline({
+		paused: true,
+	})
 
-		tl.timeScale(0.85)
+	tl.fromTo(
+		title.value,
+		{ opacity: 0, y: 20 },
+		{ opacity: 1, y: 0, duration: 0.2 },
+		0
+	)
+	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
+	tl.fromTo(
+		bubble.value.children,
+		{ scale: 0, y: 0 },
+		{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
+		0.25
+	)
+	tl.fromTo(
+		list.value.children,
+		{ opacity: 0, y: 10 },
+		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
+		0.2
+	)
 
-		this.waypoint = new this.$waypoint.Inview({
-			element: this.$el,
-			enter: (direction) => {
-				tl.play()
-				this.waypoint.destroy()
+	tl.timeScale(0.85)
 
-				gsap.fromTo(
-					bubble.children,
-					{ rotateZ: 0 },
-					{
-						rotateZ: 360,
-						duration: randomIntFromInterval(20, 40),
-						stagger: () => randomIntFromInterval(1, 15),
-						repeat: -1,
-					}
-				)
-			},
-		})
-	},
-	destroyed() {
-		this.waypoint.destroy()
-	},
-}
+	waypoint.value = new (useNuxtApp().$waypoint.Inview)({
+		element: root.value,
+		enter: (direction) => {
+			tl.play()
+			waypoint.value.destroy()
+
+			gsap.fromTo(
+				bubble.value.children,
+				{ rotateZ: 0 },
+				{
+					rotateZ: 360,
+					duration: randomIntFromInterval(20, 40),
+					stagger: () => randomIntFromInterval(1, 15),
+					repeat: -1,
+				}
+			)
+		},
+	})
+})
+
+onUnmounted(() => {
+	waypoint.value.destroy()
+})
 </script>

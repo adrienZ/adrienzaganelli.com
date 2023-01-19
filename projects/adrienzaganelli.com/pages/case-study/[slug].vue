@@ -96,7 +96,7 @@
 	</section>
 </template>
 
-<script>
+<script lang="ts">
 import cNextProject from '@/components/project/next-project.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
 import cFooter from '@/components/common/footer.vue'
@@ -116,16 +116,13 @@ import withLazyImages, {
 	writeLazyWpVideos,
 } from '@/mixins/withLazyImages'
 import withCodeHighlight from '@/mixins/withCodeHighlight'
+import { useStore } from '@/store/globalStore'
 
-export default {
-	async asyncData({ params, payload, store }) {
-		let project = {}
-
-		if (payload) {
-			project = payload
-		} else if (store.state.projects.length) {
-			project = store.getters.getProject(params.slug)
-		}
+export default defineNuxtComponent({
+	asyncData(ctx) {
+		const store = useStore(ctx.$pinia)
+		const { params } = useRoute()
+		const project = store.getProject(params.slug)
 
 		if (project.content && project.content.rendered) {
 			let modified = new String(project.content.rendered)
@@ -140,7 +137,7 @@ export default {
 			project.content.modified = modified
 		}
 
-		const nextProject = store.getters.getNextProject(project)
+		const nextProject = store.getNextProject(project)
 
 		return { project, nextProject }
 	},
@@ -169,7 +166,6 @@ export default {
 				this.waypoint.destroy()
 			},
 		})
-
 		;[
 			...this.$refs.cms_block.querySelectorAll(
 				'.wp-block-image, .wp-block-video'
@@ -219,7 +215,7 @@ export default {
 			}
 		},
 	},
-}
+})
 </script>
 
 <style lang="scss" scoped>

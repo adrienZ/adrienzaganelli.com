@@ -3,7 +3,7 @@
 		<li
 			class="c-list__item text-left mb-3 sm:mb-8"
 			:key="index"
-			v-for="(p, index) in $store.state.projects"
+			v-for="(p, index) in $store.$state.projects"
 		>
 			<nuxt-link
 				@focus.native="onFocus($event, p, index)"

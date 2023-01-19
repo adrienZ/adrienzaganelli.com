@@ -103,7 +103,7 @@ export default {
 		onFrame() {
 			const now = Date.now()
 
-			if (now - this.lastRender > this.$store.state.RAF_DELTA_TIME) {
+			if (now - this.lastRender > this.$store.$state.RAF_DELTA_TIME) {
 				this.moveCursor()
 			}
 		},

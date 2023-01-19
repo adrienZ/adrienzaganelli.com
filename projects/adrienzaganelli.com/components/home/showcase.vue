@@ -23,7 +23,7 @@
 	</section>
 </template>
 
-<script>
+<script lang="ts">
 // components
 import cThumbnail from '@/components/showcase/thumbnail.vue'
 import cList from '@/components/showcase/list.vue'
@@ -34,7 +34,7 @@ import gsap from 'gsap'
 // helpers
 import withMouse from '@/mixins/withMouse'
 
-export default {
+export default defineComponent({
 	created() {
 		this.onFrame = this.onFrame.bind(this)
 	},
@@ -45,17 +45,16 @@ export default {
 	mixins: [withMouse],
 	data() {
 		return {
-			media: this.$store.state.projects[0].acf.showcase_image,
-			slug: this.$store.state.projects[0].slug,
+			media: this.$store.$state.projects[0].acf.showcase_image,
+			slug: this.$store.$state.projects[0].slug,
 			index: 0,
 			isLoading: false,
+			// start preview mouse track
+			smoothMouse: { x: 0, y: 0 },
+			lastRender: 0,
 		}
 	},
 	mounted() {
-		// start preview mouse track
-		this.smoothMouse = { x: 0, y: 0 }
-		this.lastRender = 0
-
 		const { media, title, list } = this.$refs
 		const tl = new gsap.timeline({
 			paused: true,
@@ -101,7 +100,7 @@ export default {
 		// preload medias with ajax
 		document.documentElement.clientWidth >= 1280 &&
 			window.addEventListener('load', () => {
-				this.$store.state.projects.forEach((p) => {
+				this.$store.$state.projects.forEach((p) => {
 					switch (p.acf.showcase_image.type) {
 						case 'image':
 							const image = new Image()
@@ -128,7 +127,7 @@ export default {
 		onFrame() {
 			const now = Date.now()
 
-			if (now - this.lastRender > this.$store.state.RAF_DELTA_TIME) {
+			if (now - this.lastRender > this.$store.$state.RAF_DELTA_TIME) {
 				this.followMouse()
 			}
 		},
@@ -165,7 +164,7 @@ export default {
 
 			this.isLoading = true
 
-			const nextProject = this.$store.state.projects[index]
+			const nextProject = this.$store.$state.projects[index]
 
 			const items = Array.from(
 				this.$refs.list.$el.querySelectorAll('.c-list__item')
@@ -188,7 +187,7 @@ export default {
 			)
 		},
 	},
-}
+})
 </script>
 
 <style lang="scss" scoped>

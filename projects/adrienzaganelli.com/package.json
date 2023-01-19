@@ -5,23 +5,23 @@
 	"author": "AdrienZ",
 	"private": true,
 	"scripts": {
-		"dev": "nuxt",
-		"build": "nuxt build",
-		"start": "nuxt start",
-		"static": "nuxt build --target static && nuxt export"
+		"dev": "nuxi dev",
+		"build": "nuxi build",
+		"start": "nuxi start",
+		"static": "nuxi build --target static && nuxi export"
 	},
 	"browserslist": [
 		"cover 95%, not dead"
 	],
 	"dependencies": {
-		"@nuxtjs/tailwindcss": "^3.4.2",
+		"@pinia/nuxt": "^0.4.6",
 		"@splitbee/web": "^0.2.4",
 		"axios": "^0.21.2",
 		"body-scroll-lock": "^4.0.0-beta.0",
 		"gsap": ">=3.6.0",
 		"lazysizes": "^5.3.0",
 		"mitt": "^3.0.0",
-		"nuxt": "^2.14.12",
+		"pinia": "^2.0.29",
 		"prismjs": "^1.25.0",
 		"rellax": "^1.12.1",
 		"sass-easing": "^1.0.3",
@@ -30,13 +30,15 @@
 		"waypoints": "^4.0.1"
 	},
 	"devDependencies": {
+		"@nuxtjs/tailwindcss": "^6.2.0",
+		"@types/rellax": "^1.7.4",
+		"@types/waypoints": "^4.0.4",
 		"agnostic-axe": "^3.0.3",
 		"glslify-loader": "^2.0.0",
+		"nuxt": "npm:nuxt3@latest",
+		"nuxt-full-static": "^0.2.1",
 		"raw-loader": "^4.0.2",
 		"sass": "^1.49.9",
 		"sass-loader": "10"
-	},
-	"resolutions": {
-		"vue": "^2.7.14"
 	}
 }

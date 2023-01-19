@@ -1,30 +1,35 @@
 <template>
 	<section class="page-home">
 		<div class="container sm:w-3/4 w-5/6 mx-auto">
-			<c-hero class="sm:pt-20 pt-10" />
+			<cHero class="sm:pt-20 pt-10" />
 			<c-showcase class="sm:mt-20 mt-10" />
-			<c-about class="sm:mt-20 mt-10" />
-			<c-footer class="sm:mt-20 mt-10" />
+			<cAbout class="sm:mt-20 mt-10" />
+			<cFooter class="sm:mt-20 mt-10" />
 		</div>
 	</section>
 </template>
 
-<script>
+<script lang="ts">
 import cShowcase from '@/components/home/showcase.vue'
 import cHero from '@/components/home/hero.vue'
 import cAbout from '@/components/home/about.vue'
 import cFooter from '@/components/common/footer.vue'
 
-import Rellax from 'rellax'
+import Rellax, { RellaxInstance } from 'rellax'
 
 import withPageTransition from '@/mixins/withPageTransition'
 
-export default {
+export default defineComponent({
 	components: {
 		cShowcase,
 		cHero,
 		cAbout,
 		cFooter,
+	},
+	data() {
+		return {
+			rellax: null as null | RellaxInstance,
+		}
 	},
 	mounted() {
 		if (!document.documentMode) {
@@ -38,12 +43,12 @@ export default {
 	},
 	destroyed() {
 		if (!document.documentMode) {
-			this.rellax.destroy()
+			this.rellax?.destroy()
 			this.$bus.emit('cursor-default')
 		}
 	},
 	mixins: [withPageTransition],
-}
+})
 </script>
 
 <style lang="scss">
