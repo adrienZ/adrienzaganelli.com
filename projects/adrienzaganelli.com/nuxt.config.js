@@ -63,6 +63,7 @@ export default {
 		'~/plugins/bus',
 		'~/plugins/analytics.client',
 		'~/plugins/waypoints.client',
+		'~/plugins/accessibility.client',
 	],
 	/*
 	 ** Nuxt.js dev-modules
