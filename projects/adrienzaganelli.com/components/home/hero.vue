@@ -75,8 +75,9 @@
 			data-rellax-percentage="0.5"
 		>
 			<div class="circle w-full bg-light shadow-xl"></div>
-			<div class="circle w-2/3 bg-light shadow-lg"></div>
-			<div class="circle w-1/3 bg-light shadow-md"></div>
+			<div class="circle w-3/4 bg-light shadow-lg"></div>
+			<div class="circle w-2/4 bg-light shadow-lg"></div>
+			<div class="circle w-1/4 bg-light shadow-md"></div>
 		</div>
 	</section>
 </template>
@@ -92,15 +93,20 @@
 	&.w-full {
 		height: 100%;
 	}
-	&.w-2\/3 {
-		top: (100% - (100%/ (3/2))) / 2;
-		left: (100%- (100%/ (3/2))) / 2;
-		height: (100%/ (3/2));
+	&.w-3\/4 {
+		top: (100% - (100%/ (4/3))) / 2;
+		left: (100%- (100%/ (4/3))) / 2;
+		height: (100%/ (4/3));
 	}
-	&.w-1\/3 {
-		top: (100%/3);
-		left: (100%/3);
-		height: (100%/3);
+	&.w-2\/4 {
+		top: (100% - (100%/ (4/2))) / 2;
+		left: (100%- (100%/ (4/2))) / 2;
+		height: (100%/ (4/2));
+	}
+	&.w-1\/4 {
+		top: (100% - (100%/ (4/1))) / 2;
+		left: (100%- (100%/ (4/1))) / 2;
+		height: (100%/4);
 	}
 }
 

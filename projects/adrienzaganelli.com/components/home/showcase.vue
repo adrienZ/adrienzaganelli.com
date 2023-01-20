@@ -12,7 +12,7 @@
 			<nuxt-link
 				:to="'/case-study/' + slug"
 				ref="media"
-				class="c-showcase__media mt-2 sm:mt-0 hidden xl:block xl:sticky inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
+				class="c-showcase__media mt-2 sm:mt-0 hidden xl:block xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
 				@mouseover.native="$bus.emit('cursor-hover')"
 				@mouseleave.native="$bus.emit('cursor-default')"
 				aria-label="Showcase project preview"
@@ -133,9 +133,31 @@ export default {
 			}
 		},
 		onProjectChange([project, index]) {
-			this.media = project.acf.showcase_image
-			this.slug = project.slug
-			this.index = index
+			if (project.slug === this.slug) {
+				return false
+			}
+
+			const { media } = this.$refs
+			const tl = new gsap.timeline({
+				paused: true,
+			})
+
+			tl.to(media.$el, {
+				opacity: 0.75,
+				scale: 0.95,
+				duration: 0.1,
+				onComplete: () => {
+					this.media = project.acf.showcase_image
+					this.slug = project.slug
+					this.index = index
+				},
+			})
+			tl.to(media.$el, {
+				opacity: 1,
+				scale: 1,
+				duration: 0.2,
+			})
+			tl.play()
 
 			Array.from(this.$refs.list.$el.children).forEach((el, k) => {
 				k === index ? el.classList.add('active') : el.classList.remove('active')

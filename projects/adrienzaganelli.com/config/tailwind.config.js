@@ -15,7 +15,7 @@ module.exports = {
 				white: '#fafafa',
 				pimper: '#536DFE',
 				light: '#ECEFF1',
-				black: '#263238',
+				black: '#1f2937',
 			},
 		},
 	},
