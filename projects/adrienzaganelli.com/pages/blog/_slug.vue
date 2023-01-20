@@ -1,6 +1,7 @@
 <template>
 	<section class="page-post">
-		<cProgressBar ref="progress_bar" />
+		<cProgressBar :progress="progress" />
+		{{ progress }}
 
 		<article ref="article" class="cms-container">
 			<h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">
@@ -60,16 +61,10 @@ import cProgressBar from '@/components/blog/ProgressBar.vue'
 
 import withCodeHighlight from '@/mixins/withCodeHighlight'
 
-import gsap from 'gsap'
-
-function clamp(num, min, max) {
-	return num <= min ? min : num >= max ? max : num
-}
-
 export default {
 	layout: 'blog',
 
-	async asyncData({ isDev, params, payload, store }) {
+	async asyncData({ params, payload, store }) {
 		let post
 
 		if (payload) {
@@ -127,20 +122,18 @@ export default {
 	destroyed() {
 		window.removeEventListener('scroll', this.onScroll)
 	},
+	data() {
+		return {
+			progress: 0,
+		}
+	},
 	methods: {
 		onScroll() {
 			// handle reading progress
-			const progressBar = this.$refs.progress_bar
 			const article = this.$refs.article
-			const readProgress =
+			this.progress =
 				(window.innerHeight / 2 + window.scrollY - article.offsetTop) /
 				article.offsetHeight
-
-			gsap.to(progressBar, {
-				value: clamp(readProgress, 0, 1),
-				duration: 0.5,
-				ease: 'power4.out',
-			})
 
 			// handle backtop
 			const backToTop = this.$refs.back_to_top
