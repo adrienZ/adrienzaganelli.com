@@ -1,0 +1,54 @@
+{
+  "name": "zigzag-components",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/zigzag-ui.cjs",
+  "module": "./dist/zigzag-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/zigzag-ui.js",
+      "require": "./dist/zigzag-ui.cjs"
+    }
+  },
+  "engineStrict": true,
+  "engines": {
+    "node": "16.13.0"
+  },
+  "scripts": {
+    "preview": "vite preview",
+    "dev": "start-storybook -p 6006",
+    "build": "vue-tsc --noEmit && vite build && build-storybook"
+  },
+  "dependencies": {
+    "bootstrap": "4.6.2",
+    "gsap": "^3.11.4",
+    "mitt": "^3.0.0",
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@geometricpanda/storybook-addon-badges": "^0.2.2",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-vite": "^0.2.2",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/vue3": "^6.5.10",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "babel-loader": "^8.2.5",
+    "sass": "^1.54.4",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7",
+    "vue-loader": "^16.8.3",
+    "vue-tsc": "^0.39.5"
+  },
+  "volta": {
+    "node": "16.13.0",
+    "yarn": "1.22.18"
+  }
+}

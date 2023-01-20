@@ -1,0 +1,22 @@
+[build]
+  base = "projects/adrienzaganelli.com/"
+  command = "npm run static"
+  publish = "dist/"
+
+[context.production]
+  environment = { NODE_VERSION = "16.13.0" }
+
+
+[[redirects]]
+  from = "/bee.php"
+  to = "https://cdn.splitbee.io/sb.js"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+[[redirects]]
+  from = "/_hive/*"
+  to = "https://hive.splitbee.io/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}

@@ -1,0 +1,42 @@
+{
+	"name": "adrienzaganelli.com",
+	"version": "1.0.0",
+	"description": "Personal portfolio",
+	"author": "AdrienZ",
+	"private": true,
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"start": "nuxt start",
+		"static": "nuxt build --target static && nuxt export"
+	},
+	"browserslist": [
+		"cover 95%, not dead"
+	],
+	"dependencies": {
+		"@nuxtjs/tailwindcss": "^3.4.2",
+		"@splitbee/web": "^0.2.4",
+		"axios": "^0.21.2",
+		"body-scroll-lock": "^4.0.0-beta.0",
+		"gsap": ">=3.6.0",
+		"lazysizes": "^5.3.0",
+		"mitt": "^3.0.0",
+		"nuxt": "^2.14.12",
+		"prismjs": "^1.25.0",
+		"rellax": "^1.12.1",
+		"sass-easing": "^1.0.3",
+		"smooth-scrollbar": "^8.6.0",
+		"splitting": "^1.0.6",
+		"waypoints": "^4.0.1"
+	},
+	"devDependencies": {
+		"agnostic-axe": "^3.0.3",
+		"glslify-loader": "^2.0.0",
+		"raw-loader": "^4.0.2",
+		"sass": "^1.49.9",
+		"sass-loader": "10"
+	},
+	"resolutions": {
+		"vue": "^2.7.14"
+	}
+}
