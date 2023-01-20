@@ -1,7 +1,6 @@
 <template>
 	<section class="page-post">
 		<cProgressBar :progress="progress" />
-		{{ progress }}
 
 		<article ref="article" class="cms-container">
 			<h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">

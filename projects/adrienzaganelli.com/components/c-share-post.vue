@@ -16,7 +16,7 @@
 			target="_blank"
 		>
 			<span class="inline-block align-middle">Share on</span>
-			<svg class="w-4 h-4 ml-1 inline-block align-middle fill-current">
+			<svg class="w-5 h-5 ml-1 inline-block align-middle fill-current">
 				<use xlink:href="#icon-facebook" x="0" y="0" />
 			</svg>
 		</a>
@@ -27,7 +27,7 @@
 			target="_blank"
 		>
 			<span class="inline-block align-middle">Share on</span>
-			<svg class="w-4 h-4 ml-1 inline-block fill-current">
+			<svg class="w-5 h-5 ml-1 inline-block fill-current">
 				<use xlink:href="#icon-twitter" x="0" y="0" />
 			</svg>
 		</a>
@@ -38,7 +38,7 @@
 			target="_blank"
 		>
 			<span class="inline-block align-middle">Share on</span>
-			<svg class="w-4 h-4 ml-1 inline-block fill-current">
+			<svg class="w-6 h-6 ml-1 inline-block fill-current">
 				<use xlink:href="#icon-linkedin" x="0" y="0" />
 			</svg>
 		</a>

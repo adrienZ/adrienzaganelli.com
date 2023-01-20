@@ -1,5 +1,5 @@
 <template>
-	<div class="c-footer">
+	<footer class="c-footer">
 		<div
 			class="border w-full border-black border-opacity-25 mb-5 sm:mb-10"
 		></div>
@@ -66,7 +66,7 @@
 			</div>
 			<!-- End Logo footer -->
 		</div>
-	</div>
+	</footer>
 </template>
 
 <script setup>

@@ -2,6 +2,7 @@
 	<div class="c-card h-full flex flex-col justify-between text-sm">
 		<div>
 			<nuxt-link :to="postUrl" v-if="thumbnail && thumbnail[0]">
+				<span class="visually-hidden">{{ post.title.rendered }}</span>
 				<figure class="shadow-md">
 					<img
 						class="w-100"
@@ -19,7 +20,10 @@
 		</div>
 
 		<div class="mt-4">
-			<nuxt-link class="block text-pimper" :to="postUrl">
+			<nuxt-link
+				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-white text bg-"
+				:to="postUrl"
+			>
 				Read more &rarr;
 			</nuxt-link>
 			<time class="block italic mt-1" :datetime="post.date">{{ date }}</time>

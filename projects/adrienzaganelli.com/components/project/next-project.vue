@@ -30,6 +30,7 @@
 					@mouseover.native="$bus.emit('cursor-hover')"
 					@mouseleave.native="$bus.emit('cursor-default')"
 				>
+					<span class="visually-hidden">Go to next project page</span>
 					<cMedia
 						src=""
 						:data-src="project.acf.showcase_image.url"

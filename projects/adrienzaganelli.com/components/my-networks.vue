@@ -2,6 +2,7 @@
 	<ul class="c-my-networks flex">
 		<li>
 			<a href="https://twitter.com/adri_zag">
+				<span class="visually-hidden">Twitter</span>
 				<svg class="w-4 h-4 inline-block fill-current">
 					<use xlink:href="#icon-twitter" x="0" y="0" />
 				</svg>
@@ -9,6 +10,7 @@
 		</li>
 		<li class="ml-2">
 			<a href="https://github.com/adrienZ">
+				<span class="visually-hidden">Github</span>
 				<svg class="w-4 h-4 inline-block fill-current">
 					<use xlink:href="#icon-github" x="0" y="0" />
 				</svg>
@@ -16,6 +18,7 @@
 		</li>
 		<li class="ml-2">
 			<a href="https://www.linkedin.com/in/adrienzaganelli/">
+				<span class="visually-hidden">Linkedin</span>
 				<svg class="w-4 h-4 inline-block fill-current">
 					<use xlink:href="#icon-linkedin" x="0" y="0" />
 				</svg>
@@ -23,6 +26,7 @@
 		</li>
 		<li class="ml-2">
 			<a href="mailto:adrienzaganelli@gmail.com">
+				<span class="visually-hidden">Mail</span>
 				<svg class="w-4 h-4 inline-block fill-current">
 					<use xlink:href="#icon-send" x="0" y="0" />
 				</svg>

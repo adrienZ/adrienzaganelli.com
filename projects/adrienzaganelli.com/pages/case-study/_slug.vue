@@ -3,7 +3,8 @@
 		<div class="cms-container">
 			<cHeader class="opacity-75" />
 
-			<div
+			<main
+				role="main"
 				class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
 			>
 				<div ref="titles">
@@ -23,7 +24,7 @@
 				>
 					{{ project.acf.summary }}
 				</p>
-			</div>
+			</main>
 
 			<div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
 				<article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
@@ -112,7 +113,6 @@ import withTwitterEmbeds, {
 } from '@/mixins/withTwitterEmbeds'
 import withLazyImages, {
 	writeLazyWpImages,
-	writeLaztyIframes,
 	writeLazyWpVideos,
 } from '@/mixins/withLazyImages'
 import withCodeHighlight from '@/mixins/withCodeHighlight'
@@ -169,7 +169,6 @@ export default {
 				this.waypoint.destroy()
 			},
 		})
-
 		;[
 			...this.$refs.cms_block.querySelectorAll(
 				'.wp-block-image, .wp-block-video'

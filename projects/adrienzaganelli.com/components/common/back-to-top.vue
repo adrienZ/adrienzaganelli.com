@@ -5,7 +5,8 @@
 		@mouseover="$bus.emit('cursor-hover')"
 		@mouseleave="$bus.emit('cursor-default')"
 	>
-		<svg class="w-6 h-6 inline-block fill-pimper">
+		<span class="visually-hidden">Back to top</span>
+		<svg class="w-6 h-6 inline-block fill-current text-pimper">
 			<use xlink:href="#icon-arrow-top" x="0" y="0" />
 		</svg>
 	</button>
@@ -42,7 +43,14 @@ export default {
 			if (this.reducedMotion) {
 				this.$el.classList.addEventListener('opacity-0')
 			} else {
-				gsap.to(this.$el, { opacity: 0, y: 30, duration: 0.15 })
+				gsap.to(this.$el, {
+					opacity: 0,
+					y: 30,
+					duration: 0.15,
+					onComplete: () => {
+						this.$el.blur()
+					},
+				})
 			}
 		},
 		resetScroll() {
@@ -58,5 +66,6 @@ export default {
 <style lang="scss" scoped>
 .c-back-to-top {
 	transition: opacity 0.15s ease-out;
+	outline-color: theme('colors.pimper');
 }
 </style>
