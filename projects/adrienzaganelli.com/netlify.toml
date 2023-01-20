@@ -1,6 +1,6 @@
 [build]
   base = "projects/adrienzaganelli.com/"
-  command = "nuxt build --target static && nuxt export"
+  command = "npm run static"
   publish = "dist/"
 
 [context.production]
