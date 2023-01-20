@@ -1,7 +1,7 @@
 [build]
   base = "projects/adrienzaganelli.com/"
   command = "npm run static"
-  publish = "dist/"
+  publish = "projects/adrienzaganelli.com/dist/"
 
 [context.production]
   environment = { NODE_VERSION = "16.13.0" }
