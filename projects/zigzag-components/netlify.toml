@@ -1,5 +1,5 @@
 [build]
-  base = "projects/zigzag-components/"
+  base = "projects/zigzag-components"
   command = "build-storybook"
   publish = "storybook-static/"
 

@@ -1,5 +1,5 @@
 [build]
-  base = "projects/adrienzaganelli.com/"
+  base = "projects/adrienzaganelli.com"
   command = "npm run static"
   publish = "dist/"
 
