@@ -1,5 +1,5 @@
 import { BADGE } from "@geometricpanda/storybook-addon-badges";
-import Container from "../lib/components/Container.vue";
+import Container from "./Container.vue";
 
 export default {
   title: "Components/Container",

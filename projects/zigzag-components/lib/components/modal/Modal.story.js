@@ -1,4 +1,4 @@
-import Popup from "../components/Popup.vue";
+import Modal from "./Modal.vue";
 
 function escapeHtml(unsafe) {
   return unsafe
@@ -9,40 +9,43 @@ function escapeHtml(unsafe) {
     .replace(/'/g, "&#039;");
 }
 
-export default { title: "Layout" };
+export default {
+  title: "components/Modal",
+  component: Modal,
+};
 
-export const popup = () => ({
-  title: "Popup",
+export const Default = () => ({
+  title: "Modal",
   components: {
-    Popup,
+    Modal,
   },
   template: `
     <div class="container min-vh-100 bg-light d-flex flex-column align-items-center justify-content-center">
       <div>
-        <button data-popup="demo-big" class="btn btn-secondary js-popup-opener mr-2">Open big popup</button>
-        <button data-popup="demo-small" class="btn btn-secondary js-popup-opener">Open small popup</button>
+        <button data-modal="demo-big" class="btn btn-secondary js-modal-opener mr-2">Open big modal</button>
+        <button data-modal="demo-small" class="btn btn-secondary js-modal-opener">Open small modal</button>
       </div>
 
 
       <pre class="bg-dark text-light mt-4">
         <code>${escapeHtml(`
-  <Popup id="demo">
+  <modal id="demo">
     <div class="row">
       <div class="col-md-8 mx-auto my-5">
-        <div class="js-popup-events p-3 bg-dark text-white">
+        <div class="js-modal-events p-3 bg-dark text-white">
             YOUR CONTENT
         </div>
       </div>
     </div>
-  </Popup>
+  </modal>
 `)}</code>
 </pre>
 
-      <Popup id="demo-big">
+      <modal id="demo-big">
         <div class="row">
           <div class="col-md-8 mx-auto my-5">
 
-            <div class="js-popup-events p-3 bg-dark text-white">
+            <div class="js-modal-events p-3 bg-dark text-white">
 
             ${new Array(10)
               .fill(undefined)
@@ -54,7 +57,7 @@ export const popup = () => ({
 
             <div class="mt-4">
               <a href="#logmein" class="btn btn-success mr-2">Log in</a>
-              <button class="btn btn-light js-popup-close">Close</button>
+              <button class="btn btn-light js-modal-close">Close</button>
             </div>
 
             </div>
@@ -62,12 +65,12 @@ export const popup = () => ({
           </div>
         </div>
 
-      </Popup>
-      <Popup id="demo-small">
+      </modal>
+      <modal id="demo-small">
         <div class="row">
           <div class="col-md-8 mx-auto my-5">
 
-            <div class="js-popup-events p-3 bg-dark text-white">
+            <div class="js-modal-events p-3 bg-dark text-white">
 
             ${new Array(1)
               .fill(undefined)
@@ -78,7 +81,7 @@ export const popup = () => ({
               .join("")}
 
             <div class="mt-4">
-              <button class="btn btn-light js-popup-close">Close</button>
+              <button class="btn btn-light js-modal-close">Close</button>
             </div>
 
             </div>
@@ -86,6 +89,6 @@ export const popup = () => ({
           </div>
         </div>
 
-      </Popup>
+      </modal>
     </div>`,
 });

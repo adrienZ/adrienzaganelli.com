@@ -1,21 +1,21 @@
 <template>
-  <div class="c-popup" :data-id="id" :id="'c-popup-' + id">
+  <div class="c-modal" :data-id="id" :id="'c-modal-' + id">
     <!-- SCROLLABLE VIEWPORT -->
     <div
-      class="c-popup__viewport u-transition u-overflow-auto"
+      class="c-modal__viewport u-transition u-overflow-auto"
       tabindex="-1"
       style="transition: 0.2s"
     >
       <!-- DECORATIVE OVERLAY -->
       <div
-        class="c-popup__overlay js-overlay js-popup-close u-wrapper-panel"
+        class="c-modal__overlay js-overlay js-modal-close u-wrapper-panel"
       ></div>
 
       <!-- CONTAINER -->
-      <div class="c-popup__container container-fluid u-full-height u-relative">
+      <div class="c-modal__container container-fluid u-full-height u-relative">
         <!-- MAIN -->
         <div
-          class="c-popup__inner u-full-width u-transition"
+          class="c-modal__inner u-full-width u-transition"
           style="transition: 0.5s 0.1s"
         >
           <!-- CHILDREN COMPONENT -->
@@ -52,34 +52,34 @@ export default {
   },
   mounted() {
     // allow events and prevent close on events zone
-    this.$eventsZone = this.$el.querySelector(".js-popup-events");
+    this.$eventsZone = this.$el.querySelector(".js-modal-events");
     // custom events bidings
     this.bindEvents();
   },
   methods: {
     bindEvents() {
       if (this.$eventsZone) {
-        // enable close when clicking outside of the popup (on the overlay)
+        // enable close when clicking outside of the modal (on the overlay)
         this.$eventsZone.addEventListener("click", this.stay);
         this.$el.addEventListener("click", this.close);
       } else {
         console.warn(
-          "the following popup",
+          "the following modal",
           this.$el,
-          'have no interactive children.\nAdd the class: ".js-popup-events"'
+          'have no interactive children.\nAdd the class: ".js-modal-events"'
         );
       }
 
       // open triggers
       const $triggers = document.querySelectorAll(
-        '.js-popup-opener[data-popup="' + this.id + '"]'
+        '.js-modal-opener[data-modal="' + this.id + '"]'
       );
       $triggers.forEach((el) => {
         el.addEventListener("click", this.open);
       });
 
       // close triggers
-      document.querySelectorAll(".js-popup-close").forEach((el) => {
+      document.querySelectorAll(".js-modal-close").forEach((el) => {
         el.addEventListener("click", this.close);
       });
     },
@@ -87,7 +87,7 @@ export default {
     onClose(e) {},
     open(e) {
       e.preventDefault();
-      this.$el.classList.add("c-popup--open");
+      this.$el.classList.add("c-modal--open");
       this.isOpen = true;
 
       /*
@@ -105,7 +105,7 @@ export default {
     },
     close(e) {
       e.preventDefault();
-      this.$el.classList.remove("c-popup--open");
+      this.$el.classList.remove("c-modal--open");
       this.isOpen = false;
       this.onClose(e);
     },
@@ -127,16 +127,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c-popup:deep {
+.c-modal:deep {
   position: relative;
 
-  .js-popup-events {
+  .js-modal-events {
     // accesibility: visibility to enable :focus
     visibility: visible;
   }
 }
 
-.c-popup__viewport {
+.c-modal__viewport {
   // represent viewport scroll area
   position: fixed;
   top: 0;
@@ -153,14 +153,14 @@ export default {
   pointer-events: none;
   visibility: hidden;
 
-  .c-popup--open & {
+  .c-modal--open & {
     opacity: 1;
     pointer-events: auto;
     visibility: visible;
   }
 }
 
-.c-popup__container {
+.c-modal__container {
   // width container
   height: 100%;
   position: relative;
@@ -172,7 +172,7 @@ export default {
   align-items: center;
 }
 
-.c-popup__overlay {
+.c-modal__overlay {
   // full screen
   position: fixed;
   width: 100%;
@@ -186,7 +186,7 @@ export default {
   background-color: rgba(black, 0.5);
 }
 
-.c-popup__inner {
+.c-modal__inner {
   // ie
   width: 100%;
 
@@ -196,7 +196,7 @@ export default {
   // initial state
   opacity: 0;
 
-  .c-popup--open & {
+  .c-modal--open & {
     opacity: 1;
   }
 }
