@@ -49,6 +49,8 @@ export default {
 			slug: this.$store.state.projects[0].slug,
 			index: 0,
 			isLoading: false,
+			fadeObserver: null,
+			rafWaypoint: null,
 		}
 	},
 	mounted() {
@@ -76,14 +78,6 @@ export default {
 		)
 
 		tl.timeScale(0.85)
-
-		this.fadeWaypoint = new this.$waypoint.Inview({
-			element: this.$el,
-			enter: (direction) => {
-				tl.play()
-				this.fadeWaypoint.destroy()
-			},
-		})
 
 		this.rafWaypoint = new this.$waypoint.Inview({
 			element: this.$el,
@@ -117,9 +111,23 @@ export default {
 					}
 				})
 			})
+
+		this.fadeObserver = new IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					tl.play()
+					this.fadeObserver.disconnect()
+				}
+			},
+			{
+				threshold: 0.25, // quarter of item height
+			}
+		)
+
+		this.fadeObserver.observe(this.$el)
 	},
 	destroyed() {
-		this.fadeWaypoint.destroy()
+		this.fadeObserver?.disconnect()
 		this.rafWaypoint.destroy()
 		// stop preview mouse track
 		gsap.ticker.remove(this.onFrame)
