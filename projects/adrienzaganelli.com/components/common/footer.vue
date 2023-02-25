@@ -11,7 +11,11 @@
 			>
 				<!-- Links -->
 				<li class="md:mr-5" data-type="website">
-					<nuxt-link class="underline-effect--hover inline-block" to="/">
+					<nuxt-link
+						class="underline-effect--hover inline-block"
+						to="/"
+						data-linkz-ai-ignore
+					>
 						Portfolio.
 					</nuxt-link>
 				</li>
@@ -19,6 +23,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://twitter.com/adri_zag"
+						data-linkz-ai-ignore
 					>
 						Twitter.
 					</cExternal>
@@ -35,6 +40,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://github.com/adrienZ"
+						data-linkz-ai-ignore
 					>
 						Github.
 					</cExternal>
@@ -43,6 +49,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://codepen.io/adri_zag"
+						data-linkz-ai-ignore
 					>
 						Codepen.
 					</cExternal>

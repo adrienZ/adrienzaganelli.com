@@ -59,6 +59,7 @@
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						data-linkz-ai-ignore
 					>
 						Components
 					</a>
