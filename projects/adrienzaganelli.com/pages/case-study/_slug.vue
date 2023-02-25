@@ -69,6 +69,7 @@
 								@mouseover.native="$bus.emit('cursor-default')"
 								class="bg-pimper text-white px-4 text-xl font-semibold py-2"
 								:href="project.acf.url"
+								data-linkz-ai-ignore
 							>
 								See project
 							</cExternal>

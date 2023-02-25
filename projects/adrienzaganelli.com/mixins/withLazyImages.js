@@ -1,5 +1,15 @@
 import lazysizes from 'lazysizes'
 
+export const withHtppsImages = (str) => {
+	const imageRegExp =
+		/<figure.*class\s*=\s*["'].*wp-block-image.*["']\s*>(.*)<\/figure>/gi
+	return str.replace(imageRegExp, (str) => {
+		let res = str
+		res = res.replace('src="http://', 'data-src="https://')
+		res = res.replace('data-src="http://', 'data-src="https://')
+		return res
+	})
+}
 export const writeLazyWpImages = (str) => {
 	const imageRegExp =
 		/<figure.*class\s*=\s*["'].*wp-block-image.*["']\s*>(.*)<\/figure>/gi
@@ -12,6 +22,7 @@ export const writeLazyWpImages = (str) => {
 		return res
 	})
 }
+
 export const writeLazyWpVideos = (str) => {
 	const videoRegExp =
 		/<figure.*class\s*=\s*["'].*wp-block-video.*["']\s*>(.*)<\/figure>/gi
