@@ -50,12 +50,6 @@ export default {
 	 ** Global CSS
 	 */
 	css: ['~/assets/css/tailwind.css', '~/assets/scss/main.scss'],
-
-	server: {
-		port: 8000, // par défaut : 3000
-		host: '0.0.0.0', // par défaut : localhost
-	},
-
 	/*
 	 ** Plugins to load before mounting the App
 	 */
@@ -64,6 +58,7 @@ export default {
 		'~/plugins/analytics.client',
 		'~/plugins/waypoints.client',
 		'~/plugins/accessibility.client',
+		'~/plugins/linkzai.client',
 	],
 	/*
 	 ** Nuxt.js dev-modules
