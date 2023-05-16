@@ -4,13 +4,13 @@
 
 		<div class="sm:flex sm:-mx-3">
 			<div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
-				<img
+				<NuxtImg
 					@mouseenter="$bus.emit('cursor-difference')"
 					@mouseout="$bus.emit('cursor-default')"
 					alt=""
 					class="w-full shadow-xl rounded-md rellax"
 					loading="lazy"
-					src="~/assets/img/portrait.jpg"
+					src="/assets/img/portrait.jpg"
 					data-rellax-speed="0.5"
 					data-rellax-xs-speed="0"
 					data-rellax-mobile-speed="0"

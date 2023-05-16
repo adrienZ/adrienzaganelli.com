@@ -30,6 +30,7 @@
 		"waypoints": "^4.0.1"
 	},
 	"devDependencies": {
+		"@nuxt/image": "^0.7.1",
 		"agnostic-axe": "^3.0.3",
 		"glslify-loader": "^2.0.0",
 		"raw-loader": "^4.0.2",

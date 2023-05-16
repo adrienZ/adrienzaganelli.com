@@ -63,7 +63,7 @@ export default {
 	/*
 	 ** Nuxt.js dev-modules
 	 */
-	buildModules: ['@nuxtjs/tailwindcss'],
+	buildModules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
 	tailwindcss: {
 		configPath: '~/config/tailwind.config.js',
 		cssPath: '~/assets/css/tailwind.css',
@@ -101,5 +101,11 @@ export default {
 
 			return [...postsRoutes, ...projectsRoutes]
 		},
+	},
+
+	image: {
+		domains: ['adrienzaganelli.com'],
+		dir: '.',
+		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
 	},
 }

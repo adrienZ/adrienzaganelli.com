@@ -3,13 +3,12 @@
 		<div>
 			<nuxt-link :to="postUrl" v-if="thumbnail && thumbnail[0]">
 				<span class="visually-hidden">{{ post.title.rendered }}</span>
-				<figure class="shadow-md">
-					<img
-						class="w-100"
-						:src="thumbnail[0].media_details.sizes.blog_preview.source_url"
-						:alt="thumbnail[0].alt_text"
-					/>
-				</figure>
+				<NuxtPicture
+					class="shadow-md"
+					:src="thumbnail[0].media_details.sizes.blog_preview.source_url"
+					:alt="thumbnail[0].alt_text"
+					:imgAttrs="{ class: 'w-100' }"
+				/>
 			</nuxt-link>
 
 			<nuxt-link :to="postUrl">

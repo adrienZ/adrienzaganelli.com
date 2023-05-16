@@ -2,9 +2,9 @@
 	<section class="c-about-the-author">
 		<div class="mx-auto flex">
 			<nuxt-link to="/" class="flex-shrink-0">
-				<img
+				<NuxtImg
 					class="sm:h-16 w-16 rounded-full p-1 border-2"
-					src="https://miro.medium.com/fit/c/256/256/1*p3v_yjsMfK5k1oKYDXij7Q.jpeg"
+					src="/assets/img/avatar.jpg"
 					alt="Author photo"
 				/>
 			</nuxt-link>

@@ -1,8 +1,8 @@
 <template>
 	<video
+		v-if="type === 'video'"
 		:type="type"
 		crossorigin="anonymous"
-		v-if="type === 'video'"
 		class="w-full"
 		muted
 		autoplay
@@ -10,10 +10,10 @@
 		loop
 		:src="src"
 	></video>
-	<img
+	<NuxtImg
+		v-else-if="type === 'image'"
 		:type="type"
 		crossorigin="anonymous"
-		v-else-if="type === 'image'"
 		class="w-full"
 		:src="src"
 	/>
