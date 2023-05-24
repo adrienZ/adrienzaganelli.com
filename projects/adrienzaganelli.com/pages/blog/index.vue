@@ -8,7 +8,7 @@
 				<li
 					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
 					:key="post.ID"
-					v-for="post in $store.state.posts"
+					v-for="post in posts"
 				>
 					<c-card :post="post" />
 				</li>
@@ -28,6 +28,18 @@ export default {
 	components: {
 		cCard,
 		cFooter,
+	},
+	async asyncData(ctx) {
+		const { $content } = ctx
+
+		const posts = await $content('posts')
+			.where({ published: true })
+			// .only(['title', 'slug', 'creation_date', 'media', 'excerpt'])
+			.fetch()
+
+		return {
+			posts,
+		}
 	},
 }
 </script>

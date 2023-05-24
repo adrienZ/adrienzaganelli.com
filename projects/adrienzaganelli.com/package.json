@@ -14,6 +14,7 @@
 		"cover 95%, not dead"
 	],
 	"dependencies": {
+		"@nuxt/content": "^1",
 		"@nuxtjs/tailwindcss": "^3.4.2",
 		"@splitbee/web": "^0.2.4",
 		"axios": "^0.21.2",

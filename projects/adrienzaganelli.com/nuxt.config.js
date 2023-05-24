@@ -72,7 +72,7 @@ export default {
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: [],
+	modules: ['@nuxt/content'],
 	/*
 	 ** Build configuration
 	 */
@@ -107,5 +107,25 @@ export default {
 		domains: ['adrienzaganelli.com'],
 		dir: '.',
 		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+		presets: {
+			thumbnail: {
+				modifiers: {
+					format: 'webp',
+					width: 720,
+					height: 540,
+					quality: 80,
+				},
+			},
+		},
+	},
+
+	content: {
+		liveEdit: false,
+		markdown: {
+			prism: {
+				theme: false,
+			},
+		},
+		rehypePlugins: [],
 	},
 }
