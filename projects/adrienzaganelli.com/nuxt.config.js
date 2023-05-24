@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default {
-	mode: 'universal',
+	srr: true,
 	target: 'static',
 	/*
 	 ** Headers of the page

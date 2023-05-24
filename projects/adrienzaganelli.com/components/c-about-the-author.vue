@@ -1,13 +1,11 @@
 <template>
 	<section class="c-about-the-author">
 		<div class="mx-auto flex">
-			<nuxt-link to="/" class="flex-shrink-0">
-				<NuxtImg
-					class="sm:h-16 w-16 rounded-full p-1 border-2"
-					src="/assets/img/avatar.jpg"
-					alt="Author photo"
-				/>
-			</nuxt-link>
+			<NuxtImg
+				class="sm:h-16 w-16 rounded-full p-1 border-2"
+				src="/assets/img/avatar.jpg"
+				alt="Author photo"
+			/>
 			<div class="ml-4 pt-2">
 				<div class="flex items-center">
 					<h4 class="mr-4 text-xl text-gray-900 leading-tight">
