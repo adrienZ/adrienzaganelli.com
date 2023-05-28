@@ -4,11 +4,11 @@
 
 		<div class="sm:flex sm:-mx-3">
 			<div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
-				<NuxtImg
+				<NuxtPicture
 					@mouseenter="$bus.emit('cursor-difference')"
 					@mouseout="$bus.emit('cursor-default')"
 					alt=""
-					class="w-full shadow-xl rounded-md rellax"
+					class="rellax"
 					loading="lazy"
 					src="/assets/img/portrait.jpg"
 					data-rellax-speed="0.5"
@@ -16,6 +16,7 @@
 					data-rellax-mobile-speed="0"
 					data-rellax-tablet-speed="0"
 					data-rellax-percentage="0.5"
+					:imgAttrs="{ class: 'shadow-xl rounded-md w-full' }"
 				/>
 			</div>
 
