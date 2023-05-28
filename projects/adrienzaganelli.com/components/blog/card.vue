@@ -16,8 +16,6 @@
 				<h3 class="font-bold mt-3 text-xl">{{ post.title }}</h3>
 			</nuxt-link>
 
-			{{ post }}
-
 			<nuxt-content class="mt-1" :document="{ body: post.excerpt }" />
 		</div>
 
@@ -62,10 +60,10 @@ export default {
 			return '/assets/content/' + this.post.media
 		},
 		postUrl() {
-			return '/blog/' + this.post.slug
+			return '/posts/' + this.post.slug
 		},
 		date() {
-			return new Date(this.post.creation_date).toLocaleDateString('en-US', {
+			return new Date(this.post.createdAt).toLocaleDateString('en-US', {
 				day: 'numeric',
 				month: 'long',
 				year: 'numeric',

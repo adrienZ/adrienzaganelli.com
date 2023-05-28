@@ -9,39 +9,44 @@ In today’s world, connectivity has made us more mobile than ever which (parado
 
 <!--more-->
 
-A second effect of this mobility is the slow loading of heavy websites: Amazon found that just 100 milliseconds of extra load time cost them 1% of sales.
+A second effect of this mobility is the slow loading of heavy websites: Amazon found that just [100 milliseconds of extra load time cost them 1% of sales](https://www.forbes.com/sites/steveolenski/2016/11/10/why-brands-are-fighting-over-milliseconds/).
 
-In these situations, we would like to have offline access to our content. That’s why tools like Instapaper and Pocket exist. Spotify and Netflix also allow you to download media for offline use.
+In these situations, we would like to have offline access to our content. That’s why tools like [Instapaper](https://www.instapaper.com/) and [Pocket](https://getpocket.com/) exist. [Spotify](https://support.spotify.com/us/listen_everywhere/on_phone_tablet_desktop/listen-offline/) and [Netflix](https://techcrunch.com/2016/11/30/netflix-adds-offline-viewing-for-smartphones-and-tablets/) also allow you to download media for offline use.
 
 We can easily see there is a demand for this feature and how it can benefit your business.
 
-It is time for the web to go offline.
+**It is time for the web to go offline.**
 
-Luckily we don’t need to build native apps to achieve this goal anymore. We can create an offline website with the power of JavaScript thanks to the new service workers and Cache API features.
+Luckily we don’t need to build native apps to achieve this goal anymore. We can create an offline website with the power of JavaScript thanks to the new **service workers** and **Cache API** features.
 
-What is a service Worker (SW)?
+### What is a service Worker (SW)?
+
 Service workers are JavaScript code that runs in the background of your website, even when the page is closed. For offline uses, one of their goals is to store network requests or images in the browser cache.
 
-The agency BETC made a demo website called whentheinternetisdown.com for the french telecom company Bouygues. It only works offline and feels kind of magical. Go try it out 🙂
+The agency BETC made a demo website called [whentheinternetisdown.com](https://whentheinternetisdown.com/) for the french telecom company Bouygues. It only works offline and feels kind of magical. Go try it out 🙂
 
-It’s the caching that makes the magic of the site: you can come back in 3 weeks, 1 month, 1 year, still without a connection, and access all the content. — Maxime Huygue, Head of BETC Digital Studio
+> It’s the caching that makes the magic of the site: you can come back in 3 weeks, 1 month, 1 year, still without a connection, and access all the content. — Maxime Huygue, Head of BETC Digital Studio
 
-Ok this is cool, tell me how to do it then.
+**Ok this is cool, tell me how to do it then.**
+
+<nuxt-picture src="/assets/content/skfb-1.jpg" />
 
 Ok, let’s begin with some prerequisites:
 
-In order to use SWs, you must enable https on your website.
-You should have decent comprehension of how JavaScript promises work.
-SWs works in all modern browsers except our friend IE.
-Even if it’s JavaScript, they run in the context of web workers. Which means: no DOM, and run outside of the main thread.
-Understand how databases operate.
-The code of your service worker needs to be in a separate JavaScript file. Example: service-worker.js
-Service workers lifecycle
+- In order to use SWs, you must enable https on your website.
+- You should have decent comprehension of how JavaScript [promises](https://scotch.io/tutorials/javascript-promises-for-dummies) work.
+- SWs works in all [modern browsers](https://caniuse.com/#feat=serviceworkers) except our friend IE.
+- Even if it’s JavaScript, they run in the context of [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). Which means: no DOM, and run outside of the main thread.
+- Understand how databases operate.
+- The code of your service worker needs to be in a separate JavaScript file. Example: service-worker.js
+
+### Service workers lifecycle
 
 To be able to work, SWs must be registered within your application, then installed. You should check if SWs are compatible with your client before doing so.
 
-1. Registration
-   If available, register your SW file. It will return a promise, so you can handle errors. You can also specify a scope of urls in the registration options.
+#### 1. Registration
+
+If available, register your SW file. It will return a promise, so you can handle errors. You can also specify a scope of urls in the registration options.
 
 if ('serviceWorker' in navigator) {
 navigator.serviceWorker.register('/service-worker.js')
@@ -51,7 +56,10 @@ console.log('Registration successful, scope is:', registration.scope);
 .catch(function(error) {
 console.log('Service worker registration failed, error:', error);
 });
-} 2) Installation
+}
+
+#### 2) Installation
+
 Service workers are event-based. Briefly, you have to attach callbacks to events, as you would do with an element.addEventListener. The first event you need to use is the install event. This is a good time to cache all your vital resources as Javascript, CSS, HTML, Images… This is where theCache API joins the party!
 
 Then open the method or create a cache linked to a desired name. The returned promise needs to be wrapped into event.waitUntil(), which will delay the installation of the service worker until the promise is resolved. Otherwise, the install event fails and the service worker will be discarded.
@@ -76,7 +84,10 @@ caches.open(CACHE_NAME)
 return cache.addAll(precacheResources);
 })
 );
-}); 3) Activation
+});
+
+#### 3) Activation
+
 This one is a bit subtle.
 
 Once the installation has completed, the service worker isn’t active yet: we are in the installed state.
@@ -150,8 +161,9 @@ We learned how to implement common uses cases such as: caching resources and cle
 We saw that self.skipWaiting and self.clients.claim allow us to activate SWs faster in order to catch events faster.
 Ok moving right along…
 
-4. Fetch
-   The fetch event allows us to intercept network requests and store responses or customize them.
+#### 4. Fetch
+
+The fetch event allows us to intercept network requests and store responses or customize them.
 
 The main advantage of this hook is to return the cached resources instead of making a request call. You should take a look at the Fetch API for handling your request calls.
 
