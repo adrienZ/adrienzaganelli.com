@@ -105,17 +105,7 @@
 	</section>
 </template>
 
-<script>
+<script setup>
 // components
 import cExternal from '@/components/common/external.vue'
-
-// mixins
-import withLazyImages from '@/mixins/withLazyImages'
-
-export default {
-	mixins: [withLazyImages],
-	components: {
-		cExternal,
-	},
-}
 </script>

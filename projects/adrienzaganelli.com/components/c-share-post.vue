@@ -45,77 +45,74 @@
 	</section>
 </template>
 
-<script>
-export default {
-	props: {
-		url: String,
-		postTitle: String,
-	},
-	data() {
-		const osShareEnabled = process.client && navigator.share
+<script setup>
+import { computed } from 'vue'
 
-		return {
-			osShareEnabled: osShareEnabled,
-		}
-	},
-	methods: {
-		serializeObject(obj) {
-			return Object.keys(obj)
-				.reduce((a, k) => {
-					a.push(k + '=' + encodeURIComponent(obj[k]))
-					return a
-				}, [])
-				.join('&')
-		},
-		openModal(e) {
-			e.preventDefault()
-			window.open(
-				e.target.href,
-				'sharer',
-				'toolbar=0,status=0,width=580,height=325'
-			)
-		},
-		nativeShare(e) {
-			e.preventDefault()
-			const { url, postTitle } = this._props
+const props = defineProps({
+	url: String,
+	postTitle: String,
+})
 
-			navigator.share({
-				title: postTitle,
-				url,
-			})
-		},
-	},
-	computed: {
-		facebookShareUrl() {
-			const { url, postTitle } = this._props
-			const params = this.serializeObject({
-				u: url,
-				quote: postTitle + ' by Adrien Zaganelli',
-			})
-			return 'https://www.facebook.com/sharer/sharer.php?' + params
-		},
-		TwitterShareUrl() {
-			const { url, postTitle } = this._props
-			const params = this.serializeObject({
-				text: postTitle + ' @adri_zag\n\n' + url,
-			})
-			return 'https://twitter.com/intent/tweet?' + params
-		},
-		LinkedinShareUrl() {
-			const { url, postTitle } = this._props
-			const params = this.serializeObject({
-				url,
-			})
-			return 'https://www.linkedin.com/sharing/share-offsite?' + params
-			/**
-			 * <meta property='og:title' content='Title of the article"/>
-			 * <meta property='og:image' content='//media.example.com/ 1234567.jpg"/>
-			 * <meta property='og:description' content='Description that will show in the preview"/>
-			 * <meta property='og:url' content='//www.example.com/URL of the article" />
-			 */
-		},
-	},
+const osShareEnabled = process.client && navigator.share
+
+function serializeObject(obj) {
+	return Object.keys(obj)
+		.reduce((a, k) => {
+			a.push(k + '=' + encodeURIComponent(obj[k]))
+			return a
+		}, [])
+		.join('&')
 }
+
+function openModal(e) {
+	e.preventDefault()
+	window.open(
+		e.target.href,
+		'sharer',
+		'toolbar=0,status=0,width=580,height=325'
+	)
+}
+
+function nativeShare(e) {
+	e.preventDefault()
+	const { url, postTitle } = props
+
+	navigator.share({
+		title: postTitle,
+		url,
+	})
+}
+
+const facebookShareUrl = computed(() => {
+	const { url, postTitle } = props
+	const params = serializeObject({
+		u: url,
+		quote: postTitle + ' by Adrien Zaganelli',
+	})
+	return 'https://www.facebook.com/sharer/sharer.php?' + params
+})
+
+const TwitterShareUrl = computed(() => {
+	const { url, postTitle } = props
+	const params = serializeObject({
+		text: postTitle + ' @adri_zag\n\n' + url,
+	})
+	return 'https://twitter.com/intent/tweet?' + params
+})
+
+const LinkedinShareUrl = computed(() => {
+	const { url } = props
+	const params = serializeObject({
+		url,
+	})
+	return 'https://www.linkedin.com/sharing/share-offsite?' + params
+	/**
+	 * <meta property='og:title' content='Title of the article"/>
+	 * <meta property='og:image' content='//media.example.com/ 1234567.jpg"/>
+	 * <meta property='og:description' content='Description that will show in the preview"/>
+	 * <meta property='og:url' content='//www.example.com/URL of the article" />
+	 */
+})
 </script>
 
 <style lang="scss" scoped>

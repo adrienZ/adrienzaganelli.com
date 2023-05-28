@@ -30,23 +30,17 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: ['post'],
-	computed: {
-		thumbnail() {
-			return this.post._embedded?.['wp:featuredmedia']
-		},
-		postUrl() {
-			return '/blog/' + this.post.slug
-		},
-		date() {
-			return new Date(this.post.date).toLocaleDateString('en-US', {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric',
-			})
-		},
-	},
-}
+<script setup>
+import { computed } from 'vue'
+const props = defineProps(['post'])
+
+const thumbnail = computed(() => props.post._embedded?.['wp:featuredmedia'])
+const postUrl = computed(() => '/blog/' + props.post.slug)
+const date = computed(() =>
+	new Date(props.post.date).toLocaleDateString('en-US', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	})
+)
 </script>
