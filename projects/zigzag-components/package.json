@@ -43,7 +43,7 @@
     "babel-loader": "^8.2.5",
     "sass": "^1.54.4",
     "typescript": "^4.6.4",
-    "vite": "^3.0.7",
+    "vite": "^3.2.7",
     "vue-loader": "^16.8.3",
     "vue-tsc": "^0.39.5"
   },
