@@ -104,7 +104,6 @@ export default {
 	},
 
 	image: {
-		domains: ['adrienzaganelli.com'],
 		dir: '.',
 		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
 		presets: {

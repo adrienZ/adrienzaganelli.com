@@ -7,17 +7,17 @@
 				{{ post.title }}
 			</h1>
 
-			<!-- <figure>
-				<img
+			<figure v-if="post.media && post.caption">
+				<NuxtImg
 					class="block w-full mx-auto"
-					:src="post.coverImage.src"
-					:alt="post.coverImage.caption"
+					:src="post.media"
+					:alt="post.caption"
 				/>
 				<figcaption
 					class="text-center mt-2 italic"
-					v-html="post.coverImage.caption"
+					v-html="post.caption"
 				></figcaption>
-			</figure> -->
+			</figure>
 
 			<NuxtContent
 				class="cms-block mt-5"

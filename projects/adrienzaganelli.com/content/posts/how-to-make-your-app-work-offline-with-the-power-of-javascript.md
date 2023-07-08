@@ -2,7 +2,8 @@
 published: true
 title: How to make your app work offline with the power of JavaScript
 createdAt: 2019-01-23
-media: 1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
+media: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
+caption: Photo by Donald Giannatti on Unsplash
 ---
 
 In today’s world, connectivity has made us more mobile than ever which (paradoxically) cause us to be offline sometimes: when we’re in airplane mode, havea bad connection, have no more data, are on the subway... and so on.
@@ -25,11 +26,11 @@ Service workers are JavaScript code that runs in the background of your website,
 
 The agency BETC made a demo website called [whentheinternetisdown.com](https://whentheinternetisdown.com/) for the french telecom company Bouygues. It only works offline and feels kind of magical. Go try it out 🙂
 
+<iframe loading="lazy" title="BETC #whentheinternetisdown" width="500" height="281" src="https://www.youtube.com/embed/L1_U3fi4Fjw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
 > It’s the caching that makes the magic of the site: you can come back in 3 weeks, 1 month, 1 year, still without a connection, and access all the content. — Maxime Huygue, Head of BETC Digital Studio
 
 **Ok this is cool, tell me how to do it then.**
-
-<nuxt-picture src="/assets/content/skfb-1.jpg" />
 
 Ok, let’s begin with some prerequisites:
 
@@ -44,49 +45,55 @@ Ok, let’s begin with some prerequisites:
 
 To be able to work, SWs must be registered within your application, then installed. You should check if SWs are compatible with your client before doing so.
 
-#### 1. Registration
+![](https://cdn-media-1.freecodecamp.org/images/0*kwQX495DA0fAv3QZ.png)
 
-If available, register your SW file. It will return a promise, so you can handle errors. You can also specify a scope of urls in the registration options.
+#### **1) Registration**
 
+If available, register your SW file. It will return a promise, so you can handle errors. You can also specify a scope of urls in the [registration options](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register).
+
+```javascript
 if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('/service-worker.js')
-.then(function(registration) {
-console.log('Registration successful, scope is:', registration.scope);
-})
-.catch(function(error) {
-console.log('Service worker registration failed, error:', error);
-});
+	navigator.serviceWorker
+		.register('/service-worker.js')
+		.then(function (registration) {
+			console.log('Registration successful, scope is:', registration.scope)
+		})
+		.catch(function (error) {
+			console.log('Service worker registration failed, error:', error)
+		})
 }
+```
 
-#### 2) Installation
+#### **2) Installation**
 
-Service workers are event-based. Briefly, you have to attach callbacks to events, as you would do with an element.addEventListener. The first event you need to use is the install event. This is a good time to cache all your vital resources as Javascript, CSS, HTML, Images… This is where theCache API joins the party!
+**Service workers are event-based**. Briefly, you have to attach callbacks to events, as you would do with an [element.addEventListener](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener). The first event you need to use is the install event. This is a good time to cache all your vital resources as Javascript, CSS, HTML, Images… This is where the [Cache API](https://developer.mozilla.org/fr/docs/Web/API/Cache) joins the party!
 
 Then open the method or create a cache linked to a desired name. The returned promise needs to be wrapped into event.waitUntil(), which will delay the installation of the service worker until the promise is resolved. Otherwise, the install event fails and the service worker will be discarded.
 
 Please be cautious with caching: your user’s storage is precious, so don’t abuse it. Also, be careful: the install event can only be called once, and you’ll need to update your SW to modify it.
 
-const CACHE_NAME = 'cache-v1';
+```javascript
+const CACHE_NAME = 'cache-v1'
 const precacheResources = [
-'/',
-'index.html',
-'styles/main.css',
-'images/space1.jpg',
-'images/space2.jpg',
-'images/space3.jpg'
-];
+	'/',
+	'index.html',
+	'styles/main.css',
+	'images/space1.jpg',
+	'images/space2.jpg',
+	'images/space3.jpg',
+]
 
-self.addEventListener('install', event => {
-console.log('Service worker install event!');
-event.waitUntil(
-caches.open(CACHE_NAME)
-.then(cache => {
-return cache.addAll(precacheResources);
+self.addEventListener('install', (event) => {
+	console.log('Service worker install event!')
+	event.waitUntil(
+		caches.open(CACHE_NAME).then((cache) => {
+			return cache.addAll(precacheResources)
+		})
+	)
 })
-);
-});
+```
 
-#### 3) Activation
+#### **3) Activation**
 
 This one is a bit subtle.
 
@@ -96,143 +103,164 @@ In this state, it waits to take control of the page. It then moves on to the nex
 
 The activation phase is handy when you update a SW. The most common case is to clear the cache of the previous SW installed.
 
-self.addEventListener('activate', function(event) {
-event.waitUntil(
-caches.keys().then(function(cacheNames) {
-return Promise.all(
-cacheNames.map(function(cacheName) {
-return caches.delete(cacheName);
+```javascript
+self.addEventListener('activate', function (event) {
+	event.waitUntil(
+		caches.keys().then(function (cacheNames) {
+			return Promise.all(
+				cacheNames.map(function (cacheName) {
+					return caches.delete(cacheName)
+				})
+			)
+		})
+	)
 })
-);
-})
-);
-});
+```
+
 Please note that, once successfully installed, the updated worker will wait until the existing worker is controlling zero clients (clients overlap during a refresh).
 
 self.skipWaiting() prevents the waiting, meaning the service worker activates as soon as it’s finished installing. The advantage of this method is that you can receive fetch events faster.
 
-const CACHE_NAME = 'cache-v1';
+```javascript
+const CACHE_NAME = 'cache-v1'
 const precacheResources = [
-'index.html',
-'styles/main.css',
-// your files ...
-];
+	'index.html',
+	'styles/main.css',
+	// your files ...
+]
 
-self.addEventListener('install', event => {
-console.log('Service worker install event!');
-event.waitUntil(
-caches.open(CACHE_NAME)
-.then(cache => {
-return cache.addAll(precacheResources);
+self.addEventListener('install', (event) => {
+	console.log('Service worker install event!')
+	event.waitUntil(
+		caches
+			.open(CACHE_NAME)
+			.then((cache) => {
+				return cache.addAll(precacheResources)
+			})
+			.then(function () {
+				// `skipWaiting()` forces the waiting ServiceWorker to become the
+				// active ServiceWorker, triggering the `onactivate` event.
+				// Together with `Clients.claim()` this allows a worker to take effect
+				// immediately in the client(s).
+				return self.skipWaiting()
+			})
+	)
 })
-.then(function() {
-// `skipWaiting()` forces the waiting ServiceWorker to become the
-// active ServiceWorker, triggering the `onactivate` event.
-// Together with `Clients.claim()` this allows a worker to take effect
-// immediately in the client(s).
-return self.skipWaiting();
-})
-);
-});
 
 // Activate event
 // Be sure to call self.clients.claim()
-self.addEventListener('activate', function(event) {
-event.waitUntil(
-caches.keys().then(function(cacheNames) {
-return Promise.all(
-cacheNames.map(function(cacheName) {
-return caches.delete(cacheName);
+self.addEventListener('activate', function (event) {
+	event.waitUntil(
+		caches.keys().then(function (cacheNames) {
+			return Promise.all(
+				cacheNames.map(function (cacheName) {
+					return caches.delete(cacheName)
+				})
+				// `claim()` sets this worker as the active worker for all clients that
+				// match the workers scope and triggers an `oncontrollerchange` event for
+				// the clients.
+			).then(() => self.clients.claim())
+		})
+	)
 })
-// `claim()` sets this worker as the active worker for all clients that
-// match the workers scope and triggers an `oncontrollerchange` event for
-// the clients.
-).then(() => self.clients.claim());
-})
-);
-});
+```
+
 It doesn’t really matter when you call skipWaiting(), as long as it’s during or before waiting. It’s pretty common to call it in the install event.
 
-Phew! Let’s take a break and sum up what we’ve seen:
+**Phew! Let’s take a break and sum up what we’ve seen:**
 
-Service workers are pieces of JavaScript that enable offline features such as caching.
-We explored the SW Lifecycle: registration, installation, activation
-We learned how to implement common uses cases such as: caching resources and clearing caches with the Cache API.
-We saw that self.skipWaiting and self.clients.claim allow us to activate SWs faster in order to catch events faster.
+- Service workers are pieces of JavaScript that enable offline features such as caching.
+- We explored the SW Lifecycle: registration, installation, activation
+- We learned how to implement common uses cases such as: caching resources and clearing caches with the Cache API.
+- We saw that self.skipWaiting and self.clients.claim allow us to activate SWs faster in order to catch events faster.
+
 Ok moving right along…
 
-#### 4. Fetch
+#### **4) Fetch**
 
 The fetch event allows us to intercept network requests and store responses or customize them.
 
-The main advantage of this hook is to return the cached resources instead of making a request call. You should take a look at the Fetch API for handling your request calls.
+The main advantage of this hook is to return the cached resources instead of making a request call. You should take a look at the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) for handling your request calls.
 
-self.addEventListener('fetch', event => {
-console.log('Fetch intercepted for:', event.request.url);
-event.respondWith(caches.match(event.request)
-.then(cachedResponse => {
-if (cachedResponse) {
-return cachedResponse;
-}
-return fetch(event.request);
+```javascript
+self.addEventListener('fetch', (event) => {
+	console.log('Fetch intercepted for:', event.request.url)
+	event.respondWith(
+		caches.match(event.request).then((cachedResponse) => {
+			if (cachedResponse) {
+				return cachedResponse
+			}
+			return fetch(event.request)
+		})
+	)
 })
-);
-});
-We can’t cover all the possibilities offered by service workers in one article. Still, I encourage you to look into what’s possible: Custom 404, Background Sync API for offline analytics, ServiceWorker-side templating…. the future looks exciting!
+```
 
-So far we’ve seen what a service worker is, how it works through its lifecycle, and the most common use cases by playing with Cache and Fetch API. Those two APIs give us a whole new way of managing URL addressable resources in the browser. To complete this guide, let see how we can store other types of data, for example a user’s JSON from your database.
+We can’t cover all the possibilities offered by service workers in one article. Still, I encourage you to look into what’s possible: [Custom 404](https://gohugohq.com/howto/go-offline-with-service-worker/), [Background Sync API for offline analytics](https://developer.chrome.com/blog/offline-google-analytics/), [ServiceWorker-side templating](https://web.dev/offline-cookbook/#serviceworker-side-templating)… the future looks exciting!
 
-Store custom data with IndexedDB
-A general guideline for data storage is that URL addressable resources should be stored with the Cache interface, and other data should be stored with IndexedDB. For example HTML, CSS, and JS files should be stored in the cache, while JSON data should be stored in IndexedDB. Note that this is only a guideline, not a firm rule. (source)
+So far we’ve seen what a service worker is, how it works through its lifecycle, and the most common use cases by playing with Cache and Fetch API. Those two APIs give us a whole new way of managing **URL addressable resource**s in the browser. To complete this guide, let see how we can store other types of data, for example a user’s [JSON](https://en.wikipedia.org/wiki/JSON) from your database.
 
-In short, we will see when you shouldn’t use Cache API but IndexedDB instead. Both are asynchronous and accessible in service workers, web workers, and the window interface. The good news is that it is well supported, even in recent versions of IE.
+### Store custom data with IndexedDB
 
-IndexedDB is a NoSQL database. IndexedDB data are stored as key-value pairs in object stores rather than tables. A single database can contain any number of object stores. Whenever a value is stored in an object store, it is associated with a key. It looks like this:
+_A general guideline for data storage is that URL addressable resources should be stored with the [Cache](https://developer.mozilla.org/en-US/docs/Web/API/Cache) interface, and other data should be stored with [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). For example HTML, CSS, and JS files should be stored in the cache, while JSON data should be stored in IndexedDB. Note that this is only a guideline, not a firm rule. ([source](https://web.dev/learn/pwa/))_
 
-Pretty classic, right? The main thing to understand is the concept of key path. It tells the browser which key to use to extract data from in the object store or index.
+In short, we will see **when you shouldn’t use Cache API** but [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB) instead. Both are asynchronous and accessible in service workers, web workers, and the [window interface](https://developer.mozilla.org/fr/docs/Web/API/Window). The good news is that [it is well supported](https://caniuse.com/indexeddb), even in recent versions of IE.
 
-self.addEventListener('activate', function(event) {
-event.waitUntil(
-createDB()
-);
-});
+IndexedDB is a NoSQL database. IndexedDB data are stored as key-value pairs in **object stores** rather than tables. A single database can contain any number of object stores. Whenever a value is stored in an object store, it is associated with a key. It looks like this:
+
+![](https://cdn-media-1.freecodecamp.org/images/1*6ES2yg8KcJaEpi_nAv31yA.png)
+
+Pretty classic, right? The main thing to understand is the concept of [key path](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#gloss_keypath). It tells the browser which key to use to extract data from in the object store or index.
+
+```javascript
+self.addEventListener('activate', function (event) {
+	event.waitUntil(createDB())
+})
 
 function createDB() {
-idb.open('products', 1, function(upgradeDB) {
-var store = upgradeDB.createObjectStore('beverages', {
-keyPath: 'id'
-});
-store.put({id: 123, name: 'coke', price: 10.99, quantity: 200});
-store.put({id: 321, name: 'pepsi', price: 8.99, quantity: 100});
-store.put({id: 222, name: 'water', price: 11.99, quantity: 300});
-});
+	idb.open('products', 1, function (upgradeDB) {
+		var store = upgradeDB.createObjectStore('beverages', {
+			keyPath: 'id',
+		})
+
+		store.put({ id: 123, name: 'coke', price: 10.99, quantity: 200 })
+		store.put({ id: 321, name: 'pepsi', price: 8.99, quantity: 100 })
+		store.put({ id: 222, name: 'water', price: 11.99, quantity: 300 })
+	})
 }
 
 function readDB() {
-idb.open('products', 1).then(function(db) {
-var tx = db.transaction(['beverages'], 'readonly');
-var store = tx.objectStore('beverages');
-return store.getAll();
-}).then(function(items) {
-// Use beverage data
-});
+	idb
+		.open('products', 1)
+		.then(function (db) {
+			var tx = db.transaction(['beverages'], 'readonly')
+			var store = tx.objectStore('beverages')
+			return store.getAll()
+		})
+		.then(function (items) {
+			// Use beverage data
+		})
 }
-In this example, we can see that our key path is the property id, and it is defined in line 10. Then we return all the items from the database. This is a very basic use case, so if you want to learn more about how IndexedDB works, I advise you to read this excellent article.
+```
 
-Conclusion
+In this example, we can see that our key path is the property id, and it is defined in line 10. Then we return all the items from the database. This is a very basic use case, so if you want to learn more about how IndexedDB works, I advise you to read this excellent [article](https://itnext.io/getting-started-with-persistent-offline-storage-with-indexeddb-1af66727246c).
+
+### Conclusion
+
 Taking advantage of the offline web is great for the user experience, and some companies have started to take loot at it. It mostly relies on service workers, JavaScript scripts that run in the background of your website.
 
 We’ve seen how to use them trough the service worker lifecycle and what you can do by using the Cache and Fetch API. The possibilities are almost limitless. so be creative and not too greedy on the device storage.
 
 You can even use databases offline: that what’s IndexedDB is made for. These offline capabilities certainly are part of the future of the web, so it plays well with the new type of websites that Google are creating: Progressive Web Apps.
 
-Further reading:
-The Offline Cookbook: https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/
-PWA and offline: https://developers.google.com/web/ilt/pwa/lab-offline-quickstart
-Lab: Caching Files with Service Worker: https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker
-The Service Worker Lifecycle: https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
-Demystifying The Service Worker Lifecycle: https://scotch.io/tutorials/demystifying-the-service-worker-lifecycle
-Activate Service Workers Faster: https://davidwalsh.name/service-worker-claim
-Live Data in the Service Worker: https://developers.google.com/web/ilt/pwa/live-data-in-the-service-worker
-IndexedDBBasic concepts: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB
-Getting Started with Persistent Offline Storage with IndexedDB: https://itnext.io/getting-started-with-persistent-offline-storage-with-indexeddb-1af66727246c
+### Further reading:
+
+- The Offline Cookbook: https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/
+- PWA and offline: https://developers.google.com/web/ilt/pwa/lab-offline-quickstart
+- Lab: Caching Files with Service Worker: https://developers.google.com/web/ilt/pwa/lab-caching-files-with-service-worker
+- The Service Worker Lifecycle: https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle
+- Demystifying The Service Worker Lifecycle: https://scotch.io/tutorials/demystifying-the-service-worker-lifecycle
+- Activate Service Workers Faster: https://davidwalsh.name/service-worker-claim
+- Live Data in the Service Worker: https://developers.google.com/web/ilt/pwa/live-data-in-the-service-worker
+- IndexedDBBasic concepts: https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Concepts_Behind_IndexedDB
+- Getting Started with Persistent Offline Storage with IndexedDB: https://itnext.io/getting-started-with-persistent-offline-storage-with-indexeddb-1af66727246c
