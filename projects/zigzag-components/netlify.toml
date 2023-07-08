@@ -4,4 +4,4 @@
   publish = "storybook-static/"
 
 [context.production]
-  environment = { NODE_VERSION = "16.13.0" }
+  environment = { NODE_VERSION = "16.14.0" }

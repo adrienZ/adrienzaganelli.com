@@ -1,0 +1,30 @@
+{
+	"name": "nuxt3",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare"
+	},
+	"devDependencies": {
+		"@nuxt/devtools": "latest",
+		"@nuxt/image": "^1.0.0-rc.1",
+		"@nuxtjs/tailwindcss": "^6.8.0",
+		"@types/node": "^18",
+		"nuxt": "^3.6.1",
+		"sass-easing": "^1.0.3"
+	},
+	"dependencies": {
+		"@pinia/nuxt": "^0.4.11",
+		"@splitbee/web": "^0.3.0",
+		"gsap": "^3.12.2",
+		"mitt": "^3.0.1",
+		"pinia": "^2.1.4",
+		"rellax": "^1.12.1",
+		"sass": "^1.63.6",
+		"waypoints": "^4.0.1"
+	}
+}
