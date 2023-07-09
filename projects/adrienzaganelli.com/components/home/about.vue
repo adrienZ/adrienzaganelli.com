@@ -4,7 +4,7 @@
 
 		<div class="sm:flex sm:-mx-3">
 			<div class="sm:w-1/3 sm:px-3 mb-5 sm:mb-0">
-				<NuxtImg
+				<NuxtPicture
 					@mouseenter="$bus.emit('cursor-difference')"
 					@mouseout="$bus.emit('cursor-default')"
 					alt=""

@@ -10,7 +10,7 @@
 					:key="post.ID"
 					v-for="post in posts"
 				>
-					<c-card :post="post" />
+					<c-card :post="post" :height="post.thumbnail_height" />
 				</li>
 			</ul>
 		</main>
@@ -32,9 +32,17 @@ export default {
 	async asyncData(ctx) {
 		const { $content } = ctx
 
-		const posts = await $content('posts')
+		const posts = await $content('blog')
 			.where({ published: true })
-			// .only(['title', 'slug', 'creation_date', 'media', 'excerpt'])
+			.only([
+				'title',
+				'slug',
+				'createdAt',
+				'media',
+				'excerpt',
+				'thumbnail_height',
+			])
+			.sortBy('createdAt', 'desc')
 			.fetch()
 
 		return {

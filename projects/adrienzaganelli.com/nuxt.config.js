@@ -85,21 +85,13 @@ export default {
 			const projects = await axios.get(
 				'https://adrienzaganelli.com/cms/wp-json/wp/v2/project'
 			)
-			const posts = await axios.get(
-				'https://adrienzaganelli.com/cms/wp-json/wp/v2/posts?_embed'
-			)
 
 			const projectsRoutes = projects.data.map((project) => ({
 				route: `/case-study/` + project.slug,
 				payload: project,
 			}))
 
-			const postsRoutes = posts.data.map((post) => ({
-				route: `/blog/` + post.slug,
-				payload: post,
-			}))
-
-			return [...postsRoutes, ...projectsRoutes]
+			return [...projectsRoutes]
 		},
 	},
 
@@ -112,7 +104,7 @@ export default {
 					format: 'webp',
 					width: 720,
 					height: 540,
-					quality: 80,
+					quality: 75,
 				},
 			},
 		},
@@ -122,7 +114,7 @@ export default {
 		liveEdit: false,
 		markdown: {
 			prism: {
-				theme: false,
+				theme: 'prismjs/themes/prism-okaidia.css',
 			},
 		},
 		rehypePlugins: [],

@@ -1,13 +1,16 @@
 <template>
 	<div class="c-card h-full flex flex-col justify-between text-sm">
-		<div>
+		<div class="ratio">
 			<nuxt-link :to="postUrl" v-if="thumbnail">
 				<span class="visually-hidden">{{ post.title }}</span>
-				<NuxtImg
+				<NuxtIm
 					class="shadow-md"
-					preset="thumbnail"
 					:src="thumbnail"
 					alt="thumbnail[0].alt_text"
+					format="webp"
+					width="720"
+					:height="height || 540"
+					quality="75"
 					:imgAttrs="{ class: 'w-full' }"
 				/>
 			</nuxt-link>
@@ -33,7 +36,7 @@
 
 <script>
 export default {
-	props: ['post'],
+	props: ['post', 'height'],
 	methods: {
 		generateExcerpt(content, wordLimit, excerptSuffix) {
 			// Remove HTML tags and shortcodes
@@ -57,10 +60,10 @@ export default {
 	},
 	computed: {
 		thumbnail() {
-			return '/assets/content/' + this.post.media
+			return this.post.media
 		},
 		postUrl() {
-			return '/posts/' + this.post.slug
+			return '/blog/' + this.post.slug
 		},
 		date() {
 			return new Date(this.post.createdAt).toLocaleDateString('en-US', {
@@ -72,3 +75,18 @@ export default {
 	},
 }
 </script>
+
+<style lang="scss" scoped>
+.ratio {
+	position: relative;
+	// padding-top: 56.25%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */
+	width: 100%;
+	img {
+		// position: absolute;
+		// width: 100%;
+		// height: 100%;
+		top: 0;
+		// object-fit: cover;
+	}
+}
+</style>

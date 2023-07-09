@@ -8,7 +8,7 @@
 		"dev": "nuxt",
 		"build": "nuxt build",
 		"start": "nuxt start",
-		"static": "nuxt build --target static && nuxt export"
+		"static": "nuxt build --analyze --target static && nuxt export"
 	},
 	"browserslist": [
 		"cover 95%, not dead"
