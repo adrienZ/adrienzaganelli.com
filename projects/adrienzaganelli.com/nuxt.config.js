@@ -72,7 +72,7 @@ export default {
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: [],
+	modules: ['@nuxt/content'],
 	/*
 	 ** Build configuration
 	 */
@@ -85,27 +85,38 @@ export default {
 			const projects = await axios.get(
 				'https://adrienzaganelli.com/cms/wp-json/wp/v2/project'
 			)
-			const posts = await axios.get(
-				'https://adrienzaganelli.com/cms/wp-json/wp/v2/posts?_embed'
-			)
 
 			const projectsRoutes = projects.data.map((project) => ({
 				route: `/case-study/` + project.slug,
 				payload: project,
 			}))
 
-			const postsRoutes = posts.data.map((post) => ({
-				route: `/blog/` + post.slug,
-				payload: post,
-			}))
-
-			return [...postsRoutes, ...projectsRoutes]
+			return [...projectsRoutes]
 		},
 	},
 
 	image: {
-		domains: ['adrienzaganelli.com'],
 		dir: '.',
 		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+		presets: {
+			thumbnail: {
+				modifiers: {
+					format: 'webp',
+					width: 720,
+					height: 540,
+					quality: 75,
+				},
+			},
+		},
+	},
+
+	content: {
+		liveEdit: false,
+		markdown: {
+			prism: {
+				theme: 'prismjs/themes/prism-okaidia.css',
+			},
+		},
+		rehypePlugins: [],
 	},
 }

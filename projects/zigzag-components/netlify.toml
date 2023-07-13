@@ -2,6 +2,3 @@
   base = "projects/zigzag-components"
   command = "build-storybook"
   publish = "storybook-static/"
-
-[context.production]
-  environment = { NODE_VERSION = "16.14.0" }

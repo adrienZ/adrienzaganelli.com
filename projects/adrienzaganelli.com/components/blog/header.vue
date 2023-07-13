@@ -11,12 +11,12 @@
 				<nuxt-link to="/blog/">Adrien Zaganelli's Blog</nuxt-link>
 			</h2>
 
-			<a class="ml-6" :href="$store.state.backendBase + '/feed/'">
+			<!-- <a class="ml-6" :href="$store.state.backendBase + '/feed/'">
 				<span class="text-xs leading-none align-bottom">RSS</span>
 				<svg class="w-4 h-4 inline-block fill-current">
 					<use xlink:href="#icon-rss" x="0" y="0" />
 				</svg>
-			</a>
+			</a> -->
 		</nav>
 	</header>
 </template>

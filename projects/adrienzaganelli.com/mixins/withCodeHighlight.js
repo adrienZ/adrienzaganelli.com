@@ -1,7 +1,7 @@
 import Prism from 'prismjs'
 
 // css theme
-import 'prismjs/themes/prism-okaidia.css'
+// import 'prismjs/themes/prism-okaidia.css'
 
 // plugin line number
 import 'prismjs/plugins/line-numbers/prism-line-numbers'
@@ -17,7 +17,6 @@ import 'prismjs/plugins/treeview/prism-treeview.css'
 
 export default {
 	mounted() {
-		// console.log(Object.keys(Prism.plugins));
 		Prism.highlightAll()
 	},
 }
