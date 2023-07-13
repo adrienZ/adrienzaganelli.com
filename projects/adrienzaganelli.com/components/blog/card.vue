@@ -41,7 +41,7 @@ const props = defineProps(['post', 'height'])
 const thumbnail = computed(() => props.post.media)
 const postUrl = computed(() => '/blog/' + props.post.slug)
 const date = computed(() =>
-	new Date(props.post.date).toLocaleDateString('en-US', {
+	new Date(props.post.createdAt).toLocaleDateString('en-US', {
 		day: 'numeric',
 		month: 'long',
 		year: 'numeric',
