@@ -4,27 +4,27 @@
 
 		<article ref="article" class="cms-container">
 			<h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">
-				{{ post.title.rendered }}
+				{{ post.title }}
 			</h1>
 
-			<NuxtPicture
-				:src="heroImg[0].media_details.sizes.full.source_url"
-				:alt="heroImg[0].alt_text"
-				:aria-labelledby="'hero-img-' + post.slug"
-				:imgAttrs="{ class: 'block w-full mx-auto' }"
-			/>
-			<figcaption
-				v-if="heroImg[0].caption.rendered"
-				class="text-center mt-2 italic"
-				v-html="heroImg[0].caption.rendered"
-				:id="'hero-img-' + post.slug"
-			></figcaption>
+			<figure v-if="post.media && post.caption">
+				<NuxtImg
+					class="block w-full mx-auto"
+					:src="post.media"
+					:alt="post.caption"
+				/>
+				<figcaption
+					class="text-center mt-2 italic"
+					v-html="post.caption"
+				></figcaption>
+			</figure>
 
-			<div
+			<NuxtContent
 				class="cms-block mt-5"
 				ref="cms_block"
-				v-html="post.content.rendered"
-			></div>
+				:document="post"
+				tag="div"
+			/>
 		</article>
 
 		<div class="cms-container">
@@ -34,7 +34,7 @@
 
 			<div>
 				<cSharePost
-					:postTitle="post.title.rendered"
+					:postTitle="post.title"
 					:url="'https://adrienzaganelli.com' + $route.path"
 				/>
 			</div>
@@ -64,20 +64,9 @@ import withCodeHighlight from '@/mixins/withCodeHighlight'
 export default {
 	layout: 'blog',
 
-	async asyncData({ params, payload, store }) {
-		let post
+	async asyncData({ $content, route, payload, store }) {
+		const post = await $content(route.path).fetch()
 
-		if (payload) {
-			post = payload
-			post.title.rendered = post.title.rendered.replace(
-				/&#(\d+);/g,
-				function (match, dec) {
-					return String.fromCharCode(dec)
-				}
-			)
-		} else if (store.state.posts.length) {
-			post = store.getters.getPost(params.slug)
-		}
 		return { post }
 	},
 	mixins: [withCodeHighlight],
@@ -91,12 +80,12 @@ export default {
 	},
 	head() {
 		return {
-			title: this.post.title.rendered,
+			title: this.post.title,
 			meta: [
 				{
 					hid: 'description',
 					name: 'description',
-					content: this.post.excerpt.rendered.replace(/(<([^>]+)>)/gi, ''),
+					content: this.post.excerpt,
 				},
 				{
 					hid: 'og:type',
@@ -106,15 +95,10 @@ export default {
 				{
 					hid: 'og:image',
 					name: 'og:image',
-					content: this.heroImg[0].media_details.sizes.full.source_url,
+					content: this.post.media,
 				},
 			],
 		}
-	},
-	computed: {
-		heroImg() {
-			return this.post._embedded?.['wp:featuredmedia']
-		},
 	},
 	mounted() {
 		window.addEventListener('scroll', this.onScroll)
@@ -146,5 +130,3 @@ export default {
 	},
 }
 </script>
-
-<style lang="scss" scoped></style>

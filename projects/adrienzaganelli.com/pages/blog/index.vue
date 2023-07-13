@@ -8,9 +8,9 @@
 				<li
 					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
 					:key="post.ID"
-					v-for="post in $store.state.posts"
+					v-for="post in posts"
 				>
-					<c-card :post="post" />
+					<c-card :post="post" :height="post.thumbnail_height" />
 				</li>
 			</ul>
 		</main>
@@ -27,6 +27,30 @@ import cFooter from '@/components/common/footer.vue'
 <script>
 export default {
 	layout: 'blog',
+	components: {
+		cCard,
+		cFooter,
+	},
+	async asyncData(ctx) {
+		const { $content } = ctx
+
+		const posts = await $content('blog')
+			.where({ published: true })
+			.only([
+				'title',
+				'slug',
+				'createdAt',
+				'media',
+				'excerpt',
+				'thumbnail_height',
+			])
+			.sortBy('createdAt', 'desc')
+			.fetch()
+
+		return {
+			posts,
+		}
+	},
 }
 </script>
 
