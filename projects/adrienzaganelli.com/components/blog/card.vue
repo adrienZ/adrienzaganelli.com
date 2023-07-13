@@ -3,7 +3,7 @@
 		<div class="ratio">
 			<nuxt-link :to="postUrl" v-if="thumbnail">
 				<span class="visually-hidden">{{ post.title }}</span>
-				<NuxtIm
+				<NuxtImg
 					class="shadow-md"
 					:src="thumbnail"
 					alt="thumbnail[0].alt_text"
@@ -34,46 +34,19 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: ['post', 'height'],
-	methods: {
-		generateExcerpt(content, wordLimit, excerptSuffix) {
-			// Remove HTML tags and shortcodes
-			let strippedContent = content
-				.replace(/<[^>]+>/g, '')
-				.replace(/\[.*?\]/g, '')
+<script setup>
+import { computed } from 'vue'
+const props = defineProps(['post', 'height'])
 
-			// Split the content into words
-			let words = strippedContent.trim().split(/\s+/)
-
-			// Check if the content exceeds the word limit
-			if (words.length > wordLimit) {
-				// Create the excerpt by joining the words and adding the suffix
-				let excerpt = words.slice(0, wordLimit).join(' ') + excerptSuffix
-				return excerpt
-			}
-
-			// If the content doesn't exceed the word limit, return the full content
-			return strippedContent
-		},
-	},
-	computed: {
-		thumbnail() {
-			return this.post.media
-		},
-		postUrl() {
-			return '/blog/' + this.post.slug
-		},
-		date() {
-			return new Date(this.post.createdAt).toLocaleDateString('en-US', {
-				day: 'numeric',
-				month: 'long',
-				year: 'numeric',
-			})
-		},
-	},
-}
+const thumbnail = computed(() => props.post.media)
+const postUrl = computed(() => '/blog/' + props.post.slug)
+const date = computed(() =>
+	new Date(props.post.date).toLocaleDateString('en-US', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	})
+)
 </script>
 
 <style lang="scss" scoped>

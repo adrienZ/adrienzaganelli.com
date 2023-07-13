@@ -6,14 +6,7 @@
 	</div>
 </template>
 
-<script>
+<script setup>
 import Icons from '@/layouts/icons.vue'
 import Header from '@/components/blog/header.vue'
-
-export default {
-	components: {
-		Icons,
-		Header,
-	},
-}
 </script>

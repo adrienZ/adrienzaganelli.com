@@ -19,10 +19,12 @@
 	</section>
 </template>
 
-<script>
+<script script setup>
 import cCard from '@/components/blog/card.vue'
 import cFooter from '@/components/common/footer.vue'
+</script>
 
+<script>
 export default {
 	layout: 'blog',
 	components: {
