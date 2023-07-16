@@ -8,7 +8,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import cMedia from '@/components/showcase/media.vue'
 
 defineProps({

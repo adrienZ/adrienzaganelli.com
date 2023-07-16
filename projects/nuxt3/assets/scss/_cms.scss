@@ -7,12 +7,6 @@
 	// font
 	@apply text-xl font-normal;
 
-	code:not([class]) {
-		@apply font-mono bg-gray-200 text-pink-700 rounded-sm;
-		padding: 2px 4px;
-		font-size: 80%;
-	}
-
 	blockquote {
 		font-style: normal;
 		border-left: 4px solid #ccc;
@@ -75,7 +69,7 @@
 		h4,
 		h5,
 		h5,
-		pre,
+		// pre,
 		img,
 		video,
 		iframe,
@@ -119,12 +113,6 @@
 
 	.sketchfab-embed-wrapper iframe {
 		width: 100%;
-	}
-
-	// prism overide
-	code[class*='language-'],
-	pre[class*='language-'] {
-		@apply text-base;
 	}
 
 	// center tweet embed

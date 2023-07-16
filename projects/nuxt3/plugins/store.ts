@@ -12,6 +12,12 @@ export default defineNuxtPlugin(async (app) => {
 
 	store.projects = await projects.value
 
+	// parse author
+	const { data: author } = await useAsyncData('cache_author', () =>
+		$fetch(apiBase + '/wp/v2/users/1')
+	)
+	store.author = await author.value
+
 	return {
 		provide: {
 			store,

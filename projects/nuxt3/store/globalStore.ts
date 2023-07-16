@@ -12,7 +12,7 @@ export const useStore = defineStore('global', {
 
 	actions: {
 		getProject(slug: string) {
-			return this.$state.projects.filter((project) => project.slug === slug)[0]
+			return this.$state.projects.find((project) => project.slug === slug)
 		},
 		getNextProject(project) {
 			const { projects } = this.$state

@@ -1,7 +1,15 @@
 import mitt from 'mitt'
-const instance = mitt()
 
-export default defineNuxtPlugin(({ provide }) => {
+type Events = {
+	'preview-open': { src: string; type: string }
+	'cursor-hover': undefined
+	'cursor-default': undefined
+	'cursor-difference': undefined
+}
+
+const instance = mitt<Events>()
+
+export default defineNuxtPlugin(() => {
 	return {
 		provide: {
 			bus: instance,

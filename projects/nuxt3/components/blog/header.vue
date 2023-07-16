@@ -4,7 +4,7 @@
 			role="navigation"
 			class="container flex mx-auto items-center justify-between"
 		>
-			<h1 class="text-2xl" v-if="$nuxt.$route.name === 'blog'">
+			<h1 class="text-2xl" v-if="$route.name === 'blog'">
 				Adrien Zaganelli's Blog
 			</h1>
 			<h2 class="text-2xl" v-else>
