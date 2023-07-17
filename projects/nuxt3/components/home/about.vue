@@ -90,7 +90,7 @@
 					</li>
 				</ul>
 
-				<p v-if="$store.$state.NEED_JOB" class="mt-4">
+				<p v-if="config.NEED_JOB" class="mt-4">
 					Last but not least,
 					<b>I'm looking for a new job in Paris this fall.</b>
 					you can contact me here:
@@ -106,7 +106,8 @@
 	</section>
 </template>
 
-<script setup>
-// components
+<script setup lang="ts">
 import cExternal from '@/components/common/external.vue'
+
+const config = useAppConfig()
 </script>

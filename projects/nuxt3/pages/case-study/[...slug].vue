@@ -7,17 +7,25 @@
 				role="main"
 				class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
 			>
-				<div ref="titles">
-					<span class="block text-4xl sm:text-5xl font-bold">
-						{{ project.title.rendered }}
-					</span>
-					<span class="block text-4xl sm:text-5xl font-bold">
-						{{ project.title.rendered }}
-					</span>
-					<h1 class="text-5xl sm:text-6xl font-bold">
-						{{ project.title.rendered }}
-					</h1>
-				</div>
+				<ContentDoc>
+					<template #not-found>
+						<h1 class="text-xl text-center font-bold">Document not found</h1>
+					</template>
+
+					<template v-slot="{ doc: $prout }">
+						<div ref="titles">
+							<span class="block text-4xl sm:text-5xl font-bold">
+								{{ $prout.title }}
+							</span>
+							<span class="block text-4xl sm:text-5xl font-bold">
+								{{ $prout.title }}
+							</span>
+							<h1 class="text-5xl sm:text-6xl font-bold">
+								{{ $prout.title }}
+							</h1>
+						</div>
+					</template>
+				</ContentDoc>
 
 				<p
 					class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4"
@@ -122,7 +130,7 @@ export default defineNuxtComponent({
 	async asyncData() {
 		const store = useStore()
 		const { params } = useRoute()
-		let project = store.getProject(params.slug)
+		let project = store.getProject(params.slug[0])
 
 		if (project.content && project.content.rendered) {
 			let modified = new String(project.content.rendered)

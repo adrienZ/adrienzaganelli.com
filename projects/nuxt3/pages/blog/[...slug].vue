@@ -51,7 +51,7 @@
 						</div>
 
 						<div class="mt-8">
-							<cHireMe v-if="$store.$state.NEED_JOB" />
+							<cHireMe v-if="config.NEED_JOB" />
 							<cAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
 						</div>
 
@@ -98,6 +98,8 @@ import cProgressBar from '@/components/blog/ProgressBar.vue'
 // ],
 // }
 // },
+
+const config = useAppConfig()
 
 onMounted(() => {
 	window.addEventListener('scroll', onScroll)

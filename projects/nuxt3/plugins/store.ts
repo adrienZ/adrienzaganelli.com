@@ -1,9 +1,9 @@
 import { useStore } from '@/store/globalStore'
 
-export default defineNuxtPlugin(async (app) => {
+export default defineNuxtPlugin(async () => {
 	const store = useStore()
 
-	const apiBase = store.backendBase
+	const apiBase = 'https://adrienzaganelli.com/cms/wp-json'
 
 	// parse PROJECTS
 	const { data: projects } = await useAsyncData('cache_projects', () =>
@@ -11,12 +11,6 @@ export default defineNuxtPlugin(async (app) => {
 	)
 
 	store.projects = await projects.value
-
-	// parse author
-	const { data: author } = await useAsyncData('cache_author', () =>
-		$fetch(apiBase + '/wp/v2/users/1')
-	)
-	store.author = await author.value
 
 	return {
 		provide: {

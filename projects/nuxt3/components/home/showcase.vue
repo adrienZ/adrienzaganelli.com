@@ -45,6 +45,7 @@ export default {
 	mixins: [withMouse],
 	data() {
 		return {
+			...useAppConfig(),
 			media: this.$store.$state.projects[0].acf.showcase_image,
 			slug: this.$store.$state.projects[0].slug,
 			index: 0,
@@ -136,7 +137,7 @@ export default {
 		onFrame() {
 			const now = Date.now()
 
-			if (now - this.lastRender > this.$store.$state.RAF_DELTA_TIME) {
+			if (now - this.lastRender > this.RAF_DELTA_TIME) {
 				this.followMouse()
 			}
 		},

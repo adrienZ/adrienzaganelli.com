@@ -3,6 +3,29 @@
 		<li
 			class="c-list__item text-left mb-3 sm:mb-8"
 			:key="index"
+			v-for="(p, index) in projects"
+		>
+			<nuxt-link
+				@mouseleave.native="$bus.emit('cursor-default')"
+				:to="p._path"
+				class="inline-block"
+			>
+				<div class="relative">
+					<h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
+						<span class="inline-block c-list__item__index tracking-wide">
+							{{ formatIndex(index) }}
+						</span>
+						<span class="inline-block c-list__item__text">
+							{{ p.title }}
+						</span>
+					</h2>
+				</div>
+			</nuxt-link>
+		</li>
+
+		<!-- <li
+			class="c-list__item text-left mb-3 sm:mb-8"
+			:key="index"
 			v-for="(p, index) in $store.$state.projects"
 		>
 			<nuxt-link
@@ -23,17 +46,17 @@
 					</h2>
 				</div>
 			</nuxt-link>
-		</li>
+		</li> -->
 	</ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
-import { $bus } from '../../plugins/bus'
 
+const { $bus } = useNuxtApp()
 const emit = defineEmits(['update'])
 
-const useTimer = (duration, callback) => {
+const useTimer = (duration: number, callback: Function) => {
 	const interval = window.setTimeout(callback, duration)
 
 	return {
@@ -41,14 +64,18 @@ const useTimer = (duration, callback) => {
 	}
 }
 
-let timer = null
+const { data: projects } = await useAsyncData(`content-projects`, () => {
+	return queryContent('case-study').only(['title', '_path']).find()
+})
+
+let timer: ReturnType<typeof useTimer> | null = null
 
 const state = reactive({
 	currentProjectSlug: null,
 	currentIndex: 0,
 })
 
-function update(e, project, index) {
+function update(e: Event, project: any, index: number) {
 	const item = e.currentTarget
 
 	// dont emit if already active
