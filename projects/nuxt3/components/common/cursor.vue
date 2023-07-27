@@ -109,7 +109,7 @@ export default {
 			}
 		},
 		moveCursor() {
-			if (!this._isBeingDestroyed) {
+			if (!this._.isUnmounted) {
 				const mouse = this.$mouse.position
 
 				this.smoothMouseInner.x += (mouse.x - this.smoothMouseInner.x) * 0.4

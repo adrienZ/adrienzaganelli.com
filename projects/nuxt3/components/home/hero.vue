@@ -42,8 +42,8 @@
 					<nuxt-link
 						title="my blog"
 						class="hover:text-pimper focus:text-pimper underline ml-3 inline-block"
-						@mouseover.native="$bus.emit('cursor-hover')"
-						@mouseleave.native="$bus.emit('cursor-default')"
+						@mouseover="$bus.emit('cursor-hover')"
+						mouseleave="$bus.emit('cursor-default')"
 						to="/blog"
 					>
 						Blog
@@ -128,7 +128,7 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 
-function randomIntFromInterval(min, max) {
+function randomIntFromInterval(min: number, max: number) {
 	// min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
@@ -149,12 +149,12 @@ onMounted(() => {
 	})
 
 	tl.fromTo(
-		title,
+		title.value,
 		{ opacity: 0, y: 20 },
 		{ opacity: 1, y: 0, duration: 0.2 },
 		0
 	)
-	tl.fromTo(intro, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
+	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
 	tl.fromTo(
 		bubble.value.children,
 		{ scale: 0, y: 0 },

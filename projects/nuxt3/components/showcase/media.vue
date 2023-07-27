@@ -10,7 +10,7 @@
 		loop
 		:src="src"
 	></video>
-	<img
+	<NuxtImg
 		v-else-if="type === 'image'"
 		:type="type"
 		crossorigin="anonymous"

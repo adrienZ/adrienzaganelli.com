@@ -11,8 +11,8 @@
 					<nuxt-link
 						:to="'/case-study/' + project.slug"
 						class="font-bold underline"
-						@mouseover.native="$bus.emit('cursor-hover')"
-						@mouseleave.native="$bus.emit('cursor-default')"
+						@mouseover="$bus.emit('cursor-hover')"
+						mouseleave="$bus.emit('cursor-default')"
 					>
 						{{ project.title.rendered }}
 					</nuxt-link>
@@ -27,8 +27,8 @@
 			>
 				<nuxt-link
 					:to="'/case-study/' + project.slug"
-					@mouseover.native="$bus.emit('cursor-hover')"
-					@mouseleave.native="$bus.emit('cursor-default')"
+					@mouseover="$bus.emit('cursor-hover')"
+					mouseleave="$bus.emit('cursor-default')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
 					<cMedia

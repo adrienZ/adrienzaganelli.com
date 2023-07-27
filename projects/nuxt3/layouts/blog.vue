@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<Icons />
 		<Header />
 		<div class="layout-blog">
 			<slot />
@@ -9,6 +8,5 @@
 </template>
 
 <script setup lang="ts">
-import Icons from '@/layouts/icons.vue'
 import Header from '@/components/blog/header.vue'
 </script>

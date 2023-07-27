@@ -2,8 +2,8 @@
 	<nuxt-link
 		class="pt-4 inline-block"
 		to="/"
-		@mouseover.native="$bus.emit('cursor-hover')"
-		@mouseleave.native="$bus.emit('cursor-default')"
+		@mouseover="$bus.emit('cursor-hover')"
+		mouseleave="$bus.emit('cursor-default')"
 	>
 		<svg
 			class="h-6 w-6 inline-block align-middle"

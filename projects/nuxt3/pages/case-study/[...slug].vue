@@ -1,109 +1,111 @@
 <template>
-	<section class="page-project project">
-		<div class="cms-container">
-			<cHeader class="opacity-75" />
+	<NuxtLayout name="folio">
+		<section class="page-project project">
+			<div class="cms-container">
+				<cHeader class="opacity-75" />
 
-			<main
-				role="main"
-				class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
-			>
-				<ContentDoc>
-					<template #not-found>
-						<h1 class="text-xl text-center font-bold">Document not found</h1>
-					</template>
-
-					<template v-slot="{ doc: $prout }">
-						<div ref="titles">
-							<span class="block text-4xl sm:text-5xl font-bold">
-								{{ $prout.title }}
-							</span>
-							<span class="block text-4xl sm:text-5xl font-bold">
-								{{ $prout.title }}
-							</span>
-							<h1 class="text-5xl sm:text-6xl font-bold">
-								{{ $prout.title }}
-							</h1>
-						</div>
-					</template>
-				</ContentDoc>
-
-				<p
-					class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4"
+				<main
+					role="main"
+					class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
 				>
-					{{ project.acf.summary }}
-				</p>
-			</main>
+					<ContentDoc>
+						<template #not-found>
+							<h1 class="text-xl text-center font-bold">Document not found</h1>
+						</template>
 
-			<div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
-				<article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
-					<div
-						ref="cms_block"
-						class="cms-block"
-						v-html="project.content.modified"
-					></div>
-				</article>
-
-				<aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
-					<p>
-						<span class="font-semibold">When:</span>
-						<time>{{ project.acf.time_period }}</time>
-					</p>
-					<p>
-						<span class="font-semibold">My role:</span>
-						<span>{{ project.acf.role }}</span>
-					</p>
-
-					<div v-if="project.acf.team.length">
-						<span class="font-semibold block">The team:</span>
-						<ul>
-							<li
-								:key="teammate.collaborator[0].ID"
-								v-for="teammate in project.acf.team"
-							>
-								-
-								<span class="italic">
-									{{ teammate.collaborator[0].post_title }}
+						<template v-slot="{ doc: $prout }">
+							<div ref="titles">
+								<span class="block text-4xl sm:text-5xl font-bold">
+									{{ $prout.title }}
 								</span>
-								as {{ teammate.role }}
-							</li>
-						</ul>
-					</div>
+								<span class="block text-4xl sm:text-5xl font-bold">
+									{{ $prout.title }}
+								</span>
+								<h1 class="text-5xl sm:text-6xl font-bold">
+									{{ $prout.title }}
+								</h1>
+							</div>
+						</template>
+					</ContentDoc>
 
-					<div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
+					<p
+						class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4"
+					>
+						{{ project.acf.summary }}
+					</p>
+				</main>
+
+				<div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
+					<article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
 						<div
-							class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1"
-						>
-							<cExternal
-								@mouseover.native="$bus.emit('cursor-default')"
-								class="bg-pimper text-white px-4 text-xl font-semibold py-2"
-								:href="project.acf.url"
-								data-linkz-ai-ignore
-							>
-								See project
-							</cExternal>
+							ref="cms_block"
+							class="cms-block"
+							v-html="project.content.modified"
+						></div>
+					</article>
+
+					<aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
+						<p>
+							<span class="font-semibold">When:</span>
+							<time>{{ project.acf.time_period }}</time>
+						</p>
+						<p>
+							<span class="font-semibold">My role:</span>
+							<span>{{ project.acf.role }}</span>
+						</p>
+
+						<div v-if="project.acf.team.length">
+							<span class="font-semibold block">The team:</span>
+							<ul>
+								<li
+									:key="teammate.collaborator[0].ID"
+									v-for="teammate in project.acf.team"
+								>
+									-
+									<span class="italic">
+										{{ teammate.collaborator[0].post_title }}
+									</span>
+									as {{ teammate.role }}
+								</li>
+							</ul>
 						</div>
 
-						<div class="mt-2 hidden sm:block">
-							<nuxt-link
-								@mouseover.native="$bus.emit('cursor-hover')"
-								@mouseleave.native="$bus.emit('cursor-default')"
-								class="font-semibold underline"
-								to="/"
+						<div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
+							<div
+								class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1"
 							>
-								Back to Home
-							</nuxt-link>
+								<cExternal
+									@mouseover="$bus.emit('cursor-default')"
+									class="bg-pimper text-white px-4 text-xl font-semibold py-2"
+									:href="project.acf.url"
+									data-linkz-ai-ignore
+								>
+									See project
+								</cExternal>
+							</div>
+
+							<div class="mt-2 hidden sm:block">
+								<nuxt-link
+									@mouseover="$bus.emit('cursor-hover')"
+									@mouseleave="$bus.emit('cursor-default')"
+									class="font-semibold underline"
+									to="/"
+								>
+									Back to Home
+								</nuxt-link>
+							</div>
 						</div>
-					</div>
-				</aside>
+					</aside>
+				</div>
+
+				<cNextProject :project="nextProject" class="mt-5 sm:mt-16" />
+				<cFooter class="sm:mt-16 mt-10" />
 			</div>
 
-			<cNextProject :project="nextProject" class="mt-5 sm:mt-16" />
-			<cFooter class="sm:mt-16 mt-10" />
-		</div>
-
-		<cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8" />
-		<cImageModale />
-	</section>
+			<cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8" />
+			<cImageModale />
+		</section>
+	</NuxtLayout>
 </template>
 
 <script lang="ts">

@@ -1,12 +1,14 @@
 <template>
-	<section class="page-home">
-		<div class="container sm:w-3/4 w-5/6 mx-auto">
-			<c-hero class="sm:pt-20 pt-10" />
-			<c-showcase class="sm:mt-20 mt-10" />
-			<c-about class="sm:mt-20 mt-10" />
-			<c-footer class="sm:mt-20 mt-10" />
-		</div>
-	</section>
+	<NuxtLayout name="folio">
+		<section class="page-home">
+			<div class="container sm:w-3/4 w-5/6 mx-auto">
+				<c-hero class="sm:pt-20 pt-10" />
+				<c-showcase class="sm:mt-20 mt-10" />
+				<c-about class="sm:mt-20 mt-10" />
+				<c-footer class="sm:mt-20 mt-10" />
+			</div>
+		</section>
+	</NuxtLayout>
 </template>
 
 <script lang="ts">

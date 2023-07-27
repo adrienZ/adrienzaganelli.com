@@ -4,7 +4,7 @@
 		@mouseenter="$bus.emit('cursor-difference')"
 		@mouseout="$bus.emit('cursor-default')"
 	>
-		<cMedia crossorigin="anonymous" :src="media.url" :type="media.type" />
+		<cMedia crossorigin="anonymous" :src="media.src" :type="media.type" />
 	</div>
 </template>
 
