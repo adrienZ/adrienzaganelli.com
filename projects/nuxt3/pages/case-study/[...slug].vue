@@ -4,16 +4,15 @@
 			<div class="cms-container">
 				<cHeader class="opacity-75" />
 
-				<main
-					role="main"
-					class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
-				>
-					<ContentDoc>
-						<template #not-found>
-							<h1 class="text-xl text-center font-bold">Document not found</h1>
-						</template>
-
-						<template v-slot="{ doc: $prout }">
+				<ContentDoc>
+					<template #not-found>
+						<h1 class="text-xl text-center font-bold">Document not found</h1>
+					</template>
+					<template v-slot="{ doc: $prout }">
+						<main
+							role="main"
+							class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
+						>
 							<div ref="titles">
 								<span class="block text-4xl sm:text-5xl font-bold">
 									{{ $prout.title }}
@@ -25,36 +24,34 @@
 									{{ $prout.title }}
 								</h1>
 							</div>
-						</template>
-					</ContentDoc>
 
-					<p
-						class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4"
-					>
-						{{ project.acf.summary }}
-					</p>
-				</main>
+							<p
+								class="mt-3 sm:mt-6 normal-case italic tracking-tighter text-xl opacity-50 sm:w-3/4"
+							>
+								{{ $prout.summary }}
+							</p>
+						</main>
 
-				<div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
-					<article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
-						<div
+						<div class="flex-col-reverse sm:flex-row flex mt-8 sm:mt-12">
+							<article class="sm:w-3/4 sm:mr-4 flex-shrink-0">
+								<!--  <div
 							ref="cms_block"
 							class="cms-block"
 							v-html="project.content.modified"
-						></div>
-					</article>
+						></div>-->
+							</article>
 
-					<aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
-						<p>
-							<span class="font-semibold">When:</span>
-							<time>{{ project.acf.time_period }}</time>
-						</p>
-						<p>
-							<span class="font-semibold">My role:</span>
-							<span>{{ project.acf.role }}</span>
-						</p>
+							<aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
+								<p>
+									<span class="font-semibold">When:</span>
+									<time>{{ $prout.time_period }}</time>
+								</p>
+								<p>
+									<span class="font-semibold">My role:</span>
+									<span>{{ $prout.role }}</span>
+								</p>
 
-						<div v-if="project.acf.team.length">
+								<!-- <div v-if="project.acf.team.length">
 							<span class="font-semibold block">The team:</span>
 							<ul>
 								<li
@@ -68,47 +65,57 @@
 									as {{ teammate.role }}
 								</li>
 							</ul>
+						</div> -->
+
+								<div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
+									<div
+										class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1"
+									>
+										<cExternal
+											@mouseover="$bus.emit('cursor-default')"
+											class="bg-pimper text-white px-4 text-xl font-semibold py-2"
+											:href="$prout.url"
+											data-linkz-ai-ignore
+										>
+											See project
+										</cExternal>
+									</div>
+
+									<div class="mt-2 hidden sm:block">
+										<nuxt-link
+											@mouseover="$bus.emit('cursor-hover')"
+											@mouseleave="$bus.emit('cursor-default')"
+											class="font-semibold underline"
+											to="/"
+										>
+											Back to Home
+										</nuxt-link>
+									</div>
+								</div>
+							</aside>
 						</div>
+					</template>
+				</ContentDoc>
 
-						<div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
-							<div
-								class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1"
-							>
-								<cExternal
-									@mouseover="$bus.emit('cursor-default')"
-									class="bg-pimper text-white px-4 text-xl font-semibold py-2"
-									:href="project.acf.url"
-									data-linkz-ai-ignore
-								>
-									See project
-								</cExternal>
-							</div>
-
-							<div class="mt-2 hidden sm:block">
-								<nuxt-link
-									@mouseover="$bus.emit('cursor-hover')"
-									@mouseleave="$bus.emit('cursor-default')"
-									class="font-semibold underline"
-									to="/"
-								>
-									Back to Home
-								</nuxt-link>
-							</div>
-						</div>
-					</aside>
-				</div>
-
-				<cNextProject :project="nextProject" class="mt-5 sm:mt-16" />
+				<cNextProject
+					v-if="nextProject"
+					class="mt-5 sm:mt-16"
+					:mediaType="nextProject.cover.type"
+					:mediaUrl="nextProject.cover.src"
+					:title="nextProject.title"
+					:summary="nextProject.summary"
+					:url="nextProject._path"
+				/>
 				<cFooter class="sm:mt-16 mt-10" />
 			</div>
 
 			<cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8" />
-			<cImageModale />
+			<!-- <cImageModale /> -->
 		</section>
 	</NuxtLayout>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import cNextProject from '@/components/project/next-project.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
 import cFooter from '@/components/common/footer.vue'
@@ -128,98 +135,17 @@ import withLazyImages, {
 } from '@/mixins/withLazyImages'
 import { useStore } from '@/store/globalStore'
 
-export default defineNuxtComponent({
-	async asyncData() {
-		const store = useStore()
-		const { params } = useRoute()
-		let project = store.getProject(params.slug[0])
+const { path } = useRoute()
 
-		if (project.content && project.content.rendered) {
-			let modified = new String(project.content.rendered)
-
-			// lazyload and options twitter embeds
-			modified = writeAsyncTwitterEmbeds(modified)
-			// lazysizes on image and iframes
-			modified = writeLazyWpImages(modified)
-			// modified = writeLaztyIframes(modified)
-			modified = writeLazyWpVideos(modified)
-
-			project.content.modified = modified
-		}
-
-		const nextProject = store.getNextProject(project)
-
-		return { project, nextProject }
-	},
-	mounted() {
-		window.addEventListener('scroll', this.handleBackToTop)
-		const { titles } = this.$refs
-		const tl = new gsap.timeline({
-			paused: true,
-			ease: 'circ.out',
-		})
-
-		tl.fromTo(
-			titles.children,
-			{ opacity: 0 },
-			{ opacity: 1, duration: 0.3, stagger: 0.12 }
-		).to(
-			Array.from(titles.children).slice(0, -1),
-			{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
-			0.35
+const { data: nextProject } = await useAsyncData(
+	`${path}-next-projects`,
+	async () => {
+		const [_previousProject, _nextProject] = await queryContent().findSurround(
+			path
 		)
-
-		this.waypoint = new this.$waypoint.Inview({
-			element: this.$el,
-			enter: (direction) => {
-				tl.play()
-				this.waypoint.destroy()
-			},
-		})
-		;[
-			...this.$refs.cms_block.querySelectorAll(
-				'.wp-block-image, .wp-block-video'
-			),
-		].forEach((el) => {
-			el.addEventListener('mouseenter', () => {
-				this.$bus.emit('cursor-difference')
-				this.$bus.emit('cursor-hover')
-			})
-			el.addEventListener('mouseout', () => this.$bus.emit('cursor-default'))
-
-			const _this = this
-			el.addEventListener('click', function () {
-				const src = this.querySelector('[src]').src
-				const type = this.className.split('wp-block-')[1].split(' ')[0]
-				_this.$bus.emit('preview-open', { src, type })
-			})
-		})
-	},
-	destroyed() {
-		this.waypoint.destroy()
-		window.removeEventListener('scroll', this.handleBackToTop)
-	},
-	mixins: [withPageTransition, withTwitterEmbeds, withLazyImages],
-	components: {
-		cNextProject,
-		cBackToTop,
-		cFooter,
-		cHeader,
-		cExternal,
-		cImageModale,
-	},
-	methods: {
-		handleBackToTop() {
-			// handle backtop
-			const backToTop = this.$refs.back_to_top
-			if (window.scrollY > 0) {
-				backToTop.hidden && backToTop.show()
-			} else {
-				!backToTop.hidden && backToTop.hide()
-			}
-		},
-	},
-})
+		return _nextProject || _previousProject
+	}
+)
 </script>
 
 <style lang="scss" scoped>

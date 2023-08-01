@@ -9,15 +9,15 @@
 				<p class="text-3xl sm:-mt-2 font-semibold mb-4">
 					Next project:
 					<nuxt-link
-						:to="'/case-study/' + project.slug"
+						:to="url"
 						class="font-bold underline"
 						@mouseover="$bus.emit('cursor-hover')"
 						mouseleave="$bus.emit('cursor-default')"
 					>
-						{{ project.title.rendered }}
+						{{ title }}
 					</nuxt-link>
 				</p>
-				<p class="italic">{{ project.acf.summary }}</p>
+				<p class="italic">{{ summary }}</p>
 			</div>
 
 			<div
@@ -26,17 +26,12 @@
 				@mouseleave="$bus.emit('cursor-default')"
 			>
 				<nuxt-link
-					:to="'/case-study/' + project.slug"
+					:to="url"
 					@mouseover="$bus.emit('cursor-hover')"
 					mouseleave="$bus.emit('cursor-default')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
-					<cMedia
-						src=""
-						:data-src="project.acf.showcase_image.url"
-						:type="project.acf.showcase_image.type"
-						class="lazyload"
-					/>
+					<cMedia :src="mediaUrl" :type="mediaType" />
 				</nuxt-link>
 			</div>
 		</div>
@@ -46,7 +41,11 @@
 <script lang="ts" setup>
 import cMedia from '@/components/showcase/media.vue'
 
-defineProps({
-	project: Object,
-})
+defineProps<{
+	url: string
+	title: string
+	mediaUrl: string
+	mediaType: string
+	summary: string
+}>()
 </script>
