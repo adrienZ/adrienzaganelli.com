@@ -134,21 +134,30 @@ import { useStore } from '@/store/globalStore'
 
 const { params, path } = useRoute()
 
-const { data: nextProject } = await useAsyncData(
+const { data: nextProjectSibling } = await useAsyncData(
 	`${path}-next-projects`,
 	async () => {
-		const [_previousProject, _nextProject] = await queryContent(
-			'case-study'
-		).findSurround(path)
-		return _nextProject || _previousProject
+		const [__, _nextProject] = await queryContent('case-study').findSurround(
+			path
+		)
+		return _nextProject
 	}
+)
+
+const { data: firstProjectInDb } = await useAsyncData(
+	`${path}-first-content`,
+	() => queryContent('case-study').where({ _partial: false }).findOne()
+)
+
+const nextProject = computed(
+	() => nextProjectSibling.value || firstProjectInDb.value
 )
 
 const { data: $project } = await useAsyncData(`${path}-content`, () =>
 	queryContent(path).findOne()
 )
 
-const { data: team } = await useAsyncData(`${path}-teamss${Date.now()}`, () =>
+const { data: team } = await useAsyncData(`${path}-teams`, () =>
 	queryContent('case-study')
 		.where({
 			title: $project.value?.title,

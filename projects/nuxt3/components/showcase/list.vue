@@ -45,7 +45,10 @@ const useTimer = (duration: number, callback: Function) => {
 }
 
 const { data: projects } = await useAsyncData(`content-projects`, () => {
-	return queryContent('case-study').only(['title', '_path', 'cover']).find()
+	return queryContent('case-study')
+		.where({ _partial: false })
+		.only(['title', '_path', 'cover'])
+		.find()
 })
 
 let timer: ReturnType<typeof useTimer> | null = null
