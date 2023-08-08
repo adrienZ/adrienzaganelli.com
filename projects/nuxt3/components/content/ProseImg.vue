@@ -1,10 +1,21 @@
 <template>
-	<NuxtPicture :src="refinedSrc" :alt="alt" :width="width" :height="height" />
+	<NuxtPicture
+		class="content-image"
+		:src="refinedSrc"
+		:alt="alt"
+		:width="width"
+		:height="height"
+		@mouseenter="handleMouseEnter"
+		@mouseout="handleMouseOut"
+		@click="handleClick(refinedSrc, 'image')"
+	/>
 </template>
 
 <script setup lang="ts">
 import { withBase } from 'ufo'
 import { useRuntimeConfig, computed } from '#imports'
+
+const { handleMouseEnter, handleMouseOut, handleClick } = useImageModalEvents()
 
 const props = defineProps({
 	src: {

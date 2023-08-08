@@ -18,7 +18,7 @@ onMounted(() => {
 	$bus.on('preview-open', open)
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
 	close()
 })
 
@@ -103,8 +103,8 @@ function close() {
 </style>
 
 <style lang="scss">
-.wp-block-image,
-.wp-block-video {
+.content-image,
+.content-video {
 	&:hover {
 		cursor: zoom-in;
 	}

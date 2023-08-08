@@ -51,21 +51,6 @@
 							<ContentRenderer :value="team" />
 						</div>
 
-						<!-- <div v-if="project.acf.team.length">
-					<ul>
-						<li
-							:key="teammate.collaborator[0].ID"
-							v-for="teammate in project.acf.team"
-						>
-							-
-							<span class="italic">
-								{{ teammate.collaborator[0].post_title }}
-							</span>
-							as {{ teammate.role }}
-						</li>
-					</ul>
-				 -->
-
 						<div class="inline-block sm:sticky mt-3 sm:mt-6 project-cta">
 							<div
 								class="rounded-lg focus:border-indigo-300 hover:border-indigo-300 transition-all duration-200 ease-in-out border-4 py-1 border-transparent overflow-hidden -ml-1"
@@ -106,8 +91,8 @@
 				<cFooter class="sm:mt-16 mt-10" />
 			</div>
 
-			<cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8" />
-			<!-- <cImageModale /> -->
+			<cBackToTop ref="backToTop" class="fixed bottom-0 right-0 mr-8 mb-8" />
+			<cImageModale />
 		</section>
 	</NuxtLayout>
 </template>
@@ -121,18 +106,24 @@ import cExternal from '@/components/common/external.vue'
 import cImageModale from '@/components/project/image-modale.vue'
 
 import gsap from 'gsap'
+import lazysizes from 'lazysizes'
 
 import withPageTransition from '@/mixins/withPageTransition'
-import withTwitterEmbeds, {
-	writeAsyncTwitterEmbeds,
-} from '@/mixins/withTwitterEmbeds'
-import withLazyImages, {
-	writeLazyWpImages,
-	writeLazyWpVideos,
-} from '@/mixins/withLazyImages'
-import { useStore } from '@/store/globalStore'
 
-const { params, path } = useRoute()
+defineOptions({
+	mixins: [withPageTransition],
+})
+
+const { $waypoint } = useNuxtApp()
+
+const titles = ref<HTMLDivElement | null>(null)
+let waypoint
+const tl = new gsap.timeline({
+	paused: true,
+	ease: 'circ.out',
+})
+
+const { path } = useRoute()
 
 const { data: nextProjectSibling } = await useAsyncData(
 	`${path}-next-projects`,
@@ -165,6 +156,56 @@ const { data: team } = await useAsyncData(`${path}-teams`, () =>
 		})
 		.findOne()
 )
+
+useHead({
+	script: [
+		{
+			type: 'text/javascript',
+			// charset: 'utf-8',
+			src: '//platform.twitter.com/widgets.js',
+			async: true,
+			defer: true,
+		},
+	],
+})
+
+onMounted(() => {
+	lazysizes.init()
+	tl.fromTo(
+		titles.value?.children,
+		{ opacity: 0 },
+		{ opacity: 1, duration: 0.3, stagger: 0.12 }
+	).to(
+		Array.from(titles.value?.children).slice(0, -1),
+		{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
+		0.35
+	)
+
+	waypoint = new $waypoint.Inview({
+		element: getCurrentInstance()!.proxy!.$el,
+		enter: (direction) => {
+			tl.play()
+			waypoint.destroy()
+		},
+	})
+
+	window.addEventListener('scroll', handleBackToTop)
+})
+
+const backToTop = ref<InstanceType<typeof cBackToTop>>()
+
+onUnmounted(() => {
+	waypoint.destroy()
+	window.removeEventListener('scroll', handleBackToTop)
+})
+
+function handleBackToTop() {
+	if (window.scrollY > 0) {
+		backToTop.value?.hidden && backToTop.value?.show()
+	} else {
+		!backToTop.value?.hidden && backToTop.value?.hide()
+	}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -216,8 +257,8 @@ const { data: team } = await useAsyncData(`${path}-teams`, () =>
 			color: inherit;
 		}
 
-		.wp-block-image,
-		.wp-block-video {
+		.content-image,
+		.content-video {
 			position: relative;
 
 			&:before {

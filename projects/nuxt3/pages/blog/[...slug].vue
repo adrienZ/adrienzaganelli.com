@@ -75,6 +75,7 @@ import cSharePost from '@/components/c-share-post.vue'
 import cFooter from '@/components/common/footer.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
 import cProgressBar from '@/components/blog/ProgressBar.vue'
+import lazysizes from 'lazysizes'
 
 // head() {
 // return {
@@ -126,4 +127,8 @@ function onScroll() {
 		!back_to_top.value.hidden && back_to_top.value.hide()
 	}
 }
+
+onMounted(() => {
+	lazysizes.init()
+})
 </script>

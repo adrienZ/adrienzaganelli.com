@@ -8,14 +8,14 @@
 			<div class="md:w-1/3 sm:w-1/2 sm:px-3">
 				<p class="text-3xl sm:-mt-2 font-semibold mb-4">
 					Next project:
-					<nuxt-link
+					<NuxtLink
 						:to="url"
 						class="font-bold underline"
 						@mouseover="$bus.emit('cursor-hover')"
 						mouseleave="$bus.emit('cursor-default')"
 					>
 						{{ title }}
-					</nuxt-link>
+					</NuxtLink>
 				</p>
 				<p class="italic">{{ summary }}</p>
 			</div>
@@ -25,14 +25,14 @@
 				@mouseover="$bus.emit('cursor-difference')"
 				@mouseleave="$bus.emit('cursor-default')"
 			>
-				<nuxt-link
+				<NuxtLink
 					:to="url"
 					@mouseover="$bus.emit('cursor-hover')"
 					mouseleave="$bus.emit('cursor-default')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
 					<cMedia :src="mediaUrl" :type="mediaType" />
-				</nuxt-link>
+				</NuxtLink>
 			</div>
 		</div>
 	</section>
