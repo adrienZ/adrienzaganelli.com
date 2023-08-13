@@ -32,7 +32,7 @@ Le second talk ([full video](https://www.youtube.com/watch?v=L_BK8zXGdBM)) de la
 
 - « use helper function to find child elements (wrapper as parameter) »
 
-![](/assets/content/Capture-décran-2022-01-27-à-01.40.40.jpg)
+![](/assets/content/capture-decran-2022-01-27-a-01-40-40.jpg)
 
 - « do not spy methods, because of code refactoring, only test the output »
 
@@ -45,4 +45,4 @@ Les autres conférences notables ont porté sur :
 - L’accessibilité: on nous conseille un [plugin eslint](https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility) pour commencer simplement puis L’outil [AXE](https://www.deque.com/axe/) pour aller plus loin ([jest](https://www.npmjs.com/package/jest-axe), [cypress](https://www.npmjs.com/package/cypress-axe))
 - **NUXT 3** et de son futur moteur nitro (qui en a sous le capot) qui se repose sur plusieurs outils du [unjs universe](https://github.com/unjs). Pour faire simple il sera rapide et marchera sur tout type d’environement (browser, node, workers, peut être deno à l’avenir). On y voit également une slide intéressante sur le cache routing et des modes de rendu par page (mais je ne pense voir ca dans un futur proche)
 
-![](/assets/content/Capture-décran-2022-01-27-à-00.39.48.jpg)
+![](/assets/content/capture-decran-2022-01-27-a-00-39-48.jpg)

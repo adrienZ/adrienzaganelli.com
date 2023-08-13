@@ -27,7 +27,7 @@ Après une petite démo de la librairie, nous apprenons pas mal de choses lors d
 - Une chose est cependant certaine: Pinia a meilleur support de typescript que vuex@4\. Typescript déduit les types directement avec Pinia la où vuex@4 a besoin d’un [setup et de l’utilisation de clées d’injections](https://next.vuex.vuejs.org/guide/typescript-support.html)
 - Il répond également à la question « Do you need a store », en ajoutant qu’avec la composition api les applications petites/moyennes n’ont plus besoin de store.
 
-![](/assets/content/Pasted-image-20220128002544.png")
+![](/assets/content/pasted-image-202201280025444.png)
 
 ## Cypress veut prendre le monopole du testing front-end
 
@@ -81,7 +81,7 @@ Le plus gros bénéfices du headless est la vitesse, nous entrons ensuite dans l
 
 Tout ses enseignements sont matérialisés par ce template Nuxt e-commerce:
 
-![](/assets/content/Pasted-image-20220128013825.png)
+![](/assets/content/pasted-image-202201280138255.png)
 
 **FAQ**  
 Pourquoi TailwindCSS ?
