@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxt/content',
 		'@nuxtjs/google-fonts',
+		'nuxt-og-image',
 	],
 
 	nitro: {
@@ -31,6 +32,9 @@ export default defineNuxtConfig({
 	content: {
 		highlight: {
 			theme: 'monokai',
+		},
+		markdown: {
+			anchorLinks: false,
 		},
 	},
 

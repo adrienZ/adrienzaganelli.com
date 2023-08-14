@@ -209,6 +209,10 @@ function handleBackToTop() {
 		!backToTop.value?.hidden && backToTop.value?.hide()
 	}
 }
+
+// defineOgImage({
+// 	title: $project.value.title,
+// })
 </script>
 
 <style lang="scss" scoped>
