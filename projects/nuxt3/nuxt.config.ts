@@ -1,14 +1,18 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 
 	modules: [
-		'@pinia/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxt/image',
 		'@nuxt/content',
 		'@nuxtjs/google-fonts',
 	],
+
+	nitro: {
+		prerender: {
+			routes: ['/feed.xml'],
+		},
+	},
 
 	css: ['~/assets/css/tailwind.css', '~/assets/scss/main.scss'],
 
@@ -83,5 +87,6 @@ export default defineNuxtConfig({
 
 	experimental: {
 		payloadExtraction: false,
+		componentIslands: true,
 	},
 })
