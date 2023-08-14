@@ -1,6 +1,6 @@
 <template>
-	<NuxtLayout name="folio">
-		<section class="page-project project">
+	<section class="page-project project">
+		<NuxtLayout name="folio">
 			<div class="cms-container">
 				<cHeader class="opacity-75" />
 
@@ -93,8 +93,8 @@
 
 			<cBackToTop ref="backToTop" class="fixed bottom-0 right-0 mr-8 mb-8" />
 			<cImageModale />
-		</section>
-	</NuxtLayout>
+		</NuxtLayout>
+	</section>
 </template>
 
 <script setup lang="ts">
@@ -118,14 +118,14 @@ const { $waypoint } = useNuxtApp()
 
 const titles = ref<HTMLDivElement | null>(null)
 let waypoint
-const tl = new gsap.timeline({
+const tl = gsap.timeline({
 	paused: true,
 	ease: 'circ.out',
 })
 
 const { path } = useRoute()
 
-const { data: nextProjectSibling } = await useAsyncData(
+const { data: nextProjectSibling } = await fetchContent(
 	`${path}-next-projects`,
 	async () => {
 		const [__, _nextProject] = await queryContent('case-study').findSurround(
@@ -135,8 +135,8 @@ const { data: nextProjectSibling } = await useAsyncData(
 	}
 )
 
-const { data: firstProjectInDb } = await useAsyncData(
-	`${path}-first-content`,
+const { data: firstProjectInDb } = await fetchContent(
+	`project-first-content`,
 	() => queryContent('case-study').where({ _partial: false }).findOne()
 )
 
@@ -144,18 +144,18 @@ const nextProject = computed(
 	() => nextProjectSibling.value || firstProjectInDb.value
 )
 
-const { data: $project } = await useAsyncData(`${path}-content`, () =>
+const { data: $project } = await fetchContent(`${path}-content`, () =>
 	queryContent(path).findOne()
 )
 
-const { data: team } = await useAsyncData(`${path}-teams`, () =>
-	queryContent('case-study')
+const { data: team } = await fetchContent(`${path}-teams`, () => {
+	return queryContent('case-study')
 		.where({
 			title: $project.value?.title,
 			_partial: true,
 		})
 		.findOne()
-)
+})
 
 useHead({
 	script: [

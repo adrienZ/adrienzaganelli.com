@@ -3,7 +3,6 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 
 	modules: [
-		'@pinia/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxt/image',
 		'@nuxt/content',
@@ -83,5 +82,6 @@ export default defineNuxtConfig({
 
 	experimental: {
 		payloadExtraction: false,
+		componentIslands: true,
 	},
 })

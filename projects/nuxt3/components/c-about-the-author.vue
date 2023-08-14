@@ -22,9 +22,3 @@
 		</div>
 	</section>
 </template>
-
-<script lang="ts" setup>
-import MyNetworks from '@/components/my-networks.vue'
-</script>
-
-<style></style>
