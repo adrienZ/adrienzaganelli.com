@@ -27,6 +27,16 @@ export default defineNuxtConfig({
 		domains: ['adrienzaganelli.com'],
 		dir: '.',
 		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+		// https://image.nuxtjs.org/configuration#screens
+		screens: {
+			xs: 320,
+			sm: 640,
+			md: 768,
+			lg: 1024,
+			xl: 1024,
+			xxl: 1280,
+			'2xl': 1280,
+		},
 	},
 
 	content: {

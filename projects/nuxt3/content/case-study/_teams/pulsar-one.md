@@ -1,0 +1,4 @@
+- \- _Suong Kévin Tan_ as Leader/UI designer
+- \- _Jennyfer Millet_ as Data manager
+- \- _Aymeric Chappuy_ as Sound & Game designer
+- \- _Aude Ficheux_ as Javascript developer

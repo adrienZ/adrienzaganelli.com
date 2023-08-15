@@ -5,6 +5,8 @@
 		:alt="alt"
 		:width="width"
 		:height="height"
+		loading="lazy"
+		quality="80"
 		@mouseenter="handleMouseEnter"
 		@mouseout="handleMouseOut"
 		@click="handleClick(refinedSrc, 'image')"
