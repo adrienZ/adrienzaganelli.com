@@ -30,5 +30,6 @@
 		"prettier": "^2.8.2",
 		"simple-git-hooks": "^2.8.1",
 		"turbo": "^1.6.3"
-	}
+	},
+	"dependencies": {}
 }

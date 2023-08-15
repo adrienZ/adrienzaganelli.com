@@ -15,6 +15,10 @@ export default defineNuxtConfig({
 		},
 	},
 
+	site: {
+		url: 'https://adrienzaganelli.com/',
+	},
+
 	css: ['~/assets/css/tailwind.css', '~/assets/scss/main.scss'],
 
 	tailwindcss: {
