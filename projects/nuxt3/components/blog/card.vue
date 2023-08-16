@@ -1,12 +1,12 @@
 <template>
 	<div class="c-card h-full flex flex-col justify-between text-sm">
 		<div class="ratio">
-			<NuxtLink :to="postUrl" v-if="thumbnail">
+			<NuxtLink :to="postUrl" v-if="post.image">
 				<span class="visually-hidden">{{ post.title }}</span>
 				<NuxtImg
 					class="shadow-md"
-					:src="thumbnail"
-					alt="thumbnail[0].alt_text"
+					:src="post.image.src"
+					:alt="post.image.alt"
 					format="webp"
 					width="720"
 					:height="height || 540"
@@ -38,7 +38,6 @@
 import { computed } from 'vue'
 const props = defineProps(['post', 'height'])
 
-const thumbnail = computed(() => props.post.media)
 const postUrl = computed(() => props.post._path)
 const date = computed(() =>
 	new Date(props.post.createdAt).toLocaleDateString('en-US', {

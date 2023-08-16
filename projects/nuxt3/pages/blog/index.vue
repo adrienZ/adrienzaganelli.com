@@ -11,7 +11,7 @@
 						:key="post.ID"
 						v-for="post in posts"
 					>
-						<c-card :post="post" :height="post.thumbnail_height" />
+						<BlogCard :post="post" :height="post.image.height" />
 					</li>
 				</ul>
 			</main>
@@ -22,20 +22,12 @@
 </template>
 
 <script setup lang="ts">
-import cCard from '@/components/blog/card.vue'
 import cFooter from '@/components/common/footer.vue'
 
-const { data: posts } = await useAsyncData(`content-blog`, () => {
+const { data: posts } = await fetchContent(`content-blog`, () => {
 	return queryContent('blog')
 		.where({ published: true })
-		.only([
-			'title',
-			'_path',
-			'createdAt',
-			'media',
-			'excerpt',
-			'thumbnail_height',
-		])
+		.only(['title', '_path', 'createdAt', 'image', 'excerpt'])
 		.sort({ createdAt: -1 })
 		.find()
 })

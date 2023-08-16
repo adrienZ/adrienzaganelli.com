@@ -2,8 +2,9 @@
 published: true
 title: How to make your app work offline with the power of JavaScript
 createdAt: 2019-01-23
-media: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
-caption: Photo by Donald Giannatti on Unsplash
+image:
+  src: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
+  alt: Photo by Donald Giannatti on Unsplash
 ---
 
 In today’s world, connectivity has made us more mobile than ever which (paradoxically) cause us to be offline sometimes: when we’re in airplane mode, havea bad connection, have no more data, are on the subway... and so on.

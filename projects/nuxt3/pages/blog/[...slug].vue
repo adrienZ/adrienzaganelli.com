@@ -8,7 +8,13 @@
 
 				<template v-slot="{ doc: post }">
 					<Head>
-						<title>jiji</title>
+						<Meta
+							property="og:image"
+							:content="
+								config.PROD_URL + useImage().getImage(post.image.src).url
+							"
+						/>
+						<Meta property="og:type" content="article" />
 					</Head>
 
 					<cProgressBar :progress="progress" />
@@ -18,15 +24,16 @@
 							{{ post.title }}
 						</h1>
 
-						<figure v-if="post.media && post.caption">
+						<figure v-if="post.image">
 							<NuxtImg
 								class="block w-full mx-auto"
-								:src="post.media"
-								:alt="post.caption"
+								:src="post.image.src"
+								:alt="post.image.alt"
 							/>
 							<figcaption
+								v-if="post.image.alt"
 								class="text-center mt-2 italic"
-								v-html="post.caption"
+								v-html="post.image.alt"
 							></figcaption>
 						</figure>
 
@@ -76,29 +83,6 @@ import cFooter from '@/components/common/footer.vue'
 import cBackToTop from '@/components/common/back-to-top.vue'
 import cProgressBar from '@/components/blog/ProgressBar.vue'
 import lazysizes from 'lazysizes'
-
-// head() {
-// return {
-// title: this.post.title,
-// meta: [
-// 	{
-// 		hid: 'description',
-// 		name: 'description',
-// 		content: this.post.excerpt,
-// 	},
-// 	{
-// 		hid: 'og:type',
-// 		name: 'og:type',
-// 		content: 'article',
-// 	},
-// 	{
-// 		hid: 'og:image',
-// 		name: 'og:image',
-// 		content: this.post.media,
-// 	},
-// ],
-// }
-// },
 
 const config = useAppConfig()
 

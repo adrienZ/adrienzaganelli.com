@@ -2,8 +2,9 @@
 published: true
 title: Time-saving CSS techniques to create responsive images
 createdAt: 2018-08-18
-media: /assets/content/kevin-vu-unsplash.jpeg
-caption: Photo by Kevin Ku on Unsplash
+image:
+  src: /assets/content/kevin-vu-unsplash.jpeg
+  alt: Photo by Kevin Ku on Unsplash
 ---
 
 #### As a web developer, there is a high probability that you have encountered the two enemies of this article: images and deadlines. Sometimes, for some reasons, your images won’t fit the layout and you don’t want to wrap your head around this for hours.

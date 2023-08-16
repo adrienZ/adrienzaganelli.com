@@ -1,8 +1,6 @@
-import { ParsedContent } from '@nuxt/content/dist/runtime/types'
-
-export async function fetchContent(
+export async function fetchContent<Query extends () => Promise<any>>(
 	key: string,
-	callback: () => Promise<ParsedContent>
+	callback: Query
 ) {
 	if (process.dev) {
 		return useAsyncData(key, callback)

@@ -2,9 +2,9 @@
 published: true
 title: '[FR🇫🇷] Recap VueNation 2022 – Jour 1'
 createdAt: 2022-02-27
-media: /assets/content/1644914476444.jpeg
-caption: Day 1
-thumbnail_height: 418
+image:
+  src: /assets/content/1644914476444.jpeg
+  height: 418
 ---
 
 Le 1er talk ([full video](https://www.youtube.com/watch?v=2KBHvaAWJOA)) était celui d’Evan You, le créateur de vuejs.

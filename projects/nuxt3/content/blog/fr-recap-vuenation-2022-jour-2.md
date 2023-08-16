@@ -1,10 +1,10 @@
 ---
 published: true
 title: '[FR🇫🇷] Recap VueNation 2022 – Jour 2'
-createdAt: 2022-02-27
-media: /assets/content/1644914476444.jpeg
-caption: Day 2
-thumbnail_height: 418
+createdAt: 2022-02-28
+image:
+  src: /assets/content/1644914476444.jpeg
+  height: 418
 ---
 
 2eme journée bien remplie, on y a parlé de différents sujets:

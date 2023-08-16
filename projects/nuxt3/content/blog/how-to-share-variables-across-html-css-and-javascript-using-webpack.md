@@ -2,8 +2,8 @@
 published: true
 title: How to share variables across HTML, CSS, and JavaScript using Webpack
 createdAt: 2019-12-19
-media: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
-caption: 'magic'
+image:
+  src: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
 ---
 
 Earlier this week, I read [an article](https://calendar.perfplanet.com/2019/the-unseen-performance-costs-of-css-in-js-in-react-apps/) explaining how CSS-in-JS slows down the rendering of some React apps and how static CSS is faster. But CSS-in-JS is very popular because, among other features, you can style dynamically using JavaScript variables.
