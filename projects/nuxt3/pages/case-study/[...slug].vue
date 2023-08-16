@@ -146,10 +146,9 @@ const { data: $project } = await fetchContent(`${path}-content`, () =>
 )
 
 const { data: team } = await fetchContent(`${path}-teams`, () => {
-	return queryContent('case-study')
+	return queryContent('teams')
 		.where({
 			title: $project.value?.title,
-			_partial: true,
 		})
 		.findOne()
 })
