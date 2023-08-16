@@ -12,6 +12,10 @@ export default defineNuxtConfig({
 		prerender: {
 			routes: ['/feed.xml'],
 		},
+		// just for netlify
+		future: {
+			nativeSWR: true,
+		},
 	},
 
 	css: ['~/assets/css/tailwind.css', '~/assets/scss/main.scss'],
