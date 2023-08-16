@@ -1,7 +1,7 @@
 [build]
   base = "projects/nuxt3"
   command = "npm run generate"
-  publish = ".output/public"
+  publish = ".output/public/"
 
 [[redirects]]
   from = "/bee.php"
