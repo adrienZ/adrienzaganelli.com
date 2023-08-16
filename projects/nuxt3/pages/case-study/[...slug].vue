@@ -38,11 +38,11 @@
 
 					<aside class="sm:w-4/3 top-0 text-sm mb-10 sm:mb-0">
 						<p>
-							<span class="font-semibold">When:</span>
+							<span class="font-semibold">When:&nbsp;</span>
 							<time>{{ $project.time_period }}</time>
 						</p>
 						<p>
-							<span class="font-semibold">My role:</span>
+							<span class="font-semibold">My role:&nbsp;</span>
 							<span>{{ $project.role }}</span>
 						</p>
 
@@ -209,10 +209,6 @@ function handleBackToTop() {
 		!backToTop.value?.hidden && backToTop.value?.hide()
 	}
 }
-
-// defineOgImage({
-// 	title: $project.value.title,
-// })
 </script>
 
 <style lang="scss" scoped>

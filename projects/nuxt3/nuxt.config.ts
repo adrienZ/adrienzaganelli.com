@@ -6,17 +6,12 @@ export default defineNuxtConfig({
 		'@nuxt/image',
 		'@nuxt/content',
 		'@nuxtjs/google-fonts',
-		'nuxt-og-image',
 	],
 
 	nitro: {
 		prerender: {
 			routes: ['/feed.xml'],
 		},
-	},
-
-	site: {
-		url: 'https://adrienzaganelli.com/',
 	},
 
 	css: ['~/assets/css/tailwind.css', '~/assets/scss/main.scss'],
