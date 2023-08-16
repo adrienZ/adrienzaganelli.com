@@ -9,12 +9,12 @@
 				<template v-slot="{ doc: post }">
 					<Head>
 						<Meta
-							property="og:image"
+							name="og:image"
 							:content="
 								config.PROD_URL + useImage().getImage(post.image.src).url
 							"
 						/>
-						<Meta property="og:type" content="article" />
+						<Meta name="og:type" content="article" />
 					</Head>
 
 					<cProgressBar :progress="progress" />
