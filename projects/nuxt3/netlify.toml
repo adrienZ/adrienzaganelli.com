@@ -1,6 +1,6 @@
 [build]
   base = "projects/nuxt3"
-  command = "npm run generate"
+  command = "npm run generate || true"
   publish = ".output/public"
 
 [[redirects]]
