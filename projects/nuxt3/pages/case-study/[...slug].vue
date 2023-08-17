@@ -108,16 +108,18 @@ import cImageModale from '@/components/project/image-modale.vue'
 import gsap from 'gsap'
 import lazysizes from 'lazysizes'
 
-import withPageTransition from '@/mixins/withPageTransition'
-
-defineOptions({
-	mixins: [withPageTransition],
+definePageMeta({
+	pageTransition: {
+		appear: true,
+		mode: 'out-in',
+		css: false,
+		onEnter: PageTransition.defaultTransitionIn,
+		onLeave: PageTransition.defaultTransitionOut,
+	},
 })
 
-const { $waypoint } = useNuxtApp()
-
 const titles = ref<HTMLDivElement | null>(null)
-let waypoint
+let titleEffect: IntersectionObserver
 let tl
 
 const { path } = useRoute()
@@ -161,6 +163,7 @@ useHead({
 			src: '//platform.twitter.com/widgets.js',
 			async: true,
 			defer: true,
+			body: true,
 		},
 	],
 })
@@ -183,13 +186,13 @@ onMounted(() => {
 		0.35
 	)
 
-	waypoint = new $waypoint.Inview({
-		element: getCurrentInstance()!.proxy!.$el,
-		enter: (direction) => {
+	titleEffect = new IntersectionObserver(([entry]) => {
+		if (entry.isIntersecting) {
 			tl?.play()
-			waypoint.destroy()
-		},
+			titleEffect.disconnect()
+		}
 	})
+	titleEffect.observe(getCurrentInstance()!.proxy!.$el)
 
 	window.addEventListener('scroll', handleBackToTop)
 })
@@ -197,7 +200,7 @@ onMounted(() => {
 const backToTop = ref<InstanceType<typeof cBackToTop>>()
 
 onUnmounted(() => {
-	waypoint.destroy()
+	titleEffect.disconnect()
 	window.removeEventListener('scroll', handleBackToTop)
 })
 

@@ -32,11 +32,10 @@ import cList from '@/components/showcase/list.vue'
 // libs
 import gsap from 'gsap'
 
-const { $waypoint } = useNuxtApp()
 const instance = getCurrentInstance()!.proxy!
 const { $mouse } = useMouse()
 
-const { data: projects } = await useAsyncData(`content-projects`, () => {
+const { data: projects } = await fetchContent(`showcase-projects`, () => {
 	return queryContent('case-study').only(['title', '_path', 'cover']).find()
 })
 
@@ -51,7 +50,7 @@ const data = reactive({
 	index: 0,
 	isLoading: false,
 	fadeObserver: null,
-	rafWaypoint: null,
+	mouseObserver: null,
 	// start preview mouse track
 	smoothMouse: { x: 0, y: 0 },
 	lastRender: 0,
@@ -83,18 +82,17 @@ onMounted(() => {
 
 	tl.timeScale(0.85)
 
-	data.rafWaypoint = new $waypoint.Inview({
-		element: instance.$el,
-		enter: () => {
+	data.mouseObserver = new IntersectionObserver(([entry]) => {
+		if (entry.isIntersecting) {
 			// dont follow mouse under 1280px (tailwind xl)
 			if (document.documentElement.clientWidth >= 1280) {
 				gsap.ticker.add(onFrame)
 			}
-		},
-		exited: () => {
+		} else {
 			gsap.ticker.remove(onFrame)
-		},
+		}
 	})
+	data.mouseObserver.observe(instance.$el)
 
 	// preload medias with ajax
 	document.documentElement.clientWidth >= 1280 &&
@@ -135,7 +133,7 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
 	data.fadeObserver?.disconnect()
-	data.rafWaypoint.destroy()
+	data.mouseObserver?.disconnect()
 	// stop preview mouse track
 	gsap.ticker.remove(onFrame)
 })

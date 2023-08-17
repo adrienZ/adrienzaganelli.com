@@ -49,6 +49,8 @@ function open({ src, type }: { src: string; type: string }) {
 }
 
 function close() {
+	if (!media.value?.$el.tagName) return
+
 	gsap.fromTo(
 		media.value.$el,
 		{

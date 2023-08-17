@@ -19,8 +19,6 @@ import cFooter from '@/components/common/footer.vue'
 
 import Rellax from 'rellax'
 
-import withPageTransition from '@/mixins/withPageTransition'
-
 const { $bus } = useNuxtApp()
 
 let rellax
@@ -39,8 +37,14 @@ onBeforeUnmount(() => {
 	$bus.emit('cursor-default')
 })
 
-defineOptions({
-	mixins: [withPageTransition],
+definePageMeta({
+	pageTransition: {
+		appear: true,
+		mode: 'out-in',
+		css: false,
+		onEnter: PageTransition.defaultTransitionIn,
+		onLeave: PageTransition.defaultTransitionOut,
+	},
 })
 </script>
 

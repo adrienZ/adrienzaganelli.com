@@ -139,9 +139,8 @@ const intro = ref()
 const list = ref()
 
 const instance = getCurrentInstance()?.proxy
-const { $waypoint } = useNuxtApp()
 
-let waypoint = null
+let bubbleEffect: IntersectionObserver | null = null
 
 onMounted(() => {
 	const tl = new gsap.timeline({
@@ -170,27 +169,25 @@ onMounted(() => {
 
 	tl.timeScale(0.85)
 
-	waypoint = new $waypoint.Inview({
-		element: instance.$el,
-		enter(direction) {
+	bubbleEffect = new IntersectionObserver(([entry]) => {
+		if (entry.isIntersecting) {
 			tl.play()
-			this.destroy()
-
-			gsap.fromTo(
-				bubble.value.children,
-				{ rotateZ: 0 },
-				{
-					rotateZ: 360,
-					duration: randomIntFromInterval(20, 40),
-					stagger: () => randomIntFromInterval(1, 15),
-					repeat: -1,
-				}
-			)
-		},
-	})
+			bubbleEffect?.disconnect(instance.$el),
+				gsap.fromTo(
+					bubble.value.children,
+					{ rotateZ: 0 },
+					{
+						rotateZ: 360,
+						duration: randomIntFromInterval(20, 40),
+						stagger: () => randomIntFromInterval(1, 15),
+						repeat: -1,
+					}
+				)
+		}
+	}).observe(instance.$el)
 })
 
 onUnmounted(() => {
-	waypoint?.destroy()
+	bubbleEffect?.disconnect(instance.$el)
 })
 </script>
