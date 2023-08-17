@@ -108,6 +108,23 @@ import cImageModale from '@/components/project/image-modale.vue'
 import gsap from 'gsap'
 import lazysizes from 'lazysizes'
 
+useHead({
+	script: [
+		{
+			innerHTML: `
+          document.body.style.opacity = 0
+          var readyStateCheckInterval = setInterval(function() {
+              if (document.readyState === "complete") {
+                  clearInterval(readyStateCheckInterval);
+                  document.body.style.opacity = 1
+              }
+          }, 10);
+        `,
+			body: true,
+			type: 'text/javascript',
+		},
+	],
+})
 definePageMeta({
 	pageTransition: {
 		appear: true,
