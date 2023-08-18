@@ -4374,6 +4374,11 @@
   resolved "https://registry.yarnpkg.com/@types/relateurl/-/relateurl-0.2.29.tgz#68ccecec3d4ffdafb9c577fe764f912afc050fe6"
   integrity sha512-QSvevZ+IRww2ldtfv1QskYsqVVVwCKQf1XbwtcyyoRvLIQzfyPhj/C+3+PKzSDRdiyejaiLgnq//XTkleorpLg==
 
+"@types/rellax@^1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@types/rellax/-/rellax-1.7.4.tgz#283af8501923cac365092c7ed24e6fc8d91330f9"
+  integrity sha512-2WAC+xAhLuJZjm/es2L7JL9BSSRo85bwzWPxGvXInN0YtOlyTjrVgpOinUKBV4xydtQuHntXKCMdkSlO8awimw==
+
 "@types/resolve@1.20.2":
   version "1.20.2"
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"

@@ -2,7 +2,6 @@ import gsap from 'gsap'
 
 export class PageTransition {
 	static defaultTransitionIn = (el: Element, done: () => void) => {
-		console.log('hoy')
 		gsap.fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, onComplete: done })
 	}
 
