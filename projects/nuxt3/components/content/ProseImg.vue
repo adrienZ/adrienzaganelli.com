@@ -38,6 +38,10 @@ const props = defineProps({
 	},
 })
 
+// url generation for image-modale.vue
+const img = useImage()
+img.getImage(props.src)
+
 const refinedSrc = computed(() => {
 	if (props.src?.startsWith('/') && !props.src.startsWith('//')) {
 		return withBase(props.src, useRuntimeConfig().app.baseURL)
