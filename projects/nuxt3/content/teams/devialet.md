@@ -1,0 +1,2 @@
+- \- _Guillaume Gouessan_ as WebGL developer
+- \- _Mathilde Lier_ as Designer

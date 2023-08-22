@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /2018
+Disallow: /cms

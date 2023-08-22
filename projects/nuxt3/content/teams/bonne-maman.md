@@ -1,0 +1,2 @@
+- \- _Alexis Durst_ as Back-end developer
+- \- _Claire Bartoux_ as Designer
