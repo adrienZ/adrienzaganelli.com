@@ -67,8 +67,7 @@ jobs:
         run: echo 'modules[]=@nuxthq/studio' > .nuxtrc
 
       - name: Generate
-        # force generate even with errors
-        run: npx nuxi generate || true
+        run: npx nuxi generate
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
           NUXT_PUBLIC_STUDIO_TOKENS: a40679c60a952431e0faf75104a48bff240752218efe2086baa9bfda29060004
