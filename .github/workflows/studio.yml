@@ -1,4 +1,3 @@
-
 name: studio-nuxt-build
 run-name: studio nuxt build
 
@@ -17,7 +16,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -39,8 +38,10 @@ jobs:
 
       - name: Identify package manager
         id: pkgman
-        run: |
-          cache=`[ -f "projects/nuxt3/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "projects/nuxt3/package-lock.json" ] && echo "npm" || ([ -f "projects/nuxt3/yarn.lock" ] && echo "yarn" || echo ""))`
+        run:
+          # cache=`[ -f "projects/nuxt3/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "projects/nuxt3/package-lock.json" ] && echo "npm" || ([ -f "projects/nuxt3/yarn.lock" ] && echo "yarn" || echo ""))`
+          |
+          cache=`echo "yarn"`
           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
           echo "cache=$cache" >> $GITHUB_OUTPUT
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
@@ -61,13 +62,13 @@ jobs:
         run: ${{ steps.pkgman.outputs.package_manager }} install
 
       - name: Install @nuxthq/studio
-        run: ${{ steps.pkgman.outputs.package_manager }} add -D @nuxthq/studio
+        run: ${{ steps.pkgman.outputs.package_manager }} workspace nuxt3 add -D @nuxthq/studio
 
       - name: Create .nuxtrc
         run: echo 'modules[]=@nuxthq/studio' > .nuxtrc
 
       - name: Generate
-        run: npx nuxi generate
+        run: yarn workspace nuxt3 generate
         env:
           NUXT_PUBLIC_STUDIO_API_URL: https://api.nuxt.studio
           NUXT_PUBLIC_STUDIO_TOKENS: a40679c60a952431e0faf75104a48bff240752218efe2086baa9bfda29060004
