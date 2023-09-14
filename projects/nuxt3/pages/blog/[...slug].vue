@@ -53,7 +53,7 @@
 						<div>
 							<cSharePost
 								:postTitle="post.title"
-								:url="'https://adrienzaganelli.com' + $route.path"
+								:url="config.PROD_URL + $route.path"
 							/>
 						</div>
 

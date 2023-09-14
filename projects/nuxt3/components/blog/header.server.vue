@@ -8,7 +8,7 @@
 				Adrien Zaganelli's Blog
 			</h1>
 			<h2 class="text-2xl" v-else>
-				<nuxt-link to="/blog/">Adrien Zaganelli's Blog</nuxt-link>
+				<NuxtLink to="/blog/">Adrien Zaganelli's Blog</NuxtLink>
 			</h2>
 
 			<a class="ml-6" href="/feed.xml">
