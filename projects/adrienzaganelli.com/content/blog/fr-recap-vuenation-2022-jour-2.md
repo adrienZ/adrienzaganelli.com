@@ -1,10 +1,10 @@
 ---
 published: true
-title: (FR🇫🇷) Recap VueNation 2022 – Jour 2
-createdAt: 2022-02-27
-media: /assets/content/1644914476444.jpeg
-caption: Day 2
-thumbnail_height: 418
+title: '[FR🇫🇷] Recap VueNation 2022 – Jour 2'
+createdAt: 2022-02-28
+image:
+  src: /assets/content/1644914476444.jpeg
+  height: 418
 ---
 
 2eme journée bien remplie, on y a parlé de différents sujets:
@@ -27,7 +27,7 @@ Après une petite démo de la librairie, nous apprenons pas mal de choses lors d
 - Une chose est cependant certaine: Pinia a meilleur support de typescript que vuex@4\. Typescript déduit les types directement avec Pinia la où vuex@4 a besoin d’un [setup et de l’utilisation de clées d’injections](https://next.vuex.vuejs.org/guide/typescript-support.html)
 - Il répond également à la question « Do you need a store », en ajoutant qu’avec la composition api les applications petites/moyennes n’ont plus besoin de store.
 
-<nuxt-picture src="/assets/content/Pasted-image-20220128002544.png"></nuxt-picture>
+![](/assets/content/pasted-image-202201280025444.png)
 
 ## Cypress veut prendre le monopole du testing front-end
 
@@ -45,7 +45,7 @@ ils expliquent pourquoi Cypress s’attaque au composants
 
 </figure>
 
-<nuxt-picture src="/assets/content/Pasted-image-20220127225433.png"></nuxt-picture>
+![](/assets/content/Pasted-image-20220127225433.png)
 
 La partie compliquée sera de setup un plugin webpack pour lancer le web server nécessaire au tests, j’ai l’impression qu’ils ont encore du travail a faire sur cet partie qui n’était pas très clair.
 
@@ -81,7 +81,7 @@ Le plus gros bénéfices du headless est la vitesse, nous entrons ensuite dans l
 
 Tout ses enseignements sont matérialisés par ce template Nuxt e-commerce:
 
-<nuxt-picture src="/assets/content/Pasted-image-20220128013825.png"></nuxt-picture>
+![](/assets/content/pasted-image-202201280138255.png)
 
 **FAQ**  
 Pourquoi TailwindCSS ?

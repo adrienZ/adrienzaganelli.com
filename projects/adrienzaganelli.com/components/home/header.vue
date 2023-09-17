@@ -2,8 +2,8 @@
 	<nuxt-link
 		class="pt-4 inline-block"
 		to="/"
-		@mouseover.native="$bus.emit('cursor-hover')"
-		@mouseleave.native="$bus.emit('cursor-default')"
+		@mouseover="$bus.emit('cursor-hover')"
+		mouseleave="$bus.emit('cursor-default')"
 	>
 		<svg
 			class="h-6 w-6 inline-block align-middle"
@@ -19,6 +19,6 @@
 				d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
 			/>
 		</svg>
-		<span class="inline-block ml-1 align-middle">Back to home</span>
+		<span class="inline-block ml-2 align-middle">Back to home</span>
 	</nuxt-link>
 </template>

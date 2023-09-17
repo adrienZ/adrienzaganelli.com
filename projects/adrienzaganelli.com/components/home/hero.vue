@@ -42,8 +42,8 @@
 					<nuxt-link
 						title="my blog"
 						class="hover:text-pimper focus:text-pimper underline ml-3 inline-block"
-						@mouseover.native="$bus.emit('cursor-hover')"
-						@mouseleave.native="$bus.emit('cursor-default')"
+						@mouseover="$bus.emit('cursor-hover')"
+						mouseleave="$bus.emit('cursor-default')"
 						to="/blog"
 					>
 						Blog
@@ -125,51 +125,56 @@
 }
 </style>
 
-<script>
+<script setup lang="ts">
 import gsap from 'gsap'
 
-function randomIntFromInterval(min, max) {
+function randomIntFromInterval(min: number, max: number) {
 	// min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-export default {
-	mounted() {
-		const { bubble, title, intro, list } = this.$refs
-		const tl = new gsap.timeline({
-			paused: true,
-		})
+const bubble = ref()
+const title = ref()
+const intro = ref()
+const list = ref()
 
-		tl.fromTo(
-			title,
-			{ opacity: 0, y: 20 },
-			{ opacity: 1, y: 0, duration: 0.2 },
-			0
-		)
-		tl.fromTo(intro, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
-		tl.fromTo(
-			bubble.children,
-			{ scale: 0, y: 0 },
-			{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
-			0.25
-		)
-		tl.fromTo(
-			list.children,
-			{ opacity: 0, y: 10 },
-			{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
-			0.2
-		)
+const instance = getCurrentInstance()?.proxy
 
-		tl.timeScale(0.85)
+let bubbleEffect: IntersectionObserver | null = null
 
-		this.waypoint = new this.$waypoint.Inview({
-			element: this.$el,
-			enter: (direction) => {
-				tl.play()
-				this.waypoint.destroy()
+onMounted(() => {
+	const tl = new gsap.timeline({
+		paused: true,
+	})
 
+	tl.fromTo(
+		title.value,
+		{ opacity: 0, y: 20 },
+		{ opacity: 1, y: 0, duration: 0.2 },
+		0
+	)
+	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
+	tl.fromTo(
+		bubble.value.children,
+		{ scale: 0, y: 0 },
+		{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
+		0.25
+	)
+	tl.fromTo(
+		list.value.children,
+		{ opacity: 0, y: 10 },
+		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
+		0.2
+	)
+
+	tl.timeScale(0.85)
+
+	bubbleEffect = new IntersectionObserver(([entry]) => {
+		if (entry.isIntersecting) {
+			tl.play()
+			bubbleEffect?.disconnect(instance.$el),
 				gsap.fromTo(
-					bubble.children,
+					bubble.value.children,
 					{ rotateZ: 0 },
 					{
 						rotateZ: 360,
@@ -178,11 +183,13 @@ export default {
 						repeat: -1,
 					}
 				)
-			},
-		})
-	},
-	destroyed() {
-		this.waypoint.destroy()
-	},
-}
+		}
+	})
+
+	bubbleEffect.observe(instance.$el)
+})
+
+onUnmounted(() => {
+	bubbleEffect?.disconnect(instance.$el)
+})
 </script>

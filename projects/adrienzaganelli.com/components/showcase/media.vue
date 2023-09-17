@@ -10,11 +10,12 @@
 		loop
 		:src="src"
 	></video>
-	<img
+	<NuxtImg
 		v-else-if="type === 'image'"
 		:type="type"
 		crossorigin="anonymous"
 		class="w-full"
+		loading="lazy"
 		:src="src"
 	/>
 </template>

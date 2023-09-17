@@ -1,19 +1,10 @@
 <template>
 	<div>
 		<Icons />
-		<CustomCursor />
-		<nuxt />
+		<slot />
 	</div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Icons from '@/layouts/icons.vue'
-import CustomCursor from '@/components/common/cursor.vue'
-
-export default {
-	components: {
-		Icons,
-		CustomCursor,
-	},
-}
 </script>

@@ -1,57 +1,36 @@
 <template>
-	<section class="container mx-auto">
-		<header>
-			<h2 class="text-6xl font-semibold mb-2">Last articles</h2>
-		</header>
-		<main>
-			<ul class="flex flex-wrap mx-0 md:-mx-5 mb-10">
-				<li
-					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
-					:key="post.ID"
-					v-for="post in posts"
-				>
-					<c-card :post="post" :height="post.thumbnail_height" />
-				</li>
-			</ul>
-		</main>
+	<NuxtLayout name="blog">
+		<section class="container mx-auto">
+			<header>
+				<h2 class="text-6xl font-semibold mb-2">Last articles</h2>
+			</header>
+			<main>
+				<ul class="flex flex-wrap mx-0 md:-mx-5 mb-10">
+					<li
+						class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
+						:key="post.ID"
+						v-for="post in posts"
+					>
+						<BlogCard :post="post" :height="post.image.height" />
+					</li>
+				</ul>
+			</main>
 
-		<c-footer class="sm:mt-20 mt-10" />
-	</section>
+			<c-footer class="sm:mt-20 mt-10" />
+		</section>
+	</NuxtLayout>
 </template>
 
-<script script setup>
-import cCard from '@/components/blog/card.vue'
+<script setup lang="ts">
 import cFooter from '@/components/common/footer.vue'
-</script>
 
-<script>
-export default {
-	layout: 'blog',
-	components: {
-		cCard,
-		cFooter,
-	},
-	async asyncData(ctx) {
-		const { $content } = ctx
-
-		const posts = await $content('blog')
-			.where({ published: true })
-			.only([
-				'title',
-				'slug',
-				'createdAt',
-				'media',
-				'excerpt',
-				'thumbnail_height',
-			])
-			.sortBy('createdAt', 'desc')
-			.fetch()
-
-		return {
-			posts,
-		}
-	},
-}
+const { data: posts } = await fetchContent(`content-blog`, () => {
+	return queryContent('blog')
+		.where({ published: true })
+		.only(['title', '_path', 'createdAt', 'image', 'excerpt'])
+		.sort({ createdAt: -1 })
+		.find()
+})
 </script>
 
 <style scoped>

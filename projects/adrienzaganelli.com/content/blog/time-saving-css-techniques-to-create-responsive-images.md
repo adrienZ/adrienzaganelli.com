@@ -2,8 +2,9 @@
 published: true
 title: Time-saving CSS techniques to create responsive images
 createdAt: 2018-08-18
-media: /assets/content/kevin-vu-unsplash.jpeg
-caption: Photo by Kevin Ku on Unsplash
+image:
+  src: /assets/content/kevin-vu-unsplash.jpeg
+  alt: Photo by Kevin Ku on Unsplash
 ---
 
 #### As a web developer, there is a high probability that you have encountered the two enemies of this article: images and deadlines. Sometimes, for some reasons, your images won’t fit the layout and you don’t want to wrap your head around this for hours.
@@ -30,7 +31,7 @@ That’s all folks! See how when we retrieve the friendly value `cover`, we can 
 
 Unfortunately object-fit will not work on IE and older versions of Safari, but there is a [polyfill](https://github.com/fregante/object-fit-images).
 
-<nuxt-picture src="/assets/content/1_d0wZwFpXGiAYH9_NrJCroA-1.png" title="https://github.com/fregante/object-fit-images"></nuxt-picture>
+![](/assets/content/1_d0wZwFpXGiAYH9_NrJCroA-1.png 'https://github.com/fregante/object-fit-images')
 
 <figure><iframe src="https://codepen.io/adri_zag/embed/preview/VBQJYg?height=300&amp;slug-hash=VBQJYg&amp;default-tabs=html,result&amp;host=https://codepen.io" height="300"></iframe></figure>
 
@@ -42,7 +43,7 @@ We will keep the image ratio with a percentage on the `padding` property. Your i
 
 The code looks like this:
 
-<nuxt-picture src="/assets/content/1_rTrhAIVolZR2oQh2ou1jXg-1.png" title="Take a look at the class names !"></nuxt-picture>
+![](/assets/content/1_rTrhAIVolZR2oQh2ou1jXg-1.png 'Take a look at the class names !')
 
 A little demo:
 

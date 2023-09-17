@@ -2,8 +2,9 @@
 published: true
 title: How to make your app work offline with the power of JavaScript
 createdAt: 2019-01-23
-media: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
-caption: Photo by Donald Giannatti on Unsplash
+image:
+  src: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
+  alt: Photo by Donald Giannatti on Unsplash
 ---
 
 In today’s world, connectivity has made us more mobile than ever which (paradoxically) cause us to be offline sometimes: when we’re in airplane mode, havea bad connection, have no more data, are on the subway... and so on.
@@ -43,9 +44,9 @@ Ok, let’s begin with some prerequisites:
 
 ### Service workers lifecycle
 
-To be able to work, SWs must be registered within your application, then installed. You should check if SWs are compatible with your client before doing so.
+![](/assets/content/0_kwQX495DA0fAv3QZ.png)
 
-![](https://cdn-media-1.freecodecamp.org/images/0*kwQX495DA0fAv3QZ.png)
+To be able to work, SWs must be registered within your application, then installed. You should check if SWs are compatible with your client before doing so.
 
 #### **1) Registration**
 
@@ -208,7 +209,7 @@ In short, we will see **when you shouldn’t use Cache API** but [IndexedDB](htt
 
 IndexedDB is a NoSQL database. IndexedDB data are stored as key-value pairs in **object stores** rather than tables. A single database can contain any number of object stores. Whenever a value is stored in an object store, it is associated with a key. It looks like this:
 
-![](https://cdn-media-1.freecodecamp.org/images/1*6ES2yg8KcJaEpi_nAv31yA.png)
+![](/assets/content/1_6ES2yg8KcJaEpi_nAv31yA.png)
 
 Pretty classic, right? The main thing to understand is the concept of [key path](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Basic_Terminology#gloss_keypath). It tells the browser which key to use to extract data from in the object store or index.
 

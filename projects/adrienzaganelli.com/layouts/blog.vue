@@ -1,12 +1,8 @@
 <template>
 	<div>
-		<Icons />
-		<Header />
-		<nuxt class="layout-blog" />
+		<BlogHeader />
+		<div class="layout-blog">
+			<slot />
+		</div>
 	</div>
 </template>
-
-<script setup>
-import Icons from '@/layouts/icons.vue'
-import Header from '@/components/blog/header.vue'
-</script>

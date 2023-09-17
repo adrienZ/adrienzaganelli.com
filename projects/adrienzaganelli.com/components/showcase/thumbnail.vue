@@ -4,11 +4,11 @@
 		@mouseenter="$bus.emit('cursor-difference')"
 		@mouseout="$bus.emit('cursor-default')"
 	>
-		<cMedia crossorigin="anonymous" :src="media.url" :type="media.type" />
+		<cMedia crossorigin="anonymous" :src="media.src" :type="media.type" />
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import cMedia from '@/components/showcase/media.vue'
 
 defineProps({

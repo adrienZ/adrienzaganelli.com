@@ -20,6 +20,7 @@ export default {
 	},
 	data() {
 		return {
+			...useAppConfig(),
 			hidden: false,
 			hovering: false,
 			inner__scale: 0,
@@ -103,12 +104,12 @@ export default {
 		onFrame() {
 			const now = Date.now()
 
-			if (now - this.lastRender > this.$store.state.RAF_DELTA_TIME) {
+			if (now - this.lastRender > this.RAF_DELTA_TIME) {
 				this.moveCursor()
 			}
 		},
 		moveCursor() {
-			if (!this._isBeingDestroyed) {
+			if (!this._.isUnmounted) {
 				const mouse = this.$mouse.position
 
 				this.smoothMouseInner.x += (mouse.x - this.smoothMouseInner.x) * 0.4

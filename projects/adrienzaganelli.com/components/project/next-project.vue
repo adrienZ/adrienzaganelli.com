@@ -8,16 +8,16 @@
 			<div class="md:w-1/3 sm:w-1/2 sm:px-3">
 				<p class="text-3xl sm:-mt-2 font-semibold mb-4">
 					Next project:
-					<nuxt-link
-						:to="'/case-study/' + project.slug"
+					<NuxtLink
+						:to="url"
 						class="font-bold underline"
-						@mouseover.native="$bus.emit('cursor-hover')"
-						@mouseleave.native="$bus.emit('cursor-default')"
+						@mouseover="$bus.emit('cursor-hover')"
+						mouseleave="$bus.emit('cursor-default')"
 					>
-						{{ project.title.rendered }}
-					</nuxt-link>
+						{{ title }}
+					</NuxtLink>
 				</p>
-				<p class="italic">{{ project.acf.summary }}</p>
+				<p class="italic">{{ summary }}</p>
 			</div>
 
 			<div
@@ -25,19 +25,14 @@
 				@mouseover="$bus.emit('cursor-difference')"
 				@mouseleave="$bus.emit('cursor-default')"
 			>
-				<nuxt-link
-					:to="'/case-study/' + project.slug"
-					@mouseover.native="$bus.emit('cursor-hover')"
-					@mouseleave.native="$bus.emit('cursor-default')"
+				<NuxtLink
+					:to="url"
+					@mouseover="$bus.emit('cursor-hover')"
+					mouseleave="$bus.emit('cursor-default')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
-					<cMedia
-						src=""
-						:data-src="project.acf.showcase_image.url"
-						:type="project.acf.showcase_image.type"
-						class="lazyload"
-					/>
-				</nuxt-link>
+					<cMedia :src="mediaUrl" :type="mediaType" />
+				</NuxtLink>
 			</div>
 		</div>
 	</section>
@@ -46,7 +41,11 @@
 <script lang="ts" setup>
 import cMedia from '@/components/showcase/media.vue'
 
-defineProps({
-	project: Object,
-})
+defineProps<{
+	url: string
+	title: string
+	mediaUrl: string
+	mediaType: string
+	summary: string
+}>()
 </script>

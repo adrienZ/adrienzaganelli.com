@@ -2,8 +2,8 @@
 published: true
 title: How to share variables across HTML, CSS, and JavaScript using Webpack
 createdAt: 2019-12-19
-media: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
-caption: 'magic'
+image:
+  src: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
 ---
 
 Earlier this week, I read [an article](https://calendar.perfplanet.com/2019/the-unseen-performance-costs-of-css-in-js-in-react-apps/) explaining how CSS-in-JS slows down the rendering of some React apps and how static CSS is faster. But CSS-in-JS is very popular because, among other features, you can style dynamically using JavaScript variables.
@@ -20,7 +20,7 @@ You can check out the [source code here](https://glitch.com/~shared-variables-w
 
 Create a folder for this tutorial, open your terminal, and init a project:
 
-```
+```bash
 npm init -y
 ```
 
@@ -32,7 +32,7 @@ npm install webpack webpack-cli --save-dev
 
 Let’s create a script in our `package.json` that tells Webpack to use our config file:
 
-```[package.json]
+```json [package.json]
   "scripts": {
     "build": "webpack --config webpack.config.js"
   }
@@ -61,13 +61,13 @@ module.exports = {
 
 Our source code will be located in an `app` folder. Create it like this:
 
-```
+```bash
 mkdir app && cd app
 ```
 
 You’ll need `index.html` and `index.js` files at this point. Create those files in the `app` folder:
 
-```
+```bash
 touch index.html index.js
 ```
 
@@ -75,15 +75,15 @@ Perfect! You’re all set. ????
 
 Your folder should look like this:
 
-```treeview
+```md
 project
 ├── node_modules/
 ├── package.json
 ├── webpack.config.js
 ├── globals.js
 ├── app
-|   ├── index.html
-|   └── index.js
+| ├── index.html
+| └── index.js
 ```
 
 ## 2. Render our HTML files with the `html-webpack-plugin`
@@ -105,7 +105,7 @@ As you can see, we are trying to print a variable in our HTML… which is imposs
 
 The plugin will generate a valid HTML file. In the meantime, you should rename your `app/index.html` file to `app/index.ejs`.
 
-```
+```bash
 npm install --save-dev html-webpack-plugin
 ```
 
@@ -150,7 +150,7 @@ Okay guys you got me… I lied. We can’t use our globals directly in CSS – w
 
 On the Webpack side, a plugin will not be enough. We must use a [loader](https://webpack.js.org/loaders/) to convert SASS into CSS. In this case we need the [sass-loader](https://github.com/webpack-contrib/sass-loader) package, so install it according to the docs:
 
-```
+```bash
 npm install sass-loader node-sass css-loader style-loader --save-dev
 ```
 
@@ -212,7 +212,7 @@ Here is what you should see:
 
 <figure>
 
-![](https://www.freecodecamp.org/news/content/images/2019/12/Capture-d-e-cran-2019-12-23-23.44.11.png)
+![](/assets/content/Capture-d-e-cran-2019-12-23-23.44.11.png)
 
   <figcaption>
     [https://glitch.com/edit/#!/shared-variables-webpack?path=webpack.config.js]()

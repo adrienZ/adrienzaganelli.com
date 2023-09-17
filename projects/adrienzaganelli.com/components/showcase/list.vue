@@ -3,14 +3,15 @@
 		<li
 			class="c-list__item text-left mb-3 sm:mb-8"
 			:key="index"
-			v-for="(p, index) in $store.state.projects"
+			v-for="(p, index) in projects"
 		>
 			<nuxt-link
-				@focus.native="onFocus($event, p, index)"
-				@mouseover.native="onHover($event, p, index)"
-				@mouseleave.native="$bus.emit('cursor-default')"
-				:to="/case-study/ + p.slug"
+				@mouseleave="$bus.emit('cursor-default')"
+				@focus="onFocus($event, p, index)"
+				@mouseover="onHover($event, p, index)"
+				:to="p._path"
 				class="inline-block"
+				data-linkz-ai-ignore
 			>
 				<div class="relative">
 					<h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
@@ -18,7 +19,7 @@
 							{{ formatIndex(index) }}
 						</span>
 						<span class="inline-block c-list__item__text">
-							{{ p.title.rendered }}
+							{{ p.title }}
 						</span>
 					</h2>
 				</div>
@@ -27,13 +28,15 @@
 	</ul>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive } from 'vue'
-import { $bus } from '../../plugins/bus'
 
-const emit = defineEmits(['update'])
+const { $bus } = useNuxtApp()
+const emit = defineEmits<{
+	(event: 'update', value: [any, number]): void
+}>()
 
-const useTimer = (duration, callback) => {
+const useTimer = (duration: number, callback: Function) => {
 	const interval = window.setTimeout(callback, duration)
 
 	return {
@@ -41,18 +44,25 @@ const useTimer = (duration, callback) => {
 	}
 }
 
-let timer = null
+const { data: projects } = await useAsyncData(`content-projects`, () => {
+	return queryContent('case-study')
+		.where({ _partial: false })
+		.only(['title', '_path', 'cover'])
+		.find()
+})
+
+let timer: ReturnType<typeof useTimer> | null = null
 
 const state = reactive({
-	currentProjectSlug: null,
+	currentProjectUrl: null,
 	currentIndex: 0,
 })
 
-function update(e, project, index) {
+function update(e: Event, project: any, index: number) {
 	const item = e.currentTarget
 
 	// dont emit if already active
-	if (state.currentProjectSlug === project.slug) return
+	if (state.currentProjectUrl === project._path) return
 
 	// loading state
 	// ...
@@ -65,24 +75,20 @@ function update(e, project, index) {
 	// delay before doing action
 	timer = useTimer(120, () => {
 		emit('update', [project, index])
-		state.currentProjectSlug = project.slug
+		state.currentProjectUrl = project._path
 	})
 }
 
-function onHover(e, project, index) {
+function onHover(e: MouseEvent, project, index: number) {
 	$bus.emit('cursor-hover')
-	update(...arguments)
+	update(e, project, index)
 }
 
-function onFocus() {
-	update(...arguments)
+function onFocus(e: FocusEvent, project: any, index: number) {
+	update(e, project, index)
 }
 
-function onMouseOut() {
-	$bus.emit('cursor-default')
-}
-
-function formatIndex(indexToFormat) {
+function formatIndex(indexToFormat: number) {
 	// 0x
 	return indexToFormat + 1 < 10 ? '0' + (indexToFormat + 1) : indexToFormat + 1
 }

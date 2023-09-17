@@ -1,6 +1,6 @@
 [build]
-  base = "projects/adrienzaganelli.com"
-  command = "npm run static"
+  base = "projects/nuxt3"
+  command = "npm run generate"
   publish = "dist/"
 
 [[redirects]]
