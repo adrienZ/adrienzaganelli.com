@@ -1,7 +1,7 @@
 ---
-published: true
+draft: false
 title: '[FR🇫🇷] Recap VueNation 2022 – Jour 1'
-createdAt: 2022-02-27
+date: 2022-02-27
 image:
   src: /assets/content/1644914476444.jpeg
   height: 418

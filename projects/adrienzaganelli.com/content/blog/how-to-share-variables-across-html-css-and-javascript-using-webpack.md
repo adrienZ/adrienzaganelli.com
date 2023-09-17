@@ -1,7 +1,7 @@
 ---
-published: true
+draft: false
 title: How to share variables across HTML, CSS, and JavaScript using Webpack
-createdAt: 2019-12-19
+date: 2019-12-19
 image:
   src: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
 ---

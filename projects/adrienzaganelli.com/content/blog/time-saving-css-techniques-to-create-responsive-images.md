@@ -1,7 +1,7 @@
 ---
-published: true
+draft: false
 title: Time-saving CSS techniques to create responsive images
-createdAt: 2018-08-18
+date: 2018-08-18
 image:
   src: /assets/content/kevin-vu-unsplash.jpeg
   alt: Photo by Kevin Ku on Unsplash

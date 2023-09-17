@@ -1,7 +1,7 @@
 ---
-published: true
+draft: false
 title: How to make your app work offline with the power of JavaScript
-createdAt: 2019-01-23
+date: 2019-01-23
 image:
   src: /assets/content/1_jRhKpS-07YTKIH6g-xJnbQ-1.jpeg
   alt: Photo by Donald Giannatti on Unsplash

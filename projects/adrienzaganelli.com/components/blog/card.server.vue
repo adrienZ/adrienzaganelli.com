@@ -40,7 +40,7 @@ const props = defineProps(['post', 'height'])
 
 const postUrl = computed(() => props.post._path)
 const date = computed(() =>
-	new Date(props.post.createdAt).toLocaleDateString('en-US', {
+	new Date(props.post.date).toLocaleDateString('en-US', {
 		day: 'numeric',
 		month: 'long',
 		year: 'numeric',

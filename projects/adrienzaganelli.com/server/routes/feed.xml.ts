@@ -12,17 +12,17 @@ export default defineEventHandler(async (event) => {
 	})
 
 	const docs = await serverQueryContent(event)
-		.where({ published: true })
+		.where({ draft: false })
 		.only([
 			'title',
 			'_path',
-			'createdAt',
+			'date',
 			'media',
 			'description',
 			'excerpt',
 			'thumbnail_height',
 		])
-		.sort({ createdAt: -1 })
+		.sort({ date: -1 })
 		.find()
 
 	const blogPosts = docs.filter((doc) => doc?._path?.includes('/blog'))
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
 		feed.item({
 			title: doc.title ?? '-',
 			url: `https://adrienzaganelli.com${doc._path}`,
-			date: doc.createdAt,
+			date: doc.date,
 			description: doc.description,
 			author: 'Adrien Zaganelli',
 		})

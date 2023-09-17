@@ -26,9 +26,9 @@ import cFooter from '@/components/common/footer.vue'
 
 const { data: posts } = await fetchContent(`content-blog`, () => {
 	return queryContent('blog')
-		.where({ published: true })
-		.only(['title', '_path', 'createdAt', 'image', 'excerpt'])
-		.sort({ createdAt: -1 })
+		.where({ draft: false })
+		.only(['title', '_path', 'date', 'image', 'excerpt'])
+		.sort({ date: -1 })
 		.find()
 })
 </script>
