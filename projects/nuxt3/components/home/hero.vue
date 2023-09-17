@@ -184,7 +184,9 @@ onMounted(() => {
 					}
 				)
 		}
-	}).observe(instance.$el)
+	})
+
+	bubbleEffect.observe(instance.$el)
 })
 
 onUnmounted(() => {

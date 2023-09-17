@@ -27,7 +27,6 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		domains: ['adrienzaganelli.com'],
 		dir: '.',
 		staticFilename: '[publicPath]/images/[name]-[hash][ext]',
 		// https://image.nuxtjs.org/configuration#screens
@@ -100,7 +99,7 @@ export default defineNuxtConfig({
 	},
 
 	experimental: {
-		// payloadExtraction: false,
+		payloadExtraction: false,
 		componentIslands: true,
 	},
 })
