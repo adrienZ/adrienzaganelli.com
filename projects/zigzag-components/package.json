@@ -16,7 +16,7 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": "16.17.0"
+    "node": "18.18.0"
   },
   "scripts": {
     "preview": "vite preview",
@@ -55,7 +55,7 @@
     "vue-tsc": "^0.39.5"
   },
   "volta": {
-    "node": "16.17.0",
+    "node": "18.18.0",
     "yarn": "1.22.18"
   }
 }
