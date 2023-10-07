@@ -1,6 +1,5 @@
 [build]
-  base = "projects/adrienzaganelli.com"
-  command = "npm run generate"
+  command = "pnpm run generate"
   publish = "dist/"
 
 [[redirects]]
