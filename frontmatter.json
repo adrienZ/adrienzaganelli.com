@@ -61,5 +61,9 @@
 			"path": "[[workspace]]/content/case-study",
 			"previewPath": "/case-study"
 		}
-	]
+	],
+	"frontMatter.content.publicFolder": "public",
+	"frontMatter.framework.id": "nuxt",
+	"frontMatter.framework.startCommand": "pnpm run dev",
+	"frontMatter.preview.host": "http://localhost:3000"
 }
