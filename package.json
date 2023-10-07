@@ -15,7 +15,7 @@
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
 		"preinstall": "pnpm -v",
-		"postinstall": "npx simple-git-hooks && nuxt prepare",
+		"postinstall": "nuxt prepare",
 		"prepare": "husky install"
 	},
 	"devDependencies": {
