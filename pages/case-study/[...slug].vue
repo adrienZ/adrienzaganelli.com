@@ -46,7 +46,7 @@
 							<span>{{ $project.role }}</span>
 						</p>
 
-						<div v-if="team">
+						<div v-if="team && team.body.children.length > 0">
 							<span class="font-semibold block">The team:</span>
 							<ContentRenderer :value="team" />
 						</div>
@@ -144,24 +144,23 @@ const { path } = useRoute()
 const { data: nextProjectSibling } = await fetchContent(
 	`${path}-next-projects`,
 	async () => {
-		const [__, _nextProject] = await queryContent('case-study').findSurround(
-			path
-		)
+		const [__, _nextProject] =
+			await queryContent('case-study').findSurround(path)
 		return _nextProject
-	}
+	},
 )
 
 const { data: firstProjectInDb } = await fetchContent(
 	`project-first-content`,
-	() => queryContent('case-study').where({ _partial: false }).findOne()
+	() => queryContent('case-study').where({ _partial: false }).findOne(),
 )
 
 const nextProject = computed(
-	() => nextProjectSibling.value || firstProjectInDb.value
+	() => nextProjectSibling.value || firstProjectInDb.value,
 )
 
 const { data: $project } = await fetchContent(`${path}-content`, () =>
-	queryContent(path).findOne()
+	queryContent(path).findOne(),
 )
 
 const { data: team } = await fetchContent(`${path}-teams`, () => {
@@ -193,15 +192,17 @@ onMounted(() => {
 		ease: 'circ.out',
 	})
 
-	tl?.fromTo(
-		titles.value?.children,
-		{ opacity: 0 },
-		{ opacity: 1, duration: 0.3, stagger: 0.12 }
-	).to(
-		Array.from(titles.value?.children).slice(0, -1),
-		{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
-		0.35
-	)
+	tl
+		?.fromTo(
+			titles.value?.children,
+			{ opacity: 0 },
+			{ opacity: 1, duration: 0.3, stagger: 0.12 },
+		)
+		.to(
+			Array.from(titles.value?.children).slice(0, -1),
+			{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
+			0.35,
+		)
 
 	titleEffect = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
