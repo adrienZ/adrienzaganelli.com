@@ -1,78 +1,77 @@
 <template>
 	<section ref="root" class="page-home">
-		<NuxtLayout name="folio">
-			<div class="container sm:w-3/4 w-5/6 mx-auto">
-				<c-hero class="sm:pt-20 pt-10" />
-				<c-showcase class="sm:mt-20 mt-10" />
-				<c-about class="sm:mt-20 mt-10" />
-				<c-footer class="sm:mt-20 mt-10" />
-			</div>
-		</NuxtLayout>
+		<FancyCursor />
+		<div class="container sm:w-3/4 w-5/6 mx-auto">
+			<c-hero class="sm:pt-20 pt-10" />
+			<c-showcase class="sm:mt-20 mt-10" />
+			<c-about class="sm:mt-20 mt-10" />
+			<c-footer class="sm:mt-20 mt-10" />
+		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
-import cShowcase from '@/components/home/showcase.vue'
-import cHero from '@/components/home/hero.vue'
-import cAbout from '@/components/home/about.vue'
-import cFooter from '@/components/common/footer.vue'
+import cShowcase from "@/components/home/showcase.vue";
+import cHero from "@/components/home/hero.vue";
+import cAbout from "@/components/home/about.vue";
+import cFooter from "@/components/common/footer.vue";
 
-import Rellax, { RellaxInstance } from 'rellax'
+import Rellax, { RellaxInstance } from "rellax";
 
-const { $bus } = useNuxtApp()
+const { $bus } = useNuxtApp();
 
-let rellax: null | RellaxInstance = null
-const root = ref<HTMLElement>()
+let rellax: null | RellaxInstance = null;
+const root = ref<HTMLElement>();
 
 function waitForElementWithTimeout(
 	selector: string,
 	callback: (element: HTMLElement | null) => void,
 	timeout = 5000,
-	interval = 100
+	interval = 100,
 ) {
-	const endTime = Date.now() + timeout
+	const endTime = Date.now() + timeout;
 
 	function checkElement() {
-		const targetNode = document.querySelector(selector)
+		const targetNode = document.querySelector(selector);
 
 		if (targetNode instanceof HTMLElement) {
-			callback(targetNode)
+			callback(targetNode);
 		} else if (Date.now() < endTime) {
-			setTimeout(checkElement, interval)
+			setTimeout(checkElement, interval);
 		} else {
-			callback(null)
+			callback(null);
 		}
 	}
 
-	checkElement()
+	checkElement();
 }
 
 const buildRellax = () => {
-	if (!rellax && document.querySelector('.relax')) {
+	if (!rellax && document.querySelector(".relax")) {
 	}
-}
+};
 
 onMounted(() => {
 	waitForElementWithTimeout(
-		'.rellax',
+		".rellax",
 		(element) => {
 			if (element) {
-				rellax = new Rellax('.rellax', {
+				rellax = new Rellax(".rellax", {
 					// default tailwind breakpoints
 					breakpoints: [768, 1024, 1280],
 					round: true,
 					wrapper: root.value,
-				})
+				});
 			}
 		},
-		10000
-	) // Wait for up to 10 seconds
-})
+		10000,
+	); // Wait for up to 10 seconds
+});
 
 onBeforeUnmount(() => {
-	rellax?.destroy()
-	$bus.emit('cursor-default')
-})
+	rellax?.destroy();
+	$bus.emit("cursor-default");
+});
 
 useHead({
 	script: [
@@ -87,19 +86,20 @@ useHead({
           }, 10);
         `,
 			body: true,
-			type: 'text/javascript',
+			type: "text/javascript",
 		},
 	],
-})
+});
 definePageMeta({
+	layout: "folio",
 	pageTransition: {
 		appear: true,
-		mode: 'out-in',
+		mode: "out-in",
 		css: false,
 		onEnter: PageTransition.defaultTransitionIn,
 		onLeave: PageTransition.defaultTransitionOut,
 	},
-})
+});
 </script>
 
 <style lang="scss">

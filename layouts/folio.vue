@@ -1,10 +1,6 @@
 <template>
 	<div>
-		<CustomCursor />
+		<IconsCache />
 		<slot />
 	</div>
 </template>
-
-<script setup lang="ts">
-import CustomCursor from '@/components/common/cursor.vue'
-</script>

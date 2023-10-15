@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<IconsCache />
 		<BlogHeader />
 		<div class="layout-blog">
 			<slot />
