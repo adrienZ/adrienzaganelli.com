@@ -3,7 +3,7 @@
 		class="pt-4 inline-block"
 		to="/"
 		@mouseover="$bus.emit('cursor-hover')"
-		mouseleave="$bus.emit('cursor-default')"
+		@mouseleave="$bus.emit('cursor-default')"
 	>
 		<svg
 			class="h-6 w-6 inline-block align-middle"

@@ -26,22 +26,22 @@
 
 <script setup lang="ts">
 // components
-import cThumbnail from '@/components/showcase/thumbnail.vue'
-import cList from '@/components/showcase/list.vue'
+import cThumbnail from "@/components/showcase/thumbnail.vue";
+import cList from "@/components/showcase/list.vue";
 
 // libs
-import gsap from 'gsap'
+import gsap from "gsap";
 
-const instance = getCurrentInstance()!.proxy!
-const { $mouse } = useMouse()
+const instance = getCurrentInstance()!.proxy!;
+const { $mouse } = useMouse();
 
 const { data: projects } = await fetchContent(`showcase-projects`, () => {
-	return queryContent('case-study').only(['title', '_path', 'cover']).find()
-})
+	return queryContent("case-study").only(["title", "_path", "cover"]).find();
+});
 
-const title = ref<HTMLHeadingElement | null>(null)
-const media = ref<ComponentPublicInstance | null>(null)
-const list = ref<InstanceType<typeof cList> | null>(null)
+const title = ref<HTMLHeadingElement | null>(null);
+const media = ref<ComponentPublicInstance | null>(null);
+const list = ref<InstanceType<typeof cList> | null>(null);
 
 const data = reactive({
 	...useAppConfig(),
@@ -54,155 +54,153 @@ const data = reactive({
 	// start preview mouse track
 	smoothMouse: { x: 0, y: 0 },
 	lastRender: 0,
-})
+});
 
 onMounted(() => {
 	const tl = new gsap.timeline({
 		paused: true,
-	})
+	});
 
 	tl.fromTo(
 		title.value,
 		{ opacity: 0, y: 20 },
 		{ opacity: 1, y: 0, duration: 0.2 },
-		0
-	)
+		0,
+	);
 	tl.fromTo(
 		media.value.$el,
 		{ opacity: 0 },
 		{ opacity: 1, duration: 0.25 },
-		0.2
-	)
+		0.2,
+	);
 	tl.fromTo(
 		list.value.$el.children,
 		{ opacity: 0, y: 10 },
 		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
-		0.2
-	)
+		0.2,
+	);
 
-	tl.timeScale(0.85)
+	tl.timeScale(0.85);
 
 	data.mouseObserver = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
 			// dont follow mouse under 1280px (tailwind xl)
 			if (document.documentElement.clientWidth >= 1280) {
-				gsap.ticker.add(onFrame)
+				gsap.ticker.add(onFrame);
 			}
 		} else {
-			gsap.ticker.remove(onFrame)
+			gsap.ticker.remove(onFrame);
 		}
-	})
-	data.mouseObserver.observe(instance.$el)
+	});
+	data.mouseObserver.observe(instance.$el);
 
 	// preload medias with ajax
 	document.documentElement.clientWidth >= 1280 &&
-		window.addEventListener('load', () => {
+		window.addEventListener("load", () => {
 			projects.value.forEach((p) => {
-				console.log(p)
-
 				switch (p.cover.type) {
-					case 'image':
-						const image = new Image()
-						image.crossOrigin = 'anonymous'
-						image.src = p.cover.src
-						break
-					case 'video':
-						const video = document.createElement('video')
-						video.crossOrigin = 'anonymous'
-						video.src = p.cover.src
-						video.load()
-						break
+					case "image":
+						const image = new Image();
+						image.crossOrigin = "anonymous";
+						image.src = p.cover.src;
+						break;
+					case "video":
+						const video = document.createElement("video");
+						video.crossOrigin = "anonymous";
+						video.src = p.cover.src;
+						video.load();
+						break;
 				}
-			})
-		})
+			});
+		});
 
 	data.fadeObserver = new IntersectionObserver(
 		([entry]) => {
 			if (entry.isIntersecting) {
-				tl.play()
-				data.fadeObserver.disconnect()
+				tl.play();
+				data.fadeObserver.disconnect();
 			}
 		},
 		{
 			threshold: 0.25, // quarter of item height
-		}
-	)
+		},
+	);
 
-	data.fadeObserver.observe(instance.$el)
-})
+	data.fadeObserver.observe(instance.$el);
+});
 
 onBeforeUnmount(() => {
-	data.fadeObserver?.disconnect()
-	data.mouseObserver?.disconnect()
+	data.fadeObserver?.disconnect();
+	data.mouseObserver?.disconnect();
 	// stop preview mouse track
-	gsap.ticker.remove(onFrame)
-})
+	gsap.ticker.remove(onFrame);
+});
 
 function onFrame() {
-	const now = Date.now()
+	const now = Date.now();
 
 	if (now - data.lastRender > data.RAF_DELTA_TIME) {
-		followMouse()
+		followMouse();
 	}
 }
 
 function onProjectChange([project, index]: [any, number]) {
 	if (project._path === data.url) {
-		return false
+		return false;
 	}
 
 	const tl = new gsap.timeline({
 		paused: true,
-	})
+	});
 
 	tl.to(media.value.$el, {
 		opacity: 0.75,
 		scale: 0.95,
 		duration: 0.1,
 		onComplete: () => {
-			data.media = project.cover
-			data.url = project._path
-			data.index = index
+			data.media = project.cover;
+			data.url = project._path;
+			data.index = index;
 		},
-	})
+	});
 	tl.to(media.value.$el, {
 		opacity: 1,
 		scale: 1,
 		duration: 0.2,
-	})
-	tl.play()
+	});
+	tl.play();
 
 	Array.from(list.value.$el.children).forEach((el, k) => {
-		k === index ? el.classList.add('active') : el.classList.remove('active')
-	})
+		k === index ? el.classList.add("active") : el.classList.remove("active");
+	});
 
-	list.value.$el.children[index].class
+	list.value.$el.children[index].class;
 }
 
 function followMouse() {
-	const mouse = $mouse.movement
+	const mouse = $mouse.movement;
 
-	data.smoothMouse.x += (mouse.x / 10 - data.smoothMouse.x) * 0.1
-	data.smoothMouse.y += (mouse.y / 10 - data.smoothMouse.y) * 0.1
+	data.smoothMouse.x += (mouse.x / 10 - data.smoothMouse.x) * 0.1;
+	data.smoothMouse.y += (mouse.y / 10 - data.smoothMouse.y) * 0.1;
 
 	gsap.set(media.value.$el, {
-		x: data.smoothMouse.x + 'px',
-		y: data.smoothMouse.y + 'px',
+		x: data.smoothMouse.x + "px",
+		y: data.smoothMouse.y + "px",
 		// rotateZ: ((Math.abs(this.smoothMouse.y) - Math.abs(this.smoothMouse.x)) / 20) + 'deg',
 		force3D: true,
-	})
+	});
 
-	data.lastRender = Date.now()
+	data.lastRender = Date.now();
 }
 
 function onProjectSelect(index: number) {
-	if (data.isLoading) return
+	if (data.isLoading) return;
 
-	data.isLoading = true
+	data.isLoading = true;
 
 	// const nextProject = this.$store.$state.projects[index]
 
-	const items = Array.from(list.value.$el.querySelectorAll('.c-list__item'))
+	const items = Array.from(list.value.$el.querySelectorAll(".c-list__item"));
 
 	// hide all items expept selected
 	gsap.to(
@@ -213,13 +211,13 @@ function onProjectSelect(index: number) {
 			duration: 0.2,
 			stagger: 0.075,
 			onComplete: () => {
-				data.isLoading = false
-				alert('redirect')
+				data.isLoading = false;
+				alert("redirect");
 				// this.$router.push('/case-study/' + nextProject.url)
 			},
-			ease: 'power4.out',
-		}
-	)
+			ease: "power4.out",
+		},
+	);
 }
 </script>
 

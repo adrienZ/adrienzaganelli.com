@@ -43,7 +43,7 @@
 						title="my blog"
 						class="hover:text-pimper focus:text-pimper underline ml-3 inline-block"
 						@mouseover="$bus.emit('cursor-hover')"
-						mouseleave="$bus.emit('cursor-default')"
+						@mouseleave="$bus.emit('cursor-default')"
 						to="/blog"
 					>
 						Blog
@@ -126,52 +126,52 @@
 </style>
 
 <script setup lang="ts">
-import gsap from 'gsap'
+import gsap from "gsap";
 
 function randomIntFromInterval(min: number, max: number) {
 	// min and max included
-	return Math.floor(Math.random() * (max - min + 1) + min)
+	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const bubble = ref()
-const title = ref()
-const intro = ref()
-const list = ref()
+const bubble = ref();
+const title = ref();
+const intro = ref();
+const list = ref();
 
-const instance = getCurrentInstance()?.proxy
+const instance = getCurrentInstance()?.proxy;
 
-let bubbleEffect: IntersectionObserver | null = null
+let bubbleEffect: IntersectionObserver | null = null;
 
 onMounted(() => {
 	const tl = new gsap.timeline({
 		paused: true,
-	})
+	});
 
 	tl.fromTo(
 		title.value,
 		{ opacity: 0, y: 20 },
 		{ opacity: 1, y: 0, duration: 0.2 },
-		0
-	)
-	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2)
+		0,
+	);
+	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2);
 	tl.fromTo(
 		bubble.value.children,
 		{ scale: 0, y: 0 },
 		{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
-		0.25
-	)
+		0.25,
+	);
 	tl.fromTo(
 		list.value.children,
 		{ opacity: 0, y: 10 },
 		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
-		0.2
-	)
+		0.2,
+	);
 
-	tl.timeScale(0.85)
+	tl.timeScale(0.85);
 
 	bubbleEffect = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
-			tl.play()
+			tl.play();
 			bubbleEffect?.disconnect(instance.$el),
 				gsap.fromTo(
 					bubble.value.children,
@@ -181,15 +181,15 @@ onMounted(() => {
 						duration: randomIntFromInterval(20, 40),
 						stagger: () => randomIntFromInterval(1, 15),
 						repeat: -1,
-					}
-				)
+					},
+				);
 		}
-	})
+	});
 
-	bubbleEffect.observe(instance.$el)
-})
+	bubbleEffect.observe(instance.$el);
+});
 
 onUnmounted(() => {
-	bubbleEffect?.disconnect(instance.$el)
-})
+	bubbleEffect?.disconnect(instance.$el);
+});
 </script>

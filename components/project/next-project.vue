@@ -12,7 +12,7 @@
 						:to="url"
 						class="font-bold underline"
 						@mouseover="$bus.emit('cursor-hover')"
-						mouseleave="$bus.emit('cursor-default')"
+						@mouseleave="$bus.emit('cursor-default')"
 					>
 						{{ title }}
 					</NuxtLink>
@@ -28,7 +28,7 @@
 				<NuxtLink
 					:to="url"
 					@mouseover="$bus.emit('cursor-hover')"
-					mouseleave="$bus.emit('cursor-default')"
+					@mouseleave="$bus.emit('cursor-default')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
 					<cMedia :src="mediaUrl" :type="mediaType" />
@@ -39,13 +39,13 @@
 </template>
 
 <script lang="ts" setup>
-import cMedia from '@/components/showcase/media.vue'
+import cMedia from "@/components/showcase/media.vue";
 
 defineProps<{
-	url: string
-	title: string
-	mediaUrl: string
-	mediaType: string
-	summary: string
-}>()
+	url: string;
+	title: string;
+	mediaUrl: string;
+	mediaType: string;
+	summary: string;
+}>();
 </script>
