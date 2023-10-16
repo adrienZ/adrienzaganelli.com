@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="Container w-full mx-auto"
+		class="Container mx-auto"
 		:class="{
 			'max-w-4xl px-4': variant === 'blog',
 			'sm:w-3/4 w-5/6': variant === 'home',
