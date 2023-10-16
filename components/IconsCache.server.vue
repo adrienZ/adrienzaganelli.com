@@ -81,7 +81,7 @@
 					points="22.7 395.8 197.6 2 390 395.8 22.7 395.8"
 				></polygon>
 				<polyline
-					stroke="#231f20"
+					stroke="var(--text-and-border-color)"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					fill="none"
@@ -89,7 +89,7 @@
 					points="197.6 2 277 164.6 302.5 216.8"
 				></polyline>
 				<polyline
-					stroke="#231f20"
+					stroke="var(--text-and-border-color)"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					fill="none"
@@ -97,7 +97,7 @@
 					points="197.6 2 125.6 164.2 102.2 216.8"
 				></polyline>
 				<line
-					stroke="#231f20"
+					stroke="var(--text-and-border-color)"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					fill="none"
@@ -108,7 +108,7 @@
 					y2="164.2"
 				></line>
 				<line
-					stroke="#231f20"
+					stroke="var(--text-and-border-color)"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					fill="none"
@@ -119,7 +119,7 @@
 					y2="395.8"
 				></line>
 				<line
-					stroke="#231f20"
+					stroke="var(--text-and-border-color)"
 					stroke-miterlimit="10"
 					stroke-linecap="round"
 					fill="none"
@@ -130,7 +130,7 @@
 					y2="395.8"
 				></line>
 				<text
-					fill="#231f20"
+					fill="var(--text-and-border-color)"
 					isolation="isolate"
 					font-size="2.5em"
 					transform="translate(0 452.03)"

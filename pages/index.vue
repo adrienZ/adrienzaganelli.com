@@ -1,12 +1,12 @@
 <template>
 	<section ref="root" class="page-home">
 		<FancyCursor />
-		<div class="container sm:w-3/4 w-5/6 mx-auto">
+		<Container variant="home">
 			<c-hero class="sm:pt-20 pt-10" />
 			<c-showcase class="sm:mt-20 mt-10" />
 			<c-about class="sm:mt-20 mt-10" />
 			<c-footer class="sm:mt-20 mt-10" />
-		</div>
+		</Container>
 	</section>
 </template>
 
@@ -15,6 +15,12 @@ import cShowcase from "@/components/home/showcase.vue";
 import cHero from "@/components/home/hero.vue";
 import cAbout from "@/components/home/about.vue";
 import cFooter from "@/components/common/footer.vue";
+
+// useHead({
+// 	bodyAttrs: {
+// 		class: "overflow-x-hidden"
+// 	}
+// })
 
 import Rellax, { RellaxInstance } from "rellax";
 
@@ -45,11 +51,6 @@ function waitForElementWithTimeout(
 
 	checkElement();
 }
-
-const buildRellax = () => {
-	if (!rellax && document.querySelector(".relax")) {
-	}
-};
 
 onMounted(() => {
 	waitForElementWithTimeout(

@@ -137,7 +137,7 @@ definePageMeta({
 
 const titles = ref<HTMLDivElement | null>(null);
 let titleEffect: IntersectionObserver;
-let tl;
+let tl: gsap.core.Timeline;
 
 const { path } = useRoute();
 

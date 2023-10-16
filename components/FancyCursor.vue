@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useElementSize, useEventListener } from "@vueuse/core";
+import { useElementSize, useEventListener, useSupported } from "@vueuse/core";
 import gsap from "gsap";
 
 // templates refs
@@ -36,11 +36,6 @@ function onFrame() {
 		renderCursor();
 	}
 }
-
-onMounted(() => gsap.ticker.add(onFrame));
-onBeforeUnmount(() => {
-	gsap.ticker.remove(onFrame);
-});
 
 // composables
 const { $mouse } = useMouse();
@@ -63,7 +58,14 @@ const state = reactive({
 
 const enableDiffrenceBlend = ref(false);
 
+const supportsTouch = useSupported(
+	() => "ontouchstart" in window || navigator.maxTouchPoints,
+);
+
 onMounted(() => {
+	// dont run on touch devices
+	if (supportsTouch.value) return;
+
 	// show custom cursor on first mouse move
 	const once = () => {
 		state.innerPosX = $mouse.position.x;
@@ -73,7 +75,12 @@ onMounted(() => {
 		show();
 		window.removeEventListener("mousemove", once);
 	};
+
 	window.addEventListener("mousemove", once);
+	gsap.ticker.add(onFrame);
+});
+onBeforeUnmount(() => {
+	gsap.ticker.remove(onFrame);
 });
 
 let tl: gsap.core.Timeline | gsap.core.Tween | null;
@@ -99,9 +106,6 @@ function renderCursor() {
 	state.outerPosX += ($mouse.position.x - state.outerPosX) * 0.3;
 	state.outerPosY += ($mouse.position.y - state.outerPosY) * 0.3;
 
-	// gsap.set(rootRef.value!, {
-
-	// })
 	gsap.set(innerRef.value!, {
 		scale: state.innerScale,
 		opacity: state.innerOpacity,

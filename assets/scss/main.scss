@@ -1,6 +1,10 @@
-@import 'tailwindcss/base';
+@import "tailwindcss/base";
 
-// smootscroll
+:root {
+	--background-color: #eceff1;
+	--text-and-border-color: #1f2937;
+}
+
 body,
 html {
 	height: 100%;
@@ -8,9 +12,14 @@ html {
 	@apply bg-light text-black font-sans;
 }
 
-@import 'sass-easing/_easings';
+.dark {
+	--background-color: #1f2937;
+	--text-and-border-color: #eceff1;
+}
 
-@import 'typography';
-@import 'cms';
-@import 'underline-effect';
-@import 'accessibility';
+@import "sass-easing/_easings";
+
+@import "typography";
+@import "cms";
+@import "underline-effect";
+@import "accessibility";

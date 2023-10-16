@@ -1,5 +1,5 @@
 <template>
-	<section class="container mx-auto">
+	<Container variant="blog">
 		<header>
 			<h2 class="text-6xl font-semibold mb-2">Last articles</h2>
 		</header>
@@ -16,7 +16,7 @@
 		</main>
 
 		<c-footer class="sm:mt-20 mt-10" />
-	</section>
+	</Container>
 </template>
 
 <script setup lang="ts">
@@ -34,9 +34,3 @@ definePageMeta({
 	layout: "blog",
 });
 </script>
-
-<style scoped>
-.container {
-	@apply max-w-4xl px-4;
-}
-</style>

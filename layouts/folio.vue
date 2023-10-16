@@ -1,6 +1,16 @@
 <template>
-	<div>
+	<Container variant="largest" class="mx-0">
 		<IconsCache />
+
+		<DevOnly>
+			<Menu />
+		</DevOnly>
 		<slot />
-	</div>
+	</Container>
 </template>
+
+<style scoped>
+.mx-0 {
+	margin: 0;
+}
+</style>
