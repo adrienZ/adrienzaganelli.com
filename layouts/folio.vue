@@ -4,6 +4,7 @@
 
 		<DevOnly>
 			<Menu />
+			<!-- <DevColorSchema /> -->
 		</DevOnly>
 		<slot />
 	</Container>

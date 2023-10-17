@@ -15,7 +15,7 @@
 			>
 				<div class="relative">
 					<h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
-						<span class="inline-block c-list__item__index tracking-wide">
+						<span class="inline-block c-list__item__index mr-1 tracking-wide">
 							{{ formatIndex(index) }}
 						</span>
 						<span class="inline-block c-list__item__text">
@@ -29,72 +29,72 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { reactive } from "vue";
 
-const { $bus } = useNuxtApp()
+const { $bus } = useNuxtApp();
 const emit = defineEmits<{
-	(event: 'update', value: [any, number]): void
-}>()
+	(event: "update", value: [any, number]): void;
+}>();
 
 const useTimer = (duration: number, callback: Function) => {
-	const interval = window.setTimeout(callback, duration)
+	const interval = window.setTimeout(callback, duration);
 
 	return {
 		reset: () => window.clearTimeout(interval),
-	}
-}
+	};
+};
 
 const { data: projects } = await useAsyncData(`content-projects`, () => {
-	return queryContent('case-study')
+	return queryContent("case-study")
 		.where({ _partial: false })
-		.only(['title', '_path', 'cover'])
-		.find()
-})
+		.only(["title", "_path", "cover"])
+		.find();
+});
 
-let timer: ReturnType<typeof useTimer> | null = null
+let timer: ReturnType<typeof useTimer> | null = null;
 
 const state = reactive({
 	currentProjectUrl: null,
 	currentIndex: 0,
-})
+});
 
 function update(e: Event, project: any, index: number) {
-	const item = e.currentTarget
+	const item = e.currentTarget;
 
 	// dont emit if already active
-	if (state.currentProjectUrl === project._path) return
+	if (state.currentProjectUrl === project._path) return;
 
 	// loading state
 	// ...
 
 	if (item) {
 		// reset action event
-		item.addEventListener('mouseleave', cancel)
+		item.addEventListener("mouseleave", cancel);
 	}
 
 	// delay before doing action
 	timer = useTimer(120, () => {
-		emit('update', [project, index])
-		state.currentProjectUrl = project._path
-	})
+		emit("update", [project, index]);
+		state.currentProjectUrl = project._path;
+	});
 }
 
 function onHover(e: MouseEvent, project, index: number) {
-	$bus.emit('cursor-hover')
-	update(e, project, index)
+	$bus.emit("cursor-hover");
+	update(e, project, index);
 }
 
 function onFocus(e: FocusEvent, project: any, index: number) {
-	update(e, project, index)
+	update(e, project, index);
 }
 
 function formatIndex(indexToFormat: number) {
 	// 0x
-	return indexToFormat + 1 < 10 ? '0' + (indexToFormat + 1) : indexToFormat + 1
+	return indexToFormat + 1 < 10 ? "0" + (indexToFormat + 1) : indexToFormat + 1;
 }
 
 function cancel() {
-	timer?.reset()
+	timer?.reset();
 }
 </script>
 
@@ -109,7 +109,7 @@ function cancel() {
 
 .c-list__item__index {
 	-webkit-text-stroke-width: 1px;
-	-webkit-text-stroke-color: theme('colors.black');
+	-webkit-text-stroke-color: theme("colors.black");
 
 	background-clip: text;
 	color: transparent;

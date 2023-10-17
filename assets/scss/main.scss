@@ -3,6 +3,7 @@
 :root {
 	--background-color: #eceff1;
 	--text-and-border-color: #1f2937;
+	--primary-color: #536dfe;
 }
 
 body,
@@ -15,6 +16,7 @@ html {
 .dark {
 	--background-color: #1f2937;
 	--text-and-border-color: #eceff1;
+	--primary-color: #ef6c00;
 }
 
 @import "sass-easing/_easings";

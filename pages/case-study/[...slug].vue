@@ -130,7 +130,12 @@ definePageMeta({
 		appear: true,
 		mode: "out-in",
 		css: false,
-		onEnter: PageTransition.defaultTransitionIn,
+		onEnter: (el, done) => {
+			PageTransition.defaultTransitionIn(el, () => {
+				window.twttr?.widgets.load();
+				done();
+			});
+		},
 		onLeave: PageTransition.defaultTransitionOut,
 	},
 });

@@ -25,7 +25,7 @@
 						href="https://twitter.com/adri_zag"
 						data-linkz-ai-ignore
 					>
-						Twitter.
+						X (Twitter).
 					</cExternal>
 				</li>
 				<li class="md:mr-5" data-type="linkedin">
@@ -77,16 +77,16 @@
 </template>
 
 <script setup>
-import cExternal from '@/components/common/external.vue'
+import cExternal from "@/components/common/external.vue";
 </script>
 
 <style lang="scss" scoped>
 // nuxt target static has a lot of limitations for routing...
-.page-home .c-footer li[data-type='website'] {
+.page-home .c-footer li[data-type="website"] {
 	display: none;
 }
 
-.layout-blog .c-footer li[data-type='linkedin'] {
+.layout-blog .c-footer li[data-type="linkedin"] {
 	display: none;
 }
 </style>

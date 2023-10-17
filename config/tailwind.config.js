@@ -14,8 +14,7 @@ module.exports = {
 			},
 			colors: {
 				white: "#fafafa",
-				pimper: "#536DFE",
-				light: "#ECEFF1",
+				pimper: "var(--primary-color)",
 				light: "var(--background-color)",
 				black: "var(--text-and-border-color)",
 			},
