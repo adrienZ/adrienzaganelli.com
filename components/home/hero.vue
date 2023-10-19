@@ -143,7 +143,7 @@ const instance = getCurrentInstance()?.proxy;
 let bubbleEffect: IntersectionObserver | null = null;
 
 onMounted(() => {
-	const tl = new gsap.timeline({
+	const tl = gsap.timeline({
 		paused: true,
 	});
 

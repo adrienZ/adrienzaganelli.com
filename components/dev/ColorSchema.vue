@@ -28,7 +28,11 @@ const targets = reactive({
 	"primary-color": useCssVar("--primary-color", domRef),
 });
 
-const handleChangeColor = (event: Event, target: string) => {
+interface ColorEvent extends Event {
+	target: Event["target"] & { value: string };
+}
+
+const handleChangeColor = (event: ColorEvent, target: keyof typeof targets) => {
 	document.documentElement.style.setProperty(`--${target}`, event.target.value);
 	targets[target] = event.target.value;
 };

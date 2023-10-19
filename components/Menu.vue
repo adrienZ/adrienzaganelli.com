@@ -54,8 +54,10 @@ const toggleDark = () => {
 	});
 };
 
-function cloneRootVars(vars: string[]) {
-	const clonedDOM = domRef.value?.cloneNode() as HTMLElement;
+function fetchThemesVars(vars: string[]) {
+	if (!domRef.value) return;
+
+	const clonedDOM = domRef.value.cloneNode() as HTMLElement;
 	clonedDOM.classList.add("visually-hidden", "dark");
 
 	domRef.value?.appendChild(clonedDOM);
@@ -73,10 +75,14 @@ function cloneRootVars(vars: string[]) {
 		);
 	}
 
-	domRef.value?.removeChild(clonedDOM);
+	domRef.value.removeChild(clonedDOM);
 }
 
 onMounted(() => {
-	cloneRootVars(["background-color", "text-and-border-color", "primary-color"]);
+	fetchThemesVars([
+		"background-color",
+		"text-and-border-color",
+		"primary-color",
+	]);
 });
 </script>

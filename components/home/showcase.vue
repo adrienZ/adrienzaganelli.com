@@ -14,7 +14,7 @@
 				ref="media"
 				class="c-showcase__media mt-2 sm:mt-0 hidden xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
 				@mouseover="$bus.emit('cursor-hover')"
-				mouseleave="$bus.emit('cursor-default')"
+				@mouseleave="$bus.emit('cursor-default')"
 				aria-label="Showcase project preview"
 				data-linkz-ai-ignore
 			>
@@ -49,15 +49,15 @@ const data = reactive({
 	url: projects.value[0]._path,
 	index: 0,
 	isLoading: false,
-	fadeObserver: null,
-	mouseObserver: null,
+	fadeObserver: null as IntersectionObserver | null,
+	mouseObserver: null as IntersectionObserver | null,
 	// start preview mouse track
 	smoothMouse: { x: 0, y: 0 },
 	lastRender: 0,
 });
 
 onMounted(() => {
-	const tl = new gsap.timeline({
+	const tl = gsap.timeline({
 		paused: true,
 	});
 
@@ -68,13 +68,13 @@ onMounted(() => {
 		0,
 	);
 	tl.fromTo(
-		media.value.$el,
+		media.value?.$el,
 		{ opacity: 0 },
 		{ opacity: 1, duration: 0.25 },
 		0.2,
 	);
 	tl.fromTo(
-		list.value.$el.children,
+		list.value?.$el.children,
 		{ opacity: 0, y: 10 },
 		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
 		0.2,
@@ -118,7 +118,7 @@ onMounted(() => {
 		([entry]) => {
 			if (entry.isIntersecting) {
 				tl.play();
-				data.fadeObserver.disconnect();
+				data.fadeObserver?.disconnect();
 			}
 		},
 		{
@@ -149,11 +149,11 @@ function onProjectChange([project, index]: [any, number]) {
 		return false;
 	}
 
-	const tl = new gsap.timeline({
+	const tl = gsap.timeline({
 		paused: true,
 	});
 
-	tl.to(media.value.$el, {
+	tl.to(media.value?.$el, {
 		opacity: 0.75,
 		scale: 0.95,
 		duration: 0.1,
@@ -163,18 +163,18 @@ function onProjectChange([project, index]: [any, number]) {
 			data.index = index;
 		},
 	});
-	tl.to(media.value.$el, {
+	tl.to(media.value?.$el, {
 		opacity: 1,
 		scale: 1,
 		duration: 0.2,
 	});
 	tl.play();
 
-	Array.from(list.value.$el.children).forEach((el, k) => {
+	Array.from(list.value?.$el.children).forEach((el, k) => {
 		k === index ? el.classList.add("active") : el.classList.remove("active");
 	});
 
-	list.value.$el.children[index].class;
+	list.value?.$el.children[index].class;
 }
 
 function followMouse() {
@@ -183,10 +183,12 @@ function followMouse() {
 	data.smoothMouse.x += (mouse.x / 10 - data.smoothMouse.x) * 0.1;
 	data.smoothMouse.y += (mouse.y / 10 - data.smoothMouse.y) * 0.1;
 
-	gsap.set(media.value.$el, {
+	gsap.set(media.value?.$el, {
 		x: data.smoothMouse.x + "px",
 		y: data.smoothMouse.y + "px",
-		// rotateZ: ((Math.abs(this.smoothMouse.y) - Math.abs(this.smoothMouse.x)) / 20) + 'deg',
+		rotateY: data.smoothMouse.x / -5 + "deg",
+		rotateX: data.smoothMouse.y / 4 + "deg",
+		// rotateZ: ((data.smoothMouse.x - data.smoothMouse.y) / 50) + 'deg',
 		force3D: true,
 	});
 
@@ -200,7 +202,7 @@ function onProjectSelect(index: number) {
 
 	// const nextProject = this.$store.$state.projects[index]
 
-	const items = Array.from(list.value.$el.querySelectorAll(".c-list__item"));
+	const items = Array.from(list.value?.$el.querySelectorAll(".c-list__item"));
 
 	// hide all items expept selected
 	gsap.to(
@@ -225,6 +227,7 @@ function onProjectSelect(index: number) {
 .c-showcase__media {
 	max-width: 720px;
 	width: 100%;
+	backface-visibility: hidden;
 
 	@screen md {
 		will-change: transform;

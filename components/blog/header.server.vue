@@ -11,7 +11,7 @@
 
 				<a class="ml-6" href="/feed.xml">
 					<span class="text-xs leading-none align-bottom">RSS</span>
-					<svg class="w-4 h-4 inline-block fill-current">
+					<svg class="w-4 h-4 inline-block fill-current ml-1">
 						<use xlink:href="#icon-rss" x="0" y="0" />
 					</svg>
 				</a>

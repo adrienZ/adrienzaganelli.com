@@ -25,12 +25,16 @@ function onMouseMove({ clientX, clientY }: MouseEvent) {
 	};
 }
 
-function onResize() {}
+function onResize() {
+	$mouse.center.x = window.innerWidth / 2;
+	$mouse.center.y = window.innerHeight / 2;
+}
 
 export function useMouse() {
 	onMounted(() => {
 		window.addEventListener("mousemove", onMouseMove);
 		window.addEventListener("resize", onResize);
+		onResize();
 	});
 
 	onBeforeUnmount(() => {
