@@ -5,7 +5,7 @@
 	"engines": {
 		"node": "20.8.0"
 	},
-	"packageManager": "pnpm@8.9.0",
+	"packageManager": "pnpm@8.9.2",
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
 	},
@@ -26,9 +26,9 @@
 		"@types/body-scroll-lock": "^3.1.1",
 		"@types/node": "^20.8.7",
 		"@types/rellax": "^1.7.6",
-		"@types/rss": "^0.0.30",
+		"@types/rss": "^0.0.31",
 		"husky": "^8.0.3",
-		"lint-staged": "^14.0.1",
+		"lint-staged": "^15.0.1",
 		"nuxt": "^3.7.4",
 		"prettier": "^3.0.3",
 		"pretty-quick": "^3.1.3",
