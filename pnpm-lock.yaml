@@ -8,9 +8,6 @@ dependencies:
   '@nuxtjs/google-fonts':
     specifier: ^3.0.2
     version: 3.0.2
-  '@splitbee/web':
-    specifier: ^0.3.0
-    version: 0.3.0
   '@vueuse/core':
     specifier: ^10.5.0
     version: 10.5.0(vue@3.3.4)
@@ -26,6 +23,9 @@ dependencies:
   mitt:
     specifier: ^3.0.1
     version: 3.0.1
+  nuxt-umami:
+    specifier: ^2.5.4
+    version: 2.5.4(vue@3.3.4)
   rellax:
     specifier: ^1.12.1
     version: 1.12.1
@@ -1809,10 +1809,6 @@ packages:
   /@socket.io/component-emitter@3.1.0:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: true
-
-  /@splitbee/web@0.3.0:
-    resolution: {integrity: sha512-jNPDKg0GQGa4jCaBc6JQsv0NHmBA80WCwZE49nFyhcbo32WF0GyqXeice7ZApy7OUHI16bAUAzm4MOQw3gvxfQ==}
-    dev: false
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
@@ -6499,6 +6495,15 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /nuxt-umami@2.5.4(vue@3.3.4):
+    resolution: {integrity: sha512-tFfo1RalHBsqm4QI3+Wghl82CobNJR/KEXopvJDxu22cn7xTMSe61h28TkYQUK+RMdPBla8xOs7bapAGqLwUbA==}
+    dependencies:
+      '@vueuse/core': 10.5.0(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /nuxt@3.7.4(@types/node@20.8.7)(sass@1.69.4):
     resolution: {integrity: sha512-voXN2kheEpi7DJd0hkikfLuA41UiP9IwDDol65dvoJiHnRseWfaw1MyJl6FLHHDHwRzisX9QXWIyMfa9YF4nGg==}

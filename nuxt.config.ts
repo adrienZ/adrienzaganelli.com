@@ -103,4 +103,6 @@ export default defineNuxtConfig({
 		componentIslands: true,
 		typedPages: true,
 	},
+
+	extends: ["nuxt-umami"],
 });
