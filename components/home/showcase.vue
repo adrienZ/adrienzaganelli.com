@@ -15,6 +15,7 @@
 				class="c-showcase__media mt-2 sm:mt-0 hidden xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
 				@mouseover="$bus.emit('cursor-hover')"
 				@mouseleave="$bus.emit('cursor-default')"
+				@click="trackProjectClick(data.title)"
 				aria-label="Showcase project preview"
 				data-linkz-ai-ignore
 			>
@@ -31,6 +32,7 @@ import cList from "@/components/showcase/list.vue";
 
 // libs
 import gsap from "gsap";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 const instance = getCurrentInstance()!.proxy!;
 const { $mouse } = useMouse();
@@ -46,6 +48,7 @@ const list = ref<InstanceType<typeof cList> | null>(null);
 const data = reactive({
 	...useAppConfig(),
 	media: projects.value[0].cover,
+	title: projects.value[0].title,
 	url: projects.value[0]._path,
 	index: 0,
 	isLoading: false,
@@ -161,6 +164,7 @@ function onProjectChange([project, index]: [any, number]) {
 			data.media = project.cover;
 			data.url = project._path;
 			data.index = index;
+			data.title = project.title;
 		},
 	});
 	tl.to(media.value?.$el, {
@@ -193,6 +197,13 @@ function followMouse() {
 	});
 
 	data.lastRender = Date.now();
+}
+
+function trackProjectClick(projectName: string) {
+	AnalyticsService.trackEvent("showcase project click", {
+		projectName,
+		isVisual: true,
+	});
 }
 
 function onProjectSelect(index: number) {

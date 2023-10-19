@@ -9,6 +9,7 @@
 				@mouseleave="$bus.emit('cursor-default')"
 				@focus="onFocus($event, p, index)"
 				@mouseover="onHover($event, p, index)"
+				@click="trackProjectClick(p.title)"
 				:to="p._path"
 				class="inline-block"
 				data-linkz-ai-ignore
@@ -30,6 +31,7 @@
 
 <script setup lang="ts">
 import { reactive } from "vue";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 const { $bus } = useNuxtApp();
 const emit = defineEmits<{
@@ -76,6 +78,7 @@ function update(e: Event, project: any, index: number) {
 	timer = useTimer(120, () => {
 		emit("update", [project, index]);
 		state.currentProjectUrl = project._path;
+		AnalyticsService.trackEvent("showcase project selection", project.title);
 	});
 }
 
@@ -95,6 +98,13 @@ function formatIndex(indexToFormat: number) {
 
 function cancel() {
 	timer?.reset();
+}
+
+function trackProjectClick(projectName: string) {
+	AnalyticsService.trackEvent("showcase project click", {
+		projectName,
+		isVisual: false,
+	});
 }
 </script>
 

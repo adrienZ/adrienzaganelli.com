@@ -14,6 +14,7 @@
 					<nuxt-link
 						class="underline-effect--hover inline-block"
 						to="/"
+						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						Portfolio.
@@ -23,6 +24,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://twitter.com/adri_zag"
+						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						X (Twitter).
@@ -32,6 +34,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://www.linkedin.com/in/adrienzaganelli/"
+						@click="trackLinkClick"
 					>
 						Linkedin.
 					</cExternal>
@@ -40,6 +43,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://github.com/adrienZ"
+						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						Github.
@@ -49,6 +53,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="https://codepen.io/adri_zag"
+						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						Codepen.
@@ -58,6 +63,7 @@
 					<cExternal
 						class="underline-effect--hover inline-block"
 						href="mailto:adrienzaganelli@gmail.com"
+						@click="trackLinkClick"
 					>
 						E-mail.
 					</cExternal>
@@ -76,8 +82,19 @@
 	</footer>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import cExternal from "@/components/common/external.vue";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
+
+function trackLinkClick(event: MouseEvent) {
+	const link = event
+		.composedPath()
+		.find((el) => (el as HTMLElement).hasAttribute("href"));
+
+	AnalyticsService.trackEvent("footer link click", {
+		url: (link as HTMLLinkElement).getAttribute("href") || "ERROR",
+	});
+}
 </script>
 
 <style lang="scss" scoped>

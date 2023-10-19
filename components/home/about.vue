@@ -34,6 +34,7 @@
 					<cExternal
 						href="https://hetic.net/"
 						class="hover:text-pimper focus:text-pimper"
+						@click="trackLinkClick"
 					>
 						HETIC
 					</cExternal>
@@ -44,17 +45,29 @@
 				<p class="mt-4">
 					From Paris to Montréal, I've worked in several nice places. Both
 					Companies and agencies, such as:
-					<cExternal href="https://agence-me.com"><i>AgenceMe</i></cExternal>
+					<cExternal href="https://agence-me.com" @click="trackLinkClick"
+						><i>AgenceMe</i></cExternal
+					>
 					,
-					<cExternal href="https://sketchfab.com"><i>Sketchfab</i></cExternal>
+					<cExternal href="https://sketchfab.com" @click="trackLinkClick"
+						><i>Sketchfab</i></cExternal
+					>
 					,
-					<cExternal href="https://akufen.ca"><i>Akufen Studio</i></cExternal>
+					<cExternal href="https://akufen.ca" @click="trackLinkClick"
+						><i>Akufen Studio</i></cExternal
+					>
 					,
-					<cExternal href="https://hki.paris"><i>HelloHikimori</i></cExternal>
+					<cExternal href="https://hki.paris" @click="trackLinkClick"
+						><i>HelloHikimori</i></cExternal
+					>
 					,
-					<cExternal href="https://colorz.fr"><i>Colorz</i></cExternal>
+					<cExternal href="https://colorz.fr" @click="trackLinkClick"
+						><i>Colorz</i></cExternal
+					>
 					, and
-					<cExternal href="https://www.leetchi.com/"><i>Leetchi</i></cExternal>
+					<cExternal href="https://www.leetchi.com/" @click="trackLinkClick"
+						><i>Leetchi</i></cExternal
+					>
 					.
 				</p>
 
@@ -67,6 +80,7 @@
 						&rarr;
 						<cExternal
 							href="https://medium.com/free-code-camp/time-saving-css-techniques-to-create-responsive-images-ebb1e84f90d5"
+							@click="trackLinkClick"
 						>
 							Time-saving CSS techniques to create responsive images
 						</cExternal>
@@ -75,6 +89,7 @@
 						&rarr;
 						<cExternal
 							href="https://medium.com/free-code-camp/how-to-make-your-app-work-offline-with-the-power-of-javascript-685d968bcfbb"
+							@click="trackLinkClick"
 						>
 							How to make your app work offline with the power of JavaScript
 						</cExternal>
@@ -83,6 +98,7 @@
 						&rarr;
 						<cExternal
 							href="https://www.freecodecamp.org/news/how-to-share-variables-across-html-css-and-javascript-using-webpack/"
+							@click="trackLinkClick"
 						>
 							How to share variables across HTML, CSS, and JavaScript using
 							Webpack
@@ -97,6 +113,7 @@
 					<cExternal
 						class="text-pimper underline-effect--link"
 						href="mailto:adrienzaganelli@gmail.com"
+						@click="trackLinkClick"
 					>
 						adrienzaganelli@gmail.com
 					</cExternal>
@@ -107,7 +124,18 @@
 </template>
 
 <script setup lang="ts">
-import cExternal from '@/components/common/external.vue'
+import cExternal from "@/components/common/external.vue";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
 
-const config = useAppConfig()
+const config = useAppConfig();
+
+function trackLinkClick(event: MouseEvent) {
+	const link = event
+		.composedPath()
+		.find((el) => (el as HTMLElement).hasAttribute("href"));
+
+	AnalyticsService.trackEvent("homepage link click", {
+		url: (link as HTMLLinkElement).getAttribute("href") || "ERROR",
+	});
+}
 </script>

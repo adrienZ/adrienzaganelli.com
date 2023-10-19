@@ -11,9 +11,10 @@
 	},
 	"scripts": {
 		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
+		"dev": "nuxt dev --dotenv .env.dev",
+		"generate": "nuxt generate --dotenv .env.dev",
+		"prod": "nuxt generate --dotenv .env.prod",
+		"preview": "nuxt preview --dotenv env.dev",
 		"preinstall": "pnpm -v",
 		"postinstall": "nuxt prepare",
 		"prepare": "husky install"

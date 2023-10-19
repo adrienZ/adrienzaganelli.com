@@ -13,6 +13,7 @@
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						@click="trackLinkClick"
 					>
 						Neo Technology Group.
 					</a>
@@ -33,6 +34,7 @@
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						@click="trackLinkClick"
 					>
 						Contact me
 					</a>
@@ -44,6 +46,7 @@
 						class="hover:text-pimper focus:text-pimper underline ml-3 inline-block"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						@click="trackLinkClick"
 						to="/blog"
 					>
 						Blog
@@ -59,6 +62,7 @@
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						Components
@@ -127,6 +131,7 @@
 
 <script setup lang="ts">
 import gsap from "gsap";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 function randomIntFromInterval(min: number, max: number) {
 	// min and max included
@@ -192,4 +197,14 @@ onMounted(() => {
 onUnmounted(() => {
 	bubbleEffect?.disconnect(instance.$el);
 });
+
+function trackLinkClick(event: MouseEvent) {
+	const link = event
+		.composedPath()
+		.find((el) => (el as HTMLElement).hasAttribute("href"));
+
+	AnalyticsService.trackEvent("homepage link click", {
+		url: (link as HTMLLinkElement).getAttribute("href") || "ERROR",
+	});
+}
 </script>

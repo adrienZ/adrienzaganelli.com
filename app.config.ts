@@ -5,7 +5,8 @@ export default defineAppConfig({
 
 	umami: {
 		debug: process.env.NODE_ENV === "development",
-		ignoreLocalhost: true,
+		// we do have a separate umami instance for dev purpose
+		ignoreLocalhost: false,
 		// sorry
 		ignoreDnt: true,
 		version: 2,

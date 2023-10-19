@@ -58,6 +58,7 @@
 							<cExternal
 								@mouseover="$bus.emit('cursor-default')"
 								class="bg-pimper text-white px-4 text-xl font-semibold py-2"
+								@click="trackLiveProjectClick($project.title)"
 								:href="$project.url"
 								data-linkz-ai-ignore
 							>
@@ -87,6 +88,7 @@
 				:title="nextProject.title"
 				:summary="nextProject.summary"
 				:url="nextProject._path"
+				@apply="trackNextProject($project.title, nextProject.title)"
 			/>
 			<cFooter class="sm:mt-16 mt-10" />
 		</div>
@@ -106,6 +108,7 @@ import cImageModale from "@/components/project/image-modale.vue";
 
 import gsap from "gsap";
 import lazysizes from "lazysizes";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 useHead({
 	script: [
@@ -233,6 +236,18 @@ function handleBackToTop() {
 	} else {
 		!backToTop.value?.hidden && backToTop.value?.hide();
 	}
+}
+
+function trackNextProject(current: string, next: string) {
+	AnalyticsService.trackEvent("next project click", {
+		projectTransition: `${current} -> ${next}`,
+	});
+}
+
+function trackLiveProjectClick(projectName: string) {
+	AnalyticsService.trackEvent("project live url click", {
+		projectName,
+	});
 }
 </script>
 

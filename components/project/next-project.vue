@@ -13,6 +13,7 @@
 						class="font-bold underline"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
+						@click="$emit('apply')"
 					>
 						{{ title }}
 					</NuxtLink>
@@ -29,6 +30,7 @@
 					:to="url"
 					@mouseover="$bus.emit('cursor-hover')"
 					@mouseleave="$bus.emit('cursor-default')"
+					@click="$emit('apply')"
 				>
 					<span class="visually-hidden">Go to next project page</span>
 					<cMedia :src="mediaUrl" :type="mediaType" />
@@ -47,5 +49,9 @@ defineProps<{
 	mediaUrl: string;
 	mediaType: string;
 	summary: string;
+}>();
+
+defineEmits<{
+	(event: "apply"): void;
 }>();
 </script>
