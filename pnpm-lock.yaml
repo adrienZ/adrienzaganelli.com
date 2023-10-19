@@ -23,6 +23,9 @@ dependencies:
   mitt:
     specifier: ^3.0.1
     version: 3.0.1
+  nuxt-clarity-analytics:
+    specifier: ^0.0.6
+    version: 0.0.6
   nuxt-umami:
     specifier: ^2.5.4
     version: 2.5.4(vue@3.3.4)
@@ -6495,6 +6498,15 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /nuxt-clarity-analytics@0.0.6:
+    resolution: {integrity: sha512-5Aks0ALsti6jnkaFwvlIlj5wQq6sff5iliX0l8fYgYi9UfRalXvLpX33tbHykuEBbzuBXC34Vypu7BMgvlpCqA==}
+    dependencies:
+      '@nuxt/kit': 3.7.4
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
 
   /nuxt-umami@2.5.4(vue@3.3.4):
     resolution: {integrity: sha512-tFfo1RalHBsqm4QI3+Wghl82CobNJR/KEXopvJDxu22cn7xTMSe61h28TkYQUK+RMdPBla8xOs7bapAGqLwUbA==}

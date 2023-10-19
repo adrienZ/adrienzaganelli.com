@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
+		"nuxt-clarity-analytics",
 	],
 
 	nitro: {
