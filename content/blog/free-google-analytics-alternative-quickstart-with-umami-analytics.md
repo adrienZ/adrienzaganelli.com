@@ -1,7 +1,7 @@
 ---
 draft: false
 date: 2023-10-21T08:49:16.000Z
-title: "Free Google Analytics alternative: quickstart with Umami Analytics"
+title: "Free Google Analytics Alternative: Quickstart with Umami Analytics"
 image:
   src: /content/images/umami-cover.png
 ---
@@ -28,16 +28,16 @@ If you want to avoid what happened to me, here is what you need to look for your
 - 🔓 Open-source is a big plus
 - 🧑🏻‍💻 Developer friendly
 
-**I chose to go with [Umami analytics](https://umami.is/)**. It matches all the of the above !
+**I chose to go with [Umami analytics](https://umami.is/)**. It matches all of the above !
 
 Umami tracks page views, custom events, visitor location but you can host it yourself and own your data in your own database.
-It also allows you to work in teams, the UI is translated in many languages, you can share you dashboards and many other [features](https://umami.is/features)... including dark mode 😎.
+It also allows you to work in teams, the UI is translated in many languages, you can share your dashboards and many other [features](https://umami.is/features)... including dark mode 😎.
 
 > That's cool but I do get this in my own website ?
 
 Excellent question Timmy ! you have two choices:
 - use their cloud solution (with a free tier): [https://cloud.umami.is](https://cloud.umami.is)
-- Follow this tutorial to discover the simplest, cost-free path in under 10 minutes (ideal if you're a developer and want to manage your data and avoid bills)
+- Follow this tutorial to discover the simplest, cost-free path in under 10 minutes (ideal if you're a developer who wants to manage your data and avoid bills)
 
 You will need node v16.13+ and PostgreSQL.
 
