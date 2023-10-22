@@ -138,10 +138,12 @@ function randomIntFromInterval(min: number, max: number) {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const bubble = ref();
+const bubble = ref<HTMLElement>();
 const title = ref();
 const intro = ref();
 const list = ref();
+
+useRellax(bubble);
 
 const instance = getCurrentInstance()?.proxy;
 

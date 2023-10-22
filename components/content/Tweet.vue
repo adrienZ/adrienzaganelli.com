@@ -7,6 +7,17 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+	script: [
+		{
+			type: "text/javascript",
+			src: "//platform.twitter.com/widgets.js",
+			async: true,
+			defer: true,
+		},
+	],
+});
+
 onMounted(() => {
 	window.twttr?.widgets.load()
 })

@@ -8,6 +8,7 @@
 					@mouseenter="$bus.emit('cursor-difference')"
 					@mouseout="$bus.emit('cursor-default')"
 					alt=""
+					ref="pictureRef"
 					class="rellax"
 					loading="lazy"
 					src="/assets/img/portrait.jpg"
@@ -22,6 +23,7 @@
 
 			<div
 				class="sm:w-2/3 sm:px-3 text-xl sm:-mt-1 rellax"
+				ref="textRef"
 				data-rellax-speed="-0.25"
 				data-rellax-xs-speed="0"
 				data-rellax-mobile-speed="0"
@@ -125,9 +127,19 @@
 
 <script setup lang="ts">
 import cExternal from "@/components/common/external.vue";
+import type { VueInstance } from "@vueuse/core";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 const config = useAppConfig();
+
+const pictureRef = ref<VueInstance>();
+const textRef = ref<HTMLElement>();
+const pictureElement = computed(
+	() => pictureRef.value?.$el as HTMLElement | undefined,
+);
+
+useRellax(pictureElement);
+useRellax(textRef);
 
 function trackLinkClick(event: MouseEvent) {
 	const link = event

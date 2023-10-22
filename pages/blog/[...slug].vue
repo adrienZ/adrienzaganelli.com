@@ -17,6 +17,16 @@
 				<cProgressBar :progress="progress" />
 
 				<article ref="article" class="cms-container">
+					<time class="block" :datetime="post.date">
+						{{
+							new Date(post.date).toLocaleDateString(undefined, {
+								day: "numeric",
+								month: "long",
+								year: "numeric",
+							})
+						}}
+					</time>
+
 					<h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">
 						{{ post.title }}
 					</h1>
@@ -56,7 +66,7 @@
 
 					<div class="mt-8">
 						<cHireMe v-if="config.NEED_JOB" />
-						<cAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
+						<CAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
 					</div>
 
 					<cFooter class="sm:mt-16 mt-10" />
@@ -72,7 +82,6 @@
 </template>
 
 <script setup lang="ts">
-import cAboutTheAuthor from "@/components/c-about-the-author.vue";
 import cHireMe from "@/components/c-hire-me.vue";
 import cSharePost from "@/components/c-share-post.vue";
 import cFooter from "@/components/common/footer.vue";

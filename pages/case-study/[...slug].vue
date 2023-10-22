@@ -179,19 +179,6 @@ const { data: team } = await fetchContent(`${path}-teams`, () => {
 		.findOne();
 });
 
-useHead({
-	script: [
-		{
-			type: "text/javascript",
-			// charset: 'utf-8',
-			src: "//platform.twitter.com/widgets.js",
-			async: true,
-			defer: true,
-			body: true,
-		},
-	],
-});
-
 onMounted(() => {
 	lazysizes.init();
 

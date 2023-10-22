@@ -1,5 +1,5 @@
 <template>
-	<div class="c-card h-full flex flex-col justify-between text-sm">
+	<div class="c-card h-full flex flex-col text-sm">
 		<div class="ratio">
 			<NuxtLink :to="postUrl" v-if="post.image">
 				<span class="visually-hidden">{{ post.title }}</span>
@@ -9,22 +9,22 @@
 					:alt="post.image.alt"
 					format="webp"
 					width="720"
-					:height="height || 540"
+					height="405"
 					quality="75"
 					:imgAttrs="{ class: 'w-full' }"
 				/>
 			</NuxtLink>
-
-			<NuxtLink :to="postUrl">
-				<h3 class="font-bold mt-3 text-xl">{{ post.title }}</h3>
-			</NuxtLink>
-
-			<ContentRendererMarkdown :value="post.excerpt" />
 		</div>
 
-		<div class="mt-4">
+		<NuxtLink class="mt-3" :to="postUrl">
+			<h3 class="font-bold text-xl">{{ post.title }}</h3>
+		</NuxtLink>
+
+		<ContentRendererMarkdown :value="post.excerpt" />
+
+		<div class="mt-auto">
 			<NuxtLink
-				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-white text bg-"
+				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-white text mt-4"
 				:to="postUrl"
 			>
 				Read more &rarr;
@@ -35,30 +35,31 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-const props = defineProps(['post', 'height'])
+import { computed } from "vue";
+const props = defineProps(["post", "height"]);
 
-const postUrl = computed(() => props.post._path)
+const postUrl = computed(() => props.post._path);
 const date = computed(() =>
-	new Date(props.post.date).toLocaleDateString('en-US', {
-		day: 'numeric',
-		month: 'long',
-		year: 'numeric',
-	})
-)
+	new Date(props.post.date).toLocaleDateString("en-US", {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	}),
+);
 </script>
 
 <style lang="scss" scoped>
 .ratio {
 	position: relative;
-	// padding-top: 56.25%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */
+	padding-top: 56.25%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */
 	width: 100%;
-	img {
-		// position: absolute;
-		// width: 100%;
-		// height: 100%;
+	> * {
+		position: absolute;
+		width: 100%;
+		height: 100%;
 		top: 0;
-		// object-fit: cover;
+		left: 0;
+		object-fit: cover;
 	}
 }
 </style>

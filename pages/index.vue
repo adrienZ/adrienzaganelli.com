@@ -1,5 +1,5 @@
 <template>
-	<section ref="root" class="page-home">
+	<section class="relative overflow-x-hidden">
 		<FancyCursor />
 		<Container variant="home">
 			<c-hero class="sm:pt-20 pt-10" />
@@ -16,61 +16,9 @@ import cHero from "@/components/home/hero.vue";
 import cAbout from "@/components/home/about.vue";
 import cFooter from "@/components/common/footer.vue";
 
-// useHead({
-// 	bodyAttrs: {
-// 		class: "overflow-x-hidden"
-// 	}
-// })
-
-import Rellax, { RellaxInstance } from "rellax";
-
 const { $bus } = useNuxtApp();
 
-let rellax: null | RellaxInstance = null;
-const root = ref<HTMLElement>();
-
-function waitForElementWithTimeout(
-	selector: string,
-	callback: (element: HTMLElement | null) => void,
-	timeout = 5000,
-	interval = 100,
-) {
-	const endTime = Date.now() + timeout;
-
-	function checkElement() {
-		const targetNode = document.querySelector(selector);
-
-		if (targetNode instanceof HTMLElement) {
-			callback(targetNode);
-		} else if (Date.now() < endTime) {
-			setTimeout(checkElement, interval);
-		} else {
-			callback(null);
-		}
-	}
-
-	checkElement();
-}
-
-onMounted(() => {
-	waitForElementWithTimeout(
-		".rellax",
-		(element) => {
-			if (element) {
-				rellax = new Rellax(".rellax", {
-					// default tailwind breakpoints
-					breakpoints: [768, 1024, 1280],
-					round: true,
-					wrapper: root.value,
-				});
-			}
-		},
-		10000,
-	); // Wait for up to 10 seconds
-});
-
 onBeforeUnmount(() => {
-	rellax?.destroy();
 	$bus.emit("cursor-default");
 });
 
@@ -91,6 +39,7 @@ useHead({
 		},
 	],
 });
+
 definePageMeta({
 	layout: "folio",
 	pageTransition: {
@@ -102,18 +51,3 @@ definePageMeta({
 	},
 });
 </script>
-
-<style lang="scss">
-// scroll container
-// overflow-x hidden
-// BUT
-// keep position sticky
-.page-home {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	-webkit-overflow-scrolling: touch;
-}
-</style>

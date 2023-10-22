@@ -1,0 +1,123 @@
+---
+draft: false
+date: 2023-10-20T08:49:16.812Z
+title: "Umami analytics: Free Google Analytics alternative in 10 minutes"
+image:
+  src: /public/content/images/umami-cover.png
+---
+
+I used to love splitbee.io to handle my analytics for a while. But since vercel bought it, the service no longer works. To avoid this unpleasant situation again, I wanted to find an open-source alternative that I can self-host while being developer friendly and RGPD compliant. Let me tell you a few words about Umami analytics.
+
+<!-- more -->
+
+## Context
+
+As a European, I have witnessed [Google Analytics become illegal](https://plausible.io/blog/google-analytics-illegal). That's why in early 2021 I was looking for an alternative, at that time I got fond of [splitbee.bio](https://splitbee.io/).
+
+::tweet
+<p lang="en" dir="ltr"><a href="https://twitter.com/splitbee?ref_src=twsrc%5Etfw">@splitbee</a> is a simpler, European-based alternative to Google analytics.<br><br>I really like the cute UI, but my favorite feature is the ability to avoid ad-blockers with a proxy 😈😈😈</p>&mdash; Adrien Zaganelli (@adri_zag) <a href="https://twitter.com/adri_zag/status/1372861060731052035?ref_src=twsrc%5Etfw">March 19, 2021</a>
+::
+
+...But once it became [Vercel Analytics](https://vercel.com/blog/vercel-acquires-splitbee) I had to find something else to avoid vendor lock-in.
+
+If you want to avoid what happened to me, here is what you need to look for your analytics tool:
+- 🤑 Self hosted and free (avoid cloud solution)
+- 🍪 RGPD compliant for europeans laws (also avoid the need for cookies banner)
+- 🥷 Bypass ad-blockers
+- 🪽 performant without too much javascript
+- 🔓 Open-source is a big plus
+- 🧑🏻‍💻 Developer friendly
+
+**I choose to go with [Umami analytics](https://umami.is/)**. It matches all the of the above !
+
+Umami tracks page views, custom events, visitor location but you can host it yourself and own your data in your own database.
+It also allows you to work in teams, the UI is translated in many languages, you can share you dashboards and many other [features](https://umami.is/features)... including dark mode 😎.
+
+> That's cool but I do get this in my own website ?
+
+Excellent question Timmy ! you have two choices:
+- use their cloud solution (with a free tier): [https://cloud.umami.is](https://cloud.umami.is)
+- read the following tutorial that will show you in 10 minutes the most simple path with 0 costs (ideal if you're a developer and want to manage your data and avoid bills).
+
+You will need node v16.13+ and PostgreSQL.
+
+## Setup your database
+
+To get started quickly I used [PlanetScale](https://planetscale.com/pricing). Umami also provides guides for:
+- [Digital Ocean](https://umami.is/docs/running-on-digitalocean)
+- [Supabase](https://umami.is/docs/running-on-supabase)
+
+But any PostgreSQL will do the job.
+
+Create an account and create your database in PlanetScale. Choose your region and take the free options (you still need to enter your credit card).
+![](/public/content/images/umami-planetscale-setup.jpg)
+
+I took the "Others" provider
+![](/public/content/images/umami-planetscale-provider.jpg)
+
+Set your database password
+![](/public/content/images/umami-planetscale-password.jpg)
+
+you should have this file at the end
+```shell[.env]
+# your values will be different
+DATABASE_HOST=aws.connect.psdb.cloud
+DATABASE_NAME=umami
+DATABASE_USERNAME=zz6qgpsqiq4u932t2axo
+DATABASE_PASSWORD=pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0
+# added by me for next step
+# mysql://[username]:[password]@[host]/[dbname]?sslaccept=strict
+DATABASE_URL=mysql://zz6qgpsqiq4u932t2axo:pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0@aws.connect.psdb.cloud/umami?sslaccept=strict
+```
+
+## Self-host your umami instance
+
+Fork Umami analytics on Github: [🔗 fork here](https://github.com/umami-software/umami/fork).
+
+Your instance can be hosted on many providers such as:
+- [Vercel](https://umami.is/docs/running-on-vercel)
+- [Netlify](https://umami.is/docs/running-on-netlify)
+- [Railway](https://umami.is/docs/running-on-railway)
+- [fly.io](https://umami.is/docs/running-on-fly-io)
+
+You may notice that our fork is a [Next.js](https://nextjs.org/) project, so we will host it on [Vercel](https://nextjs.org/).
+
+When creating you project you have 3 things to do:
+1. Override build command: `yarn build`.
+2. Override install command: `yarn install`.
+3. Set `DATABASE_URL` in environement variables (take a look at the `.env` file above to see what you should get).
+
+![](/public/content/images/umami-vercel-setup.jpg)
+
+After deployment, you should be able to see the your instance's login !
+
+![](/public/content/images/umami-login.jpg)
+
+Before continuing, login as username: `admin`, password `umami`. Make sure to change your password: [see docs](https://umami.is/docs/login)
+
+## Setup your application
+
+Once you're logged in, go to settings and create your website's project in Umami:
+
+![](/public/content/images/umami-create-project.jpg)
+
+Once created, go to Settings > (your project's row) > Edit > Tracking code. Paste the tracking code in your HTML.
+
+
+![](/public/content/images/umami-tracking-code.jpg)
+
+
+## track custom events
+
+You can track custom events using `window.umami.track` or using HTML attributes: `data-umami-event`, `data-umami-****` for custom properties.
+[See docs](https://umami.is/docs/track-events)
+
+Here is a real word example app with an increment tracker:
+<iframe class="w-full" height="480" src="https://stackblitz.com/edit/vitejs-vite-fqrzhn?ctl=1&embed=1&file=src%2FApp.tsx"></iframe>
+
+
+## Conclusion
+
+And that's how to easily setup Umami Analytics in 10 minutes ! You can publicly access all the trackings of the stackblitz on my umami instance: [https://umami-self-host-example.vercel.app](https://umami-self-host-example.vercel.app/share/le9BgW02hInXZhxR/umami-self-host-example)
+
+![](/public/content/images/umami-final.jpg)

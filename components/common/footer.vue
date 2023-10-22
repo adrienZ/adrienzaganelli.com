@@ -1,10 +1,14 @@
 <template>
 	<footer class="c-footer">
 		<div
+			v-if="variant === 'default'"
 			class="border w-full border-black border-opacity-25 mb-5 sm:mb-10"
 		></div>
+		<BrandedDivider v-else />
 
-		<h4 class="landing-title">👋 Get in touch</h4>
+		<h4 class="landing-title" v-if="variant !== 'branded-minimal'">
+			👋 Get in touch
+		</h4>
 		<div class="-mt-4 sm:mt-0 md:flex justify-between items-end pb-16">
 			<ul
 				class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed"
@@ -72,7 +76,7 @@
 			</ul>
 
 			<!-- Logo footer -->
-			<div class="text-center mt-8 sm:mt-0">
+			<div v-if="variant === 'default'" class="text-center mt-8 sm:mt-0">
 				<svg class="w-12 h-12 inline-block">
 					<use xlink:href="#icon-logo" x="0" y="0" />
 				</svg>
@@ -85,6 +89,13 @@
 <script setup lang="ts">
 import cExternal from "@/components/common/external.vue";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
+
+withDefaults(
+	defineProps<{
+		variant?: "default" | "branded" | "branded-minimal";
+	}>(),
+	{ variant: "default" },
+);
 
 function trackLinkClick(event: MouseEvent) {
 	const link = event
