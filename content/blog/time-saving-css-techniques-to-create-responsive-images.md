@@ -3,7 +3,7 @@ draft: false
 title: Time-saving CSS techniques to create responsive images
 date: 2018-08-18
 image:
-  src: /assets/content/kevin-vu-unsplash.jpeg
+  src: /content/images/kevin-vu-unsplash.jpeg
   alt: Photo by Kevin Ku on Unsplash
 ---
 
@@ -31,7 +31,7 @@ That’s all folks! See how when we retrieve the friendly value `cover`, we can 
 
 Unfortunately object-fit will not work on IE and older versions of Safari, but there is a [polyfill](https://github.com/fregante/object-fit-images).
 
-![](/assets/content/1_d0wZwFpXGiAYH9_NrJCroA-1.png 'https://github.com/fregante/object-fit-images')
+![](/content/images/1_d0wZwFpXGiAYH9_NrJCroA-1.png 'https://github.com/fregante/object-fit-images')
 
 <figure><iframe src="https://codepen.io/adri_zag/embed/preview/VBQJYg?height=300&amp;slug-hash=VBQJYg&amp;default-tabs=html,result&amp;host=https://codepen.io" height="300"></iframe></figure>
 
@@ -43,7 +43,7 @@ We will keep the image ratio with a percentage on the `padding` property. Your i
 
 The code looks like this:
 
-![](/assets/content/1_rTrhAIVolZR2oQh2ou1jXg-1.png 'Take a look at the class names !')
+![](/content/images/1_rTrhAIVolZR2oQh2ou1jXg-1.png 'Take a look at the class names !')
 
 A little demo:
 

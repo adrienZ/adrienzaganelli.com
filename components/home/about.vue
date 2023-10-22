@@ -11,7 +11,7 @@
 					ref="pictureRef"
 					class="rellax"
 					loading="lazy"
-					src="/assets/img/portrait.jpg"
+					src="/images/portrait.jpg"
 					data-rellax-speed="0.5"
 					data-rellax-xs-speed="0"
 					data-rellax-mobile-speed="0"

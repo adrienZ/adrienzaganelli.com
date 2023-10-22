@@ -30,7 +30,6 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		dir: ".",
 		staticFilename: "[publicPath]/images/[name]-[hash][ext]",
 		// https://image.nuxtjs.org/configuration#screens
 		screens: {

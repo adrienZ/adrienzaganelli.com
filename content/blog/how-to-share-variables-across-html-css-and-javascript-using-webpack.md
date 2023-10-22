@@ -3,7 +3,7 @@ draft: false
 title: How to share variables across HTML, CSS, and JavaScript using Webpack
 date: 2019-12-19
 image:
-  src: /assets/content/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
+  src: /content/images/4kzz7px14mtv34rcfp73-1-768x323-1.jpg
 ---
 
 Earlier this week, I read [an article](https://calendar.perfplanet.com/2019/the-unseen-performance-costs-of-css-in-js-in-react-apps/) explaining how CSS-in-JS slows down the rendering of some React apps and how static CSS is faster. But CSS-in-JS is very popular because, among other features, you can style dynamically using JavaScript variables.
@@ -212,7 +212,7 @@ Here is what you should see:
 
 <figure>
 
-![](/assets/content/Capture-d-e-cran-2019-12-23-23.44.11.png)
+![](/content/images/Capture-d-e-cran-2019-12-23-23.44.11.png)
 
   <figcaption>
     [https://glitch.com/edit/#!/shared-variables-webpack?path=webpack.config.js]()

@@ -3,7 +3,7 @@
 		<div class="mx-auto flex items-start">
 			<NuxtImg
 				class="sm:h-16 w-16 rounded-full p-1 border-4"
-				src="/assets/img/avatar.jpg"
+				src="/images/avatar.jpg"
 				alt="Author photo"
 			/>
 			<div class="ml-4 pt-2">

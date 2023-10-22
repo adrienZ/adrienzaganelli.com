@@ -3,7 +3,7 @@ draft: false
 date: 2023-10-20T08:49:16.812Z
 title: "Umami analytics: Free Google Analytics alternative in 10 minutes"
 image:
-  src: /public/content/images/umami-cover.png
+  src: /content/images/umami-cover.png
 ---
 
 I used to love splitbee.io to handle my analytics for a while. But since vercel bought it, the service no longer works. To avoid this unpleasant situation again, I wanted to find an open-source alternative that I can self-host while being developer friendly and RGPD compliant. Let me tell you a few words about Umami analytics.
@@ -50,13 +50,13 @@ To get started quickly I used [PlanetScale](https://planetscale.com/pricing). Um
 But any PostgreSQL will do the job.
 
 Create an account and create your database in PlanetScale. Choose your region and take the free options (you still need to enter your credit card).
-![](/public/content/images/umami-planetscale-setup.jpg)
+![](/content/images/umami-planetscale-setup.jpg)
 
 I took the "Others" provider
-![](/public/content/images/umami-planetscale-provider.jpg)
+![](/content/images/umami-planetscale-provider.jpg)
 
 Set your database password
-![](/public/content/images/umami-planetscale-password.jpg)
+![](/content/images/umami-planetscale-password.jpg)
 
 you should have this file at the end
 ```shell[.env]
@@ -87,11 +87,11 @@ When creating you project you have 3 things to do:
 2. Override install command: `yarn install`.
 3. Set `DATABASE_URL` in environement variables (take a look at the `.env` file above to see what you should get).
 
-![](/public/content/images/umami-vercel-setup.jpg)
+![](/content/images/umami-vercel-setup.jpg)
 
 After deployment, you should be able to see the your instance's login !
 
-![](/public/content/images/umami-login.jpg)
+![](/content/images/umami-login.jpg)
 
 Before continuing, login as username: `admin`, password `umami`. Make sure to change your password: [see docs](https://umami.is/docs/login)
 
@@ -99,12 +99,12 @@ Before continuing, login as username: `admin`, password `umami`. Make sure to ch
 
 Once you're logged in, go to settings and create your website's project in Umami:
 
-![](/public/content/images/umami-create-project.jpg)
+![](/content/images/umami-create-project.jpg)
 
 Once created, go to Settings > (your project's row) > Edit > Tracking code. Paste the tracking code in your HTML.
 
 
-![](/public/content/images/umami-tracking-code.jpg)
+![](/content/images/umami-tracking-code.jpg)
 
 
 ## track custom events
@@ -120,4 +120,4 @@ Here is a real word example app with an increment tracker:
 
 And that's how to easily setup Umami Analytics in 10 minutes ! You can publicly access all the trackings of the stackblitz on my umami instance: [https://umami-self-host-example.vercel.app](https://umami-self-host-example.vercel.app/share/le9BgW02hInXZhxR/umami-self-host-example)
 
-![](/public/content/images/umami-final.jpg)
+![](/content/images/umami-final.jpg)
