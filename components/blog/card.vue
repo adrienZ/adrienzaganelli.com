@@ -1,7 +1,7 @@
 <template>
 	<div class="c-card h-full flex flex-col text-sm">
 		<div class="ratio">
-			<NuxtLink :to="postUrl" v-if="post.image">
+			<NuxtLink :to="postUrl" v-if="post.image" @click="$emit('goto', postUrl)">
 				<span class="visually-hidden">{{ post.title }}</span>
 				<NuxtImg
 					class="shadow-md"
@@ -26,6 +26,7 @@
 			<NuxtLink
 				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-white text mt-4"
 				:to="postUrl"
+				@click="$emit('goto', postUrl)"
 			>
 				Read more &rarr;
 			</NuxtLink>
@@ -37,6 +38,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 const props = defineProps(["post", "height"]);
+
+defineEmits<{
+	(event: "goto", path: string): void;
+}>();
 
 const postUrl = computed(() => props.post._path);
 const date = computed(() =>

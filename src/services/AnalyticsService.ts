@@ -6,7 +6,6 @@ interface IAnalyticsEvents {
 	"showcase project selection": {
 		projectName: string;
 	};
-	// TODO: implement
 	"blog article click from index": {
 		articlePath: string;
 	};

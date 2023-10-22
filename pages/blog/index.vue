@@ -10,7 +10,11 @@
 					:key="post.ID"
 					v-for="post in posts"
 				>
-					<BlogCard :post="post" :height="post.image.height" />
+					<BlogCard
+						:post="post"
+						:height="post.image.height"
+						@goto="trackCardClick(post._path)"
+					/>
 				</li>
 			</ul>
 		</main>
@@ -21,6 +25,13 @@
 
 <script setup lang="ts">
 import cFooter from "@/components/common/footer.vue";
+import { AnalyticsService } from "~/src/services/AnalyticsService";
+
+function trackCardClick(postPath: string) {
+	AnalyticsService.trackEvent("blog article click from index", {
+		articlePath: postPath,
+	});
+}
 
 const { data: posts } = await fetchContent(`content-blog`, () => {
 	return queryContent("blog")
