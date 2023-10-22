@@ -70,11 +70,6 @@ export default defineNuxtConfig({
 					name: "og:type",
 					content: "website",
 				},
-				{
-					hid: "og:image",
-					name: "og:image",
-					content: "/og-image.jpg",
-				},
 			],
 			link: [
 				{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

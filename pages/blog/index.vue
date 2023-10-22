@@ -41,6 +41,15 @@ const { data: posts } = await fetchContent(`content-blog`, () => {
 		.find();
 });
 
+useHeadSafe({
+	meta: [
+		{
+			name: "og:image",
+			content: "/og-image.jpg",
+		},
+	],
+});
+
 definePageMeta({
 	layout: "blog",
 });
