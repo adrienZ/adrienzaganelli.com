@@ -6,7 +6,7 @@ image:
   src: /content/images/umami-cover.png
 ---
 
-I used to love splitbee.io to handle my analytics for a while. But since vercel bought it, the service no longer works. To avoid this unpleasant situation again, I wanted to find an open-source alternative that I can self-host while being developer friendly and RGPD compliant. Let me tell you a few words about Umami analytics.
+I used to love splitbee.io to handle my analytics for a while. But since Vercel bought it, the service no longer works. To avoid this unpleasant situation again, I wanted to find an open-source alternative that I can self-host while being developer friendly and RGPD compliant. Let me tell you a few words about Umami analytics.
 
 <!-- more -->
 
