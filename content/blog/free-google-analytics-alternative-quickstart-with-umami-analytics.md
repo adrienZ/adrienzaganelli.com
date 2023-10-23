@@ -2,6 +2,7 @@
 draft: false
 date: 2023-10-21T08:49:16.000Z
 title: "Free Google Analytics Alternative: Quickstart with Umami Analytics"
+description: "Explore Umami Analytics, a free Google Analytics alternative. This tutorial covers setup to custom event tracking, offering a self-hosted, open-source solution."
 image:
   src: /content/images/umami-cover.png
 ---
@@ -50,24 +51,24 @@ To get started quickly I used [PlanetScale](https://planetscale.com/pricing). Um
 But any PostgreSQL database will do the job.
 
 Create an account and create your database in PlanetScale. Choose your region and take the free options (you still need to enter your credit card).
-!["PlanetScale's database creation interface"](/content/images/umami-planetscale-setup.jpg)
+![PlanetScale's database creation interface](/content/images/umami-planetscale-setup.jpg)
 
 I took the "Others" provider
-!["PlanetSca's providers interface"](/content/images/umami-planetscale-provider.jpg)
+![PlanetScale's providers interface](/content/images/umami-planetscale-provider.jpg)
 
 Set your database password
-!["PlanetScale's password interface"](/content/images/umami-planetscale-password.jpg)
+![PlanetScale's password interface](/content/images/umami-planetscale-password.jpg)
 
 you should have this file at the end
-```shell[.env]
+```toml[.env]
 # your values will be different
-DATABASE_HOST=aws.connect.psdb.cloud
-DATABASE_NAME=umami
-DATABASE_USERNAME=zz6qgpsqiq4u932t2axo
-DATABASE_PASSWORD=pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0
+DATABASE_HOST="aws.connect.psdb.cloud"
+DATABASE_NAME="umami"
+DATABASE_USERNAME="zz6qgpsqiq4u932t2axo"
+DATABASE_PASSWORD="pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0"
 # added by me for next step
 # mysql://[username]:[password]@[host]/[dbname]?sslaccept=strict
-DATABASE_URL=mysql://zz6qgpsqiq4u932t2axo:pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0@aws.connect.psdb.cloud/umami?sslaccept=strict
+DATABASE_URL="mysql://zz6qgpsqiq4u932t2axo:pscale_pw_zfsPwRz0tW9H2wLDaykeXqZV5SA34l52gqAgA7XoWc0@aws.connect.psdb.cloud/umami?sslaccept=strict"
 ```
 
 ## Self-host your Umami instance
@@ -85,13 +86,13 @@ You may notice that our fork is a [Next.js](https://nextjs.org/) project, so we 
 When creating you project you have 3 things to do:
 1. Override build command: `yarn build`.
 2. Override install command: `yarn install`.
-3. Set `DATABASE_URL` in environement variables (take a look at the `.env` file above to see what you should get).
+3. Set `DATABASE_URL` in environment variables (take a look at the `.env` file above to see what you should get).
 
-!["Vercel's project creation interface"](/content/images/umami-vercel-setup.jpg)
+![Vercel's project creation interface](/content/images/umami-vercel-setup.jpg)
 
 After deployment, you should be able to see your instance's login !
 
-!["Umami empty login screen"](/content/images/umami-login.jpg)
+![Umami empty login screen](/content/images/umami-login.jpg)
 
 Before continuing, login as username: `admin`, password `umami`. Make sure to change your password: [see docs](https://umami.is/docs/login)
 
@@ -99,14 +100,14 @@ Before continuing, login as username: `admin`, password `umami`. Make sure to ch
 
 Once you're logged in, go to settings and create your website's project in Umami:
 
-!["Umami modal to add project to your instance"](/content/images/umami-create-project.jpg)
+![Umami modal to add project to your instance](/content/images/umami-create-project.jpg)
 
 Once created, go to Settings > (your project's row) > Edit > Tracking code. Paste the tracking code in your HTML.
 ```html
 <script async src="https://umami-self-host-example.vercel.app/script.js" data-website-id="a477d142-f3d5-4514-8251-f9f538a2b28f"></script>
 ```
 
-!["The script you need to add in your HTML"](/content/images/umami-tracking-code.jpg)
+![The script you need to add in your HTML](/content/images/umami-tracking-code.jpg)
 
 
 ## track custom events
@@ -122,4 +123,4 @@ Here is a real-world example app with an increment tracker:
 
 And that's how to easily set up Umami Analytics in 10 minutes ! You can publicly access all the trackings of the stackblitz on my Umami instance: [https://umami-self-host-example.vercel.app](https://umami-self-host-example.vercel.app/share/le9BgW02hInXZhxR/umami-self-host-example)
 
-![](/content/images/umami-final.jpg)
+![Analytics dashboard](/content/images/umami-final.jpg)
