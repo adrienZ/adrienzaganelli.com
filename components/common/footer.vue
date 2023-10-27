@@ -14,7 +14,7 @@
 				class="text-3xl font-semibold md:flex sm:flex-wrap md:items-center leading-relaxed"
 			>
 				<!-- Links -->
-				<li class="md:mr-5" data-type="website">
+				<li v-if="$route.path !== '/'" class="md:mr-5" data-type="website">
 					<nuxt-link
 						class="underline-effect--hover inline-block"
 						to="/"
@@ -94,7 +94,7 @@ withDefaults(
 	defineProps<{
 		variant?: "default" | "branded" | "branded-minimal";
 	}>(),
-	{ variant: "default" },
+	{ variant: "branded-minimal" },
 );
 
 function trackLinkClick(event: MouseEvent) {
