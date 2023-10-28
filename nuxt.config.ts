@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
 		"nuxt-clarity-analytics",
+		// TODO: find a way to set config path
+		"@nuxtjs/eslint-module",
 	],
 
 	nitro: {
