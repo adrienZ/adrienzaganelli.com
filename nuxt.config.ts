@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 
 	nitro: {
 		prerender: {
-			routes: ["/feed.xml", "/rss.xml"],
+			routes: ["/feed.xml"],
 		},
 		// just for netlify
 		future: {

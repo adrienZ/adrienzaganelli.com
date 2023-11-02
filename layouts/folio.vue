@@ -19,17 +19,6 @@ useHeadSafe({
 		},
 	],
 });
-
-useHead({
-	link: [
-		{
-			rel: "alternate",
-			href: useAppConfig().rssFeedPath,
-			title: "Adrien Zaganelli",
-			type: "application/rss+xml",
-		},
-	],
-});
 </script>
 
 <style scoped>

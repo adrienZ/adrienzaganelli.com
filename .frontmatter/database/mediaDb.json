@@ -1,1 +1,5 @@
-{ "projects": { "adrienzaganelli.com": {} }, "plugins": {} }
+{
+	"projects": { "adrienzaganelli.com": {} },
+	"plugins": {},
+	"server": { "routes": {} }
+}

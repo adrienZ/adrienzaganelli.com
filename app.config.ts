@@ -12,5 +12,5 @@ export default defineAppConfig({
 		version: 2,
 	},
 
-	rssFeedPath: "/rss.xml",
+	rssFeedPath: "/feed.xml",
 });

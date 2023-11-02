@@ -1,9 +1,5 @@
 // https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2
 
-/**
- * LEGACY ROUTE FOR EXISTING SUBSCRIBERS
- */
-
 import { serverQueryContent, parseContent } from "#content/server";
 import RSS from "rss";
 

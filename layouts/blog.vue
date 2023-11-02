@@ -11,16 +11,3 @@
 		</div>
 	</div>
 </template>
-
-<script setup lang="ts">
-useHead({
-	link: [
-		{
-			rel: "alternate",
-			href: useAppConfig().rssFeedPath,
-			title: "Adrien Zaganelli",
-			type: "application/rss+xml",
-		},
-	],
-});
-</script>
