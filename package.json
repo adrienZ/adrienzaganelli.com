@@ -3,7 +3,7 @@
 	"private": true,
 	"version": "0.0.0",
 	"engines": {
-		"node": "20.8.0"
+		"node": "20.9.0"
 	},
 	"packageManager": "pnpm@8.9.2",
 	"lint-staged": {
@@ -25,7 +25,7 @@
 		"@nuxt/image": "1.0.0",
 		"@nuxtjs/tailwindcss": "^6.8.1",
 		"@types/body-scroll-lock": "^3.1.1",
-		"@types/node": "^20.8.9",
+		"@types/node": "^20.8.10",
 		"@types/rellax": "^1.7.6",
 		"@types/rss": "^0.0.31",
 		"husky": "^8.0.3",
