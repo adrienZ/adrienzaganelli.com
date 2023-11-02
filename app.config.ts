@@ -11,4 +11,6 @@ export default defineAppConfig({
 		ignoreDnt: true,
 		version: 2,
 	},
+
+	rssFeedPath: "/feed.xml",
 });
