@@ -57,7 +57,7 @@ const state = reactive({
 });
 
 const enableDiffrenceBlend = ref(false);
-
+const hidden = ref(false);
 const supportsTouch = useSupported(
 	() => "ontouchstart" in window || navigator.maxTouchPoints,
 );
@@ -79,6 +79,7 @@ onMounted(() => {
 	window.addEventListener("mousemove", once);
 	gsap.ticker.add(onFrame);
 });
+
 onBeforeUnmount(() => {
 	gsap.ticker.remove(onFrame);
 });
@@ -91,11 +92,13 @@ function show() {
 	tl = gsap.timeline();
 
 	tl.add(gsap.to(state, { innerOpacity: 1, innerScale: 0.5, duration: 0.15 }));
+	hidden.value = false;
 }
 
 function hide() {
 	if (tl) tl.kill();
 	tl = gsap.to(state, { innerOpacity: 0, duration: 0.25 });
+	hidden.value = true;
 }
 
 // CORE
@@ -151,6 +154,17 @@ $bus.on("cursor-difference", () => {
 	enableDiffrenceBlend.value = true;
 });
 
+function handleIframes(event: MouseEvent) {
+	const target = event.target as HTMLElement;
+
+	if (target.tagName === "IFRAME" && !hidden.value) {
+		hide();
+	}
+	if (target.tagName !== "IFRAME" && hidden.value) {
+		show();
+	}
+}
+
 // clicks
 useEventListener("mousedown", () => {
 	gsap.to(state, {
@@ -165,6 +179,8 @@ useEventListener("mouseup", () => {
 		duration: 0.1,
 	});
 });
+
+useEventListener("mousemove", handleIframes);
 </script>
 
 <style lang="scss" scoped>
