@@ -1,5 +1,5 @@
 <template>
-	<Container variant="largest" class="mx-0">
+	<Container variant="largest">
 		<IconsCache />
 
 		<DevOnly>
