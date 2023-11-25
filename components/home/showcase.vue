@@ -98,24 +98,23 @@ onMounted(() => {
 	data.mouseObserver.observe(instance.$el);
 
 	// preload medias with ajax
-	document.documentElement.clientWidth >= 1280 &&
-		window.addEventListener("load", () => {
-			projects.value.forEach((p) => {
-				switch (p.cover.type) {
-					case "image":
-						const image = new Image();
-						image.crossOrigin = "anonymous";
-						image.src = p.cover.src;
-						break;
-					case "video":
-						const video = document.createElement("video");
-						video.crossOrigin = "anonymous";
-						video.src = p.cover.src;
-						video.load();
-						break;
-				}
-			});
+	if (document.documentElement.clientWidth >= 1280) {
+		projects.value.forEach((p) => {
+			switch (p.cover.type) {
+				case "image":
+					const image = new Image();
+					image.crossOrigin = "anonymous";
+					image.src = p.cover.src;
+					break;
+				case "video":
+					const video = document.createElement("video");
+					video.crossOrigin = "anonymous";
+					video.src = p.cover.src;
+					video.load();
+					break;
+			}
 		});
+	}
 
 	data.fadeObserver = new IntersectionObserver(
 		([entry]) => {
