@@ -16,7 +16,7 @@ jobs:
       - name: Install dependencies
         run: npm install -g pnpm && pnpm install
       - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps chrome
+        run: pnpm exec playwright install --with-deps chromium
       - name: Run Playwright tests
         run: pnpm test
       - uses: actions/upload-artifact@v3
