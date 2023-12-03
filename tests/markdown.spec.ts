@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Blog is rendering", async ({ page }) => {
+test("Blog content is rendering", async ({ page }) => {
 	await page.goto(
 		"/blog/free-google-analytics-alternative-quickstart-with-umami-analytics",
 	);
@@ -10,7 +10,7 @@ test("Blog is rendering", async ({ page }) => {
 	);
 });
 
-test("Case study is rendering", async ({ page }) => {
+test("Case study content is rendering", async ({ page }) => {
 	await page.goto("/case-study/sketchfab");
 	const article = await page.getByRole("article");
 	await expect(article).toContainText(
