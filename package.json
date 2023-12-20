@@ -27,7 +27,7 @@
 		"@nuxtjs/tailwindcss": "^6.10.1",
 		"@playwright/test": "^1.40.1",
 		"@types/body-scroll-lock": "^3.1.2",
-		"@types/node": "^20.10.4",
+		"@types/node": "^20.10.5",
 		"@types/rellax": "^1.7.7",
 		"@types/rss": "^0.0.32",
 		"husky": "^8.0.3",
@@ -47,7 +47,7 @@
 		"lazysizes": "^5.3.2",
 		"mitt": "^3.0.1",
 		"nuxt-clarity-analytics": "^0.0.6",
-		"nuxt-umami": "^2.5.5",
+		"nuxt-umami": "^2.5.6",
 		"rellax": "^1.12.1"
 	}
 }
