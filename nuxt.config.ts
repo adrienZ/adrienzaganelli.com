@@ -9,6 +9,8 @@ export default defineNuxtConfig({
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
 		"nuxt-clarity-analytics",
+		// weird but needed for devtools to work
+		"@nuxt/devtools",
 	],
 
 	nitro: {
