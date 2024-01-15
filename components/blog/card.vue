@@ -56,7 +56,7 @@ const date = computed(() =>
 <style lang="scss" scoped>
 .ratio {
 	position: relative;
-	padding-top: 56.25%; /* 4:3 Aspect Ratio (divide 3 by 4 = 0.75) */
+	padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 3 by 4 = 0.75) */
 	width: 100%;
 	> * {
 		position: absolute;

@@ -15,7 +15,7 @@
 						@mouseleave="$bus.emit('cursor-default')"
 						@click="trackLinkClick"
 					>
-						Neo Technology Group.
+						Amex GBT Neo.
 					</a>
 
 					I mostly work with Typescript and CSS, building fast and reliable
