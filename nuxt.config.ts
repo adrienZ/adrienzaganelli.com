@@ -101,6 +101,7 @@ export default defineNuxtConfig({
 		payloadExtraction: false,
 		componentIslands: true,
 		typedPages: true,
+		viewTransition: true,
 	},
 
 	extends: ["nuxt-umami"],

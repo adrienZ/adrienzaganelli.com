@@ -33,7 +33,7 @@
 
 					<figure v-if="post.image">
 						<NuxtImg
-							class="block w-full mx-auto"
+							class="hero-img block w-full mx-auto"
 							:src="post.image.src"
 							:alt="post.image.alt"
 						/>
@@ -125,3 +125,9 @@ onMounted(() => {
 	lazysizes.init();
 });
 </script>
+
+<style scoped>
+.hero-img {
+	view-transition-name: post-image-selected;
+}
+</style>

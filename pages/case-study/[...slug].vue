@@ -129,18 +129,6 @@ useHead({
 });
 definePageMeta({
 	layout: "folio",
-	pageTransition: {
-		appear: true,
-		mode: "out-in",
-		css: false,
-		onEnter: (el, done) => {
-			PageTransition.defaultTransitionIn(el, () => {
-				window.twttr?.widgets.load();
-				done();
-			});
-		},
-		onLeave: PageTransition.defaultTransitionOut,
-	},
 });
 
 const titles = ref<HTMLDivElement | null>(null);
@@ -310,5 +298,18 @@ function trackLiveProjectClick(projectName: string) {
 			}
 		}
 	}
+}
+</style>
+
+<style scoped>
+h1 {
+	view-transition-name: project-name;
+}
+</style>
+
+<style>
+::view-transition-old(project-name),
+::view-transition-new(project-name) {
+	width: auto;
 }
 </style>

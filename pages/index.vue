@@ -42,12 +42,5 @@ useHead({
 
 definePageMeta({
 	layout: "folio",
-	pageTransition: {
-		appear: true,
-		mode: "out-in",
-		css: false,
-		onEnter: PageTransition.defaultTransitionIn,
-		onLeave: PageTransition.defaultTransitionOut,
-	},
 });
 </script>

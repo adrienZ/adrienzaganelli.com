@@ -1,7 +1,7 @@
 <template>
 	<div class="c-card h-full flex flex-col text-sm">
 		<div class="ratio">
-			<NuxtLink :to="postUrl" v-if="post.image" @click="$emit('goto', postUrl)">
+			<NuxtLink :to="postUrl" v-if="post.image" @click.prevent="handleClick">
 				<span class="visually-hidden">{{ post.title }}</span>
 				<NuxtImg
 					class="shadow-md"
@@ -11,6 +11,7 @@
 					width="720"
 					height="405"
 					quality="75"
+					:class="{ active: active === post._path }"
 					:imgAttrs="{ class: 'w-full' }"
 				/>
 			</NuxtLink>
@@ -39,7 +40,7 @@
 import { computed } from "vue";
 const props = defineProps(["post", "height"]);
 
-defineEmits<{
+const emit = defineEmits<{
 	(event: "goto", path: string): void;
 }>();
 
@@ -51,6 +52,15 @@ const date = computed(() =>
 		year: "numeric",
 	}),
 );
+
+const active = useState();
+
+function handleClick() {
+	active.value = props.post._path;
+
+	// active.value = post;
+	emit("goto", postUrl.value);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -66,5 +76,12 @@ const date = computed(() =>
 		left: 0;
 		object-fit: cover;
 	}
+}
+</style>
+
+<style scoped>
+img.active {
+	view-transition-name: post-image-selected;
+	contain: layout;
 }
 </style>
