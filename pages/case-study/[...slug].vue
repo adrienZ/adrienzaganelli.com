@@ -152,15 +152,19 @@ const { path } = useRoute();
 const { data: nextProjectSibling } = await fetchContent(
 	`${path}-next-projects`,
 	async () => {
-		const [__, _nextProject] =
-			await queryContent("case-study").findSurround(path);
+		const [__, _nextProject] = await queryContent("case-study")
+			.where({ draft: false })
+			.findSurround(path);
 		return _nextProject;
 	},
 );
 
 const { data: firstProjectInDb } = await fetchContent(
 	`project-first-content`,
-	() => queryContent("case-study").where({ _partial: false }).findOne(),
+	() =>
+		queryContent("case-study")
+			.where({ _partial: false, draft: false })
+			.findOne(),
 );
 
 const nextProject = computed(
