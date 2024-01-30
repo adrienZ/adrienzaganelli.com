@@ -101,6 +101,7 @@ onUnmounted(() => {
 
 definePageMeta({
 	layout: "blog",
+	viewTransition: true,
 });
 
 const progress = ref(0);

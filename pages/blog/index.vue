@@ -52,5 +52,6 @@ useHeadSafe({
 
 definePageMeta({
 	layout: "blog",
+	viewTransition: true,
 });
 </script>

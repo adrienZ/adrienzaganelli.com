@@ -52,6 +52,8 @@ export default defineNuxtConfig({
 	},
 
 	app: {
+		viewTransition: false,
+
 		head: {
 			title: "Adrien Zaganelli Portfolio 💻",
 			htmlAttrs: {
