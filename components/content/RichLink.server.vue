@@ -31,8 +31,8 @@
 
 <script setup lang="ts">
 import { AspectRatio, VisuallyHidden } from "radix-vue"
-import getLinkPreview from "@nzambello/link-previewer";
-
+import * as LinkPreviewer from "@nzambello/link-previewer";
+const getLinkPreview = import.meta.prerender ? LinkPreviewer.default.default : LinkPreviewer.default
 
 const props = withDefaults(defineProps<{
   href: string,
