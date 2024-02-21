@@ -47,7 +47,7 @@ export default defineNuxtConfig({
 			theme: "monokai",
 		},
 		markdown: {
-			anchorLinks: false,
+			anchorLinks: true,
 		},
 	},
 

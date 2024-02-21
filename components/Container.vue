@@ -2,7 +2,7 @@
 	<section
 		class="Container mx-auto"
 		:class="{
-			'max-w-4xl px-4': variant === 'blog',
+			'max-w-3xl px-4': variant === 'blog',
 			'sm:w-3/4 w-5/6': variant === 'home',
 			'max-w-screen-2xl ': variant === 'largest',
 		}"

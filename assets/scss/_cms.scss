@@ -1,11 +1,11 @@
-.cms-container {
-	// center content and margins
-	@apply max-w-4xl mx-auto px-4 pb-10;
-}
-
 .cms-block {
 	// font
-	@apply text-xl font-normal;
+	@apply text-lg font-normal;
+
+	hr {
+		@apply bg-black my-8 opacity-30;
+		height: 2px;
+	}
 
 	blockquote {
 		font-style: normal;
@@ -62,7 +62,6 @@
 	}
 
 	* + {
-		p,
 		h1,
 		h2,
 		h3,
@@ -76,7 +75,14 @@
 		figure,
 		blockquote,
 		.twitter-tweet {
-			margin-top: 2rem;
+			margin-top: 1.5rem;
+		}
+	}
+
+	* + {
+		p,
+		li {
+			margin-top: 1rem;
 		}
 	}
 
@@ -97,7 +103,7 @@
 	}
 
 	.lazyload[data-src]::before {
-		content: '';
+		content: "";
 		display: block;
 		// 16:9
 		padding-top: 56.25%;

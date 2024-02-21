@@ -23,15 +23,15 @@
 
 		<ContentRendererMarkdown :value="post.excerpt" />
 
-		<div class="mt-auto">
+		<div class="mt-auto flex justify-between items-baseline">
 			<NuxtLink
-				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-white text mt-4"
+				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-surface text mt-4"
 				:to="postUrl"
 				@click="$emit('goto', postUrl)"
 			>
 				Read more &rarr;
 			</NuxtLink>
-			<time class="block italic mt-1" :datetime="post.date">{{ date }}</time>
+			<time class="block italic" :datetime="post.date">{{ date }}</time>
 		</div>
 	</div>
 </template>
@@ -45,8 +45,27 @@ const emit = defineEmits<{
 }>();
 
 const postUrl = computed(() => props.post._path);
+const { data: locales } = await useAsyncData("locales", () => {
+	return parseAcceptLanguage(useRequestHeader("accept-language"));
+});
+
+function parseAcceptLanguage(acceptLanguage?: string) {
+	if (!acceptLanguage) {
+		return undefined;
+	}
+
+	const languages = acceptLanguage.split(",");
+	const locales = [];
+	for (let lang of languages) {
+		const parts = lang.trim().split(";");
+		const locale = parts[0].split("-")[0];
+		locales.push(locale);
+	}
+	return locales;
+}
+
 const date = computed(() =>
-	new Date(props.post.date).toLocaleDateString("en-US", {
+	new Date(props.post.date).toLocaleDateString(locales.value, {
 		day: "numeric",
 		month: "long",
 		year: "numeric",

@@ -234,6 +234,7 @@ function trackLiveProjectClick(projectName: string) {
 .page-project {
 	.cms-container {
 		padding-bottom: 0;
+		@apply mx-auto px-4 pb-10;
 		@apply max-w-5xl;
 	}
 

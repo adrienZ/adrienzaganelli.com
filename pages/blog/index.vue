@@ -12,7 +12,7 @@
 				>
 					<BlogCard
 						:post="post"
-						:height="post.image.height"
+						:height="post.image?.height"
 						@goto="trackCardClick(post._path)"
 					/>
 				</li>

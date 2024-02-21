@@ -16,43 +16,49 @@
 
 				<cProgressBar :progress="progress" />
 
-				<article ref="article" class="cms-container">
-					<time class="block" :datetime="post.date">
-						{{
-							new Date(post.date).toLocaleDateString(undefined, {
-								day: "numeric",
-								month: "long",
-								year: "numeric",
-							})
-						}}
-					</time>
+				<Container class="pb-10" variant="blog">
+					<article ref="article">
+						<h1 class="text-3xl sm:text-4xl mb-2 font-extrabold">
+							{{ post.title }}
+						</h1>
 
-					<h1 class="text-4xl sm:text-5xl mb-10 font-extrabold">
-						{{ post.title }}
-					</h1>
+						<h2 class="mb-8">
+							<NuxtLink class="text-pimper" to="/">Adrien Zaganelli</NuxtLink>
+							-
+							<time :datetime="post.date">
+								{{
+									new Date(post.date).toLocaleDateString(locales, {
+										day: "numeric",
+										month: "long",
+										year: "numeric",
+									})
+								}}
+							</time>
+						</h2>
 
-					<figure v-if="post.image">
-						<NuxtImg
-							class="hero-img block w-full mx-auto"
-							:src="post.image.src"
-							:alt="post.image.alt"
+						<figure v-if="post.image">
+							<NuxtImg
+								class="hero-img block w-full max-w-[40rem] mx-auto"
+								:src="post.image.src"
+								:alt="post.image.alt"
+							/>
+							<figcaption
+								v-if="post.image.alt"
+								class="text-center mt-2 italic"
+								v-html="post.image.alt"
+							></figcaption>
+						</figure>
+
+						<ContentRendererMarkdown
+							class="cms-block mt-5"
+							ref="cms_block"
+							:value="post"
+							tag="div"
 						/>
-						<figcaption
-							v-if="post.image.alt"
-							class="text-center mt-2 italic"
-							v-html="post.image.alt"
-						></figcaption>
-					</figure>
+					</article>
+				</Container>
 
-					<ContentRendererMarkdown
-						class="cms-block mt-5"
-						ref="cms_block"
-						:value="post"
-						tag="div"
-					/>
-				</article>
-
-				<div class="cms-container">
+				<Container variant="blog">
 					<div
 						class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"
 					></div>
@@ -70,7 +76,7 @@
 					</div>
 
 					<cFooter class="sm:mt-16 mt-10" />
-				</div>
+				</Container>
 
 				<cBackToTop
 					ref="back_to_top"
@@ -125,6 +131,25 @@ function onScroll() {
 onMounted(() => {
 	lazysizes.init();
 });
+
+const { data: locales } = await useAsyncData("locales", () => {
+	return parseAcceptLanguage(useRequestHeader("accept-language"));
+});
+
+function parseAcceptLanguage(acceptLanguage?: string) {
+	if (!acceptLanguage) {
+		return undefined;
+	}
+
+	const languages = acceptLanguage.split(",");
+	const locales = [];
+	for (let lang of languages) {
+		const parts = lang.trim().split(";");
+		const locale = parts[0].split("-")[0];
+		locales.push(locale);
+	}
+	return locales;
+}
 </script>
 
 <style scoped>
