@@ -31,7 +31,7 @@ Always remember that "[The Best Code is No Code At All](https://blog.codinghorro
 
 To be fully honest, I still do not apply all of the advice I gave you above... I also began this series to avoid FOMO in my everyday discoveries. Writing them down every now and then will force me to filter the amount of information I read, and make sure to keep here the ones that are worthy.
 
-Let's conclude with the biggest taboo in our industry: Burnout. Since I started back in 2019, I saw a lot of my friends and colleagues falling into it, or approching close the edge.
+Let's conclude with the biggest taboo in our industry: Burnout. Since I started back in 2019, I saw a lot of my friends and colleagues falling into it, or approaching close the edge.
 It's not worth it, I'll leave you with some good stuff from Austin Gil:
 
 <RichLink href="https://austingil.com/work-life-balance/" title="On Work-Life Balance, Depression, & Purpose"></RichLink>
