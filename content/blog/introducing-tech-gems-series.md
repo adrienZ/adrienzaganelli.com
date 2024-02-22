@@ -1,7 +1,7 @@
 ---
 draft: false
 title: Introducing Tech gems series 👁️
-date: 2024-02-23
+date: 2024-02-22
 image:
   src: /content/images/tech-gems-placeholder.webp
 ---
