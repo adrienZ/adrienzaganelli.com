@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 	const feed = new RSS({
 		title: "Adrien Zaganelli Blog",
 		site_url: "https://adrienzaganelli.com",
-		feed_url: `https://adrienzaganelli.com/feed`,
+		feed_url: `https://adrienzaganelli.com/feed.xml`,
 		image_url: "https://adrienzaganelli.com/favicon.ico",
 	});
 
