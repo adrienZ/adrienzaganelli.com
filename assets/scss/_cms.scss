@@ -23,11 +23,6 @@
 
 	a {
 		@apply underline;
-
-		&:hover,
-		&:focus {
-			@apply text-gray-600;
-		}
 	}
 
 	ul,
@@ -80,9 +75,14 @@
 	}
 
 	* + {
-		p,
-		li {
+		p {
 			margin-top: 1rem;
+		}
+	}
+
+	* + {
+		li {
+			margin-top: 0.5rem;
 		}
 	}
 

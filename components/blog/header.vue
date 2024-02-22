@@ -1,5 +1,5 @@
 <template>
-	<header role="banner" class="c-header py-2 px-4 mb-16">
+	<header role="banner" class="bg-surface py-2 px-4 mb-16">
 		<nav role="navigation">
 			<Container variant="blog" class="flex items-center justify-between">
 				<h1 class="text-2xl" v-if="$route.name === 'blog'">
@@ -19,12 +19,6 @@
 		</nav>
 	</header>
 </template>
-
-<style scoped>
-.c-header {
-	background-color: #efebe9;
-}
-</style>
 
 <script setup lang="ts">
 const { rssFeedPath } = useAppConfig();

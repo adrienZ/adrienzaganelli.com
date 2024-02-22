@@ -27,7 +27,7 @@
 							-
 							<time :datetime="post.date">
 								{{
-									new Date(post.date).toLocaleDateString(locales, {
+									new Date(post.date).toLocaleDateString(undefined, {
 										day: "numeric",
 										month: "long",
 										year: "numeric",
@@ -132,24 +132,24 @@ onMounted(() => {
 	lazysizes.init();
 });
 
-const { data: locales } = await useAsyncData("locales", () => {
-	return parseAcceptLanguage(useRequestHeader("accept-language"));
-});
+// const { data: locales } = await useAsyncData("locales", () => {
+// 	return parseAcceptLanguage(useRequestHeader("accept-language"));
+// });
 
-function parseAcceptLanguage(acceptLanguage?: string) {
-	if (!acceptLanguage) {
-		return undefined;
-	}
+// function parseAcceptLanguage(acceptLanguage?: string) {
+// 	if (!acceptLanguage) {
+// 		return undefined;
+// 	}
 
-	const languages = acceptLanguage.split(",");
-	const locales = [];
-	for (let lang of languages) {
-		const parts = lang.trim().split(";");
-		const locale = parts[0].split("-")[0];
-		locales.push(locale);
-	}
-	return locales;
-}
+// 	const languages = acceptLanguage.split(",");
+// 	const locales = [];
+// 	for (let lang of languages) {
+// 		const parts = lang.trim().split(";");
+// 		const locale = parts[0].split("-")[0];
+// 		locales.push(locale);
+// 	}
+// 	return locales;
+// }
 </script>
 
 <style scoped>

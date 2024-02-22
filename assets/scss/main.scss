@@ -15,10 +15,10 @@ html {
 }
 
 .dark {
-	--background-color: #020420;
+	--background-color: rgb(17, 24, 39);
 	--text-and-border-color: #eceff1;
 	--primary-color: #ef6c00;
-	--surface-color: #111927;
+	--surface-color: #0d2847;
 }
 
 @import "sass-easing/_easings";

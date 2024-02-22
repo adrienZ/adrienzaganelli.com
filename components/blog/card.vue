@@ -45,27 +45,8 @@ const emit = defineEmits<{
 }>();
 
 const postUrl = computed(() => props.post._path);
-const { data: locales } = await useAsyncData("locales", () => {
-	return parseAcceptLanguage(useRequestHeader("accept-language"));
-});
-
-function parseAcceptLanguage(acceptLanguage?: string) {
-	if (!acceptLanguage) {
-		return undefined;
-	}
-
-	const languages = acceptLanguage.split(",");
-	const locales = [];
-	for (let lang of languages) {
-		const parts = lang.trim().split(";");
-		const locale = parts[0].split("-")[0];
-		locales.push(locale);
-	}
-	return locales;
-}
-
 const date = computed(() =>
-	new Date(props.post.date).toLocaleDateString(locales.value, {
+	new Date(props.post.date).toLocaleDateString(undefined, {
 		day: "numeric",
 		month: "long",
 		year: "numeric",
