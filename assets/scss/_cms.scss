@@ -54,6 +54,10 @@
 		// h5,
 		// h6
 		@apply font-bold;
+
+		a {
+			@apply no-underline;
+		}
 	}
 
 	* + {
