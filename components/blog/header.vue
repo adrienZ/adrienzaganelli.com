@@ -2,11 +2,9 @@
 	<header role="banner" class="bg-surface py-2 px-4 mb-16">
 		<nav role="navigation">
 			<Container variant="blog" class="flex items-center justify-between">
-				<h1 class="text-2xl" v-if="$route.name === 'blog'">
-					Adrien Zaganelli's Blog
-				</h1>
+				<h1 class="text-2xl" v-if="$route.name === 'blog'">Blog</h1>
 				<h2 class="text-2xl" v-else>
-					<NuxtLink to="/blog">Adrien Zaganelli's Blog</NuxtLink>
+					<NuxtLink to="/blog">Blog</NuxtLink>
 				</h2>
 
 				<a class="ml-6" :href="rssFeedPath">
