@@ -20,10 +20,16 @@ jobs:
           umami-user: ${{secrets.UMAMI_USERNAME}}
           umami-password: ${{secrets.UMAMI_PASSWORD}}
           umami-site-domain: ${{secrets.UMAMI_SITE_DOMAIN}}
-          umami-report-file: "umamiReport.md"
+          umami-report-file: "umamiReport.txt"
+        env:
+          UMAMI_CLIENT_TIMEOUT_MS: 5000
 
       - name: Send Umami report to discord channel
         uses: tsickert/discord-webhook@v4.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           content: ${{ steps.umamiReportStep.outputs.umamiOneLineReport }}
+          embed-title: "Umami report"
+          username: "umami report"
+          embed-description: "${{ steps.umamiReportStep.outputs.umamiReport }}"
+          embed-image-url: "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg"
