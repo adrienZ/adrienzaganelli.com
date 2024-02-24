@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: print var
         run: |
-          echo "yolo: ${{ secrets.UMAMI_HOST }} ${{secrets.UMAMI_USERNAME}} ${{secrets.UMAMI_SITE_DOMAIN}}
+          echo yolo: ${{ secrets.UMAMI_HOST }} ${{secrets.UMAMI_USERNAME}} ${{secrets.UMAMI_SITE_DOMAIN}}
       - name: Create Umami report
         id: umamiReport
         uses: boly38/action-umami-report@umami-server-2.9.0
