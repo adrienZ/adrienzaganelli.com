@@ -81,7 +81,9 @@ Overall, they aim to improve type safety and have realeased a few packages outsi
 - VineJS (validation and schema)
 - Verrou (locks in Node.js)
 
-But the real takeway for me is that **Adonis decided to take over the inertia package and maintain it officially.**
+~~But the real takeway for me is that **Adonis decided to take over the inertia package and maintain it officially.**~~.
+
+> **Erratum (24/02/2024):** This is incorrect. Instead, the community package `eidellev/inertiajs-adonisjs` will become an official first-party integration, known as `@adonisjs/inertia`.
 
 [Inertia](https://inertiajs.com/) is often used as "glue" between your front-end and your back-end and has been popularized by the [Laravel](https://laravel.com/) community from PHP.
 
