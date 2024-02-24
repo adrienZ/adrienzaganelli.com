@@ -12,6 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print var
+        run: |
+          echo "yolo: ${{ secrets.UMAMI_HOST }} ${{secrets.UMAMI_USERNAME}} ${{secrets.UMAMI_SITE_DOMAIN}}
       - name: Create Umami report
         id: umamiReport
         uses: boly38/action-umami-report@umami-server-2.9.0
@@ -24,12 +27,12 @@ jobs:
         env:
           UMAMI_CLIENT_TIMEOUT_MS: 5000
 
-      - name: Send Umami report to discord channel
-        uses: tsickert/discord-webhook@v4.0.0
-        with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          content: ${{ steps.umamiReportStep.outputs.umamiOneLineReport }}
-          embed-title: "Umami report"
-          username: "umami report"
-          embed-description: "${{ steps.umamiReportStep.outputs.umamiReport }}"
-          embed-image-url: "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg"
+      # - name: Send Umami report to discord channel
+      #   uses: tsickert/discord-webhook@v4.0.0
+      #   with:
+      #     webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      #     content: ${{ steps.umamiReportStep.outputs.umamiOneLineReport }}
+      #     embed-title: "Umami report"
+      #     username: "umami report"
+      #     embed-description: "${{ steps.umamiReportStep.outputs.umamiReport }}"
+      #     embed-image-url: "https://raw.githubusercontent.com/umami-software/umami/master/src/assets/logo.svg"
