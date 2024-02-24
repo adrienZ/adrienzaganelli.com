@@ -1,0 +1,21 @@
+jobs:
+  umamiReport:
+    name: umami report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create Umami report
+        id: umamiReport
+        uses: boly38/action-umami-report@umami-server-2.9.0
+        with:
+          umami-server: ${{secrets.UMAMI_HOST}}
+          umami-user: ${{secrets.UMAMI_USERNAME}}
+          umami-password: ${{secrets.UMAMI_PASSWORD}}
+          umami-site-domain: ${{secrets.UMAMI_SITE_DOMAIN}}
+          umami-report-file: "umamiReport.md"
+
+      - name: Send Umami report to discord channel
+        uses: tsickert/discord-webhook@v4.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          content: ${{ steps.umamiReportStep.outputs.umamiOneLineReport }}

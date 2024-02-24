@@ -112,7 +112,7 @@ Once created, go to Settings > (your project's row) > Edit > Tracking code. Past
 
 ## track custom events
 
-You can track custom events using `window.umami.track` or using HTML attributes: `data-umami-event`, `data-umami-****` for custom properties.
+You can track custom events using `window.umami.track` or using HTML attributes: `data-umami-event`, `data-umami-event-****` for custom properties.
 [See docs](https://umami.is/docs/track-events)
 
 Here is a real-world example app with an increment tracker:
