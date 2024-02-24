@@ -12,9 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print var
-        run: |
-          echo yolo: ${{ secrets.UMAMI_HOST }} ${{secrets.UMAMI_USERNAME}} ${{secrets.UMAMI_SITE_DOMAIN}}
       - name: Create Umami report
         id: umamiReport
         uses: boly38/action-umami-report@umami-server-2.9.0
@@ -26,6 +23,9 @@ jobs:
           umami-report-file: "umamiReport.txt"
         env:
           UMAMI_CLIENT_TIMEOUT_MS: 5000
+      - name: print var
+        run: |
+          echo yolo: ${{steps.umamiReportStep.outputs.umamiOneLineReport}}
 
       # - name: Send Umami report to discord channel
       #   uses: tsickert/discord-webhook@v4.0.0
