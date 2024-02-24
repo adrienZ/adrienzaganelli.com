@@ -1,3 +1,11 @@
+name: daily-umami-report
+
+on:
+  schedule:
+    - cron: "30 17 * * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
   umamiReport:
     name: umami report
