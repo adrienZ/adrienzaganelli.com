@@ -1,9 +1,9 @@
 <template>
   <div class="mt-4">
 
-    <a class="font-bold" :href="href" data-linkz-ai-ignore @click="track(false)">{{ title }}</a>
+    <a class="font-bold" :href="href" v-bind="trackersAttrs" data-umami-event-is-card="false" data-linkz-ai-ignore>{{ title }}</a>
 
-    <a v-if="data && data.title" :href="href" @click="track(true)" class="block max-w-[30rem]" data-linkz-ai-ignore>
+    <a v-if="data.title" :href="href" v-bind="trackersAttrs" data-umami-event-is-card="true" class="block max-w-[30rem]" data-linkz-ai-ignore>
       <VisuallyHidden>{{ title }}</VisuallyHidden>
       <AspectRatio class="bg-surface border border-light rounded-lg overflow-hidden mt-1" :ratio="32 / 9">
         <div class="flex h-full">
@@ -32,7 +32,6 @@
 <script setup lang="ts">
 import { AspectRatio, VisuallyHidden } from "radix-vue"
 import * as LinkPreviewer from "@nzambello/link-previewer";
-import type { ILinkPreviewInfo } from "@nzambello/link-previewer";
 const getLinkPreview = import.meta.prerender ? LinkPreviewer.default.default : LinkPreviewer.default
 
 const props = withDefaults(defineProps<{
@@ -40,19 +39,16 @@ const props = withDefaults(defineProps<{
   title: string
 }>(), { title: "See more" })
 
+const trackersAttrs = {
+  "data-umami-event": "Rich link clicked",
+  "data-umami-event-href": props.href,
+}
+
 const href = computed(() => props.href + "?utm_source=adrienzaganelli.com")
 
-const { data } = await useAsyncData<ILinkPreviewInfo>(`embed-${props.href}`, () =>
-  getLinkPreview(
+const data =
+  await getLinkPreview(
     props.href,
   )
-)
-
-function track(fromCard: boolean) {
-  umTrackEvent("Rich link clicked", {
-    href: props.href,
-    fromCard
-  })
-}
 </script>
 
