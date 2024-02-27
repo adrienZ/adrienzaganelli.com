@@ -1,16 +1,19 @@
 <template>
-	<NuxtPicture
+	<div
 		class="content-image"
-		:src="refinedSrc"
-		:alt="alt"
-		:width="width"
-		:height="height"
-		loading="lazy"
-		quality="80"
 		@mouseenter="handleMouseEnter"
 		@mouseout="handleMouseOut"
 		@click="handleClick(refinedSrc, 'image')"
-	/>
+		>
+			<ImageWithSizes
+				:src="refinedSrc"
+				:alt="alt"
+				:width="width"
+				:height="height"
+				loading="lazy"
+				quality="80"
+			/>
+	</div>
 </template>
 
 <script setup lang="ts">

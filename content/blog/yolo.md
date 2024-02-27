@@ -15,7 +15,7 @@ yolo
 In the previous issue, it was mistakenly stated that Inertia will take over the `inertiajs/inertia` package. This is incorrect. Instead, the community package `eidellev/inertiajs-adonisjs` will become an official first-party integration, known as `@adonisjs/inertia`.
 
 ### Others
-
+https://twitter.com/_pi0_/status/1762205930953818588
 <RichLink href="https://redmonk.com/kholterhoff/2024/02/15/frontend-developers-the-newest-new-kingmakers/" title="front ends are the kings"></RichLink>
 
 <RichLink href="https://stability.ai/news/stable-diffusion-3" title="Stable diffusion 3"></RichLink>

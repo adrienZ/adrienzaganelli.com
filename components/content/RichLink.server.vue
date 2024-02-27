@@ -1,6 +1,5 @@
 <template>
   <div class="mt-4">
-
     <a class="font-bold" :href="href" data-linkz-ai-ignore @click="track(false)">{{ title }}</a>
 
     <a v-if="data && data.title" :href="href" @click="track(true)" class="block max-w-[30rem]" data-linkz-ai-ignore>
