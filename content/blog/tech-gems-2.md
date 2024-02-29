@@ -32,7 +32,7 @@ Here are the key insights:
 4. Julien Huang showcased the interactive Vue server components, also known as "Nuxt islands."
 
 However, the most significant news, in my opinion, concerns the latest release of Nitro (the backend behind [Solid Start](https://start.solidjs.com/getting-started/what-is-solidstart), Nuxt, [Analog](https://analogjs.org/)). Indeed this release includes:
-- [WebAssembly support]([https://github.com/unjs/unwasm](https://github.com/unjs/unwasm))
+- [WebAssembly support]([https://github.com/unjs/unwasm)
 - [scheduled tasks](https://nitro.unjs.io/guide/tasks#scheduled-tasks) (cron jobs)
 - [web sockets](https://nitro.unjs.io/guide/websocket)
 - **[database layer](https://nitro.unjs.io/guide/database)** (sqlite for now)
