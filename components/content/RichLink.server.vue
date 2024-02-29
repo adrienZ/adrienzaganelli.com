@@ -2,8 +2,6 @@
   <div class="mt-4">
     <a class="font-bold" :href="href" data-linkz-ai-ignore @click="track(false)">{{ title }}</a>
 
-    <pre>{{ data }}</pre>
-
     <a v-if="data && data.title" :href="href" @click="track(true)" class="block max-w-[30rem]" data-linkz-ai-ignore>
       <VisuallyHidden>{{ title }}</VisuallyHidden>
       <AspectRatio class="bg-surface border border-light rounded-lg overflow-hidden mt-1" :ratio="32 / 9">
