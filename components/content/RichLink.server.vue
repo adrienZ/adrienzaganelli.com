@@ -2,12 +2,14 @@
   <div class="mt-4">
     <a class="font-bold" :href="href" data-linkz-ai-ignore @click="track(false)">{{ title }}</a>
 
+    <pre>{{ data }}</pre>
+
     <a v-if="data && data.title" :href="href" @click="track(true)" class="block max-w-[30rem]" data-linkz-ai-ignore>
       <VisuallyHidden>{{ title }}</VisuallyHidden>
       <AspectRatio class="bg-surface border border-light rounded-lg overflow-hidden mt-1" :ratio="32 / 9">
         <div class="flex h-full">
           <div class="w-1/2">
-            <NuxtImg v-if="data.image" :src="data.image" loading="lazy" class="w-full !h-full object-cover" />
+            <NuxtImg v-if="preview" :src="preview" loading="lazy" class="w-full !h-full object-cover" />
             <div class="flex px-10 items-center justify-center h-full" v-else>
               <svg class="w-12 h-12 inline-block fill-current">
                 <use xlink:href="#icon-article" x="0" y="0" />
@@ -40,6 +42,14 @@ const props = withDefaults(defineProps<{
 }>(), { title: "See more" })
 
 const href = computed(() => props.href + "?utm_source=adrienzaganelli.com")
+const preview = computed(() => {
+  if (data.value?.image?.startsWith("http:")) {
+    // avoid mix content
+    data.value.image = data.value.image.replace("http:", "https:");
+  }
+
+  return data.value?.image
+})
 
 const { data } = await useAsyncData<ILinkPreviewInfo>(`embed-${props.href}`, () =>
   getLinkPreview(
