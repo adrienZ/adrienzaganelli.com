@@ -21,6 +21,8 @@ interface IAnalyticsEvents {
 	"footer link click": {
 		url: string;
 	};
+	"toogle dark mode": undefined;
+	"rss feed clicked": undefined;
 }
 
 function isNuxt() {

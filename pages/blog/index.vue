@@ -1,7 +1,7 @@
 <template>
 	<Container variant="blog">
 		<header>
-			<h2 class="text-6xl font-semibold mb-2">Last articles</h2>
+			<h2 class="text-5xl font-semibold mb-2">Last articles</h2>
 		</header>
 		<main>
 			<ul class="flex flex-wrap mx-0 md:-mx-5 mb-10">

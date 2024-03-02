@@ -2,7 +2,7 @@
 	<div class="c-card h-full flex flex-col text-sm">
 		<div class="ratio">
 			<NuxtLink :to="postUrl" v-if="post.image" @click.prevent="handleClick">
-				<span class="visually-hidden">{{ post.title }}</span>
+				<span class="sr-only">{{ post.title }}</span>
 				<NuxtImg
 					class="shadow-md"
 					:src="post.image.src"

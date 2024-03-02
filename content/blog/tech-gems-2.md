@@ -26,7 +26,7 @@ While React wants you to write html in native application with [react-strict-dom
 At of this writing, I only saw the first day, yet the talks have been fantastic ([find them here](https://www.youtube.com/watch?v=4H9S7iIVQqI)).
 
 Here are the key insights:
-1. As mentioned [last week](/blog/introducing-tech-gems-series): **[NuxtHub](https://hub.nuxt.com/)** has officially launched with comprehensive documentation. Sebastien Chopin also demonstrated file uploads, database usage, blobs and KV storage. Looks like **Cloudflare could become the "Vercel of Nuxt"**
+1. As mentioned [last week](/blog/introducing-tech-gems-series#rumors): **[NuxtHub](https://hub.nuxt.com/)** has officially launched with comprehensive documentation. Sebastien Chopin also demonstrated file uploads, database usage, blobs and KV storage. Looks like **Cloudflare could become the "Vercel of Nuxt"**
 2. #Rumors: the creator behind the state management library [pinia](https://pinia.vuejs.org/) is working on another library focused on data fething called "**Pinia Colada**". [Clip](https://youtube.com/clip/UgkxSdPjQ7U5fG9H42bRWKQ4fElvLmkFiQhp?si=WJzCMUV7D6QNwief)
 3. **Nuxt 4** is on the Horizon, but don't expect major annoucement as features are delivered in minor versions. Instead look out for new modules: [test-utils](https://nuxt.com/docs/getting-started/testing), [fonts](https://github.com/nuxt/fonts), auth notably.
 4. Julien Huang showcased the interactive Vue server components, also known as "Nuxt islands."

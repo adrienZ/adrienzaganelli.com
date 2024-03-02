@@ -1,11 +1,6 @@
 <template>
 	<div>
-		<IconsCache />
-		<DevOnly>
-			<Menu />
-			<!-- <DevColorSchema /> -->
-		</DevOnly>
-		<BlogHeader />
+		<Menu container-variant="blog" class="my-4" />
 		<div class="layout-blog">
 			<slot />
 		</div>

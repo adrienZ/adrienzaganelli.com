@@ -1,11 +1,9 @@
 <template>
 	<Container variant="largest">
-		<IconsCache />
-
 		<DevOnly>
-			<Menu />
-			<!-- <DevColorSchema /> -->
+			<!-- <Menu container-variant="home" /> -->
 		</DevOnly>
+		<!-- <DevColorSchema /> -->
 		<slot />
 	</Container>
 </template>

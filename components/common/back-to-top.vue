@@ -5,7 +5,7 @@
 		@mouseover="$bus.emit('cursor-hover')"
 		@mouseleave="$bus.emit('cursor-default')"
 	>
-		<span class="visually-hidden">Back to top</span>
+		<span class="sr-only">Back to top</span>
 		<svg class="w-6 h-6 inline-block fill-current text-pimper">
 			<use xlink:href="#icon-arrow-top" x="0" y="0" />
 		</svg>
@@ -13,59 +13,59 @@
 </template>
 
 <script>
-import gsap from 'gsap'
+import gsap from "gsap";
 
 export default {
 	beforeMount() {
-		this.reducedMotion = !!window.matchMedia('(prefers-reduced-motion: reduce)')
-			.matches.length
+		this.reducedMotion = !!window.matchMedia("(prefers-reduced-motion: reduce)")
+			.matches.length;
 	},
 	data() {
 		return {
 			hidden: true,
-		}
+		};
 	},
 	methods: {
 		show() {
-			this.hidden = false
+			this.hidden = false;
 			if (this.reducedMotion) {
-				this.$el.classList.remove('opacity-0')
+				this.$el.classList.remove("opacity-0");
 			} else {
 				gsap.fromTo(
 					this.$el,
 					{ opacity: 0, y: 100 },
-					{ opacity: 1, y: 0, duration: 0.25 }
-				)
+					{ opacity: 1, y: 0, duration: 0.25 },
+				);
 			}
 		},
 		hide() {
-			this.hidden = true
+			this.hidden = true;
 			if (this.reducedMotion) {
-				this.$el.classList.addEventListener('opacity-0')
+				this.$el.classList.addEventListener("opacity-0");
 			} else {
 				gsap.to(this.$el, {
 					opacity: 0,
 					y: 30,
 					duration: 0.15,
 					onComplete: () => {
-						this.$el.blur()
+						this.$el.blur();
 					},
-				})
+				});
 			}
 		},
 		resetScroll() {
 			document.body.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			})
+				behavior: "smooth",
+				block: "start",
+			});
 		},
 	},
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .c-back-to-top {
 	transition: opacity 0.15s ease-out;
-	outline-color: theme('colors.pimper');
+	outline-color: theme("colors.pimper");
 }
 </style>

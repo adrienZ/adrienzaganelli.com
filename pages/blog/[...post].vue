@@ -38,7 +38,7 @@
 
 						<figure v-if="post.image">
 							<NuxtImg
-								class="hero-img block w-full max-w-[40rem] mx-auto"
+								class="hero-img block w-full max-w-[35rem] mx-auto"
 								:src="post.image.src"
 								:alt="post.image.alt"
 							/>

@@ -32,7 +32,7 @@
 					@mouseleave="$bus.emit('cursor-default')"
 					@click="$emit('apply')"
 				>
-					<span class="visually-hidden">Go to next project page</span>
+					<span class="sr-only">Go to next project page</span>
 					<cMedia :src="mediaUrl" :type="mediaType" />
 				</NuxtLink>
 			</div>

@@ -1,7 +1,7 @@
 <template>
 	<div
 		ref="rootRef"
-		class="FancyCursor h-8 w-8 pointer-events-none fixed top-0 left-0"
+		class="FancyCursor opacity-80 h-6 w-6 pointer-events-none fixed top-0 left-0"
 		:class="{
 			'mix-blend-difference': enableDiffrenceBlend,
 		}"

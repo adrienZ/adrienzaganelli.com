@@ -9,6 +9,7 @@ export default defineNuxtConfig({
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
 		"nuxt-clarity-analytics",
+		"nuxt-icon",
 		// weird but needed for devtools to work
 		"@nuxt/devtools",
 	],
@@ -47,7 +48,7 @@ export default defineNuxtConfig({
 			theme: "monokai",
 		},
 		markdown: {
-			anchorLinks: true,
+			anchorLinks: false,
 		},
 	},
 
