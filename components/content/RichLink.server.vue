@@ -50,9 +50,11 @@ const preview = computed(() => {
 })
 
 const { data } = await useAsyncData<ILinkPreviewInfo>(`embed-${props.href}`, () =>
-  getLinkPreview(
-    props.href,
-  )
+  $fetch("/api/prerender/rich-url", {
+    query: {
+      url: props.href,
+    }
+  })
 )
 
 function track(fromCard: boolean) {

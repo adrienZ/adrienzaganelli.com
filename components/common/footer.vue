@@ -142,8 +142,6 @@ function trackLinkClick(event: MouseEvent) {
 const { rssFeedPath } = useAppConfig();
 const isDark = useDark();
 const toggleDarkValue = () => {
-	console.log("hey");
-
 	AnalyticsService.trackEvent("toogle dark mode");
 	return useToggle(isDark)();
 };
