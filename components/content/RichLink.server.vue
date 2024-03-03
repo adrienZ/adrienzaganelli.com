@@ -30,9 +30,6 @@
 
 <script setup lang="ts">
 import { AspectRatio, VisuallyHidden } from "radix-vue"
-import * as LinkPreviewer from "@nzambello/link-previewer";
-import type { ILinkPreviewInfo } from "@nzambello/link-previewer";
-const getLinkPreview = import.meta.prerender ? LinkPreviewer.default.default : LinkPreviewer.default
 
 const props = withDefaults(defineProps<{
   href: string,
@@ -49,7 +46,7 @@ const preview = computed(() => {
   return data.value?.image
 })
 
-const { data } = await useAsyncData<ILinkPreviewInfo>(`embed-${props.href}`, () =>
+const { data } = await useAsyncData(`embed-${props.href}`, () =>
   $fetch("/api/prerender/rich-url", {
     query: {
       url: props.href,
