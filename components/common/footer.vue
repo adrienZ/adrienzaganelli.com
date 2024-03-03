@@ -96,13 +96,17 @@
 					@mouseover="$bus.emit('cursor-hover')"
 					@mouseleave="$bus.emit('cursor-default')"
 				>
-					<Icon
-						size="1.5rem"
-						:name="
-							isDark ? 'i-heroicons-sun-20-solid' : 'i-heroicons-moon-20-solid'
-						"
-						aria-hidden="false"
-					/>
+					<ClientOnly>
+						<Icon
+							size="1.5rem"
+							:name="
+								isDark
+									? 'i-heroicons-sun-20-solid'
+									: 'i-heroicons-moon-20-solid'
+							"
+							aria-hidden="false"
+						/>
+					</ClientOnly>
 					<span class="sr-only">Toggle dark mode</span>
 				</button>
 			</div>

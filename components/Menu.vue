@@ -37,15 +37,17 @@
 						@click="toggleDarkValue()"
 						class="text-black py-1 px-2 bg:ligth rounded-md hover:bg-surface"
 					>
-						<Icon
-							size="1.5rem"
-							:name="
-								isDark
-									? 'i-heroicons-sun-20-solid'
-									: 'i-heroicons-moon-20-solid'
-							"
-							aria-hidden="false"
-						/>
+						<ClientOnly>
+							<Icon
+								size="1.5rem"
+								:name="
+									isDark
+										? 'i-heroicons-sun-20-solid'
+										: 'i-heroicons-moon-20-solid'
+								"
+								aria-hidden="false"
+							/>
+						</ClientOnly>
 						<span class="sr-only">Toggle dark mode</span>
 					</button>
 				</div>

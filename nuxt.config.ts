@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 		configPath: "~/config/tailwind.config.js",
 		cssPath: "~/assets/css/tailwind.css",
 		exposeConfig: false,
+		viewer: false,
 	},
 
 	image: {
