@@ -51,7 +51,7 @@
 		"lazysizes": "^5.3.2",
 		"mitt": "^3.0.1",
 		"nuxt-clarity-analytics": "^0.0.6",
-		"nuxt-umami": "^2.5.7",
+		"nuxt-umami": "^2.6.0",
 		"radix-vue": "^1.4.9",
 		"rellax": "^1.12.1"
 	}

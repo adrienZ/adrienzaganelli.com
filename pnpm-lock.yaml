@@ -36,8 +36,8 @@ dependencies:
     specifier: ^0.0.6
     version: 0.0.6
   nuxt-umami:
-    specifier: ^2.5.7
-    version: 2.5.7(vue@3.4.19)
+    specifier: ^2.6.0
+    version: 2.6.0
   radix-vue:
     specifier: ^1.4.9
     version: 1.4.9(vue@3.4.19)
@@ -6416,13 +6416,8 @@ packages:
       - vue
     dev: true
 
-  /nuxt-umami@2.5.7(vue@3.4.19):
-    resolution: {integrity: sha512-HvWqfKKtIzsABrCfvjAtbMap1ceOkt626Bxjjs3oVk44IEnRwwiecoAXwqLpu0DNtoizjJe163AavvSGOacBGA==}
-    dependencies:
-      '@vueuse/core': 10.9.0(vue@3.4.19)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+  /nuxt-umami@2.6.0:
+    resolution: {integrity: sha512-Q7MHWOCGCb3OGivTMXwxW9dNzCEyKFjmoW2RS0oFjlD9vfAOS4W/gjkfaE9ckNDxCniD3HzlxtqVo3cfRw+/4w==}
     dev: false
 
   /nuxt@3.10.3(@types/node@20.11.24)(sass@1.71.1)(vite@5.1.4):
