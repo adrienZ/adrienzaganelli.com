@@ -17,7 +17,7 @@ image:
 
 <RichLink href="https://beta-node-js-org.vercel.app/en" title="The new nodejs.org website"></RichLink>
 
-With the appearance of new challengers such as [Bun](https://bun.sh/), [Deno](https://deno.com/), and Amazon's [LLRT](https://github.com/awslabs/llrt). The Node.js organization to countered with a new documentation website.
+With the appearance of new challengers such as [Bun](https://bun.sh/), [Deno](https://deno.com/), and Amazon's [LLRT](https://github.com/awslabs/llrt). The Node.js organization countered with a new documentation website.
 
 It has a fresh [new design](https://www.figma.com/file/pu1vZPqNIM7BePd6W8APA5/Node.js?type=design&node-id=422-7925&mode=design) and [design system](https://www.figma.com/file/pu1vZPqNIM7BePd6W8APA5/Node.js?type=design&node-id=337-7756&mode=design).
 
@@ -25,9 +25,9 @@ The website will run on [Next.js](https://nextjs.org/), the styling is migrating
 
 You can find a summary of the redesign process on [Github](https://github.com/nodejs/nodejs.org/discussions/5131).
 
-### White House goes and memory-safe programming languages
+### White House and memory-safe programming languages
 
-<RichLink href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" title="white house"></RichLink>
+<RichLink href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" title="White House technical report"></RichLink>
 
 The White House Office of the National Cyber Director released a report urging the adoption of memory-safe programming languages, [such as Rust](https://stackoverflow.blog/2024/03/04/in-rust-we-trust-white-house-office-urges-memory-safety/), to prevent classes of vulnerabilities and improve cybersecurity.
 
