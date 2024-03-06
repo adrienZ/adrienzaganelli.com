@@ -1,30 +1,42 @@
 ---
-draft: true
-title: "Tech gems 👁️ #3: Nuxt 4 announced, Get a Laravel job, Stable Diffusion 3"
+draft: false
+title: "Tech gems 👁️ #3: Node.js redesign, Memory-safe languages and Tailwind V4"
 date: 2024-03-08
 image:
   src: /content/images/tech-gems-placeholder.webp
 ---
 
-to
+- The Node.js documentation gets a refreshed look.
+- A White House report recommends adoption of memory-safe languages.
+- The growth of JavaScript payloads.
+- TailwindCSS v4 announced !
 
 <!-- more -->
 
-### New nodejs docs
-https://twitter.com/ajayvignesh01/status/1763845942652915767
+### Node.js Strikes Back
 
+<RichLink href="https://beta-node-js-org.vercel.app/en" title="The new nodejs.org website"></RichLink>
 
-### Apple pwa
+With the appearance of new challengers such as [Bun](https://bun.sh/), [Deno](https://deno.com/), and Amazon's [LLRT](https://github.com/awslabs/llrt). The Node.js organization to countered with a new documentation website.
 
-https://9to5mac.com/2024/03/01/apple-home-screen-web-apps-ios-17-eu/
-https://9to5mac.com/2024/02/08/ios-17-4-web-app-eu/
+It has a fresh [new design](https://www.figma.com/file/pu1vZPqNIM7BePd6W8APA5/Node.js?type=design&node-id=422-7925&mode=design) and [design system](https://www.figma.com/file/pu1vZPqNIM7BePd6W8APA5/Node.js?type=design&node-id=337-7756&mode=design).
 
-### white house memory safe
+The website will run on [Next.js](https://nextjs.org/), the styling is migrating to [Tailwind.css](https://tailwindcss.com/).
 
-<RichLink href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" title="white house" />
+You can find a summary of the redesign process on [Github](https://github.com/nodejs/nodejs.org/discussions/5131).
 
-https://blog.cloudflare.com/pingora-open-source/
+### White House goes and memory-safe programming languages
 
-### Javascript bloat  
+<RichLink href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" title="white house"></RichLink>
 
-https://twitter.com/ematipico/status/1763866180098355619
+The White House Office of the National Cyber Director released a report urging the adoption of memory-safe programming languages, [such as Rust](https://stackoverflow.blog/2024/03/04/in-rust-we-trust-white-house-office-urges-memory-safety/), to prevent classes of vulnerabilities and improve cybersecurity.
+
+### Javascript Bloat
+
+<RichLink href="https://tonsky.me/blog/js-bloat/" title="JavaScript Bloat in 2024 by Nikita Prokopov"></RichLink>
+
+Long read about the evolution of web page sizes from 2015 to 2024, focusing on JavaScript's role in modern front-end development. Learn about the impact of web bloat on performance and user experience.
+
+### Other
+
+<RichLink href="https://tailwindcss.com/blog/tailwindcss-v4-alpha" title="Tailwind CSS v4.0-alpha"></RichLink>
