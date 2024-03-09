@@ -75,42 +75,6 @@
 				<!-- End Links -->
 			</ul>
 
-			<div>
-				<a
-					:href="rssFeedPath"
-					class="text-black py-1 px-2 bg:ligth rounded-md hover:bg-surface"
-					@mouseover="$bus.emit('cursor-hover')"
-					@mouseleave="$bus.emit('cursor-default')"
-					@click="trackLinkClick"
-				>
-					<Icon
-						size="1.5rem"
-						name="i-heroicons-rss-20-solid"
-						aria-hidden="false"
-					/>
-					<span class="sr-only">Rss feed</span>
-				</a>
-				<button
-					@click="toggleDarkValue()"
-					class="text-black py-1 px-2 bg:ligth rounded-md hover:bg-surface"
-					@mouseover="$bus.emit('cursor-hover')"
-					@mouseleave="$bus.emit('cursor-default')"
-				>
-					<ClientOnly>
-						<Icon
-							size="1.5rem"
-							:name="
-								isDark
-									? 'i-heroicons-sun-20-solid'
-									: 'i-heroicons-moon-20-solid'
-							"
-							aria-hidden="false"
-						/>
-					</ClientOnly>
-					<span class="sr-only">Toggle dark mode</span>
-				</button>
-			</div>
-
 			<!-- Logo footer -->
 			<div v-if="variant === 'default'" class="text-center mt-8 sm:mt-0">
 				<svg class="w-12 h-12 inline-block">
@@ -125,7 +89,6 @@
 <script setup lang="ts">
 import cExternal from "@/components/common/external.vue";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
-import { useDark, useToggle } from "@vueuse/core";
 
 withDefaults(
 	defineProps<{
@@ -143,12 +106,6 @@ function trackLinkClick(event: MouseEvent) {
 		url: (link as HTMLLinkElement).getAttribute("href") || "ERROR",
 	});
 }
-const { rssFeedPath } = useAppConfig();
-const isDark = useDark();
-const toggleDarkValue = () => {
-	AnalyticsService.trackEvent("toogle dark mode");
-	return useToggle(isDark)();
-};
 </script>
 
 <style lang="scss" scoped>

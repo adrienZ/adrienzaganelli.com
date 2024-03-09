@@ -23,7 +23,9 @@
 						</h1>
 
 						<h2 class="mb-8">
-							<NuxtLink class="text-pimper" to="/">Adrien Zaganelli</NuxtLink>
+							<NuxtLink class="text-pimper" to="/?utm_medium=blog-author"
+								>Adrien Zaganelli</NuxtLink
+							>
 							-
 							<time :datetime="post.date">
 								{{

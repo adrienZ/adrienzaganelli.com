@@ -1,14 +1,4 @@
 interface IAnalyticsEvents {
-	"showcase project click": {
-		projectName: string;
-		isVisual: boolean;
-	};
-	"showcase project selection": {
-		projectName: string;
-	};
-	"blog article click from index": {
-		articlePath: string;
-	};
 	"next project click": {
 		projectTransition: `${string} -> ${string}`;
 	};
@@ -23,6 +13,7 @@ interface IAnalyticsEvents {
 	};
 	"toogle dark mode": undefined;
 	"rss feed clicked": undefined;
+	[key: `homepage contact:${string}`]: undefined;
 }
 
 function isNuxt() {

@@ -12,7 +12,7 @@
 			<nuxt-link
 				:to="data.url"
 				ref="media"
-				class="c-showcase__media mt-2 sm:mt-0 hidden xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
+				class="c-showcase__media absolute mt-2 sm:mt-0 hidden xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
 				@mouseover="$bus.emit('cursor-hover')"
 				@mouseleave="$bus.emit('cursor-default')"
 				@click="trackProjectClick(data.title)"

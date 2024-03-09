@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<Menu container-variant="blog" class="my-4" />
+		<Menu container-variant="home" class="my-4" />
 		<div class="layout-blog">
 			<slot />
 		</div>

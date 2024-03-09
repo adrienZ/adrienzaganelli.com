@@ -1,9 +1,6 @@
 <template>
 	<Container variant="largest">
-		<DevOnly>
-			<!-- <Menu container-variant="home" /> -->
-		</DevOnly>
-		<!-- <DevColorSchema /> -->
+		<Menu container-variant="home" class="my-4" />
 		<slot />
 	</Container>
 </template>

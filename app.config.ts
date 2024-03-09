@@ -4,9 +4,10 @@ export default defineAppConfig({
 	PROD_URL: "https://adrienzaganelli.com",
 
 	umami: {
-		debug: process.env.NODE_ENV === "development",
-		// we do have a separate umami instance for dev purpose
+		debug: import.meta.dev,
 		ignoreLocalhost: false,
+		host: "http://localhost:3000/",
+		id: "replaceme",
 		// sorry
 		ignoreDnt: true,
 		version: 2,

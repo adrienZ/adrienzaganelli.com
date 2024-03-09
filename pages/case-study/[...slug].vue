@@ -1,9 +1,7 @@
 <template>
 	<section class="page-project project">
 		<FancyCursor />
-		<div class="cms-container">
-			<cHeader class="opacity-75" />
-
+		<Container variant="home">
 			<main
 				role="main"
 				class="project-header leading-tight uppercase tracking-tight mt-5 sm:mt-12"
@@ -87,11 +85,11 @@
 				:mediaUrl="nextProject.cover.src"
 				:title="nextProject.title"
 				:summary="nextProject.summary"
-				:url="nextProject._path"
+				:url="`${nextProject._path}?utm_medium=next-project`"
 				@apply="trackNextProject($project.title, nextProject.title)"
 			/>
 			<cFooter class="sm:mt-16 mt-10" />
-		</div>
+		</Container>
 
 		<cBackToTop ref="backToTop" class="fixed bottom-0 right-0 mr-8 mb-8" />
 		<cImageModale />
@@ -102,7 +100,6 @@
 import cNextProject from "@/components/project/next-project.vue";
 import cBackToTop from "@/components/common/back-to-top.vue";
 import cFooter from "@/components/common/footer.vue";
-import cHeader from "@/components/home/header.vue";
 import cExternal from "@/components/common/external.vue";
 import cImageModale from "@/components/project/image-modale.vue";
 
@@ -233,9 +230,7 @@ function trackLiveProjectClick(projectName: string) {
 <style lang="scss" scoped>
 .page-project {
 	.cms-container {
-		padding-bottom: 0;
-		@apply mx-auto px-4 pb-10;
-		@apply max-w-5xl;
+		@apply pb-10;
 	}
 
 	.mixin-scale-overlay {

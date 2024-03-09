@@ -1,7 +1,7 @@
 <template>
 	<ul class="c-list font-semibold">
 		<li
-			class="c-list__item text-left mb-3 sm:mb-8"
+			class="c-list__item text-left mb-3 sm:mb-6"
 			:key="index"
 			v-for="(p, index) in projects"
 		>
@@ -15,7 +15,7 @@
 				data-linkz-ai-ignore
 			>
 				<div class="relative">
-					<h2 class="c-list__item__title leading-tight text-3xl sm:text-5xl">
+					<h2 class="c-list__item__title leading-tight text-3xl sm:text-4xl">
 						<span class="inline-block c-list__item__index mr-1 tracking-wide">
 							{{ formatIndex(index) }}
 						</span>

@@ -1,28 +1,47 @@
 <template>
 	<section class="c-hero text-2xl">
-		<div class="c-hero__container relative z-10">
+		<div class="c-hero__container max-w-[40rem] relative z-10">
 			<div class="text-2xl">
 				<p class="landing-title" ref="title">Hello there 👋</p>
 				<p ref="intro" class="inline">
 					My name is Adrien Zaganelli. I’m a web developer working at
 					<a
 						href="https://www.amexglobalbusinesstravel.com/fr/neo-voyages-notes-de-frais/"
-						class="hover:text-pimper focus:text-pimper"
+						class="hover:text-pimper focus:text-pimper underline"
 						title="Neo - Voyages d'affaires et notes de frais"
 						rel="noopener noreferrer"
 						target="_blank"
 						@mouseover="$bus.emit('cursor-hover')"
 						@mouseleave="$bus.emit('cursor-default')"
 						@click="trackLinkClick"
+						>Amex GBT Neo.</a
 					>
-						Amex GBT Neo.
-					</a>
 
 					I mostly work with Typescript and CSS, building fast and reliable
 					websites and applications.
 				</p>
 			</div>
 
+			<nav class="mt-5">
+				<ul ref="list" class="flex gap-2">
+					<li v-for="link in links" :key="link.title">
+						<a
+							:title="link.title"
+							:href="link.href"
+							class="inline-flex items-center text-black py-2 px-2 bg:ligth rounded-md hover:bg-surface"
+							target="_blank"
+							@mouseover="$bus.emit('cursor-hover')"
+							@mouseleave="$bus.emit('cursor-default')"
+							@click="trackContactIconClick(link.title)"
+							data-linkz-ai-ignore
+						>
+							<Icon :size="iconSizes" :name="link.icon" aria-hidden="false" />
+							<div class="text-sm ml-1 sr-only">{{ link.title }}</div>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<!-- 			
 			<ul ref="list" class="mt-5 leading-relaxed">
 				<li class="group flex">
 					<span>📩</span>
@@ -69,7 +88,7 @@
 					</a>
 					<span></span>
 				</li>
-			</ul>
+			</ul> -->
 		</div>
 
 		<div
@@ -88,10 +107,6 @@
 </template>
 
 <style lang="scss" scoped>
-.c-hero__container {
-	max-width: 760px;
-}
-
 .circle {
 	@apply rounded-full absolute;
 
@@ -147,6 +162,30 @@ useRellax(bubble);
 
 const instance = getCurrentInstance()?.proxy;
 
+const iconSizes = "2rem";
+const links = [
+	{
+		title: "Github",
+		href: "https://github.com/adrienZ",
+		icon: "i-mdi-github",
+	},
+	{
+		title: "Twitter",
+		href: "https://twitter.com/adri_zag",
+		icon: "i-mdi-twitter",
+	},
+	{
+		title: "LinkedIn",
+		href: "https://www.linkedin.com/in/adrienzaganelli/",
+		icon: "i-mdi-linkedin",
+	},
+	{
+		title: "Email",
+		href: "mailto:adrienzaganelli@gmail.com",
+		icon: "i-heroicons-envelope-solid",
+	},
+];
+
 let bubbleEffect: IntersectionObserver | null = null;
 
 onMounted(() => {
@@ -199,6 +238,10 @@ onMounted(() => {
 onUnmounted(() => {
 	bubbleEffect?.disconnect(instance.$el);
 });
+
+function trackContactIconClick(name: string) {
+	AnalyticsService.trackEvent(`homepage contact:${name}`);
+}
 
 function trackLinkClick(event: MouseEvent) {
 	const link = event

@@ -5,14 +5,13 @@
 				<nav class="font-bold">
 					<ul class="flex gap-4 text-xl">
 						<li>
-							<NuxtLink to="/" activeClass="text-pimper">Home</NuxtLink>
+							<NuxtLink to="/?utm_medium=main-menu" activeClass="text-pimper"
+								>Home</NuxtLink
+							>
 						</li>
 						<li>
 							<NuxtLink
-								to="/blog"
-								:class="{
-									'text-pimper': $route.path.startsWith('/blog/'),
-								}"
+								to="/blog?utm_medium=main-menu"
 								activeClass="text-pimper"
 								>Blog</NuxtLink
 							>

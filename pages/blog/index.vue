@@ -4,17 +4,14 @@
 			<h2 class="text-5xl font-semibold mb-2">Last articles</h2>
 		</header>
 		<main>
-			<ul class="flex flex-wrap mx-0 md:-mx-5 mb-10">
+			<ul class="list flex flex-wrap mx-0 md:-mx-5 mb-10">
 				<li
+					v-for="(post, index) in posts"
 					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
 					:key="post.ID"
-					v-for="post in posts"
+					:style="`--delay: ${0.1 * index}s`"
 				>
-					<BlogCard
-						:post="post"
-						:height="post.image?.height"
-						@goto="trackCardClick(post._path)"
-					/>
+					<BlogCard :post="post" :height="post.image?.height" />
 				</li>
 			</ul>
 		</main>
@@ -23,15 +20,31 @@
 	</Container>
 </template>
 
+<style lang="css" scoped>
+/* @keyframes enter {
+	from {
+		opacity: 0;
+		transform: translateY(2rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+}
+
+.list li {
+	opacity: 0;
+	animation-duration: 0.15s;
+	animation-timing-function: ease-out;
+	animation-delay: var(--delay);
+	animation-name: enter;
+	animation-fill-mode: forwards;
+} */
+</style>
+
 <script setup lang="ts">
 import cFooter from "@/components/common/footer.vue";
-import { AnalyticsService } from "~/src/services/AnalyticsService";
-
-function trackCardClick(postPath: string) {
-	AnalyticsService.trackEvent("blog article click from index", {
-		articlePath: postPath,
-	});
-}
 
 const { data: posts } = await fetchContent(`content-blog`, () => {
 	return queryContent("blog")

@@ -27,7 +27,6 @@
 			<NuxtLink
 				class="inline-block bg-black px-3 py-1 rounded-sm font-semibold text-surface text mt-4"
 				:to="postUrl"
-				@click="$emit('goto', postUrl)"
 			>
 				Read more &rarr;
 			</NuxtLink>
@@ -40,11 +39,7 @@
 import { computed } from "vue";
 const props = defineProps(["post", "height"]);
 
-const emit = defineEmits<{
-	(event: "goto", path: string): void;
-}>();
-
-const postUrl = computed(() => props.post._path);
+const postUrl = computed(() => props.post._path + "?utm_medium=blog-index");
 const date = computed(() =>
 	new Date(props.post.date).toLocaleDateString(undefined, {
 		day: "numeric",
@@ -57,9 +52,6 @@ const active = useState();
 
 function handleClick() {
 	active.value = props.post._path;
-
-	// active.value = post;
-	emit("goto", postUrl.value);
 }
 </script>
 
