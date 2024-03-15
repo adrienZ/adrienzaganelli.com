@@ -12,6 +12,7 @@
 						:content="config.PROD_URL + useImage().getImage(post.image.src).url"
 					/>
 					<Meta name="og:type" content="article" />
+					<Title>{{ post.title }}</Title>
 				</Head>
 
 				<cProgressBar :progress="progress" />
