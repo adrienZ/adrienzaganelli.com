@@ -25,7 +25,7 @@ image:
 
 ---
 
-# Astro DB is out
+### Astro DB is out
 
 <RichLink title="Astro DB" href="https://astro.build/db/"></RichLink>
 
