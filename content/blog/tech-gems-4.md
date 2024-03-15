@@ -1,12 +1,12 @@
 ---
 draft: false
-title: "Tech gems 👁️ #4, Astro DB, Rolldown and free authentification guide"
+title: "Tech gems 👁️ #4: Astro DB, Rolldown and free authentication guide"
 date: 2024-03-15
 image:
   src: /content/images/tech-gems-placeholder.webp
 ---
 
-- [▶️](#all-you-need-to-know-about-authentification) All you need to know about authentification
+- [▶️](#all-you-need-to-know-about-authentication) All you need to know about authentication
 - [▶️](#astro-db-is-out) Astro DB is out
 - [▶️](#rolldown-is-coming) Rolldown is coming
 - [▶️](#view-transitions-tutorial) View transitions tutorial
@@ -16,7 +16,7 @@ image:
 ---
 
 
-### All you need to know about authentification
+### All you need to know about authentication
 
 <RichLink href="https://thecopenhagenbook.com/" title="The Copenhagen Book
 "></RichLink>
