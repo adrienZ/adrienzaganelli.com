@@ -103,7 +103,9 @@ export default defineNuxtConfig({
 
 	experimental: {
 		payloadExtraction: false,
-		componentIslands: true,
+		componentIslands: {
+			selectiveClient: "deep",
+		},
 		typedPages: true,
 		viewTransition: true,
 	},
