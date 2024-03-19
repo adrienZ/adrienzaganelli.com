@@ -47,6 +47,24 @@ export default defineNuxtConfig({
 	content: {
 		highlight: {
 			theme: "monokai",
+			langs: [
+				// default values https://github.com/nuxt/content/blob/main/src/module.ts#L180
+				"js",
+				"jsx",
+				"json",
+				"ts",
+				"tsx",
+				"vue",
+				"css",
+				"html",
+				"vue",
+				"bash",
+				"md",
+				"mdc",
+				"yaml",
+				// user values
+				"toml",
+			],
 		},
 		markdown: {
 			anchorLinks: false,
@@ -103,9 +121,7 @@ export default defineNuxtConfig({
 
 	experimental: {
 		payloadExtraction: false,
-		componentIslands: {
-			selectiveClient: "deep",
-		},
+		componentIslands: true,
 		typedPages: true,
 		viewTransition: true,
 	},
