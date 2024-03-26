@@ -15,7 +15,7 @@ image:
 
 ### Node.js Strikes Back
 
-<RichLink href="https://beta-node-js-org.vercel.app/en" title="The new nodejs.org website"></RichLink>
+<RichLink href="https://nodejs.org/en" title="The new nodejs.org website"></RichLink>
 
 With the appearance of new challengers such as [Bun](https://bun.sh/), [Deno](https://deno.com/), and Amazon's [LLRT](https://github.com/awslabs/llrt). The Node.js organization countered with a new documentation website.
 
