@@ -16,6 +16,13 @@
 								>Blog</NuxtLink
 							>
 						</li>
+						<li class="hidden md:block">
+							<NuxtLink
+								to="/tech-gems?utm_medium=main-menu"
+								activeClass="text-pimper"
+								>Tech gems</NuxtLink
+							>
+						</li>
 					</ul>
 				</nav>
 
