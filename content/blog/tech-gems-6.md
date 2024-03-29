@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Tech gems 👁️ #6: How Far Are We From Automating Front-End?"
+title: "Tech gems 👁️ #6: How Decathlon uses BFF, Javascript frameworks certifications"
 date: 2024-03-29
 image:
   src: /content/images/tech-gems-placeholder.webp

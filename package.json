@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"@nuxt/content": "^2.12.1",
-		"@nuxt/devtools": "^1.1.4",
+		"@nuxt/devtools": "^1.1.5",
 		"@nuxt/image": "^1.4.0",
 		"@nuxtjs/tailwindcss": "^6.11.4",
 		"@playwright/test": "^1.42.1",
