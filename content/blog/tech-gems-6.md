@@ -39,7 +39,7 @@ Originally build for [Vue.js](https://certificates.dev/vuejs). 2 more certificat
 
 <RichLink href="https://cocoweb.fr/" title="Cocoweb.fr"></RichLink>
 
-My good friend [Corentin](https://corentinmarzin.fr/) has been collecting the best tips about web developement for years on his blog, check it out !
+My good friend [Corentin](https://corentinmarzin.fr/) has been collecting the best tips about web development for years on his blog, check it out !
 
 ---
 

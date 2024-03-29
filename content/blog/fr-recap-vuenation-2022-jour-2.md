@@ -104,6 +104,6 @@ Dans la FAQ, on apprends que:
 
 - @nuxt/bridge est considéré stable, il a pratiquement toutes les features de nuxt 3 et la migration devrait être très simple si on l’utilise
 - Incremental static generation is in the Nuxt 3 roadmap
-- nuxt 3 is still in developement they shipped router middle ware 3-4 days ago
+- nuxt 3 is still in development they shipped router middle ware 3-4 days ago
 - Nuxt est un peu moins robuste que [Next](https://nextjs.org/) mais il est plus « Hackable »
 - **release candidate Q1 2022**,

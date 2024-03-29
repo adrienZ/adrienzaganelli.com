@@ -6,7 +6,7 @@ image:
   src: /content/images/tech-gems-placeholder.webp
 ---
 
-- [▶️](#what-will-front-end-developement-look-like-when-ai-takes-over) What will front-end developement look like when AI takes over ?
+- [▶️](#what-will-front-end-development-look-like-when-ai-takes-over) What will front-end development look like when AI takes over ?
 - [▶️](#react-server-components-llm-ai-sdk-30) React + Server components + LLM = AI SDK 3.0
 - [▶️](#rumors) Will Hugging Face acquire Stable Diffusion ?
 
@@ -14,7 +14,7 @@ image:
 
 ---
 
-### What will front-end developement look like when AI takes over ?
+### What will front-end development look like when AI takes over ?
 
 <RichLink href="https://frontendatscale.com/issues/18/" title="Welcome to the Future"></RichLink>
 
