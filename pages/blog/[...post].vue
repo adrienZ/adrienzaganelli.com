@@ -7,12 +7,17 @@
 
 			<template v-slot="{ doc: post }">
 				<Head>
+					<Title>{{ post.title }}</Title>
+					<Meta name="description" :content="post.description" />
 					<Meta
 						name="og:image"
 						:content="config.PROD_URL + useImage().getImage(post.image.src).url"
 					/>
 					<Meta name="og:type" content="article" />
-					<Title>{{ post.title }}</Title>
+					<Meta
+						name="article:published_time"
+						:content="new Date(post.date).toISOString()"
+					/>
 				</Head>
 
 				<cProgressBar :progress="progress" />
