@@ -8,7 +8,7 @@
 			<template v-slot="{ doc: post }">
 				<Head>
 					<Title>{{ post.title }}</Title>
-					<Meta name="description" :content="post.description" />
+					<!-- <Meta name="description" :content="post.description" /> -->
 					<Meta
 						name="og:image"
 						:content="config.PROD_URL + useImage().getImage(post.image.src).url"
