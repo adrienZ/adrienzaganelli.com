@@ -42,8 +42,8 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0
       radix-vue:
-        specifier: ^1.7.1
-        version: 1.7.1(vue@3.4.23)
+        specifier: ^1.7.2
+        version: 1.7.2(vue@3.4.23)
       rellax:
         specifier: ^1.12.1
         version: 1.12.1
@@ -55,8 +55,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(@unocss/reset@0.59.4)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.1))(vue@3.4.23))(nuxt@3.11.2(@parcel/watcher@2.4.1)(@types/node@20.12.7)(@unocss/reset@0.59.4)(encoding@0.1.13)(floating-vue@5.2.2(@nuxt/kit@3.11.2(rollup@4.16.1))(vue@3.4.23))(ioredis@5.4.1)(optionator@0.8.3)(rollup@4.16.1)(sass@1.75.0)(terser@5.30.3)(unocss@0.59.4(postcss@8.4.38)(rollup@4.16.1)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3)))(rollup@4.16.1)(unocss@0.59.4(postcss@8.4.38)(rollup@4.16.1)(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3)))(vite@5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.3))(vue@3.4.23)
       '@nuxt/image':
-        specifier: ^1.5.0
-        version: 1.5.0(ioredis@5.4.1)(rollup@4.16.1)
+        specifier: ^1.6.0
+        version: 1.6.0(ioredis@5.4.1)(rollup@4.16.1)
       '@nuxtjs/tailwindcss':
         specifier: ^6.12.0
         version: 6.12.0(rollup@4.16.1)
@@ -618,8 +618,8 @@ packages:
       nuxt: ^3.9.0
       vite: '*'
 
-  '@nuxt/image@1.5.0':
-    resolution: {integrity: sha512-k1QvuGb3GCkpy35t8lpYjOjCDMajIIZ+vKw2XgRg89WlLDlpMNRPNBpSCn/9ixuly1LyjB4k5vggRJ2RxWVvsw==}
+  '@nuxt/image@1.6.0':
+    resolution: {integrity: sha512-rgi7u6v/Dz/Ye87ym5Yg6nJtyDZgqog3G4k1AH7h5ug76JxiM727up5wpWb1AhHFb6vsW2ttteA6mPwwRyuENQ==}
     engines: {node: ^14.16.0 || >=16.11.0}
 
   '@nuxt/kit@3.11.2':
@@ -3904,8 +3904,8 @@ packages:
   queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
 
-  radix-vue@1.7.1:
-    resolution: {integrity: sha512-6TxeuDIMxe9L7IXsUEhomuuXscpYW/EhLeFPnu5fI0Tnry/lCRohrVDoofHWBDgZ0F7k5thVkADyCWj5YGv98g==}
+  radix-vue@1.7.2:
+    resolution: {integrity: sha512-KczYzzflm8todIk3flaQIWQ6P1wqtUh0cwMBRhp8Pr2JXs8FMG2qfL4lJly2mhMFXc199bG0U4bNLLsrhn5xoA==}
     peerDependencies:
       vue: '>= 3.2.0'
 
@@ -5687,7 +5687,7 @@ snapshots:
       - utf-8-validate
       - vue
 
-  '@nuxt/image@1.5.0(ioredis@5.4.1)(rollup@4.16.1)':
+  '@nuxt/image@1.6.0(ioredis@5.4.1)(rollup@4.16.1)':
     dependencies:
       '@nuxt/kit': 3.11.2(rollup@4.16.1)
       consola: 3.2.3
@@ -9784,7 +9784,7 @@ snapshots:
     dependencies:
       inherits: 2.0.4
 
-  radix-vue@1.7.1(vue@3.4.23):
+  radix-vue@1.7.2(vue@3.4.23):
     dependencies:
       '@floating-ui/dom': 1.6.3
       '@floating-ui/vue': 1.0.6(vue@3.4.23)

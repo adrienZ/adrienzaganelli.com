@@ -28,7 +28,7 @@ jobs:
           umami-site-domain: ${{secrets.UMAMI_SITE_DOMAIN}}
           umami-report-file: "umamiReport.txt"
         env:
-          UMAMI_CLIENT_TIMEOUT_MS: 5000
+          UMAMI_CLIENT_TIMEOUT_MS: 50000
       - name: Send Umami report to discord channel
         uses: tsickert/discord-webhook@v4.0.0
         with:
