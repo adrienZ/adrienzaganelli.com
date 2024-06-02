@@ -1,7 +1,7 @@
 ---
 draft: false
-title: "Tech gems 👁️ #9: Local AI, a community about documentation, Rust x Javascript"
-date: 2024-05-03
+title: "Tech gems 👁️ #8: Local AI, a community about documentation, Rust x Javascript"
+date: 2024-06-03
 image:
   src: /content/images/tech-gems-placeholder.webp
 ---
