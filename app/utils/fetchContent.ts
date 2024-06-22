@@ -1,14 +1,14 @@
 export async function fetchContent<Query extends () => Promise<any>>(
 	key: string,
-	callback: Query
+	callback: Query,
 ) {
 	if (process.dev) {
-		return useAsyncData(key, callback)
+		return useAsyncData(key, callback);
 	}
 
 	try {
-		return { data: ref(await callback()) }
+		return { data: ref(await callback()) };
 	} catch (error) {
-		return { data: ref(null) }
+		return { data: ref(null) };
 	}
 }

@@ -36,7 +36,7 @@
 	@apply m-2;
 
 	&::after {
-		content: '';
+		content: "";
 		@apply absolute;
 		@apply rounded-full;
 		@apply h-8;

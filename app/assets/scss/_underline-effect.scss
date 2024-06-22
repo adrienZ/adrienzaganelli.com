@@ -8,7 +8,7 @@
 		$color: red,
 		$transition-duration: 0.3s
 	) {
-		$transparent-offset: strip-units($size) + 0.01 + unquote('%');
+		$transparent-offset: strip-units($size) + 0.01 + unquote("%");
 
 		background-image: linear-gradient(
 			to top,

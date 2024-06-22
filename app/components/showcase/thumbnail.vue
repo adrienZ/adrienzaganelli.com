@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import cMedia from '@/components/showcase/media.vue'
+import cMedia from "@/components/showcase/media.vue";
 
 defineProps({
 	media: {
@@ -17,5 +17,5 @@ defineProps({
 		default: () => ({}),
 	},
 	index: Number,
-})
+});
 </script>

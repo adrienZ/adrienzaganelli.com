@@ -13,23 +13,23 @@
 </style>
 
 <script setup>
-import gsap from 'gsap'
-import { shallowReactive, watch } from 'vue'
+import gsap from "gsap";
+import { shallowReactive, watch } from "vue";
 
 const props = defineProps({
 	progress: {
 		type: Number,
 		default: 0,
 	},
-})
+});
 
 function clamp(num, min, max) {
-	return num <= min ? min : num >= max ? max : num
+	return num <= min ? min : num >= max ? max : num;
 }
 
 const smoothProgress = shallowReactive({
 	value: props.progress,
-})
+});
 
 watch(
 	() => props.progress,
@@ -37,8 +37,8 @@ watch(
 		gsap.to(smoothProgress, {
 			value: clamp(props.progress, 0, 1),
 			duration: 0.5,
-			ease: 'power4.out',
-		})
-	}
-)
+			ease: "power4.out",
+		});
+	},
+);
 </script>

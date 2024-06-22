@@ -21,5 +21,5 @@
 </template>
 
 <script lang="ts" setup>
-defineProps(['type', 'src'])
+defineProps(["type", "src"]);
 </script>
