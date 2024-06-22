@@ -36,4 +36,4 @@ Did you never asked yourself "Is there any change in the api in since the last c
 
 <RichLink href="https://bradfrost.com/blog/post/enforcing-accessibility-best-practices-with-automatically-generated-ids/" title="Enforcing accessibility best practices with automatically-generated ids"></RichLink>
 
-Brad Forst discusses a method for automating ID generation to ensure accessibility best practices in form fields, using the 'shortid' library to create unique IDs and maintain accessible user experiences.
+Brad Frost discusses a method for automating ID generation to ensure accessibility best practices in form fields, using the 'shortid' library to create unique IDs and maintain accessible user experiences.
