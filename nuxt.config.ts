@@ -6,6 +6,7 @@ export default defineNuxtConfig({
 	future: {
 		compatibilityVersion: 4,
 	},
+	compatibilityDate: "2024-07-09",
 
 	modules: [
 		"@nuxtjs/tailwindcss",
@@ -13,14 +14,16 @@ export default defineNuxtConfig({
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
 		"nuxt-clarity-analytics",
-		"nuxt-icon",
+		"@nuxt/icon",
 		// weird but needed for devtools to work
 		"@nuxt/devtools",
 	],
 
 	nitro: {
 		prerender: {
-			routes: ["/feed.xml"],
+			crawlLinks: true,
+			// weird bugi need to include root path for the crawler
+			routes: ["/", "/feed.xml"],
 		},
 		// just for netlify
 		future: {
