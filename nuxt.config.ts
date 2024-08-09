@@ -13,10 +13,10 @@ export default defineNuxtConfig({
 		"@nuxt/image",
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
-		"nuxt-clarity-analytics",
 		"@nuxt/icon",
 		// weird but needed for devtools to work
 		"@nuxt/devtools",
+		"@nuxt/scripts",
 	],
 
 	nitro: {
@@ -131,6 +131,14 @@ export default defineNuxtConfig({
 		componentIslands: true,
 		typedPages: true,
 		viewTransition: true,
+	},
+
+	scripts: {
+		registry: process.env.NUXT_PUBLIC_SCRIPTS_CLARITY_ID
+			? {
+					clarity: true,
+				}
+			: {},
 	},
 
 	extends: ["nuxt-umami"],
