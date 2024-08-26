@@ -56,6 +56,10 @@
 		@apply font-bold;
 	}
 
+	h3[id] {
+		scroll-margin-top: 2rem;
+	}
+
 	* + {
 		h1,
 		h2,
