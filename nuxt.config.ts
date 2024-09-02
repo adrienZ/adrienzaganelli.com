@@ -133,13 +133,5 @@ export default defineNuxtConfig({
 		viewTransition: true,
 	},
 
-	scripts: {
-		registry: process.env.NUXT_PUBLIC_SCRIPTS_CLARITY_ID
-			? {
-					clarity: true,
-				}
-			: {},
-	},
-
 	extends: ["nuxt-umami"],
 });
