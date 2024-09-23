@@ -134,4 +134,16 @@ export default defineNuxtConfig({
 	},
 
 	extends: ["nuxt-umami"],
+
+	// https://x.com/__teena_/status/1837505603322708040
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					// use sass-embedded
+					api: "modern-compiler",
+				},
+			},
+		},
+	},
 });
