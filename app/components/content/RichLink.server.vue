@@ -50,7 +50,8 @@ const { data } = await useAsyncData(`embed-${props.href}`, () =>
   $fetch("/api/prerender/rich-url", {
     query: {
       url: props.href,
-    }
+    },
+  timeout: 5000, // Timeout after 3 seconds
   })
 )
 
