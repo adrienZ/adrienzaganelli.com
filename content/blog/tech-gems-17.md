@@ -1,7 +1,7 @@
 ---
 draft: false
 title: "Tech gems 👁️ #17: DynaUI: Animated UI Library designed for Developers"
-date: 2024-10-01
+date: 2024-09-30
 image:
   src: /content/images/tech-gems-placeholder.webp
 ---
@@ -24,7 +24,6 @@ image:
 This library really stands out by the quality of the animations and the [templates](https://www.dynaui.design/saas?via=adri_zag): Saas, agency, portfolios, etc.
 
 It really keeps its promise of saving time while providing premium components.
-[Get a lifetime license here !](https://www.dynaui.design?via=adri_zag)
 
 ---
 
