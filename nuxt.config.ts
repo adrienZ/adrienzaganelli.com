@@ -17,6 +17,7 @@ export default defineNuxtConfig({
 		// weird but needed for devtools to work
 		"@nuxt/devtools",
 		"@nuxt/scripts",
+		"nuxt-umami",
 	],
 
 	nitro: {
@@ -132,8 +133,6 @@ export default defineNuxtConfig({
 		typedPages: true,
 		viewTransition: true,
 	},
-
-	extends: ["nuxt-umami"],
 
 	// https://x.com/__teena_/status/1837505603322708040
 	vite: {

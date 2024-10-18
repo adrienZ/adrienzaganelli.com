@@ -35,9 +35,6 @@ importers:
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
-      nuxt-umami:
-        specifier: ^2.6.7
-        version: 2.6.7
       radix-vue:
         specifier: ^1.9.7
         version: 1.9.7(vue@3.5.8)
@@ -87,6 +84,9 @@ importers:
       nuxt:
         specifier: ^3.13.2
         version: 3.13.2(@parcel/watcher@2.4.1)(@types/node@22.7.6)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.8.3)(rollup@4.22.4)(sass-embedded@1.80.2)(sass@1.79.3)(terser@5.33.0)(vite@5.4.7(@types/node@22.7.6)(sass-embedded@1.80.2)(sass@1.79.3)(terser@5.33.0))(webpack-sources@3.2.3)
+      nuxt-umami:
+        specifier: ^3.0.2
+        version: 3.0.2(magicast@0.3.5)(rollup@4.22.4)(webpack-sources@3.2.3)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1237,9 +1237,6 @@ packages:
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
-
-  '@types/node@22.7.5':
-    resolution: {integrity: sha512-jML7s2NAzMWc//QSJ1a3prpk78cOPchGvXJsC3C6R6PSMoooztvRVQEz89gmBTBY1SPMaqo5teB4uNHPdetShQ==}
 
   '@types/node@22.7.6':
     resolution: {integrity: sha512-/d7Rnj0/ExXDMcioS78/kf1lMzYk4BZV8MZGTBKzTGZ6/406ukkbYlIsZmMPhcR5KlkunDHQLrtAVmSq7r+mSw==}
@@ -3672,8 +3669,8 @@ packages:
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
-  nuxt-umami@2.6.7:
-    resolution: {integrity: sha512-qa/YZf26l3sQ5VGXOyha8SAP00BULw4VrZxeDfklUsroHPaeVkTU46AiSTEpz6I1UF/u9NDJR+u8SQy0l5yUsA==}
+  nuxt-umami@3.0.2:
+    resolution: {integrity: sha512-Sd2QptIWgC1zZ3dDy6GcpcYrVBGpnkDV/i2NN8gA0/fJPs+HAmdS1exZTn0UyS+BvbEYXJ7ZRn9dfoObWnUcwg==}
 
   nuxt@3.13.2:
     resolution: {integrity: sha512-Bjc2qRsipfBhjXsBEJCN+EUAukhdgFv/KoIR5HFB2hZOYRSqXBod3oWQs78k3ja1nlIhAEdBG533898KJxUtJw==}
@@ -4261,6 +4258,9 @@ packages:
     resolution: {integrity: sha512-arB9d3ENdKva2fxRnSjwBEXfK1npgyci7ZZuwysgAp7ORjHSyxz6oqIjTEv8R0Ydl4Ll7uOAZXL4vbkhGIizCg==}
     engines: {node: '>=10'}
     hasBin: true
+
+  request-ip@3.3.0:
+    resolution: {integrity: sha512-cA6Xh6e0fDBBBwH77SLJaJPBmD3nWVAcF9/XAcsrIHdjhFzFiB5aNQFytdjCGPezU3ROwrR11IddKAM08vohxA==}
 
   request-promise-core@1.1.4:
     resolution: {integrity: sha512-TTbAfBBRdWD7aNNOoVOBH4pN/KigV6LyapYNNlAPA8JwbovRti1E88m3sYAwsLi5ryhPKsE9APwnjFTgdUjTpw==}
@@ -6837,10 +6837,6 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@22.7.5':
-    dependencies:
-      undici-types: 6.19.8
-
   '@types/node@22.7.6':
     dependencies:
       undici-types: 6.19.8
@@ -9040,7 +9036,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.7.5
+      '@types/node': 22.7.6
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -9910,7 +9906,15 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  nuxt-umami@2.6.7: {}
+  nuxt-umami@3.0.2(magicast@0.3.5)(rollup@4.22.4)(webpack-sources@3.2.3):
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)(webpack-sources@3.2.3)
+      request-ip: 3.3.0
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
 
   nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.7.6)(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.8.3)(rollup@4.22.4)(sass-embedded@1.80.2)(sass@1.79.3)(terser@5.33.0)(vite@5.4.7(@types/node@22.7.6)(sass-embedded@1.80.2)(sass@1.79.3)(terser@5.33.0))(webpack-sources@3.2.3):
     dependencies:
@@ -10677,6 +10681,8 @@ snapshots:
       chalk: 4.1.2
       glob: 7.2.3
       yargs: 17.7.2
+
+  request-ip@3.3.0: {}
 
   request-promise-core@1.1.4(request@2.88.2):
     dependencies:
