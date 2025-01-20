@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "Tech gems 👁️ #19: Cognitive load is what matters"
 date: 2025-01-20
 image:
