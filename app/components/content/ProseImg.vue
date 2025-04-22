@@ -12,6 +12,7 @@
 				:height="height"
 				loading="lazy"
 				quality="80"
+				ho="mate"
 			/>
 	</div>
 </template>

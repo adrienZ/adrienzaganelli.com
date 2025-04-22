@@ -6,6 +6,6 @@
 
 <script lang="ts" setup>
 const attrs = useAttrs();
-import sizeOf from "image-size";
-const sizes = sizeOf("public/" + attrs.src);
+import { imageSizeFromFile } from "image-size/fromFile";
+const sizes = await imageSizeFromFile("public/" + attrs.src);
 </script>
