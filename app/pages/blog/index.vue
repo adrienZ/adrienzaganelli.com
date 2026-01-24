@@ -61,7 +61,6 @@ import { techGemsQuery } from "~/lib/content/queries";
 
 const { data: posts } = await fetchContent(`content-blog`, () => {
 	return queryContent("blog")
-		.where(import.meta.dev ? { draft: true } : {})
 		.where({
 			$not: techGemsQuery,
 		})

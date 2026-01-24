@@ -32,11 +32,11 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ["~/assets/css/tailwind.css", "~/assets/scss/main.scss"],
+	css: ["./app/assets/css/tailwind.css", "./app/assets/scss/main.scss"],
 
 	tailwindcss: {
-		configPath: "~/config/tailwind.config.js",
-		cssPath: "~/assets/css/tailwind.css",
+		configPath: "./app/config/tailwind.config.js",
+		cssPath: "./app/assets/css/tailwind.css",
 		exposeConfig: false,
 		viewer: false,
 	},

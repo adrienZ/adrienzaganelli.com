@@ -40,10 +40,10 @@ module.exports = {
 	},
 	plugins: [],
 	content: [
-		"components/**/*.vue",
-		"layouts/**/*.vue",
-		"pages/**/*.vue",
-		"plugins/**/*.js",
-		"nuxt.config.js",
+		"app/components/**/*.vue",
+		"app/layouts/**/*.vue",
+		"app/pages/**/*.vue",
+		"app/plugins/**/*.{js,ts}",
+		"nuxt.config.{js,ts}",
 	],
 };
