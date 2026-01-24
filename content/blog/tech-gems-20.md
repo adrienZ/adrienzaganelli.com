@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "Tech gems 👁️ #20: Your web apps in the Apple App Store"
+title: "Tech gems 👁️ #20: Your web app might be eligible for the App Store"
 date: 2026-01-26
 image:
   src: /content/images/tech-gems-placeholder.webp
