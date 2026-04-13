@@ -3,9 +3,6 @@ export default defineNuxtConfig({
 		enabled: true,
 	},
 
-	future: {
-		compatibilityVersion: 4,
-	},
 	compatibilityDate: "2024-07-09",
 
 	modules: [
