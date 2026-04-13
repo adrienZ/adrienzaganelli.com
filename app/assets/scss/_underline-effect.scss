@@ -1,3 +1,5 @@
+@use "sass-easing" as *;
+
 .underline-effect {
 	@mixin text-line-gradient(
 		$colorSize: 8%,
