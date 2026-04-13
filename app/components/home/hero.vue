@@ -107,6 +107,7 @@
 </template>
 
 <style lang="scss" scoped>
+@use "sass:math";
 .circle {
 	@apply rounded-full absolute;
 
@@ -118,11 +119,11 @@
 	}
 
 	@for $i from 1 through 3 {
-		$ratio: $i / 4;
+		$ratio: math.div($i, 4);
 		&.size-#{$i}-4 {
 			$h: $ratio * 100%;
-			top: (100% - $h) / 2;
-			left: (100% - $h) / 2;
+			top: calc((100% - #{$h}) / 2);
+			left: calc((100% - #{$h}) / 2);
 			height: $h;
 			width: $h;
 		}
