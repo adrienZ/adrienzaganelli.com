@@ -1,20 +1,15 @@
-@function strip-units($number) {
-	@return $number / ($number * 0 + 1);
-}
-
 .underline-effect {
 	@mixin text-line-gradient(
-		$size: 8%,
+		$colorSize: 8%,
+		$transparentSize: 8%,
 		$color: red,
 		$transition-duration: 0.3s
 	) {
-		$transparent-offset: strip-units($size) + 0.01 + unquote("%");
-
 		background-image: linear-gradient(
 			to top,
 			$color 0%,
-			$color $size,
-			transparent $transparent-offset
+			$color $colorSize,
+			transparent $transparentSize
 		);
 		// allow animation by no repeating
 		background-repeat: no-repeat;
@@ -22,7 +17,7 @@
 	}
 
 	&--hover {
-		@include text-line-gradient(7%, currentColor);
+		@include text-line-gradient(7%, 7.01%, currentColor);
 		background-size: 0 100%;
 		// box-decoration-break: clone;
 
@@ -33,7 +28,7 @@
 	}
 
 	&--link {
-		@include text-line-gradient(1px, currentColor);
+		@include text-line-gradient(1px, 1.01%, currentColor);
 		transition: none;
 		display: inline;
 

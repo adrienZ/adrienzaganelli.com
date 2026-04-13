@@ -124,24 +124,24 @@ const LinkedinShareUrl = computed(() => {
 }
 
 .facebook {
-	background-color: #2d88ff;
+	background-color: hsl(214 100% 59%);
 	&:hover,
 	&:focus {
-		background-color: darken(#2d88ff, 10%);
+		background-color: hsl(214 100% 49%);
 	}
 }
 .twitter {
-	background-color: #1da1f2;
+	background-color: hsl(203 89% 53%);
 	&:hover,
 	&:focus {
-		background-color: darken(#1da1f2, 10%);
+		background-color: hsl(203 89% 43%);
 	}
 }
 .linkedin {
-	background-color: #0077b5;
+	background-color: hsl(201 100% 36%);
 	&:hover,
 	&:focus {
-		background-color: darken(#0077b5, 10%);
+		background-color: hsl(201 100% 26%);
 	}
 }
 </style>
