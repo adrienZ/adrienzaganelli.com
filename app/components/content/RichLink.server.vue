@@ -37,20 +37,8 @@ const props = withDefaults(defineProps<{
 }>(), { title: "See more" })
 
 const href = computed(() => {
-  try {
-    const url = new URL(props.href)
-    url.searchParams.set("utm_source", "adrienzaganelli.com")
-    return url.href
-  } catch (e) {
-    const hashIndex = props.href.indexOf("#")
-    const hash = hashIndex >= 0 ? props.href.slice(hashIndex) : ""
-    const main = hashIndex >= 0 ? props.href.slice(0, hashIndex) : props.href
-    const [path, query = ""] = main.split("?")
-    const params = new URLSearchParams(query)
-    params.set("utm_source", "adrienzaganelli.com")
-    const qs = params.toString()
-    return path + (qs ? `?${qs}` : "") + hash
-  }
+  const separator = props.href.includes("?") ? "&" : "?"
+  return props.href + separator + "utm_source=adrienzaganelli.com"
 })
 const preview = computed(() => {
   if (data.value?.image?.startsWith("http:")) {
