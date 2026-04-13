@@ -114,19 +114,19 @@
 		height: 100%;
 	}
 	&.w-3\/4 {
-		top: (100% - (100%/ (4/3))) / 2;
-		left: (100%- (100%/ (4/3))) / 2;
-		height: (100%/ (4/3));
+		top: calc((100% - (100% / (4 / 3))) / 2);
+		left: calc((100% - (100% / (4 / 3))) / 2);
+		height: calc(100% / (4 / 3));
 	}
 	&.w-2\/4 {
-		top: (100% - (100%/ (4/2))) / 2;
-		left: (100%- (100%/ (4/2))) / 2;
-		height: (100%/ (4/2));
+		top: calc((100% - (100% / (4 / 2))) / 2);
+		left: calc((100% - (100% / (4 / 2))) / 2);
+		height: calc(100% / (4 / 2));
 	}
 	&.w-1\/4 {
-		top: (100% - (100%/ (4/1))) / 2;
-		left: (100%- (100%/ (4/1))) / 2;
-		height: (100%/4);
+		top: calc((100% - (100% / (4 / 1))) / 2);
+		left: calc((100% - (100% / (4 / 1))) / 2);
+		height: calc(100% / 4);
 	}
 }
 
@@ -218,7 +218,7 @@ onMounted(() => {
 	bubbleEffect = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
 			tl.play();
-			bubbleEffect?.disconnect(instance.$el),
+			(bubbleEffect?.disconnect(instance.$el),
 				gsap.fromTo(
 					bubble.value.children,
 					{ rotateZ: 0 },
@@ -228,7 +228,7 @@ onMounted(() => {
 						stagger: () => randomIntFromInterval(1, 15),
 						repeat: -1,
 					},
-				);
+				));
 		}
 	});
 
