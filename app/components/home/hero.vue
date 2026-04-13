@@ -98,10 +98,10 @@
 			data-rellax-xs-speed="-3"
 			data-rellax-percentage="0.5"
 		>
-			<div class="circle w-full bg-light shadow-xl"></div>
-			<div class="circle w-3/4 bg-light shadow-lg"></div>
-			<div class="circle w-2/4 bg-light shadow-lg"></div>
-			<div class="circle w-1/4 bg-light shadow-md"></div>
+			<div class="circle size-full bg-light shadow-xl"></div>
+			<div class="circle size-3-4 bg-light shadow-lg"></div>
+			<div class="circle size-2-4 bg-light shadow-lg"></div>
+			<div class="circle size-1-4 bg-light shadow-md"></div>
 		</div>
 	</section>
 </template>
@@ -110,23 +110,22 @@
 .circle {
 	@apply rounded-full absolute;
 
-	&.w-full {
+	&.size-full {
 		height: 100%;
+		top: 0;
+		left: 0;
+		width: 100%;
 	}
-	&.w-3\/4 {
-		top: calc((100% - (100% / (4 / 3))) / 2);
-		left: calc((100% - (100% / (4 / 3))) / 2);
-		height: calc(100% / (4 / 3));
-	}
-	&.w-2\/4 {
-		top: calc((100% - (100% / (4 / 2))) / 2);
-		left: calc((100% - (100% / (4 / 2))) / 2);
-		height: calc(100% / (4 / 2));
-	}
-	&.w-1\/4 {
-		top: calc((100% - (100% / (4 / 1))) / 2);
-		left: calc((100% - (100% / (4 / 1))) / 2);
-		height: calc(100% / 4);
+
+	@for $i from 1 through 3 {
+		$ratio: $i / 4;
+		&.size-#{$i}-4 {
+			$h: $ratio * 100%;
+			top: (100% - $h) / 2;
+			left: (100% - $h) / 2;
+			height: $h;
+			width: $h;
+		}
 	}
 }
 
