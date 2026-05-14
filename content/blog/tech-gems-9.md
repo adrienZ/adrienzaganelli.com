@@ -37,8 +37,7 @@ Markus Oberlehner provides a step-by-step tutorial on how to integrate SQLite an
 
 ### Domain-driven code architecture with Nuxt layers
 
-<RichLink href="https://davestewart.co.uk/blog/nuxt-layers/" title="Modular site architecture with Nuxt layers
-"></RichLink>
+<RichLink href="https://davestewart.co.uk/blog/nuxt-layers/" title="Modular site architecture with Nuxt layers"></RichLink>
 
 The [flat folder structure of Nuxt](https://nuxt.com/docs/api/nuxt-config#dir) might not be well suited for teams or large projects. Dave Steward gives us a few ways to organize our code by domain (or feature) with [Nuxt layers](https://nuxt.com/docs/getting-started/layers).
 

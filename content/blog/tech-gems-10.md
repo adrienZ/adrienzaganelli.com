@@ -17,8 +17,7 @@ image:
 
 ### Node.js is Here to Stay
 
-<RichLink href="https://blog.platformatic.dev/nodejs-is-here-to-stay" title="Node.js is Here to Stay
-"></RichLink>
+<RichLink href="https://blog.platformatic.dev/nodejs-is-here-to-stay" title="Node.js is Here to Stay"></RichLink>
 
 Node.js, a cornerstone of web development for 15 years, is a thriving open-source runtime environment with over 130 million monthly downloads, 6.3 million powered websites, and continuous feature updates, despite rumors of decline, and requires regular updates for security reasons.
 
@@ -43,7 +42,6 @@ Polar is a platform that offers a variety of funding tools and monetization opti
 
 ### Open Source JIRA, Linear and Asana Alternative.
 
-<RichLink href="
-https://github.com/makeplane/plane" title="Plane on Github"></RichLink>
+<RichLink href="https://github.com/makeplane/plane" title="Plane on Github"></RichLink>
 
 Plane: An open-source alternative to JIRA, Linear, and Asana. Its goal is to help you track your issues and product roadmaps in the simplest way possible.

@@ -52,8 +52,7 @@ We can now guess it's about the new `NuxtHub` organization on Github. NuxtHub sh
 
 ### Tutorials:
 
-- <RichLink href="https://tympanus.net/codrops/2024/01/19/making-css-view-transitions-easy-with-velvette/" title="Making CSS View Transitions Easy with Velvette
-"></RichLink>
+- <RichLink href="https://tympanus.net/codrops/2024/01/19/making-css-view-transitions-easy-with-velvette/" title="Making CSS View Transitions Easy with Velvette"></RichLink>
 
 [Noam Rosenthal](https://www.linkedin.com/in/noamrosenthal), co-editor of the CSS view-transitions spec, gives us a splendid tutorial on Codrops.
 
@@ -63,15 +62,13 @@ You have to understand it's a game changer to make those with so little JavaScri
 
 ### Backend
 
-- <RichLink href="https://www.uber.com/en-FR/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/" title="How Uber Serves Over 40 Million Reads Per Second from Online Storage Using an Integrated Cache
-"></RichLink>
+- <RichLink href="https://www.uber.com/en-FR/blog/how-uber-serves-over-40-million-reads-per-second-using-an-integrated-cache/" title="How Uber Serves Over 40 Million Reads Per Second from Online Storage Using an Integrated Cache"></RichLink>
 
 A long read where Uber explain how their "Docstore Architecture" allows them to perform numerous database reads thanks to caching.
 
 ---
 
-- <RichLink href="https://adonisjs.com/blog/future-plans-for-adonisjs-6" title="Future plans for AdonisJS v6
-"></RichLink>
+- <RichLink href="https://adonisjs.com/blog/future-plans-for-adonisjs-6" title="Future plans for AdonisJS v6"></RichLink>
 
 After [announcing their new major version](https://adonisjs.com/blog/adonisjs-v6-announcement) (V6), the AdonisJS team brings some details about the roadmap without promising any release dates or timelines.
 Overall, they aim to improve type safety and have realeased a few packages outside of the core:
@@ -91,8 +88,7 @@ In the post, Adonis mentions SSR supports for Inertia, which could be a game cha
 
 ### Business
 
-- <RichLink href="https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/" title="(Almost) Every infrastructure decision I endorse or regret after 4 years running infrastructure at a startup
-"></RichLink>
+- <RichLink href="https://cep.dev/posts/every-infrastructure-decision-i-endorse-or-regret-after-4-years-running-infrastructure-at-a-startup/" title="(Almost) Every infrastructure decision I endorse or regret after 4 years running infrastructure at a startup"></RichLink>
 
 [Jack Lindamood](https://cep.dev/) has gone through a lot while building his startup. He kindly details many strategic infrastructure decisions such as picking AWS over Google Cloud or regretting choosing Datatog.
 

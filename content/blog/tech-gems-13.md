@@ -25,8 +25,7 @@ The author of [lucia-auth](https://lucia-auth.com/) gives us his hot takes and w
 
 ### How to create your own authentication in Nuxt
 
-<RichLink href="https://www.vuemastery.com/blog/minimalist-nuxt-authentication/" title="Minimalist Nuxt Authentication
-"></RichLink>
+<RichLink href="https://www.vuemastery.com/blog/minimalist-nuxt-authentication/" title="Minimalist Nuxt Authentication"></RichLink>
 
 In this tutorial Timi Omoyeni uses the [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils) package as base to create a full-stack auth workflow with Nuxt and SQLite as database. It might give us an idea of what the upcoming [@nuxthub/auth](https://hub.nuxt.com/docs/getting-started) will look like.
 

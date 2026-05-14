@@ -14,7 +14,7 @@ image:
 
 (Agent) Skill are a standardized way to give AI agents new capabilities and expertise. They follow the  [open agent skills standard](https://agentskills.io/home). **I strongly advise you to start here**.
 
-<RichLink href="https://agentskills.io/home" title=""></RichLink>
+<RichLink aria-hidden="true" href="https://agentskills.io/home" title=""></RichLink>
 
 Here are the main things to remember:
 
@@ -85,7 +85,10 @@ Let's not forget to make sure everything is ok, you can use
 
 ## Testing the skill
 
-To make it short, evals are unit test for LLM behavior. My current idea is to use the [evalite.dev](https://v1.evalite.dev/) framework from the famous [@mattpocock](mattpocock).
+To make it short, evals are unit test for LLM behavior. My current idea is to use the [evalite.dev](https://v1.evalite.dev/) framework from the famous [@mattpocock](https://github.com/mattpocock).
+
+
+<RichLink aria-hidden="true" href="https://v1.evalite.dev/" title=""></RichLink>
 
 ### Define the behavior you want
 
@@ -125,4 +128,3 @@ If you want to learn more about evals, here some references from people who know
 - https://platform.claude.com/docs/en/test-and-evaluate/eval-tool
 - https://agentskills.io/skill-creation/evaluating-skills
 - https://developers.openai.com/blog/eval-skills
-

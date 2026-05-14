@@ -13,10 +13,16 @@ export default defineCachedEventHandler(
 
 		// @ts-expect-error no idea why import is global
 		const parse: typeof getLinkPreview = getLinkPreview.default;
+		const url = query.url.toString();
 
-		console.log("parse", query.url);
-
-		return await parse(query.url.toString());
+		try {
+			return await parse(url, {
+				followRedirects: true,
+			});
+		} catch (error) {
+			console.warn(`[rich-url] failed to preview ${url}`, error);
+			return null;
+		}
 	},
 	{
 		maxAge: 60 * 60 * 24 * 7 * 8 /* 8 weeks */,

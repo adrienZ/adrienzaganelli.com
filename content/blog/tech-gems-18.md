@@ -24,8 +24,7 @@ Wishing you all a great 2025 full of coding!
 
 ### A Google engineer's view on building your career in the age of AI
 
-<RichLink href="https://addyo.substack.com/p/future-proofing-your-software-engineering" title="Future-proofing your Software Engineering career
-"></RichLink>
+<RichLink href="https://addyo.substack.com/p/future-proofing-your-software-engineering" title="Future-proofing your Software Engineering career"></RichLink>
 
 Addy Osmanishares his perspective on how AI can affect your software enginerring carrer depending of you experience. How to not be replaced and use AI at your advantage.
 
@@ -44,8 +43,6 @@ An in-depth collection of technical insights from Instagram's early days, reveal
 
 ### Native dual-range input
 
-<RichLink href="https://muffinman.io/blog/native-dual-range-input/" title="Native dual-range input
-"></RichLink>
+<RichLink href="https://muffinman.io/blog/native-dual-range-input/" title="Native dual-range input"></RichLink>
 
 Stanko shares this handy tip to create dual-range input in a simple way. The component is alvailable under the [@stanko/dual-range-input](https://github.com/stanko/dual-range-input) package.
-

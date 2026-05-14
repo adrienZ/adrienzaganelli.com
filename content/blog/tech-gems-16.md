@@ -18,8 +18,7 @@ image:
 
 ### Lidl Takes on AWS: The Rise of EuroCloud
 
-<RichLink href="https://www.irishtimes.com/business/2024/08/23/how-lidl-accidentally-took-on-the-big-guns-of-cloud-computing/" title="How Lidl accidentally took on the big guns of cloud computing
-"></RichLink>
+<RichLink href="https://www.irishtimes.com/business/2024/08/23/how-lidl-accidentally-took-on-the-big-guns-of-cloud-computing/" title="How Lidl accidentally took on the big guns of cloud computing"></RichLink>
 
 Lidl, the well-known European retailer, is setting its sights on the cloud market, directly competing with giants like AWS. This move marks the dawn of a new era dubbed 'EuroCloud,' where European companies strive to create cloud services that adhere to stringent local regulations and data protection standards. This shift could redefine the cloud landscape, offering a regional alternative with a focus on privacy and sovereignty.
 
@@ -35,8 +34,7 @@ JavaScript developers have long struggled with the inconsistencies and quirks of
 
 ### Server-side Web components with WASM
 
-<RichLink href="https://enhance.dev/wasm" title="Write once,
-SSR anywhere"></RichLink>
+<RichLink href="https://enhance.dev/wasm" title="Write once, SSR anywhere"></RichLink>
 
 Enhance WASM is bringing server side rendered web components to everyone. Author your components in friendly, standards based syntax. Reuse them across multiple languages, frameworks, and servers. Upgrade them using familiar client side code when needed.
 

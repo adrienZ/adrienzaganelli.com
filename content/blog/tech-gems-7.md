@@ -28,31 +28,26 @@ Nuxt 4 is expected by mid-june 2024, it should be aligned with multiple releases
 
 ### Bun is coming to windows
 
-<RichLink href="https://bun.sh/blog/bun-v1.1" title="Bun 1.1
-"></RichLink>
+<RichLink href="https://bun.sh/blog/bun-v1.1" title="Bun 1.1"></RichLink>
 
 ---
 
 ### Inlining CSS reduces loading times by 22%
 
-<RichLink href="https://strikingloo.github.io/inlining-css" title="The Unreasonable Effectiveness of Inlining CSS
-"></RichLink>
+<RichLink href="https://strikingloo.github.io/inlining-css" title="The Unreasonable Effectiveness of Inlining CSS"></RichLink>
 
 ---
 
 ### XZ Backdoor
 
-<RichLink href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" title="Everything I Know About the XZ Backdoor
-"></RichLink>
+<RichLink href="https://boehs.org/node/everything-i-know-about-the-xz-backdoor" title="Everything I Know About the XZ Backdoor"></RichLink>
 
 ---
 
 If you missed one of the biggest backdoor in open-source, here is a summary.
 ### NanoGL: low-level WebGL framework
 
-<RichLink href="https://www.makemepulse.com/news/nanogl-docs" title="NanoGL:
-Elevating 3D
-Rendering"></RichLink>
+<RichLink href="https://www.makemepulse.com/news/nanogl-docs" title="NanoGL: Elevating 3D Rendering"></RichLink>
 
 The award-winning studio [MakemePulse](https://www.makemepulse.com/) released the magic behind their 3D technology: NanoGL.
 

@@ -18,8 +18,7 @@ image:
 
 ### All you need to know about authentication
 
-<RichLink href="https://thecopenhagenbook.com/" title="The Copenhagen Book
-"></RichLink>
+<RichLink href="https://thecopenhagenbook.com/" title="The Copenhagen Book"></RichLink>
 
 [Pilcrow](https://pilcrowonpaper.com/), the creator of the popular [Lucia](https://github.com/lucia-auth/lucia) package released a free, open-source guide on implementing auth in web applications
 

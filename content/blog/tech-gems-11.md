@@ -25,8 +25,7 @@ The post discusses the importance of using tools and equipment that you genuinel
 
 ### "The perfect use case for LLM"
 
-<RichLink href="https://github.com/egoist/shell-ask" title="shell-ask on Github
-"></RichLink>
+<RichLink href="https://github.com/egoist/shell-ask" title="shell-ask on Github"></RichLink>
 
 Did you never asked yourself "Is there any change in the api in since the last commit ?". Well this question can now be instantly solved by AI with tools like "sell-ask" ([tweet](https://x.com/localhost_5173/status/1802401538884956442))
 
