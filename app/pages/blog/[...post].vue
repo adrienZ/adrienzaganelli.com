@@ -57,6 +57,13 @@
 							></figcaption>
 						</figure>
 
+						<!-- Table of contents
+						<ul>
+							<li v-for="link of post.body.toc.links" :key="link.id">
+								<a :href="`#${link.id}`">{{ link.text }}</a>
+							</li>
+						</ul> -->
+
 						<ContentRendererMarkdown
 							class="cms-block mt-5"
 							ref="cms_block"

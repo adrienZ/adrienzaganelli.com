@@ -49,7 +49,9 @@ const preview = computed(() => {
   return data.value?.image
 })
 
-const { data } = await useAsyncData(`embed-${props.href}`, () =>
+const prerenderKey = computed(() => `embed-${props.href}`)
+
+const { data } = await useAsyncData(prerenderKey, () =>
   $fetch("/api/prerender/rich-url", {
     query: {
       url: props.href,
