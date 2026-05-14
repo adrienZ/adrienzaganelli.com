@@ -1,9 +1,9 @@
 ---
 draft: false
-title: Everything you need to create your first skill as a developer
+title: A developer’s guide to building and testing AI skills
 date: 2026-05-15
 image:
-  src: /content/images/everything-you-need-to-create-your-first-skill-image.jpg
+  src: /content/images/a-developers-guide-to-building-and-testing-ai-skills.jpg
 ---
 
 > It's 2026, your work probably asked you to use AI, but your security department won't help you... Skills are the easiest way to get started, yet they are still mostly text-based and can behave unreliably... Here is the workflow I use as a developer.
