@@ -6,7 +6,7 @@ image:
   src: /content/images/everything-you-need-to-create-your-first-skill-image.jpg
 ---
 
-> It's 2026, your work probably asked you to use AI, but your security department won't help you... Skills are the easiest way to get started, but they are still text-based and can behave unreliably... Here is the workflow I use as a developer.
+> It's 2026, your work probably asked you to use AI, but your security department won't help you... Skills are the easiest way to get started, yet they are still mostly text-based and can behave unreliably... Here is the workflow I use as a developer.
 
 <!--more-->
 
@@ -19,18 +19,21 @@ image:
 Here are the main things to remember:
 
 - skills are files / folders of markdown text.
-- SKILL.md is the entry point, other folders are (scripts, references, assets)
-- skills lifecycle is: discovery (skill content and metadata), activation (from your agent), execution.
+- SKILL.md is the entry point, other folders are: scripts, references, assets
+- skills lifecycle is:
+    1. discovery (skill content and metadata)
+    2. activation (from your agent)
+    3. execution
 - skills metadata most important part is the `description`, as it should also include the skill trigger (activation).
-- do not create a single of file of thousands lines (it will blow up your context window). use (progressive disclosure)[https://agentskills.io/specification#progressive-disclosure].
-- for complex or long tasks use [workflow](https://agentskills.io/skill-creation/best-practices#checklists-for-multi-step-workflows)
+- do not create a single of file of thousands lines (it will blow up your context window). use [progressive disclosure](https://agentskills.io/specification#progressive-disclosure).
+- for complex or long tasks use [workflows](https://agentskills.io/skill-creation/best-practices#checklists-for-multi-step-workflows)
 
 
 ## Writing your own skill
 
 Let's create our first skill ! I want to create a skill to enforce the usage of the recent [useTemplateRef](https://vuejs.org/api/composition-api-helpers.html#usetemplateref) in Vue.js instead of the generic `ref` primitive.
 
-The good thing about creating a skill is that you can get help from... well, more skills ! [Anthropic](https://github.com/anthropics/skills/tree/main/skills/skill-creator) and [OpenAI](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) even provides their own !
+The good thing about creating a skill is that you can get help from... well, MORE skills ! [Anthropic](https://github.com/anthropics/skills/tree/main/skills/skill-creator) and [OpenAI](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) even provides their own !
 
 Let's generate it (codex-cli 0.130.0, gpt-5.4 medium):
 
@@ -78,7 +81,7 @@ const child = ref<InstanceType<typeof ChildComponent> | null>(null)
 
 ### Validating the skill
 
-Let's not forget to make sure everything is ok, you can use
+Let's not forget to make sure it respects the specification, you can use
 - [skill-ref](https://github.com/agentskills/agentskills/tree/main/skills-ref)
 - [agent-ecosystem/skill-validator](https://github.com/agent-ecosystem/skill-validator) (**My recommandation**) and `skill-validator check --strict .agents/skills/vue-use-template-ref`
 
