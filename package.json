@@ -12,6 +12,7 @@
 	"scripts": {
 		"build": "nuxt build",
 		"dev": "nuxt dev --dotenv .env.dev --host 0.0.0.0",
+		"format": "prettier --write .",
 		"generate": "nuxt build --prerender --dotenv .env.dev",
 		"prod": "nuxt build --prerender --dotenv .env.prod",
 		"test": "pnpm exec playwright test",
