@@ -1,0 +1,29 @@
+{
+	"hooks": {
+		"PreToolUse": [
+			{
+				"matcher": "Bash",
+				"hooks": [
+					{
+						"type": "command",
+						"command": ".codex/hooks/block-dangerous-git.sh",
+						"statusMessage": "Checking Git safety..."
+					}
+				]
+			}
+		],
+		"PostToolUse": [
+			{
+				"matcher": "Edit|Write",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "pnpm run format",
+						"statusMessage": "Running format",
+						"timeout": 120
+					}
+				]
+			}
+		]
+	}
+}

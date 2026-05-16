@@ -176,17 +176,15 @@ onMounted(() => {
 		ease: "circ.out",
 	});
 
-	tl
-		?.fromTo(
-			titles.value?.children,
-			{ opacity: 0 },
-			{ opacity: 1, duration: 0.3, stagger: 0.12 },
-		)
-		.to(
-			Array.from(titles.value?.children).slice(0, -1),
-			{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
-			0.35,
-		);
+	tl?.fromTo(
+		titles.value?.children,
+		{ opacity: 0 },
+		{ opacity: 1, duration: 0.3, stagger: 0.12 },
+	).to(
+		Array.from(titles.value?.children).slice(0, -1),
+		{ opacity: 0, duration: 0.15, y: -1, stagger: 0.1 },
+		0.35,
+	);
 
 	titleEffect = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
