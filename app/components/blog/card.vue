@@ -18,7 +18,9 @@
 		</div>
 
 		<NuxtLink class="mt-3" :to="postUrl">
-			<h3 class="font-bold text-xl">{{ post.title }}</h3>
+			<h3 class="font-bold text-xl">
+				{{ post.title }}
+			</h3>
 		</NuxtLink>
 
 		<ContentRendererMarkdown :value="post.excerpt" />
@@ -36,8 +38,18 @@
 </template>
 
 <script setup lang="ts">
+import { ContentRendererMarkdown, NuxtImg, NuxtLink } from "#components";
 import { computed } from "vue";
-const props = defineProps(["post", "height"]);
+const props = defineProps({
+	post: {
+		type: Object,
+		required: true,
+	},
+	height: {
+		type: String,
+		default: "",
+	},
+});
 
 const postUrl = computed(() => props.post._path + "?utm_medium=blog-index");
 const date = computed(() =>

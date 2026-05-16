@@ -48,35 +48,36 @@
 	</section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from "vue";
 
-const props = defineProps({
-	url: String,
-	postTitle: String,
-});
+const props = defineProps<{
+	url: string;
+	postTitle: string;
+}>();
 
-const osShareEnabled = process.client && navigator.share;
+const osShareEnabled = import.meta.client && navigator.share;
 
-function serializeObject(obj) {
+function serializeObject(obj: Record<string, string>) {
 	return Object.keys(obj)
 		.reduce((a, k) => {
-			a.push(k + "=" + encodeURIComponent(obj[k]));
+			a.push(k + "=" + encodeURIComponent(obj[k]!));
 			return a;
-		}, [])
+		}, [] as string[])
 		.join("&");
 }
 
-function openModal(e) {
+function openModal(e: MouseEvent) {
 	e.preventDefault();
 	window.open(
+		// @ts-expect-error FIXME: legacy code
 		e.target.href,
 		"sharer",
 		"toolbar=0,status=0,width=580,height=325",
 	);
 }
 
-function nativeShare(e) {
+function nativeShare(e: MouseEvent) {
 	e.preventDefault();
 	const { url, postTitle } = props;
 

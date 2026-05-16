@@ -5,8 +5,9 @@
 			multiline: isMultiline,
 		}"
 	>
-		<span v-if="filename" class="filename">{{ filename }}</span>
-		{{}}
+		<span v-if="filename" class="filename">
+			{{ filename }}
+		</span>
 		<slot />
 	</div>
 </template>
@@ -14,18 +15,18 @@
 <script setup lang="ts">
 const props = withDefaults(
 	defineProps<{
-		code?: string
-		language?: string | null
-		filename?: string | null
-		highlights?: Array<number>
-		meta?: string | null
+		code?: string;
+		language?: string | null;
+		filename?: string | null;
+		highlights?: Array<number>;
+		meta?: string | null;
 	}>(),
-	{ code: '', language: '', filename: null, highlights: () => [], meta: null }
-)
+	{ code: "", language: "", filename: null, highlights: () => [], meta: null },
+);
 
 const isMultiline = computed(
-	() => props.code.split('\n').filter(Boolean).length > 1
-)
+	() => props.code.split("\n").filter(Boolean).length > 1,
+);
 </script>
 
 <style lang="scss" scoped>

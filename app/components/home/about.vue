@@ -47,29 +47,29 @@
 				<p class="mt-4">
 					From Paris to Montréal, I've worked in several nice places. Both
 					Companies and agencies, such as:
-					<cExternal href="https://agence-me.com" @click="trackLinkClick"
-						><i>AgenceMe</i></cExternal
-					>
+					<cExternal href="https://agence-me.com" @click="trackLinkClick">
+						<i>AgenceMe</i>
+					</cExternal>
 					,
-					<cExternal href="https://sketchfab.com" @click="trackLinkClick"
-						><i>Sketchfab</i></cExternal
-					>
+					<cExternal href="https://sketchfab.com" @click="trackLinkClick">
+						<i>Sketchfab</i>
+					</cExternal>
 					,
-					<cExternal href="https://akufen.ca" @click="trackLinkClick"
-						><i>Akufen Studio</i></cExternal
-					>
+					<cExternal href="https://akufen.ca" @click="trackLinkClick">
+						<i>Akufen Studio</i>
+					</cExternal>
 					,
-					<cExternal href="https://hki.paris" @click="trackLinkClick"
-						><i>HelloHikimori</i></cExternal
-					>
+					<cExternal href="https://hki.paris" @click="trackLinkClick">
+						<i>HelloHikimori</i>
+					</cExternal>
 					,
-					<cExternal href="https://colorz.fr" @click="trackLinkClick"
-						><i>Colorz</i></cExternal
-					>
+					<cExternal href="https://colorz.fr" @click="trackLinkClick">
+						<i>Colorz</i>
+					</cExternal>
 					, and
-					<cExternal href="https://www.leetchi.com/" @click="trackLinkClick"
-						><i>Leetchi</i></cExternal
-					>
+					<cExternal href="https://www.leetchi.com/" @click="trackLinkClick">
+						<i>Leetchi</i>
+					</cExternal>
 					.
 				</p>
 
@@ -126,6 +126,7 @@
 </template>
 
 <script setup lang="ts">
+import { NuxtPicture } from "#components";
 import cExternal from "@/components/common/external.vue";
 import type { VueInstance } from "@vueuse/core";
 import { AnalyticsService } from "~/src/services/AnalyticsService";

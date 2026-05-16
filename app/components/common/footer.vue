@@ -3,7 +3,7 @@
 		<div
 			v-if="variant === 'default'"
 			class="border w-full border-black border-opacity-25 mb-5 sm:mb-10"
-		></div>
+		/>
 		<BrandedDivider v-else />
 
 		<h4 class="landing-title" v-if="variant !== 'branded-minimal'">
@@ -15,14 +15,14 @@
 			>
 				<!-- Links -->
 				<li v-if="$route.path !== '/'" class="md:mr-5" data-type="website">
-					<nuxt-link
+					<NuxtLink
 						class="underline-effect--hover inline-block"
 						to="/"
 						@click="trackLinkClick"
 						data-linkz-ai-ignore
 					>
 						Portfolio.
-					</nuxt-link>
+					</NuxtLink>
 				</li>
 				<li class="md:mr-5" data-type="twitter">
 					<cExternal
@@ -87,7 +87,9 @@
 </template>
 
 <script setup lang="ts">
+import BrandedDivider from "@/components/BrandedDivider.vue";
 import cExternal from "@/components/common/external.vue";
+import { NuxtLink } from "#components";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 withDefaults(

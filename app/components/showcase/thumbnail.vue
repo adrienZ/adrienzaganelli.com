@@ -16,6 +16,5 @@ defineProps({
 		type: Object,
 		default: () => ({}),
 	},
-	index: Number,
 });
 </script>

@@ -85,9 +85,7 @@ function close() {
 			v-show="state.isOpen"
 			class="h-full w-full flex align-items-center justify-center"
 		>
-			<div
-				class="h-full w-full bg-black opacity-75 absolute top-0 left-0"
-			></div>
+			<div class="h-full w-full bg-black opacity-75 absolute top-0 left-0" />
 
 			<cMedia
 				ref="media"

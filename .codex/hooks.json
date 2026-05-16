@@ -11,19 +11,6 @@
 					}
 				]
 			}
-		],
-		"PostToolUse": [
-			{
-				"matcher": "Edit|Write",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "pnpm run format",
-						"statusMessage": "Running format",
-						"timeout": 120
-					}
-				]
-			}
 		]
 	}
 }

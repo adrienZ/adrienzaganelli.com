@@ -25,6 +25,7 @@ function isNuxt() {
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AnalyticsService {
 	static trackEvent<
 		EventName extends keyof IAnalyticsEvents,

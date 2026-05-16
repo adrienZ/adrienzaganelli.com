@@ -9,7 +9,7 @@
 		playsinline
 		loop
 		:src="src"
-	></video>
+	/>
 	<NuxtImg
 		v-else-if="type === 'image'"
 		:type="type"
@@ -21,5 +21,9 @@
 </template>
 
 <script lang="ts" setup>
-defineProps(["type", "src"]);
+import { NuxtImg } from "#components";
+defineProps<{
+	type: string;
+	src: string;
+}>();
 </script>

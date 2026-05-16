@@ -4,33 +4,35 @@
 		@mouseenter="handleMouseEnter"
 		@mouseout="handleMouseOut"
 		@click="handleClick(refinedSrc, 'image')"
-		>
-			<ImageWithSizes
-				:src="refinedSrc"
-				:alt="alt"
-				:width="width"
-				:height="height"
-				loading="lazy"
-				quality="80"
-				ho="mate"
-			/>
+	>
+		<ImageWithSizes
+			:src="refinedSrc"
+			:alt="alt"
+			:width="width"
+			:height="height"
+			loading="lazy"
+			quality="80"
+			ho="mate"
+		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-import { withBase } from 'ufo'
-import { useRuntimeConfig, computed } from '#imports'
+// import ImageWithSizes from "@/components/imageWithSizes.server.vue";
+import { withBase } from "ufo";
+import { useRuntimeConfig, computed } from "#imports";
+import ImageWithSizes from "@/components/imageWithSizes.server.vue";
 
-const { handleMouseEnter, handleMouseOut, handleClick } = useImageModalEvents()
+const { handleMouseEnter, handleMouseOut, handleClick } = useImageModalEvents();
 
 const props = defineProps({
 	src: {
 		type: String,
-		default: '',
+		default: "",
 	},
 	alt: {
 		type: String,
-		default: '',
+		default: "",
 	},
 	width: {
 		type: [String, Number],
@@ -40,16 +42,16 @@ const props = defineProps({
 		type: [String, Number],
 		default: undefined,
 	},
-})
+});
 
 // url generation for image-modale.vue
-const img = useImage()
-img.getImage(props.src)
+const img = useImage();
+img.getImage(props.src);
 
 const refinedSrc = computed(() => {
-	if (props.src?.startsWith('/') && !props.src.startsWith('//')) {
-		return withBase(props.src, useRuntimeConfig().app.baseURL)
+	if (props.src?.startsWith("/") && !props.src.startsWith("//")) {
+		return withBase(props.src, useRuntimeConfig().app.baseURL);
 	}
-	return props.src
-})
+	return props.src;
+});
 </script>

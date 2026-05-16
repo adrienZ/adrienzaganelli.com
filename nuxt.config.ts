@@ -5,16 +5,21 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
+	components: {
+		// disable auto-import for components
+		dirs: [],
+	},
+
 	modules: [
 		"@nuxtjs/tailwindcss",
 		"@nuxt/image",
 		"@nuxt/content",
 		"@nuxtjs/google-fonts",
-		"@nuxt/icon",
-		// weird but needed for devtools to work
+		"@nuxt/icon", // weird but needed for devtools to work
 		"@nuxt/devtools",
 		"@nuxt/scripts",
 		"nuxt-umami",
+		"@nuxt/eslint",
 	],
 
 	nitro: {

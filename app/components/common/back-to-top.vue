@@ -16,14 +16,14 @@
 import gsap from "gsap";
 
 export default {
-	beforeMount() {
-		this.reducedMotion = !!window.matchMedia("(prefers-reduced-motion: reduce)")
-			.matches.length;
-	},
 	data() {
 		return {
 			hidden: true,
 		};
+	},
+	beforeMount() {
+		this.reducedMotion = !!window.matchMedia("(prefers-reduced-motion: reduce)")
+			.matches.length;
 	},
 	methods: {
 		show() {

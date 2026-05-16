@@ -2,15 +2,8 @@
 	<div
 		:style="'--scale:' + smoothProgress.value"
 		class="ProgressBar fixed z-50 origin-left left-0 top-0 h-2 w-full bg-pimper"
-	></div>
+	/>
 </template>
-
-<style scoped>
-.ProgressBar {
-	--scale: 0;
-	transform: scaleX(var(--scale));
-}
-</style>
 
 <script setup>
 import gsap from "gsap";
@@ -42,3 +35,10 @@ watch(
 	},
 );
 </script>
+
+<style scoped>
+.ProgressBar {
+	--scale: 0;
+	transform: scaleX(var(--scale));
+}
+</style>

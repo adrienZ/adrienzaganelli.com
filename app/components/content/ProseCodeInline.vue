@@ -6,8 +6,8 @@
 
 <script setup lang="ts">
 defineProps<{
-	language?: string | null
-}>()
+	language?: string | null;
+}>();
 </script>
 
 <style lang="scss" scoped>

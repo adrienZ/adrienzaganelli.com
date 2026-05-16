@@ -5,7 +5,7 @@
 			:key="index"
 			v-for="(p, index) in projects"
 		>
-			<nuxt-link
+			<NuxtLink
 				@mouseleave="$bus.emit('cursor-default')"
 				@focus="onFocus($event, p, index)"
 				@mouseover="onHover($event, p, index)"
@@ -24,20 +24,25 @@
 						</span>
 					</h2>
 				</div>
-			</nuxt-link>
+			</NuxtLink>
 		</li>
 	</ul>
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from "#components";
 import { reactive } from "vue";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Project = any;
+
 const { $bus } = useNuxtApp();
 const emit = defineEmits<{
-	(event: "update", value: [any, number]): void;
+	(event: "update", value: [Project, number]): void;
 }>();
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 const useTimer = (duration: number, callback: Function) => {
 	const interval = window.setTimeout(callback, duration);
 
@@ -60,7 +65,7 @@ const state = reactive({
 	currentIndex: 0,
 });
 
-function update(e: Event, project: any, index: number) {
+function update(e: Event, project: Project, index: number) {
 	const item = e.currentTarget;
 
 	// dont emit if already active
@@ -87,7 +92,7 @@ function onHover(e: MouseEvent, project, index: number) {
 	update(e, project, index);
 }
 
-function onFocus(e: FocusEvent, project: any, index: number) {
+function onFocus(e: FocusEvent, project: Project, index: number) {
 	update(e, project, index);
 }
 

@@ -22,3 +22,8 @@
 		</div>
 	</section>
 </template>
+
+<script setup lang="ts">
+import { NuxtImg } from "#components";
+import MyNetworks from "@/components/my-networks.server.vue";
+</script>

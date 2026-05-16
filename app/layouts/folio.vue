@@ -1,11 +1,14 @@
 <template>
 	<Container variant="largest">
-		<Menu container-variant="home" class="my-4" />
+		<Menu containerVariant="home" class="my-4" />
 		<slot />
 	</Container>
 </template>
 
 <script setup lang="ts">
+import Container from "@/components/Container.vue";
+import Menu from "@/components/Menu.vue";
+
 useHeadSafe({
 	meta: [
 		{

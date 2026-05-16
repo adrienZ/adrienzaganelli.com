@@ -19,6 +19,6 @@ useHead({
 });
 
 onMounted(() => {
-	window.twttr?.widgets.load()
-})
+	window.twttr?.widgets.load();
+});
 </script>

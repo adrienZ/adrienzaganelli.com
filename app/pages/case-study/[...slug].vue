@@ -65,14 +65,14 @@
 						</div>
 
 						<div class="mt-2 hidden sm:block">
-							<nuxt-link
+							<NuxtLink
 								@mouseover="$bus.emit('cursor-hover')"
 								@mouseleave="$bus.emit('cursor-default')"
 								class="font-semibold underline"
 								to="/"
 							>
 								Back to Home
-							</nuxt-link>
+							</NuxtLink>
 						</div>
 					</div>
 				</aside>
@@ -97,6 +97,9 @@
 </template>
 
 <script setup lang="ts">
+import { ContentRenderer, NuxtLink } from "#components";
+import Container from "@/components/Container.vue";
+import FancyCursor from "@/components/FancyCursor.vue";
 import cNextProject from "@/components/project/next-project.vue";
 import cBackToTop from "@/components/common/back-to-top.vue";
 import cFooter from "@/components/common/footer.vue";
@@ -197,7 +200,7 @@ onMounted(() => {
 	window.addEventListener("scroll", handleBackToTop);
 });
 
-const backToTop = ref<InstanceType<typeof cBackToTop>>();
+const backToTop = useTemplateRef("backToTop");
 
 onUnmounted(() => {
 	titleEffect.disconnect();
@@ -205,10 +208,14 @@ onUnmounted(() => {
 });
 
 function handleBackToTop() {
+	if (!backToTop.value) return;
+
 	if (window.scrollY > 0) {
-		backToTop.value?.hidden && backToTop.value?.show();
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		backToTop.value.hidden && backToTop.value?.show();
 	} else {
-		!backToTop.value?.hidden && backToTop.value?.hide();
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		!backToTop.value.hidden && backToTop.value?.hide();
 	}
 }
 

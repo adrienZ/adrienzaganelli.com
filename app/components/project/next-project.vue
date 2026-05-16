@@ -1,8 +1,6 @@
 <template>
 	<section>
-		<div
-			class="border w-full border-black border-opacity-25 mb-5 sm:mb-10"
-		></div>
+		<div class="border w-full border-black border-opacity-25 mb-5 sm:mb-10" />
 
 		<div class="sm:flex sm:-mx-3">
 			<div class="md:w-1/3 sm:w-1/2 sm:px-3">
@@ -18,7 +16,9 @@
 						{{ title }}
 					</NuxtLink>
 				</p>
-				<p class="italic">{{ summary }}</p>
+				<p class="italic">
+					{{ summary }}
+				</p>
 			</div>
 
 			<div
@@ -41,6 +41,7 @@
 </template>
 
 <script lang="ts" setup>
+import { NuxtLink } from "#components";
 import cMedia from "@/components/showcase/media.vue";
 
 defineProps<{

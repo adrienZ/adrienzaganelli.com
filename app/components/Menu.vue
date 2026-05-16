@@ -5,23 +5,25 @@
 				<nav class="font-bold">
 					<ul class="flex gap-4 text-xl">
 						<li>
-							<NuxtLink to="/?utm_medium=main-menu" activeClass="text-pimper"
-								>Home</NuxtLink
-							>
+							<NuxtLink to="/?utm_medium=main-menu" activeClass="text-pimper">
+								Home
+							</NuxtLink>
 						</li>
 						<li>
 							<NuxtLink
 								to="/blog?utm_medium=main-menu"
 								activeClass="text-pimper"
-								>Blog</NuxtLink
 							>
+								Blog
+							</NuxtLink>
 						</li>
 						<li class="hidden md:block">
 							<NuxtLink
 								to="/tech-gems?utm_medium=main-menu"
 								activeClass="text-pimper"
-								>Tech gems</NuxtLink
 							>
+								Tech gems
+							</NuxtLink>
 						</li>
 					</ul>
 				</nav>
@@ -63,7 +65,9 @@
 </template>
 
 <script setup lang="ts">
+import { ClientOnly, Icon, NuxtLink } from "#components";
 import { useDark, useToggle } from "@vueuse/core";
+import Container from "@/components/Container.vue";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 defineProps<{

@@ -11,6 +11,8 @@
 </template>
 
 <script setup lang="ts">
+import Container from "@/components/Container.vue";
+import FancyCursor from "@/components/FancyCursor.vue";
 import cShowcase from "@/components/home/showcase.vue";
 import cHero from "@/components/home/hero.vue";
 import cAbout from "@/components/home/about.vue";

@@ -1,6 +1,6 @@
 // https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2
 
-import { serverQueryContent, parseContent } from "#content/server";
+import { serverQueryContent } from "#content/server";
 import RSS from "rss";
 
 export default defineEventHandler(async (event) => {

@@ -1,11 +1,12 @@
 <template>
+	<!-- eslint-disable vue/no-v-html -->
 	<section class="page-post">
 		<ContentDoc>
 			<template #not-found>
 				<h1 class="text-xl text-center font-bold">Document not found</h1>
 			</template>
 
-			<template v-slot="{ doc: post }">
+			<template #default="{ doc: post }">
 				<Head>
 					<Title>{{ post.title }}</Title>
 					<!-- <Meta name="description" :content="post.description" /> -->
@@ -29,9 +30,9 @@
 						</h1>
 
 						<h2 class="mb-8">
-							<NuxtLink class="text-pimper" to="/?utm_medium=blog-author"
-								>Adrien Zaganelli</NuxtLink
-							>
+							<NuxtLink class="text-pimper" to="/?utm_medium=blog-author">
+								Adrien Zaganelli
+							</NuxtLink>
 							-
 							<time :datetime="post.date">
 								{{
@@ -54,7 +55,7 @@
 								v-if="post.image.alt"
 								class="text-center mt-2 italic"
 								v-html="post.image.alt"
-							></figcaption>
+							/>
 						</figure>
 
 						<!-- Table of contents
@@ -76,7 +77,7 @@
 				<Container variant="blog">
 					<div
 						class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"
-					></div>
+					/>
 
 					<div>
 						<cSharePost
@@ -103,6 +104,17 @@
 </template>
 
 <script setup lang="ts">
+import {
+	ContentDoc,
+	ContentRendererMarkdown,
+	Head,
+	Meta,
+	NuxtImg,
+	NuxtLink,
+	Title,
+} from "#components";
+import Container from "@/components/Container.vue";
+import CAboutTheAuthor from "@/components/c-about-the-author.vue";
 import cHireMe from "@/components/c-hire-me.vue";
 import cSharePost from "@/components/c-share-post.vue";
 import cFooter from "@/components/common/footer.vue";
@@ -137,8 +149,10 @@ function onScroll() {
 
 	// handle backtop
 	if (window.scrollY > 0) {
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		back_to_top.value.hidden && back_to_top.value.show();
 	} else {
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		!back_to_top.value.hidden && back_to_top.value.hide();
 	}
 }

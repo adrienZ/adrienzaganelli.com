@@ -9,11 +9,11 @@
 		<div
 			ref="innerRef"
 			class="absolute w-full h-full rounded-full opacity-75 bg-pimper bg-opacity-75"
-		></div>
+		/>
 		<div
 			ref="outerRef"
 			class="absolute w-full h-full rounded-full opacity-75 border-2 border-pimper"
-		></div>
+		/>
 	</div>
 </template>
 

@@ -9,7 +9,7 @@
 				@update="onProjectChange"
 			/>
 
-			<nuxt-link
+			<NuxtLink
 				:to="data.url"
 				ref="media"
 				class="c-showcase__media absolute mt-2 sm:mt-0 hidden xl:sticky lg:inline-block flex-grow-0 flex-shrink-0 right-0 top-0"
@@ -19,13 +19,14 @@
 				aria-label="Showcase project preview"
 				data-linkz-ai-ignore
 			>
-				<cThumbnail :index="data.index" :media="data.media" />
-			</nuxt-link>
+				<cThumbnail :media="data.media" />
+			</NuxtLink>
 		</div>
 	</section>
 </template>
 
 <script setup lang="ts">
+import { NuxtLink } from "#components";
 // components
 import cThumbnail from "@/components/showcase/thumbnail.vue";
 import cList from "@/components/showcase/list.vue";
@@ -102,11 +103,13 @@ onMounted(() => {
 		projects.value.forEach((p) => {
 			switch (p.cover.type) {
 				case "image":
+					// eslint-disable-next-line no-case-declarations
 					const image = new Image();
 					image.crossOrigin = "anonymous";
 					image.src = p.cover.src;
 					break;
 				case "video":
+					// eslint-disable-next-line no-case-declarations
 					const video = document.createElement("video");
 					video.crossOrigin = "anonymous";
 					video.src = p.cover.src;
@@ -146,6 +149,7 @@ function onFrame() {
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function onProjectChange([project, index]: [any, number]) {
 	if (project._path === data.url) {
 		return false;
@@ -174,9 +178,12 @@ function onProjectChange([project, index]: [any, number]) {
 	tl.play();
 
 	Array.from(list.value?.$el.children).forEach((el, k) => {
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		k === index ? el.classList.add("active") : el.classList.remove("active");
 	});
 
+	//FIXME: legacy code
+	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 	list.value?.$el.children[index].class;
 }
 
@@ -203,33 +210,6 @@ function trackProjectClick(projectName: string) {
 		projectName,
 		isVisual: true,
 	});
-}
-
-function onProjectSelect(index: number) {
-	if (data.isLoading) return;
-
-	data.isLoading = true;
-
-	// const nextProject = this.$store.$state.projects[index]
-
-	const items = Array.from(list.value?.$el.querySelectorAll(".c-list__item"));
-
-	// hide all items expept selected
-	gsap.to(
-		items.filter((el, i) => i !== index),
-		{
-			autoAlpha: 0,
-			x: -30,
-			duration: 0.2,
-			stagger: 0.075,
-			onComplete: () => {
-				data.isLoading = false;
-				alert("redirect");
-				// this.$router.push('/case-study/' + nextProject.url)
-			},
-			ease: "power4.out",
-		},
-	);
 }
 </script>
 

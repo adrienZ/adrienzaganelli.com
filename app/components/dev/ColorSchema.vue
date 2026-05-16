@@ -3,7 +3,7 @@
 		ref="domRef"
 		class="fixed top-0 right-0 bg-slate-900 text-slate-100 z-50"
 	>
-		<tr v-for="(target, name) in targets">
+		<tr v-for="(target, name) in targets" :key="`${name}-${target}-color`">
 			<td>{{ name }} :</td>
 			<td>
 				<input
@@ -39,6 +39,7 @@ const handleChangeColor = (event: ColorEvent, target: keyof typeof targets) => {
 
 onMounted(() => {
 	targets["background-color"] = "";
+	// eslint-disable-next-line no-self-assign
 	targets["background-color"] = targets["background-color"];
 });
 </script>

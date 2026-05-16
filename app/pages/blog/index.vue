@@ -32,30 +32,10 @@
 	</Container>
 </template>
 
-<style lang="css" scoped>
-@keyframes enter {
-	from {
-		opacity: 0;
-		transform: translateY(2rem);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateY(0rem);
-	}
-}
-
-.list li {
-	opacity: 0;
-	animation-duration: 0.15s;
-	animation-timing-function: ease-out;
-	animation-delay: var(--delay);
-	animation-name: enter;
-	animation-fill-mode: forwards;
-}
-</style>
-
 <script setup lang="ts">
+import { NuxtLink } from "#components";
+import Container from "@/components/Container.vue";
+import BlogCard from "@/components/blog/card.vue";
 import cFooter from "@/components/common/footer.vue";
 import { techGemsQuery } from "~/lib/content/queries";
 
@@ -83,3 +63,26 @@ definePageMeta({
 	viewTransition: true,
 });
 </script>
+
+<style lang="css" scoped>
+@keyframes enter {
+	from {
+		opacity: 0;
+		transform: translateY(2rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0rem);
+	}
+}
+
+.list li {
+	opacity: 0;
+	animation-duration: 0.15s;
+	animation-timing-function: ease-out;
+	animation-delay: var(--delay);
+	animation-name: enter;
+	animation-fill-mode: forwards;
+}
+</style>

@@ -98,53 +98,16 @@
 			data-rellax-xs-speed="-3"
 			data-rellax-percentage="0.5"
 		>
-			<div class="circle size-full bg-light shadow-xl"></div>
-			<div class="circle size-3-4 bg-light shadow-lg"></div>
-			<div class="circle size-2-4 bg-light shadow-lg"></div>
-			<div class="circle size-1-4 bg-light shadow-md"></div>
+			<div class="circle size-full bg-light shadow-xl" />
+			<div class="circle size-3-4 bg-light shadow-lg" />
+			<div class="circle size-2-4 bg-light shadow-lg" />
+			<div class="circle size-1-4 bg-light shadow-md" />
 		</div>
 	</section>
 </template>
 
-<style lang="scss" scoped>
-@use "sass:math";
-.circle {
-	@apply rounded-full absolute;
-
-	&.size-full {
-		height: 100%;
-		top: 0;
-		left: 0;
-		width: 100%;
-	}
-
-	@for $i from 1 through 3 {
-		$ratio: math.div($i, 4);
-		&.size-#{$i}-4 {
-			$h: $ratio * 100%;
-			top: calc((100% - #{$h}) / 2);
-			left: calc((100% - #{$h}) / 2);
-			height: $h;
-			width: $h;
-		}
-	}
-}
-
-.bubble-1 {
-	position: absolute;
-	height: 50vw;
-	width: 50vw;
-	right: -25vw;
-	top: 30vw;
-
-	@screen md {
-		right: -15vw;
-		top: 0vw;
-	}
-}
-</style>
-
 <script setup lang="ts">
+import { Icon } from "#components";
 import gsap from "gsap";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
@@ -218,17 +181,17 @@ onMounted(() => {
 	bubbleEffect = new IntersectionObserver(([entry]) => {
 		if (entry.isIntersecting) {
 			tl.play();
-			(bubbleEffect?.disconnect(instance.$el),
-				gsap.fromTo(
-					bubble.value.children,
-					{ rotateZ: 0 },
-					{
-						rotateZ: 360,
-						duration: randomIntFromInterval(20, 40),
-						stagger: () => randomIntFromInterval(1, 15),
-						repeat: -1,
-					},
-				));
+			bubbleEffect?.disconnect(instance.$el);
+			gsap.fromTo(
+				bubble.value.children,
+				{ rotateZ: 0 },
+				{
+					rotateZ: 360,
+					duration: randomIntFromInterval(20, 40),
+					stagger: () => randomIntFromInterval(1, 15),
+					repeat: -1,
+				},
+			);
 		}
 	});
 
@@ -253,3 +216,41 @@ function trackLinkClick(event: MouseEvent) {
 	});
 }
 </script>
+
+<style lang="scss" scoped>
+@use "sass:math";
+.circle {
+	@apply rounded-full absolute;
+
+	&.size-full {
+		height: 100%;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	@for $i from 1 through 3 {
+		$ratio: math.div($i, 4);
+		&.size-#{$i}-4 {
+			$h: $ratio * 100%;
+			top: calc((100% - #{$h}) / 2);
+			left: calc((100% - #{$h}) / 2);
+			height: $h;
+			width: $h;
+		}
+	}
+}
+
+.bubble-1 {
+	position: absolute;
+	height: 50vw;
+	width: 50vw;
+	right: -25vw;
+	top: 30vw;
+
+	@screen md {
+		right: -15vw;
+		top: 0vw;
+	}
+}
+</style>
