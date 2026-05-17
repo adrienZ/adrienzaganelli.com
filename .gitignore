@@ -116,3 +116,7 @@ logs
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+
+.agents/skills
+.playwright-cli

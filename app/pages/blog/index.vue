@@ -44,6 +44,7 @@ const { data: posts } = await fetchContent(`content-blog`, () => {
 		.where({
 			$not: techGemsQuery,
 		})
+		.where({ draft: false })
 		.only(["title", "_path", "date", "image", "excerpt"])
 		.sort({ date: -1 })
 		.find();

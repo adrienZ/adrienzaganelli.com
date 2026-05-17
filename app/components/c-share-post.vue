@@ -2,14 +2,16 @@
 	<section class="sm:flex items-center">
 		<h4 class="landing-title title">Sharing is caring :</h4>
 		<div class="sm:flex">
-			<a
-				v-if="osShareEnabled"
-				href="#"
-				class="text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 border-pimper border-2 text-pimper font-bold py-2 px-4 rounded"
-				@click="nativeShare"
-			>
-				<span class="inline-block align-middle">Share this post</span>
-			</a>
+			<ClientOnly>
+				<a
+					v-if="osShareEnabled"
+					href="#"
+					class="text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 border-pimper border-2 text-pimper font-bold py-2 px-4 rounded"
+					@click="nativeShare"
+				>
+					<span class="inline-block align-middle">Share this post</span>
+				</a>
+			</ClientOnly>
 			<a
 				class="facebook text-center sm:text-left block sm:inline-block bg-gray-500 text-white font-bold py-2 px-4 rounded"
 				:class="{ 'sm:ml-4 mt-2 sm:mt-0': true }"
@@ -49,6 +51,7 @@
 </template>
 
 <script lang="ts" setup>
+import { ClientOnly } from "#components";
 import { computed } from "vue";
 
 const props = defineProps<{

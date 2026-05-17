@@ -114,16 +114,9 @@ In practice, each behavior becomes a small eval case:
 - some context, like the Vue version
 - a few rules that tell me whether the result is acceptable
 
-In order to keep this article short, you can find a concrete example on my Github, have a look ! <RichLink href="https://github.com/adrienZ/skill-development-demo" title="adrienZ/skill-development-demo"></RichLink>
+In order to keep this article short, you can find a concrete example on my Github, have a look !
 
-## Conclusion
-
-Creating a skill can make a big difference in your everyday life, but they are "just" text and the ouput of you LLM can vary.
-
-As developer we have tools to make this better
-- standard: Open agent skill
-- "linters": skill-ref, skill-validator
-- unit-test: evals
+<RichLink aria-hidden="true" href="https://github.com/adrienZ/skill-development-demo" title="adrienZ/skill-development-demo"></RichLink>
 
 To be honest, my knowledge on evals is quite new, there is things to improve, A/B testing and model temperature could be good way to make a skill more reliable. Current evals systems are also not as structured as traditional unit tests are, this may change in the future !
 
@@ -131,3 +124,25 @@ If you want to learn more about evals, here some references from people who know
 - https://platform.claude.com/docs/en/test-and-evaluate/eval-tool
 - https://agentskills.io/skill-creation/evaluating-skills
 - https://developers.openai.com/blog/eval-skills
+
+## Share it with the world
+
+Your skill is now well written, validated and tested, how can you easily share it with your colleagues ?
+
+Vercel created a skill registry called [skills.sh](https://www.skills.sh/). As per npm, it allows you to publish, audit, browse and install skills. It uses a `skills-lock.json` to easily setup your projects.
+
+<RichLink href="https://www.skills.sh" title=""></RichLink>
+
+If you work in private codebase, you can use any github url or filesystem path.
+
+## Conclusion
+
+Creating a skill can make a big difference in your everyday life, but they are "just" text and the ouput of you LLM can vary.
+
+As developer we have tools to make this better:
+- standard: Open agent skill
+- "linters": skill-ref, skill-validator
+- unit-test: evals
+- registry: similarly than npm, we have skills.sh
+
+In other words: **treat your skills like code.**

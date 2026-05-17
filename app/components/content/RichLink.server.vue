@@ -35,10 +35,6 @@
 						</div>
 					</div>
 					<div class="w-1/2 border-l border-light p-4">
-						<!-- <div class="flex items-center">
-              <img v-if="data.favicon" class="w-4 h-4 object-cover block !mx-0 !mr-1" :src="data.favicon" />
-              <div class="text-xs">{{ data.siteName }}</div>
-            </div> -->
 						<div class="line-clamp-2 text-sm font-bold">{{ data.title }}</div>
 						<div class="text-xs line-clamp-3 mt-2">{{ data.description }}</div>
 					</div>
