@@ -31,7 +31,7 @@ Here are the main things to remember:
 
 ## Writing your own skill
 
-Let's create our first skill ! I want to create a skill to enforce the usage of the recent [useTemplateRef](https://vuejs.org/api/composition-api-helpers.html#usetemplateref) in Vue.js instead of the generic `ref` primitive.
+Let's create our first skill ! I want to create a skill to enforce the usage of the recent [useTemplateRef](https://vuejs.org/api/composition-api-helpers.html#usetemplateref) in Vue.js instead of the generic `ref` primitive. useTemplateRef infers the type and matches the element from the `<template>` automatically, very useful !
 
 The good thing about creating a skill is that you can get help from... well, MORE skills ! [Anthropic](https://github.com/anthropics/skills/tree/main/skills/skill-creator) and [OpenAI](https://github.com/openai/skills/tree/main/skills/.system/skill-creator) even provides their own !
 
