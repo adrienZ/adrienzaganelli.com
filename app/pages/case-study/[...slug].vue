@@ -79,7 +79,7 @@
 			</div>
 
 			<cNextProject
-				v-if="nextProject"
+				v-if="nextProject && nextProject.title"
 				class="mt-5 sm:mt-16"
 				:mediaType="nextProject.cover.type"
 				:mediaUrl="nextProject.cover.src"
