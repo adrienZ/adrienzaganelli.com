@@ -118,9 +118,9 @@ It also catches situations where:
 - a plugin registration changed
 - a directive name was copied from another app and never actually existed here
 
-## 5. `vue/no-unused-emit-declarations`
+## 5. [`vue/no-unused-emit-declarations`](https://eslint.vuejs.org/rules/no-unused-emit-declarations.html)
 
-Typescript can spot unused const or function, but not unused event in a component, this can lead to a lot of deadcode if the handlers are kept (and it happens a lot with agentic coding).
+Typescript can spot unused const or function, but not unused event in a component, this can lead to a lot of dead code if the handlers are kept (and it happens a lot with agentic coding).
 
 ```ts
 const emit = defineEmits<{
