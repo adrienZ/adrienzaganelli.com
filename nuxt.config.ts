@@ -7,7 +7,13 @@ export default defineNuxtConfig({
 
 	components: {
 		// disable auto-import for components
-		dirs: [],
+		dirs: [
+			{
+				// nuxt needs to scan server components to do the magic
+				path: "~/components",
+				pattern: "**/*.server.vue",
+			},
+		],
 	},
 
 	modules: [
@@ -134,17 +140,5 @@ export default defineNuxtConfig({
 		componentIslands: true,
 		typedPages: true,
 		viewTransition: true,
-	},
-
-	// https://x.com/__teena_/status/1837505603322708040
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					// use sass-embedded
-					api: "modern-compiler",
-				},
-			},
-		},
 	},
 });

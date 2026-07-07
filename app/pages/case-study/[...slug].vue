@@ -122,7 +122,7 @@ useHead({
               }
           }, 10);
         `,
-			body: true,
+			tagPosition: "bodyClose",
 			type: "text/javascript",
 		},
 	],

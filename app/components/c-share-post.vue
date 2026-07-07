@@ -15,7 +15,7 @@
 			<a
 				class="facebook text-center sm:text-left block sm:inline-block bg-gray-500 text-white font-bold py-2 px-4 rounded"
 				:class="{ 'sm:ml-4 mt-2 sm:mt-0': true }"
-				@click="openModal"
+				@click.prevent="openModal(facebookShareUrl)"
 				:href="facebookShareUrl"
 				target="_blank"
 			>
@@ -26,7 +26,7 @@
 			</a>
 			<a
 				class="twitter text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 bg-gray-500 text-white font-bold py-2 px-4 rounded"
-				@click="openModal"
+				@click.prevent="openModal(TwitterShareUrl)"
 				:href="TwitterShareUrl"
 				target="_blank"
 			>
@@ -37,7 +37,7 @@
 			</a>
 			<a
 				class="linkedin text-center sm:text-left block sm:inline-block sm:ml-4 mt-2 sm:mt-0 bg-gray-500 text-white font-bold py-2 px-4 rounded"
-				@click="openModal"
+				@click.prevent="openModal(LinkedinShareUrl)"
 				:href="LinkedinShareUrl"
 				target="_blank"
 			>
@@ -70,14 +70,8 @@ function serializeObject(obj: Record<string, string>) {
 		.join("&");
 }
 
-function openModal(e: MouseEvent) {
-	e.preventDefault();
-	window.open(
-		// @ts-expect-error FIXME: legacy code
-		e.target.href,
-		"sharer",
-		"toolbar=0,status=0,width=580,height=325",
-	);
+function openModal(targetUrl: string) {
+	window.open(targetUrl, "sharer", "toolbar=0,status=0,width=580,height=325");
 }
 
 function nativeShare(e: MouseEvent) {

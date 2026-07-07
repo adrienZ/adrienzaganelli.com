@@ -8,20 +8,17 @@
 		<ImageWithSizes
 			:src="refinedSrc"
 			:alt="alt"
-			:width="width"
-			:height="height"
-			loading="lazy"
 			quality="80"
-			ho="mate"
+			loading="lazy"
+			v-bind="sizeProps"
 		/>
 	</div>
 </template>
 
 <script setup lang="ts">
-// import ImageWithSizes from "@/components/imageWithSizes.server.vue";
 import { withBase } from "ufo";
 import { useRuntimeConfig, computed } from "#imports";
-import ImageWithSizes from "@/components/imageWithSizes.server.vue";
+import { ImageWithSizes } from "#components"; // import from #components to use Nuxt internal compilation
 
 const { handleMouseEnter, handleMouseOut, handleClick } = useImageModalEvents();
 
@@ -54,4 +51,9 @@ const refinedSrc = computed(() => {
 	}
 	return props.src;
 });
+
+const sizeProps = computed(() => ({
+	...(props.width !== undefined ? { width: props.width } : {}),
+	...(props.height !== undefined ? { height: props.height } : {}),
+}));
 </script>
