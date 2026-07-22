@@ -1,6 +1,7 @@
 <template>
 	<ul class="c-list font-semibold">
 		<li
+			ref="items"
 			class="c-list__item text-left mb-3 sm:mb-6"
 			:key="index"
 			v-for="(p, index) in projects"
@@ -38,16 +39,20 @@ import { AnalyticsService } from "~/src/services/AnalyticsService";
 type Project = any;
 
 const { $bus } = useNuxtApp();
+const items = useTemplateRef("items");
 const emit = defineEmits<{
 	(event: "update", value: [Project, number]): void;
 }>();
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-const useTimer = (duration: number, callback: Function) => {
-	const interval = window.setTimeout(callback, duration);
+defineExpose({
+	getItemElements: () => items.value ?? [],
+});
+
+const useTimer = (duration: number, callback: () => void) => {
+	const interval = setTimeout(callback, duration);
 
 	return {
-		reset: () => window.clearTimeout(interval),
+		reset: () => clearTimeout(interval),
 	};
 };
 

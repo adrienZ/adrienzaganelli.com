@@ -35,6 +35,12 @@ import cList from "@/components/showcase/list.vue";
 import gsap from "gsap";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
+type ShowcaseProject = {
+	_path: string;
+	title: string;
+	cover: unknown;
+};
+
 const instance = getCurrentInstance()!.proxy!;
 const { $mouse } = useMouse();
 
@@ -44,7 +50,7 @@ const { data: projects } = await fetchContent(`showcase-projects`, () => {
 
 const title = ref<HTMLHeadingElement | null>(null);
 const media = ref<ComponentPublicInstance | null>(null);
-const list = ref<InstanceType<typeof cList> | null>(null);
+const list = useTemplateRef("list");
 
 const data = reactive({
 	...useAppConfig(),
@@ -78,7 +84,7 @@ onMounted(() => {
 		0.2,
 	);
 	tl.fromTo(
-		list.value?.$el.children,
+		list.value?.getItemElements(),
 		{ opacity: 0, y: 10 },
 		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
 		0.2,
@@ -149,8 +155,7 @@ function onFrame() {
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function onProjectChange([project, index]: [any, number]) {
+function onProjectChange([project, index]: [ShowcaseProject, number]) {
 	if (project._path === data.url) {
 		return false;
 	}
@@ -177,14 +182,10 @@ function onProjectChange([project, index]: [any, number]) {
 	});
 	tl.play();
 
-	Array.from(list.value?.$el.children).forEach((el, k) => {
+	list.value?.getItemElements().forEach((el, k) => {
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		k === index ? el.classList.add("active") : el.classList.remove("active");
 	});
-
-	//FIXME: legacy code
-	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-	list.value?.$el.children[index].class;
 }
 
 function followMouse() {
