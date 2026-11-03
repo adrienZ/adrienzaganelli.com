@@ -20,7 +20,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/tailwindcss",
 		"@nuxt/image",
 		"@nuxt/content",
-		"@nuxtjs/google-fonts",
+		"@nuxt/fonts",
 		"@nuxt/icon", // weird but needed for devtools to work
 		"@nuxt/devtools",
 		"@nuxt/scripts",
@@ -123,16 +123,17 @@ export default defineNuxtConfig({
 		},
 	},
 
-	googleFonts: {
-		families: {
-			Lora: {
-				wght: [700],
-				ital: [600],
+	fonts: {
+		families: [
+			{ name: "Lora", provider: "google", weights: [700], styles: ["normal"] },
+			{ name: "Lora", provider: "google", weights: [600], styles: ["italic"] },
+			{
+				name: "IBM Plex Sans",
+				provider: "google",
+				weights: [400, 600, 700],
+				styles: ["normal"],
 			},
-			"IBM+Plex+Sans": {
-				wght: [400, 600, 700],
-			},
-		},
+		],
 	},
 
 	experimental: {
