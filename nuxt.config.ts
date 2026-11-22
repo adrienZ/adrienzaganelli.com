@@ -150,17 +150,6 @@ export default defineNuxtConfig({
 		],
 	},
 
-	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					// Vite 8 no longer resolves bare package imports in sass
-					loadPaths: ["node_modules"],
-				},
-			},
-		},
-	},
-
 	experimental: {
 		componentIslands: true,
 		prerenderErrorPages: true,

@@ -1,5 +1,4 @@
 <template>
-	<!-- eslint-disable vue/no-v-html -->
 	<section class="page-post">
 		<template v-if="post">
 			<Head>
@@ -46,11 +45,13 @@
 							:src="post.image.src"
 							:alt="post.image.alt"
 						/>
+						<!-- eslint-disable vue/no-v-html -->
 						<figcaption
 							v-if="post.image.alt"
 							class="text-center mt-2 italic"
 							v-html="post.image.alt"
 						/>
+						<!-- eslint-enable vue/no-v-html -->
 					</figure>
 
 					<!-- Table of contents

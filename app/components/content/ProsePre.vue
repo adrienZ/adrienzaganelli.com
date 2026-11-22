@@ -8,11 +8,13 @@
 		<span v-if="filename" class="filename">
 			{{ filename }}
 		</span>
-		<slot />
+		<pre :class="$attrs.class"><slot /></pre>
 	</div>
 </template>
 
 <script setup lang="ts">
+defineOptions({ inheritAttrs: false });
+
 const props = withDefaults(
 	defineProps<{
 		code?: string;
@@ -68,7 +70,7 @@ const isMultiline = computed(
 	opacity: 0.35;
 }
 
-:slotted(pre) {
+pre {
 	overflow: auto;
 }
 </style>
