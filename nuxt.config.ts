@@ -10,7 +10,6 @@ export default defineNuxtConfig({
 	},
 
 	components: {
-		// disable auto-import for components
 		dirs: [
 			{
 				// nuxt needs to scan server components to do the magic
