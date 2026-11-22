@@ -1,23 +1,9 @@
 <template>
 	<Container variant="blog">
-		<aside class="bg-surface p-4 rounded">
-			<NuxtLink
-				class="inline-block bg-black text-surface px-3 py-1 rounded-sm font-semibold text mt-2"
-				to="/tech-gems?utm_medium=blog-index"
-			>
-				Tech gems 👁️ &rarr;
-			</NuxtLink>
-			<div class="italic mt-1">
-				Weekly insiders informations from the Javascript industry
-			</div>
-		</aside>
-
-		<header>
-			<h2 class="text-5xl font-semibold my-2">Last articles</h2>
-		</header>
+		<c-page-header title="Last articles ✏️" />
 
 		<main>
-			<ul class="list flex flex-wrap mx-0 md:-mx-5 mb-10">
+			<ul class="list flex flex-wrap mx-0 md:-mx-5 -mt-6 mb-10">
 				<li
 					v-for="(post, index) in posts"
 					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
@@ -28,6 +14,18 @@
 				</li>
 			</ul>
 		</main>
+
+		<aside v-if="false" class="bg-surface p-4 rounded">
+			<NuxtLink
+				class="inline-block bg-black text-surface px-3 py-1 rounded-sm font-semibold text mt-2"
+				to="/tech-gems?utm_medium=blog-index"
+			>
+				Tech gems 👁️ &rarr;
+			</NuxtLink>
+			<div class="italic mt-1">
+				Weekly insiders informations from the Javascript industry
+			</div>
+		</aside>
 		<c-footer class="sm:mt-20 mt-10" />
 	</Container>
 </template>
@@ -37,6 +35,7 @@ import { NuxtLink } from "#components";
 import Container from "@/components/Container.vue";
 import BlogCard from "@/components/blog/card.vue";
 import cFooter from "@/components/common/footer.vue";
+import cPageHeader from "@/components/common/page-header.vue";
 import { techGemsQuery } from "~/lib/content/queries";
 
 const { data: posts } = await fetchContent(`content-blog`, () => {

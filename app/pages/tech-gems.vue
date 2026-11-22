@@ -1,8 +1,6 @@
 <template>
 	<Container variant="blog" class="min-h-[100dvh]">
-		<header>
-			<h2 class="text-3xl font-semibold mb-8">Tech gems 👁️</h2>
-		</header>
+		<c-page-header title="Tech gems 👁️" />
 		<main class="min-h-full">
 			<ul class="space-y-2 md:space-y-2 list">
 				<li
@@ -45,6 +43,7 @@
 import { NuxtLink } from "#components";
 import Container from "@/components/Container.vue";
 import cFooter from "@/components/common/footer.vue";
+import cPageHeader from "@/components/common/page-header.vue";
 import { techGemsQuery } from "~/lib/content/queries";
 
 const { data: posts } = await fetchContent(`content-blog`, () => {
