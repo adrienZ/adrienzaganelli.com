@@ -39,6 +39,13 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 	],
 
+	routeRules: {
+		// cache url previews to speed up build and avoid spam of sources
+		"/api/prerender/rich-url": {
+			cache: { maxAge: 60 * 60 * 24 * 7 * 8 /* 8 weeks */, name: "rich-links" },
+		},
+	},
+
 	nitro: {
 		prerender: {
 			crawlLinks: true,
