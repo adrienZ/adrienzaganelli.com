@@ -1,6 +1,8 @@
 // https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2
 
+import { queryCollection } from "@nuxt/content/nitro";
 import RSS from "rss";
+import { defineEventHandler } from "nuxt/server";
 
 export default defineEventHandler(async (event) => {
 	const feed = new RSS({
@@ -27,6 +29,6 @@ export default defineEventHandler(async (event) => {
 	}
 
 	const feedString = feed.xml({ indent: true });
-	event.res.setHeader("content-type", "text/xml");
-	event.res.end(feedString);
+	event.res.headers.set("content-type", "text/xml");
+	return feedString;
 });

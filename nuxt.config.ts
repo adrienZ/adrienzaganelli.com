@@ -73,7 +73,6 @@ export default defineNuxtConfig({
 
 	content: {
 		experimental: {
-			// node:sqlite (Node >= 22.5) instead of the native better-sqlite3 module
 			sqliteConnector: "native",
 		},
 		build: {
@@ -164,8 +163,6 @@ export default defineNuxtConfig({
 
 	experimental: {
 		componentIslands: true,
-		// @nuxt/image and server/ still rely on nitro auto-imports
-		nitroAutoImports: true,
 		prerenderErrorPages: true,
 		viewTransition: true,
 	},
