@@ -8,7 +8,7 @@
 		"format": "oxfmt",
 		"format:check": "oxfmt --check",
 		"lint": "eslint .",
-		"typecheck": "nuxt typecheck",
+		"typecheck": "nuxt typecheck --checker=golar",
 		"check": "run-s format:check lint",
 		"generate": "nuxt build --prerender --dotenv .env.dev",
 		"prod": "nuxt build --prerender --dotenv .env.prod",
@@ -32,6 +32,7 @@
 		"rellax": "^1.12.1"
 	},
 	"devDependencies": {
+		"@golar/vue": "^0.1.11",
 		"@nuxt/content": "^2.13.4",
 		"@nuxt/devtools": "4.0.0-alpha.4",
 		"@nuxt/eslint": "1.16.0",
@@ -44,22 +45,23 @@
 		"@types/node": "^24.12.2",
 		"@types/rellax": "^1.7.8",
 		"@types/rss": "^0.0.32",
+		"golar": "^0.1.11",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.0.8",
 		"npm-run-all2": "^8.0.4",
-		"nuxt": "^4.4.8",
+		"nuxt": "^4.6.4",
 		"nuxt-umami": "^3.2.1",
 		"oxfmt": "^0.58.0",
 		"rss": "^1.2.2",
 		"sass-easing": "^1.0.3",
-		"typescript": "^5",
+		"typescript": "^5.8.3",
 		"vue-tsc": "^3.3.14"
 	},
 	"lint-staged": {
 		"**/*": "oxfmt --no-error-on-unmatched-pattern"
 	},
 	"engines": {
-		"node": "24.11.0"
+		"node": "24.15.0"
 	},
 	"packageManager": "pnpm@9.12.3"
 }
