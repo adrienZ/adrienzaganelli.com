@@ -95,6 +95,8 @@ export default defineNuxtConfig({
 						"yaml",
 						// user values
 						"toml",
+						// 11 posts fence code as ```javascript, which "js" does not cover
+						"javascript",
 					],
 				},
 			},
