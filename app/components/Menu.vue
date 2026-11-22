@@ -25,6 +25,14 @@
 								Tech gems
 							</NuxtLink>
 						</li>
+						<li class="hidden md:block">
+							<NuxtLink
+								to="/certifications?utm_medium=main-menu"
+								activeClass="text-pimper"
+							>
+								Certifications
+							</NuxtLink>
+						</li>
 					</ul>
 				</nav>
 

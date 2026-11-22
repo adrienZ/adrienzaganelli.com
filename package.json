@@ -8,6 +8,7 @@
 		"format": "oxfmt",
 		"format:check": "oxfmt --check",
 		"lint": "eslint .",
+		"typecheck": "nuxt typecheck",
 		"check": "run-s format:check lint",
 		"generate": "nuxt build --prerender --dotenv .env.dev",
 		"prod": "nuxt build --prerender --dotenv .env.prod",
@@ -50,7 +51,9 @@
 		"nuxt-umami": "^3.2.1",
 		"oxfmt": "^0.58.0",
 		"rss": "^1.2.2",
-		"sass-easing": "^1.0.3"
+		"sass-easing": "^1.0.3",
+		"typescript": "^5",
+		"vue-tsc": "^3.3.14"
 	},
 	"lint-staged": {
 		"**/*": "oxfmt --no-error-on-unmatched-pattern"
