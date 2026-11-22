@@ -56,7 +56,7 @@
 							<cExternal
 								@mouseover="$bus.emit('cursor-default')"
 								class="bg-pimper text-white px-4 text-xl font-semibold py-2"
-								@click="trackLiveProjectClick($project.title)"
+								@click="trackLiveProjectClick(projectTitle)"
 								:href="$project.url"
 								data-linkz-ai-ignore
 							>
@@ -86,7 +86,7 @@
 				:title="nextProject.title"
 				:summary="nextProject.summary"
 				:url="`${nextProject.path}?utm_medium=next-project`"
-				@apply="trackNextProject($project.title, nextProject.title)"
+				@apply="trackNextProject(projectTitle, nextProject.title)"
 			/>
 			<cFooter class="sm:mt-16 mt-10" />
 		</Container>
@@ -106,6 +106,7 @@ import cFooter from "@/components/common/footer.vue";
 import cExternal from "@/components/common/external.vue";
 import cImageModale from "@/components/project/image-modale.vue";
 
+import type { CaseStudyCollectionItem } from "@nuxt/content";
 import gsap from "gsap";
 import lazysizes from "lazysizes";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
@@ -135,6 +136,11 @@ const titles = ref<HTMLDivElement | null>(null);
 let titleEffect: IntersectionObserver;
 let tl: gsap.core.Timeline;
 
+type NextProject = Pick<
+	CaseStudyCollectionItem,
+	"title" | "path" | "cover" | "summary"
+>;
+
 const { path } = useRoute();
 
 const { data: nextProjectSibling } = await useAsyncData(
@@ -158,8 +164,11 @@ const { data: firstProjectInDb } = await useAsyncData(
 			.first(),
 );
 
+// ContentNavigationItem is `[key: string]: unknown`; narrow to the selected fields
 const nextProject = computed(
-	() => nextProjectSibling.value || firstProjectInDb.value,
+	() =>
+		(nextProjectSibling.value as NextProject | null | undefined) ||
+		firstProjectInDb.value,
 );
 
 const { data: $project } = await useAsyncData(`${path}-content`, () =>
@@ -173,6 +182,8 @@ if (!$project.value) {
 		fatal: true,
 	});
 }
+
+const projectTitle = computed(() => $project.value?.title ?? "");
 
 const { data: team } = await useAsyncData(`${path}-teams`, () => {
 	return queryCollection("teams")
