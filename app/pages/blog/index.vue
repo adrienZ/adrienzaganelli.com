@@ -10,7 +10,7 @@
 					:key="post.path"
 					:style="`--delay: ${0.1 * index}s`"
 				>
-					<BlogCard :post="post" :height="post.image?.height" />
+					<BlogCard :post="post" :height="post.image?.height?.toString()" />
 				</li>
 			</ul>
 		</main>

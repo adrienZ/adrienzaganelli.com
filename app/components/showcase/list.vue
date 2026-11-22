@@ -66,7 +66,7 @@ const { data: projects } = await useAsyncData(`content-projects`, () => {
 let timer: ReturnType<typeof useTimer> | null = null;
 
 const state = reactive({
-	currentProjectUrl: null,
+	currentProjectUrl: null as string | null,
 	currentIndex: 0,
 });
 
@@ -92,7 +92,7 @@ function update(e: Event, project: Project, index: number) {
 	});
 }
 
-function onHover(e: MouseEvent, project, index: number) {
+function onHover(e: MouseEvent, project: Project, index: number) {
 	$bus.emit("cursor-hover");
 	update(e, project, index);
 }

@@ -7,6 +7,12 @@
 </template>
 
 <script setup lang="ts">
+declare global {
+	interface Window {
+		twttr?: { widgets: { load: () => void } };
+	}
+}
+
 useHead({
 	script: [
 		{

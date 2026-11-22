@@ -123,7 +123,7 @@ const list = ref();
 
 useRellax(bubble);
 
-const instance = getCurrentInstance()?.proxy;
+const instance = getCurrentInstance()!.proxy!;
 
 const iconSizes = "2rem";
 const links = [
@@ -164,7 +164,7 @@ onMounted(() => {
 	);
 	tl.fromTo(intro.value, { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0.2);
 	tl.fromTo(
-		bubble.value.children,
+		bubble.value?.children ?? [],
 		{ scale: 0, y: 0 },
 		{ scale: 1, y: 0, duration: 0.35, stagger: 0.1 },
 		0.25,
@@ -179,11 +179,11 @@ onMounted(() => {
 	tl.timeScale(0.85);
 
 	bubbleEffect = new IntersectionObserver(([entry]) => {
-		if (entry.isIntersecting) {
+		if (entry?.isIntersecting) {
 			tl.play();
-			bubbleEffect?.disconnect(instance.$el);
+			bubbleEffect?.disconnect();
 			gsap.fromTo(
-				bubble.value.children,
+				bubble.value?.children ?? [],
 				{ rotateZ: 0 },
 				{
 					rotateZ: 360,
@@ -199,7 +199,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-	bubbleEffect?.disconnect(instance.$el);
+	bubbleEffect?.disconnect();
 });
 
 function trackContactIconClick(name: string) {

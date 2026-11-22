@@ -60,7 +60,6 @@ export default defineNuxtConfig({
 	},
 
 	image: {
-		staticFilename: "[publicPath]/images/[name]-[hash][ext]",
 		// https://image.nuxtjs.org/configuration#screens
 		screens: {
 			xs: 320,
@@ -114,14 +113,12 @@ export default defineNuxtConfig({
 				{ charset: "utf-8" },
 				{ name: "viewport", content: "width=device-width, initial-scale=1" },
 				{
-					hid: "description",
 					name: "description",
 					content: "Adrien Zaganelli. Front-end developer made in France 🇫🇷",
 				},
 				{ "http-equiv": "x-ua-compatible ", content: "ie=edge" },
 				{ name: "twitter:dnt", content: "on" },
 				{
-					hid: "og:type",
 					name: "og:type",
 					content: "website",
 				},

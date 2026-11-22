@@ -44,19 +44,25 @@ type ShowcaseProject = Pick<
 const instance = getCurrentInstance()!.proxy!;
 const { $mouse } = useMouse();
 
-const { data: projects } = await useAsyncData(`showcase-projects`, () => {
-	return queryCollection("caseStudy").select("title", "path", "cover").all();
-});
+const { data: projects } = await useAsyncData(
+	`showcase-projects`,
+	() => {
+		return queryCollection("caseStudy").select("title", "path", "cover").all();
+	},
+	{ default: () => [] },
+);
 
 const title = ref<HTMLHeadingElement | null>(null);
 const media = ref<ComponentPublicInstance | null>(null);
 const list = useTemplateRef("list");
 
+const firstProject = projects.value[0]!;
+
 const data = reactive({
 	...useAppConfig(),
-	media: projects.value[0].cover,
-	title: projects.value[0].title,
-	url: projects.value[0].path,
+	media: firstProject.cover,
+	title: firstProject.title,
+	url: firstProject.path,
 	index: 0,
 	isLoading: false,
 	fadeObserver: null as IntersectionObserver | null,
@@ -84,7 +90,7 @@ onMounted(() => {
 		0.2,
 	);
 	tl.fromTo(
-		list.value?.getItemElements(),
+		list.value?.getItemElements() ?? [],
 		{ opacity: 0, y: 10 },
 		{ opacity: 1, y: 0, duration: 0.3, stagger: 0.12 },
 		0.2,
@@ -93,7 +99,7 @@ onMounted(() => {
 	tl.timeScale(0.85);
 
 	data.mouseObserver = new IntersectionObserver(([entry]) => {
-		if (entry.isIntersecting) {
+		if (entry?.isIntersecting) {
 			// dont follow mouse under 1280px (tailwind xl)
 			if (document.documentElement.clientWidth >= 1280) {
 				gsap.ticker.add(onFrame);
@@ -127,7 +133,7 @@ onMounted(() => {
 
 	data.fadeObserver = new IntersectionObserver(
 		([entry]) => {
-			if (entry.isIntersecting) {
+			if (entry?.isIntersecting) {
 				tl.play();
 				data.fadeObserver?.disconnect();
 			}

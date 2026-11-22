@@ -11,6 +11,8 @@ export default defineContentConfig({
 				date: z.date(),
 				image: z.object({
 					src: z.string(),
+					alt: z.string().optional(),
+					height: z.number().optional(),
 				}),
 				// `<!--more-->` divider
 				excerpt: z
