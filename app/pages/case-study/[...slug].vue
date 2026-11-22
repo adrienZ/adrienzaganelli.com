@@ -284,13 +284,13 @@ function trackLiveProjectClick(projectName: string) {
 		}
 	}
 
-	.cms-block:v-deep {
-		a {
+	.cms-block {
+		:deep(a) {
 			color: inherit;
 		}
 
-		.content-image,
-		.content-video {
+		:deep(.content-image),
+		:deep(.content-video) {
 			position: relative;
 
 			&:before {
