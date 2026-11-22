@@ -31,12 +31,12 @@
 </template>
 
 <script setup lang="ts">
+import type { CaseStudyCollectionItem } from "@nuxt/content";
 import { NuxtLink } from "#components";
 import { reactive } from "vue";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Project = any;
+type Project = Pick<CaseStudyCollectionItem, "path" | "title" | "cover">;
 
 const { $bus } = useNuxtApp();
 const items = useTemplateRef("items");

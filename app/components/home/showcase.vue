@@ -26,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+import type { CaseStudyCollectionItem } from "@nuxt/content";
 import { NuxtLink } from "#components";
 // components
 import cThumbnail from "@/components/showcase/thumbnail.vue";
@@ -35,11 +36,10 @@ import cList from "@/components/showcase/list.vue";
 import gsap from "gsap";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
-type ShowcaseProject = {
-	path: string;
-	title: string;
-	cover: unknown;
-};
+type ShowcaseProject = Pick<
+	CaseStudyCollectionItem,
+	"path" | "title" | "cover"
+>;
 
 const instance = getCurrentInstance()!.proxy!;
 const { $mouse } = useMouse();

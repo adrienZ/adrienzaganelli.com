@@ -17,13 +17,14 @@ export default defineNuxtConfig({
 				path: "~/components",
 				pattern: "**/*.server.vue",
 			},
-			{
-				// components used in markdown (MDC) and prose overrides must be global
-				path: "~/components/content",
-				global: true,
-				pathPrefix: false,
-			},
 		],
+	},
+
+	postcss: {
+		plugins: {
+			// added by @nuxtjs/tailwindcss but cannot be loaded (NUXT_B7027); no plain CSS nesting is used
+			"tailwindcss/nesting": false,
+		},
 	},
 
 	modules: [

@@ -120,3 +120,5 @@ logs
 
 .agents/skills
 .playwright-cli
+# Nuxt Content local sqlite database
+.data
