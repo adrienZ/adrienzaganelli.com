@@ -10,7 +10,7 @@ export default withNuxt(
 		rules: {
 			"vue/attributes-order": "off",
 			"vue/html-indent": "off",
-			"vue/multi-word-component-names": "warn",
+			"vue/multi-word-component-names": "off",
 		},
 	},
 	{

@@ -85,7 +85,6 @@ onBeforeUnmount(() => {
 });
 
 let tl: gsap.core.Timeline | gsap.core.Tween | null;
-let hoverTl: gsap.core.Timeline | gsap.core.Tween | null;
 
 function show() {
 	tl?.kill();
@@ -129,8 +128,6 @@ $bus.on("cursor-show", show);
 $bus.on("cursor-hide", hide);
 
 $bus.on("cursor-hover", () => {
-	if (hoverTl) hoverTl.kill();
-
 	gsap.to(state, {
 		duration: 0.5,
 		outerScale: 1,
@@ -139,8 +136,6 @@ $bus.on("cursor-hover", () => {
 });
 
 $bus.on("cursor-default", () => {
-	if (hoverTl) hoverTl.kill();
-
 	enableDiffrenceBlend.value = false;
 
 	gsap.to(state, {
