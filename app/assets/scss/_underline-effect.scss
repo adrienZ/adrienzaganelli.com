@@ -1,4 +1,4 @@
-@use "sass-easing" as *;
+@use "sass-easing/easings" as *;
 
 .underline-effect {
 	@mixin text-line-gradient(

@@ -5,6 +5,13 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
+	router: {
+		options: {
+			// match URL casing exactly (Nuxt 5 default)
+			sensitive: true,
+		},
+	},
+
 	components: {
 		// disable auto-import for components
 		dirs: [
@@ -136,10 +143,23 @@ export default defineNuxtConfig({
 		],
 	},
 
+	vite: {
+		css: {
+			preprocessorOptions: {
+				scss: {
+					// Vite 8 no longer resolves bare package imports in sass
+					loadPaths: ["node_modules"],
+				},
+			},
+		},
+	},
+
 	experimental: {
-		payloadExtraction: false,
+		payloadExtraction: "client",
 		componentIslands: true,
 		typedPages: true,
+		extractSerializablePageMeta: true,
+		prerenderErrorPages: true,
 		viewTransition: true,
 	},
 });
