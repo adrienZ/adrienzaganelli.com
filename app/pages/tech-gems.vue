@@ -6,7 +6,7 @@
 				<li
 					v-for="(post, index) in posts"
 					class=""
-					:key="post.ID"
+					:key="post.path"
 					:style="`--delay: ${0.08 * index}s`"
 				>
 					<div class="flex flex-wrap items-center gap-x-2 justify-between">
@@ -14,7 +14,7 @@
 							class="text-base md:text-lg font-semibold hover:underline underline-offset-2"
 						>
 							<NuxtLink
-								:to="post._path + `?utm_medium=tech-gems-index`"
+								:to="post.path + `?utm_medium=tech-gems-index`"
 								class="block"
 							>
 								{{ post.title.replace("Tech gems 👁️", "") }}
@@ -44,23 +44,15 @@ import { NuxtLink } from "#components";
 import Container from "@/components/Container.vue";
 import cFooter from "@/components/common/footer.vue";
 import cPageHeader from "@/components/common/page-header.vue";
-import { techGemsQuery } from "~/lib/content/queries";
+import { TECH_GEMS_PATH_PATTERN } from "~/lib/content/queries";
 
-const { data: posts } = await fetchContent(`content-blog`, () => {
-	return queryContent("blog")
-		.where(techGemsQuery)
-		.only(["title", "_path", "date", "excerpt"])
-		.sort({ date: -1 })
-		.find();
-});
-
-useHeadSafe({
-	meta: [
-		{
-			name: "og:image",
-			content: "/og-image.jpg",
-		},
-	],
+const { data: posts } = await useAsyncData(`content-tech-gems`, () => {
+	return queryCollection("blog")
+		.where("draft", "=", false)
+		.where("path", "LIKE", TECH_GEMS_PATH_PATTERN)
+		.select("title", "path", "date", "excerpt")
+		.order("date", "DESC")
+		.all();
 });
 
 definePageMeta({

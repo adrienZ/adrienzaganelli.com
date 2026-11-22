@@ -7,10 +7,10 @@
 				<li
 					v-for="(post, index) in posts"
 					class="w-full md:w-1/2 px-0 md:px-5 flex-shrink-0 mt-6"
-					:key="post.ID"
+					:key="post.path"
 					:style="`--delay: ${0.1 * index}s`"
 				>
-					<BlogCard :post="post" :height="post.image?.height" />
+					<BlogCard :post="post" :height="post.image?.height?.toString()" />
 				</li>
 			</ul>
 		</main>
@@ -36,26 +36,15 @@ import Container from "@/components/Container.vue";
 import BlogCard from "@/components/blog/card.vue";
 import cFooter from "@/components/common/footer.vue";
 import cPageHeader from "@/components/common/page-header.vue";
-import { techGemsQuery } from "~/lib/content/queries";
+import { TECH_GEMS_PATH_PATTERN } from "~/lib/content/queries";
 
-const { data: posts } = await fetchContent(`content-blog`, () => {
-	return queryContent("blog")
-		.where({
-			$not: techGemsQuery,
-		})
-		.where({ draft: false })
-		.only(["title", "_path", "date", "image", "excerpt"])
-		.sort({ date: -1 })
-		.find();
-});
-
-useHeadSafe({
-	meta: [
-		{
-			name: "og:image",
-			content: "/og-image.jpg",
-		},
-	],
+const { data: posts } = await useAsyncData(`content-blog`, () => {
+	return queryCollection("blog")
+		.where("draft", "=", false)
+		.where("path", "NOT LIKE", TECH_GEMS_PATH_PATTERN)
+		.select("title", "path", "date", "image", "excerpt")
+		.order("date", "DESC")
+		.all();
 });
 
 definePageMeta({

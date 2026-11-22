@@ -11,6 +11,14 @@ interface IAnalyticsEvents {
 	"footer link click": {
 		url: string;
 	};
+	"certification click": {
+		id: string;
+	};
+	"showcase project click": {
+		projectName: string;
+		isVisual: boolean;
+	};
+	"showcase project selection": string;
 	"toogle dark mode": undefined;
 	"rss feed clicked": undefined;
 	[key: `homepage contact:${string}`]: undefined;

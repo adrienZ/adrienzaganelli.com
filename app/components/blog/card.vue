@@ -11,7 +11,7 @@
 					width="720"
 					height="405"
 					quality="75"
-					:class="{ active: active === post._path }"
+					:class="{ active: active === post.path }"
 					:imgAttrs="{ class: 'w-full' }"
 				/>
 			</NuxtLink>
@@ -23,7 +23,7 @@
 			</h3>
 		</NuxtLink>
 
-		<ContentRendererMarkdown :value="post.excerpt" />
+		<ContentRenderer v-if="post.excerpt" :value="post.excerpt" />
 
 		<div class="mt-auto flex justify-between items-baseline">
 			<NuxtLink
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { ContentRendererMarkdown, NuxtImg, NuxtLink } from "#components";
+import { ContentRenderer, NuxtImg, NuxtLink } from "#components";
 import { computed } from "vue";
 const props = defineProps({
 	post: {
@@ -51,7 +51,7 @@ const props = defineProps({
 	},
 });
 
-const postUrl = computed(() => props.post._path + "?utm_medium=blog-index");
+const postUrl = computed(() => props.post.path + "?utm_medium=blog-index");
 const date = computed(() =>
 	new Date(props.post.date).toLocaleDateString(undefined, {
 		day: "numeric",
@@ -63,7 +63,7 @@ const date = computed(() =>
 const active = useState();
 
 function handleClick() {
-	active.value = props.post._path;
+	active.value = props.post.path;
 }
 </script>
 

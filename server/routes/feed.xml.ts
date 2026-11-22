@@ -1,7 +1,8 @@
 // https://mokkapps.de/blog/create-an-rss-feed-with-nuxt-3-and-nuxt-content-v2
 
-import { serverQueryContent } from "#content/server";
+import { queryCollection } from "@nuxt/content/nitro";
 import RSS from "rss";
+import { defineEventHandler } from "nuxt/server";
 
 export default defineEventHandler(async (event) => {
 	const feed = new RSS({
@@ -11,26 +12,16 @@ export default defineEventHandler(async (event) => {
 		image_url: "https://adrienzaganelli.com/favicon.ico",
 	});
 
-	const docs = await serverQueryContent(event)
-		.where({ draft: false })
-		.only([
-			"title",
-			"_path",
-			"date",
-			"media",
-			"description",
-			"excerpt",
-			"thumbnail_height",
-		])
-		.sort({ date: -1 })
-		.find();
-
-	const blogPosts = docs.filter((doc) => doc?._path?.includes("/blog"));
+	const blogPosts = await queryCollection(event, "blog")
+		.where("draft", "=", false)
+		.select("title", "path", "date", "description")
+		.order("date", "DESC")
+		.all();
 
 	for (const doc of blogPosts) {
 		feed.item({
 			title: doc.title ?? "-",
-			url: `https://adrienzaganelli.com${doc._path}`,
+			url: `https://adrienzaganelli.com${doc.path}`,
 			date: doc.date,
 			description: doc.description,
 			author: "Adrien Zaganelli",
@@ -38,6 +29,6 @@ export default defineEventHandler(async (event) => {
 	}
 
 	const feedString = feed.xml({ indent: true });
-	event.res.setHeader("content-type", "text/xml");
-	event.res.end(feedString);
+	event.res.headers.set("content-type", "text/xml");
+	return feedString;
 });

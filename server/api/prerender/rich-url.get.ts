@@ -1,4 +1,6 @@
 import getLinkPreview from "@nzambello/link-previewer";
+import { createError, getQuery } from "h3";
+import { defineCachedEventHandler } from "nitropack/runtime";
 
 // cache url to speed up build and avoid spam of sources
 export default defineCachedEventHandler(

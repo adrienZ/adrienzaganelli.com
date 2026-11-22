@@ -5,8 +5,20 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
+	site: {
+		url: "https://adrienzaganelli.com",
+	},
+
+	sitemap: {
+		// sitemap is prerendered at build time, no runtime handler needed
+		zeroRuntime: true,
+	},
+
+	future: {
+		compatibilityVersion: 5,
+	},
+
 	components: {
-		// disable auto-import for components
 		dirs: [
 			{
 				// nuxt needs to scan server components to do the magic
@@ -16,9 +28,18 @@ export default defineNuxtConfig({
 		],
 	},
 
+	postcss: {
+		plugins: {
+			// added by @nuxtjs/tailwindcss but cannot be loaded (NUXT_B7027); no plain CSS nesting is used
+			"tailwindcss/nesting": false,
+		},
+	},
+
 	modules: [
 		"@nuxtjs/tailwindcss",
 		"@nuxt/image",
+		// must come before @nuxt/content to read its collections
+		"@nuxtjs/sitemap",
 		"@nuxt/content",
 		"@nuxt/fonts",
 		"@nuxt/icon", // weird but needed for devtools to work
@@ -40,17 +61,16 @@ export default defineNuxtConfig({
 		},
 	},
 
-	css: ["./app/assets/css/tailwind.css", "./app/assets/scss/main.scss"],
+	css: ["~/assets/css/tailwind.css", "~/assets/scss/main.scss"],
 
 	tailwindcss: {
-		configPath: "./app/config/tailwind.config.js",
+		configPath: "./app/config/tailwind.config.ts",
 		cssPath: "./app/assets/css/tailwind.css",
 		exposeConfig: false,
 		viewer: false,
 	},
 
 	image: {
-		staticFilename: "[publicPath]/images/[name]-[hash][ext]",
 		// https://image.nuxtjs.org/configuration#screens
 		screens: {
 			xs: 320,
@@ -61,29 +81,34 @@ export default defineNuxtConfig({
 	},
 
 	content: {
-		highlight: {
-			theme: "monokai",
-			langs: [
-				// default values https://github.com/nuxt/content/blob/main/src/module.ts#L180
-				"js",
-				"jsx",
-				"json",
-				"ts",
-				"tsx",
-				"vue",
-				"css",
-				"html",
-				"vue",
-				"bash",
-				"md",
-				"mdc",
-				"yaml",
-				// user values
-				"toml",
-			],
+		experimental: {
+			sqliteConnector: "native",
 		},
-		markdown: {
-			anchorLinks: false,
+		build: {
+			markdown: {
+				highlight: {
+					theme: "monokai",
+					langs: [
+						// default values https://github.com/nuxt/content/blob/main/src/module.ts#L180
+						"js",
+						"jsx",
+						"json",
+						"ts",
+						"tsx",
+						"vue",
+						"css",
+						"html",
+						"bash",
+						"md",
+						"mdc",
+						"yaml",
+						// user values
+						"toml",
+						// 11 posts fence code as ```javascript, which "js" does not cover
+						"javascript",
+					],
+				},
+			},
 		},
 	},
 
@@ -99,17 +124,26 @@ export default defineNuxtConfig({
 				{ charset: "utf-8" },
 				{ name: "viewport", content: "width=device-width, initial-scale=1" },
 				{
-					hid: "description",
 					name: "description",
 					content: "Adrien Zaganelli. Front-end developer made in France 🇫🇷",
 				},
 				{ "http-equiv": "x-ua-compatible ", content: "ie=edge" },
-				{ name: "twitter:dnt", content: "on" },
 				{
-					hid: "og:type",
-					name: "og:type",
+					property: "og:type",
 					content: "website",
 				},
+				// defaults for every page; pages/posts override what they need
+				{ property: "og:title", content: "Adrien Zaganelli Portfolio 💻" },
+				{
+					property: "og:description",
+					content: "Adrien Zaganelli. Front-end developer made in France 🇫🇷",
+				},
+				{
+					property: "og:image",
+					content: "https://adrienzaganelli.com/og-image.jpg",
+				},
+				{ property: "og:image:width", content: "1200" },
+				{ property: "og:image:height", content: "630" },
 			],
 			link: [
 				{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -137,9 +171,8 @@ export default defineNuxtConfig({
 	},
 
 	experimental: {
-		payloadExtraction: false,
 		componentIslands: true,
-		typedPages: true,
+		prerenderErrorPages: true,
 		viewTransition: true,
 	},
 });
