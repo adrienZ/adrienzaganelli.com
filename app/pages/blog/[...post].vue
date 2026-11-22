@@ -1,112 +1,102 @@
 <template>
 	<!-- eslint-disable vue/no-v-html -->
 	<section class="page-post">
-		<ContentDoc>
-			<template #not-found>
-				<h1 class="text-xl text-center font-bold">Document not found</h1>
-			</template>
+		<template v-if="post">
+			<Head>
+				<Title>{{ post.title }}</Title>
+				<!-- <Meta name="description" :content="post.description" /> -->
+				<Meta
+					name="og:image"
+					:content="config.PROD_URL + useImage().getImage(post.image.src).url"
+				/>
+				<Meta name="og:type" content="article" />
+				<Meta
+					name="article:published_time"
+					:content="new Date(post.date).toISOString()"
+				/>
+			</Head>
 
-			<template #default="{ doc: post }">
-				<Head>
-					<Title>{{ post.title }}</Title>
-					<!-- <Meta name="description" :content="post.description" /> -->
-					<Meta
-						name="og:image"
-						:content="config.PROD_URL + useImage().getImage(post.image.src).url"
-					/>
-					<Meta name="og:type" content="article" />
-					<Meta
-						name="article:published_time"
-						:content="new Date(post.date).toISOString()"
-					/>
-				</Head>
+			<cProgressBar :progress="progress" />
 
-				<cProgressBar :progress="progress" />
+			<Container class="pb-10" variant="blog">
+				<article ref="article">
+					<h1 class="text-3xl sm:text-4xl mb-2 font-extrabold">
+						{{ post.title }}
+					</h1>
 
-				<Container class="pb-10" variant="blog">
-					<article ref="article">
-						<h1 class="text-3xl sm:text-4xl mb-2 font-extrabold">
-							{{ post.title }}
-						</h1>
+					<h2 class="mb-8">
+						<NuxtLink class="text-pimper" to="/?utm_medium=blog-author">
+							Adrien Zaganelli
+						</NuxtLink>
+						-
+						<time :datetime="post.date">
+							{{
+								new Date(post.date).toLocaleDateString(undefined, {
+									day: "numeric",
+									month: "long",
+									year: "numeric",
+								})
+							}}
+						</time>
+					</h2>
 
-						<h2 class="mb-8">
-							<NuxtLink class="text-pimper" to="/?utm_medium=blog-author">
-								Adrien Zaganelli
-							</NuxtLink>
-							-
-							<time :datetime="post.date">
-								{{
-									new Date(post.date).toLocaleDateString(undefined, {
-										day: "numeric",
-										month: "long",
-										year: "numeric",
-									})
-								}}
-							</time>
-						</h2>
+					<figure v-if="post.image">
+						<NuxtImg
+							class="hero-img block w-full max-w-[35rem] mx-auto"
+							:src="post.image.src"
+							:alt="post.image.alt"
+						/>
+						<figcaption
+							v-if="post.image.alt"
+							class="text-center mt-2 italic"
+							v-html="post.image.alt"
+						/>
+					</figure>
 
-						<figure v-if="post.image">
-							<NuxtImg
-								class="hero-img block w-full max-w-[35rem] mx-auto"
-								:src="post.image.src"
-								:alt="post.image.alt"
-							/>
-							<figcaption
-								v-if="post.image.alt"
-								class="text-center mt-2 italic"
-								v-html="post.image.alt"
-							/>
-						</figure>
-
-						<!-- Table of contents
+					<!-- Table of contents
 						<ul>
 							<li v-for="link of post.body.toc.links" :key="link.id">
 								<a :href="`#${link.id}`">{{ link.text }}</a>
 							</li>
 						</ul> -->
 
-						<ContentRendererMarkdown
-							class="cms-block mt-5"
-							ref="cms_block"
-							:value="post"
-							tag="div"
-						/>
-					</article>
-				</Container>
-
-				<Container variant="blog">
-					<div
-						class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"
+					<ContentRenderer
+						class="cms-block mt-5"
+						ref="cms_block"
+						:value="post"
+						tag="div"
 					/>
+				</article>
+			</Container>
 
-					<div>
-						<cSharePost
-							:postTitle="post.title"
-							:url="config.PROD_URL + $route.path"
-						/>
-					</div>
-
-					<div class="mt-8">
-						<cHireMe v-if="config.NEED_JOB" />
-						<CAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
-					</div>
-
-					<cFooter class="sm:mt-16 mt-10" />
-				</Container>
-
-				<cBackToTop
-					ref="back_to_top"
-					class="fixed bottom-0 right-0 mr-8 mb-8"
+			<Container variant="blog">
+				<div
+					class="mt-16 border w-full border-black border-opacity-25 mb-5 sm:mb-10"
 				/>
-			</template>
-		</ContentDoc>
+
+				<div>
+					<cSharePost
+						:postTitle="post.title"
+						:url="config.PROD_URL + $route.path"
+					/>
+				</div>
+
+				<div class="mt-8">
+					<cHireMe v-if="config.NEED_JOB" />
+					<CAboutTheAuthor class="mt-4 rounded-lg shadow-md p-6" />
+				</div>
+
+				<cFooter class="sm:mt-16 mt-10" />
+			</Container>
+
+			<cBackToTop ref="back_to_top" class="fixed bottom-0 right-0 mr-8 mb-8" />
+		</template>
 	</section>
 </template>
 
 <script setup lang="ts">
 import {
-	ContentDoc,
-	ContentRendererMarkdown,
+	ContentRenderer,
 	Head,
 	Meta,
 	NuxtImg,
@@ -123,6 +113,19 @@ import cProgressBar from "@/components/blog/ProgressBar.vue";
 import lazysizes from "lazysizes";
 
 const config = useAppConfig();
+const route = useRoute();
+
+const { data: post } = await useAsyncData(`blog-${route.path}`, () =>
+	queryCollection("blog").path(route.path).first(),
+);
+
+if (!post.value) {
+	throw createError({
+		statusCode: 404,
+		statusMessage: "Post not found",
+		fatal: true,
+	});
+}
 
 onMounted(() => {
 	window.addEventListener("scroll", onScroll);

@@ -1,8 +1,2 @@
-import type { QueryBuilderWhere } from "@nuxt/content/types";
-
-export const techGemsQuery: QueryBuilderWhere = {
-	draft: false,
-	_path: {
-		$icontains: "tech-gems",
-	},
-};
+// SQL LIKE pattern matching the tech gems blog series
+export const TECH_GEMS_PATH_PATTERN = "%tech-gems%";

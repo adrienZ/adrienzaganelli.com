@@ -11,7 +11,7 @@
 				@focus="onFocus($event, p, index)"
 				@mouseover="onHover($event, p, index)"
 				@click="trackProjectClick(p.title)"
-				:to="p._path"
+				:to="p.path"
 				class="inline-block"
 				data-linkz-ai-ignore
 			>
@@ -57,10 +57,10 @@ const useTimer = (duration: number, callback: () => void) => {
 };
 
 const { data: projects } = await useAsyncData(`content-projects`, () => {
-	return queryContent("case-study")
-		.where({ draft: false })
-		.only(["title", "_path", "cover"])
-		.find();
+	return queryCollection("caseStudy")
+		.where("draft", "=", false)
+		.select("title", "path", "cover")
+		.all();
 });
 
 let timer: ReturnType<typeof useTimer> | null = null;
@@ -74,7 +74,7 @@ function update(e: Event, project: Project, index: number) {
 	const item = e.currentTarget;
 
 	// dont emit if already active
-	if (state.currentProjectUrl === project._path) return;
+	if (state.currentProjectUrl === project.path) return;
 
 	// loading state
 	// ...
@@ -87,7 +87,7 @@ function update(e: Event, project: Project, index: number) {
 	// delay before doing action
 	timer = useTimer(120, () => {
 		emit("update", [project, index]);
-		state.currentProjectUrl = project._path;
+		state.currentProjectUrl = project.path;
 		AnalyticsService.trackEvent("showcase project selection", project.title);
 	});
 }

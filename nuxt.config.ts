@@ -5,11 +5,8 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
-	router: {
-		options: {
-			// match URL casing exactly (Nuxt 5 default)
-			sensitive: true,
-		},
+	future: {
+		compatibilityVersion: 5,
 	},
 
 	components: {
@@ -19,6 +16,12 @@ export default defineNuxtConfig({
 				// nuxt needs to scan server components to do the magic
 				path: "~/components",
 				pattern: "**/*.server.vue",
+			},
+			{
+				// components used in markdown (MDC) and prose overrides must be global
+				path: "~/components/content",
+				global: true,
+				pathPrefix: false,
 			},
 		],
 	},
@@ -68,29 +71,31 @@ export default defineNuxtConfig({
 	},
 
 	content: {
-		highlight: {
-			theme: "monokai",
-			langs: [
-				// default values https://github.com/nuxt/content/blob/main/src/module.ts#L180
-				"js",
-				"jsx",
-				"json",
-				"ts",
-				"tsx",
-				"vue",
-				"css",
-				"html",
-				"vue",
-				"bash",
-				"md",
-				"mdc",
-				"yaml",
-				// user values
-				"toml",
-			],
+		experimental: {
+			// node:sqlite (Node >= 22.5) instead of the native better-sqlite3 module
+			sqliteConnector: "native",
 		},
-		markdown: {
-			anchorLinks: false,
+		build: {
+			markdown: {
+				highlight: {
+					theme: "monokai",
+					langs: [
+						"js",
+						"jsx",
+						"json",
+						"ts",
+						"tsx",
+						"vue",
+						"css",
+						"html",
+						"bash",
+						"md",
+						"mdc",
+						"yaml",
+						"toml",
+					],
+				},
+			},
 		},
 	},
 
@@ -155,10 +160,9 @@ export default defineNuxtConfig({
 	},
 
 	experimental: {
-		payloadExtraction: "client",
 		componentIslands: true,
-		typedPages: true,
-		extractSerializablePageMeta: true,
+		// @nuxt/image and server/ still rely on nitro auto-imports
+		nitroAutoImports: true,
 		prerenderErrorPages: true,
 		viewTransition: true,
 	},

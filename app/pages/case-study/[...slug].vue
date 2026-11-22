@@ -44,7 +44,7 @@
 						<span>{{ $project.role }}</span>
 					</p>
 
-					<div v-if="team && team.body.children.length > 0">
+					<div v-if="team?.body?.value?.length">
 						<span class="font-semibold block">The team:</span>
 						<ContentRenderer :value="team" />
 					</div>
@@ -85,7 +85,7 @@
 				:mediaUrl="nextProject.cover.src"
 				:title="nextProject.title"
 				:summary="nextProject.summary"
-				:url="`${nextProject._path}?utm_medium=next-project`"
+				:url="`${nextProject.path}?utm_medium=next-project`"
 				@apply="trackNextProject($project.title, nextProject.title)"
 			/>
 			<cFooter class="sm:mt-16 mt-10" />
@@ -137,38 +137,47 @@ let tl: gsap.core.Timeline;
 
 const { path } = useRoute();
 
-const { data: nextProjectSibling } = await fetchContent(
+const { data: nextProjectSibling } = await useAsyncData(
 	`${path}-next-projects`,
 	async () => {
-		const [__, _nextProject] = await queryContent("case-study")
-			.where({ draft: false })
-			.findSurround(path);
+		const [, _nextProject] = await queryCollectionItemSurroundings(
+			"caseStudy",
+			path,
+			{ fields: ["title", "path", "cover", "summary"] },
+		).where("draft", "=", false);
 		return _nextProject;
 	},
 );
 
-const { data: firstProjectInDb } = await fetchContent(
+const { data: firstProjectInDb } = await useAsyncData(
 	`project-first-content`,
 	() =>
-		queryContent("case-study")
-			.where({ _partial: false, draft: false })
-			.findOne(),
+		queryCollection("caseStudy")
+			.where("draft", "=", false)
+			.select("title", "path", "cover", "summary")
+			.first(),
 );
 
 const nextProject = computed(
 	() => nextProjectSibling.value || firstProjectInDb.value,
 );
 
-const { data: $project } = await fetchContent(`${path}-content`, () =>
-	queryContent(path).findOne(),
+const { data: $project } = await useAsyncData(`${path}-content`, () =>
+	queryCollection("caseStudy").path(path).first(),
 );
 
-const { data: team } = await fetchContent(`${path}-teams`, () => {
-	return queryContent("teams")
-		.where({
-			title: $project.value?.title,
-		})
-		.findOne();
+if (!$project.value) {
+	throw createError({
+		statusCode: 404,
+		statusMessage: "Project not found",
+		fatal: true,
+	});
+}
+
+const { data: team } = await useAsyncData(`${path}-teams`, () => {
+	return queryCollection("teams")
+		.where("title", "=", $project.value?.title ?? "")
+		.first();
 });
 
 onMounted(() => {

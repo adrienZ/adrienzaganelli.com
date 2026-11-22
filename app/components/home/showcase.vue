@@ -36,7 +36,7 @@ import gsap from "gsap";
 import { AnalyticsService } from "~/src/services/AnalyticsService";
 
 type ShowcaseProject = {
-	_path: string;
+	path: string;
 	title: string;
 	cover: unknown;
 };
@@ -44,8 +44,8 @@ type ShowcaseProject = {
 const instance = getCurrentInstance()!.proxy!;
 const { $mouse } = useMouse();
 
-const { data: projects } = await fetchContent(`showcase-projects`, () => {
-	return queryContent("case-study").only(["title", "_path", "cover"]).find();
+const { data: projects } = await useAsyncData(`showcase-projects`, () => {
+	return queryCollection("caseStudy").select("title", "path", "cover").all();
 });
 
 const title = ref<HTMLHeadingElement | null>(null);
@@ -56,7 +56,7 @@ const data = reactive({
 	...useAppConfig(),
 	media: projects.value[0].cover,
 	title: projects.value[0].title,
-	url: projects.value[0]._path,
+	url: projects.value[0].path,
 	index: 0,
 	isLoading: false,
 	fadeObserver: null as IntersectionObserver | null,
@@ -156,7 +156,7 @@ function onFrame() {
 }
 
 function onProjectChange([project, index]: [ShowcaseProject, number]) {
-	if (project._path === data.url) {
+	if (project.path === data.url) {
 		return false;
 	}
 
@@ -170,7 +170,7 @@ function onProjectChange([project, index]: [ShowcaseProject, number]) {
 		duration: 0.1,
 		onComplete: () => {
 			data.media = project.cover;
-			data.url = project._path;
+			data.url = project.path;
 			data.index = index;
 			data.title = project.title;
 		},
