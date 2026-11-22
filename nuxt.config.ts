@@ -5,6 +5,15 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
+	site: {
+		url: "https://adrienzaganelli.com",
+	},
+
+	sitemap: {
+		// sitemap is prerendered at build time, no runtime handler needed
+		zeroRuntime: true,
+	},
+
 	future: {
 		compatibilityVersion: 5,
 	},
@@ -29,6 +38,8 @@ export default defineNuxtConfig({
 	modules: [
 		"@nuxtjs/tailwindcss",
 		"@nuxt/image",
+		// must come before @nuxt/content to read its collections
+		"@nuxtjs/sitemap",
 		"@nuxt/content",
 		"@nuxt/fonts",
 		"@nuxt/icon", // weird but needed for devtools to work

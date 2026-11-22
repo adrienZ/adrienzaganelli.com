@@ -1,4 +1,6 @@
-import { defineCollection, defineContentConfig, z } from "@nuxt/content";
+import { defineCollection, defineContentConfig } from "@nuxt/content";
+import { z } from "zod";
+import { defineSitemapSchema } from "@nuxtjs/sitemap/content";
 
 // v3 does not ignore dot files (e.g. hidden drafts like .0.leetchi.md) by default
 export default defineContentConfig({
@@ -7,6 +9,10 @@ export default defineContentConfig({
 			type: "page",
 			source: { include: "blog/*.md", exclude: ["**/.*"] },
 			schema: z.object({
+				sitemap: defineSitemapSchema({
+					name: "blog",
+					filter: (entry) => !entry.draft,
+				}),
 				draft: z.boolean(),
 				date: z.date(),
 				image: z.object({
@@ -27,6 +33,10 @@ export default defineContentConfig({
 			type: "page",
 			source: { include: "case-study/*.md", exclude: ["**/.*"] },
 			schema: z.object({
+				sitemap: defineSitemapSchema({
+					name: "caseStudy",
+					filter: (entry) => !entry.draft,
+				}),
 				draft: z.boolean(),
 				summary: z.string(),
 				time_period: z.string(),

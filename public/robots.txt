@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /2018
 Disallow: /cms
+Sitemap: https://adrienzaganelli.com/sitemap.xml
