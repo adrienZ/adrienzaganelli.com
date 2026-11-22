@@ -81,6 +81,7 @@ export default defineNuxtConfig({
 				highlight: {
 					theme: "monokai",
 					langs: [
+						// default values https://github.com/nuxt/content/blob/main/src/module.ts#L180
 						"js",
 						"jsx",
 						"json",
@@ -93,6 +94,7 @@ export default defineNuxtConfig({
 						"md",
 						"mdc",
 						"yaml",
+						// user values
 						"toml",
 					],
 				},

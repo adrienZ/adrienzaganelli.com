@@ -17,9 +17,6 @@ importers:
       '@vueuse/core':
         specifier: ^14.3.0
         version: 14.3.0(vue@3.5.46(typescript@5.9.3))
-      better-sqlite3:
-        specifier: ^13.2.0
-        version: 13.2.0
       body-scroll-lock:
         specifier: 4.0.0-beta.0
         version: 4.0.0-beta.0
@@ -10927,6 +10924,7 @@ snapshots:
   better-sqlite3@13.2.0:
     dependencies:
       node-addon-api: 8.9.2
+    optional: true
 
   binary-extensions@2.3.0: {}
 
@@ -13726,7 +13724,8 @@ snapshots:
   node-addon-api@7.1.1:
     optional: true
 
-  node-addon-api@8.9.2: {}
+  node-addon-api@8.9.2:
+    optional: true
 
   node-emoji@2.2.0:
     dependencies:
