@@ -128,11 +128,22 @@ export default defineNuxtConfig({
 					content: "Adrien Zaganelli. Front-end developer made in France 🇫🇷",
 				},
 				{ "http-equiv": "x-ua-compatible ", content: "ie=edge" },
-				{ name: "twitter:dnt", content: "on" },
 				{
-					name: "og:type",
+					property: "og:type",
 					content: "website",
 				},
+				// defaults for every page; pages/posts override what they need
+				{ property: "og:title", content: "Adrien Zaganelli Portfolio 💻" },
+				{
+					property: "og:description",
+					content: "Adrien Zaganelli. Front-end developer made in France 🇫🇷",
+				},
+				{
+					property: "og:image",
+					content: "https://adrienzaganelli.com/og-image.jpg",
+				},
+				{ property: "og:image:width", content: "1200" },
+				{ property: "og:image:height", content: "630" },
 			],
 			link: [
 				{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },

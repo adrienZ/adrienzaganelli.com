@@ -55,15 +55,6 @@ const { data: posts } = await useAsyncData(`content-tech-gems`, () => {
 		.all();
 });
 
-useHeadSafe({
-	meta: [
-		{
-			name: "og:image",
-			content: "/og-image.jpg",
-		},
-	],
-});
-
 definePageMeta({
 	layout: "blog",
 });

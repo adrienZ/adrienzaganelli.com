@@ -10,7 +10,7 @@
 		"format:check": "oxfmt --check",
 		"lint": "eslint .",
 		"typecheck": "nuxt typecheck --checker=golar",
-		"check": "run-s format:check lint",
+		"check": "run-s format:check lint typecheck",
 		"generate": "nuxt build --prerender --dotenv .env.dev",
 		"prod": "nuxt build --prerender --dotenv .env.prod",
 		"test": "pnpm exec playwright test",

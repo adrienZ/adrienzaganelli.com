@@ -4,11 +4,17 @@
 			<Head>
 				<Title>{{ post.title }}</Title>
 				<!-- <Meta name="description" :content="post.description" /> -->
+				<Meta property="og:title" :content="post.title" />
+				<Meta property="og:image" :content="ogImage" />
 				<Meta
-					name="og:image"
-					:content="config.PROD_URL + useImage().getImage(post.image.src).url"
+					property="og:image:width"
+					:content="String(OG_IMAGE_SIZE.width)"
 				/>
-				<Meta name="og:type" content="article" />
+				<Meta
+					property="og:image:height"
+					:content="String(OG_IMAGE_SIZE.height)"
+				/>
+				<Meta property="og:type" content="article" />
 				<Meta
 					name="article:published_time"
 					:content="new Date(post.date).toISOString()"
@@ -115,6 +121,10 @@ import lazysizes from "lazysizes";
 
 const config = useAppConfig();
 const route = useRoute();
+const img = useImage();
+
+// social cards expect 1.91:1; cropping here also lets us declare real dimensions
+const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
 const { data: post } = await useAsyncData(`blog-${route.path}`, () =>
 	queryCollection("blog").path(route.path).first(),
@@ -127,6 +137,13 @@ if (!post.value) {
 		fatal: true,
 	});
 }
+
+const ogImage = computed(() =>
+	post.value
+		? config.PROD_URL +
+			img(post.value.image.src, { ...OG_IMAGE_SIZE, fit: "cover" })
+		: "",
+);
 
 onMounted(() => {
 	window.addEventListener("scroll", onScroll);

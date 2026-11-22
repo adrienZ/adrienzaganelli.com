@@ -17,14 +17,9 @@ import cPageHeader from "@/components/common/page-header.vue";
 import CertificationTicketList from "@/components/certifications/ticket-list.vue";
 import { certifications } from "~/lib/certifications";
 
-useHeadSafe({
+useSeoMeta({
 	title: "Certifications | Adrien Zaganelli",
-	meta: [
-		{
-			name: "og:image",
-			content: "/og-image.jpg",
-		},
-	],
+	ogTitle: "Certifications | Adrien Zaganelli",
 });
 
 definePageMeta({
