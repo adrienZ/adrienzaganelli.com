@@ -4,8 +4,9 @@
  ** Docs: https://tailwindcss.com/docs/configuration
  ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
  */
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss";
+
+export default {
 	theme: {
 		extend: {
 			fontFamily: {
@@ -35,9 +36,6 @@ module.exports = {
 			},
 		},
 	},
-	variants: {
-		textColor: ["group-hover", "hover", "focus", "group-focus"],
-	},
 	plugins: [],
 	content: [
 		"app/components/**/*.vue",
@@ -46,4 +44,4 @@ module.exports = {
 		"app/plugins/**/*.{js,ts}",
 		"nuxt.config.{js,ts}",
 	],
-};
+} satisfies Config;
