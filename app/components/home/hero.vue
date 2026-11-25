@@ -6,7 +6,7 @@
 				<p ref="intro" class="inline">
 					My name is Adrien Zaganelli. I’m a web developer working at
 					<a
-						href="https://www.amexglobalbusinesstravel.com/fr/neo-voyages-notes-de-frais/"
+						href="https://www.amexglobalbusinesstravel.com/fr/pourquoi-amex-gbt/outil-de-reservation-de-voyages-d-affaires/"
 						class="hover:text-pimper focus:text-pimper underline"
 						title="Neo - Voyages d'affaires et notes de frais"
 						rel="noopener noreferrer"
