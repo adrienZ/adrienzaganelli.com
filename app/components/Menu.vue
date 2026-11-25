@@ -4,21 +4,13 @@
 			<div class="menu-bar w-full flex justify-between items-center">
 				<nav class="font-bold">
 					<ul class="flex gap-4 text-xl items-center">
-						<li v-for="link in primaryLinks" :key="link.to">
+						<li v-for="link in inlineLinks" :key="link.to">
 							<NuxtLink :to="link.to" activeClass="text-pimper">
 								{{ link.label }}
 							</NuxtLink>
 						</li>
-						<!-- desktop: secondary links inline -->
-						<template v-if="isDesktop">
-							<li v-for="link in secondaryLinks" :key="link.to">
-								<NuxtLink :to="link.to" activeClass="text-pimper">
-									{{ link.label }}
-								</NuxtLink>
-							</li>
-						</template>
-						<!-- mobile: secondary links collapse into a native popover (top layer, no z-index needed) -->
-						<li v-else>
+						<!-- the rest collapses into a native popover (top layer, no z-index needed) -->
+						<li>
 							<button
 								class="menu-more-trigger flex items-center"
 								popovertarget="menu-more"
@@ -37,7 +29,7 @@
 								popover
 								class="menu-more p-4 flex-col gap-3 whitespace-nowrap rounded-md bg-surface text-black shadow-lg"
 							>
-								<li v-for="link in secondaryLinks" :key="link.to">
+								<li v-for="link in moreLinks" :key="link.to">
 									<NuxtLink :to="link.to" activeClass="text-pimper">
 										{{ link.label }}
 									</NuxtLink>
@@ -67,13 +59,16 @@ const links = [
 	{ to: "/blog?utm_medium=main-menu", label: "Blog" },
 	{ to: "/tech-gems?utm_medium=main-menu", label: "Tech gems" },
 	{ to: "/certifications?utm_medium=main-menu", label: "Certifications" },
+	{ to: "/open-source?utm_medium=main-menu", label: "Open source" },
 ];
-const primaryLinks = links.slice(0, 2);
-const secondaryLinks = links.slice(2);
 
 // same breakpoint as Tailwind `md`; render one set of links instead of hiding a duplicate with CSS.
 // ssrWidth: prerender (and hydration) assume desktop, so desktop visitors get no flash
 const isDesktop = useMediaQuery("(min-width: 768px)", { ssrWidth: 1024 });
+// desktop shows "Tech gems" inline; everything after goes under "More"
+const inlineCount = computed(() => (isDesktop.value ? 3 : 2));
+const inlineLinks = computed(() => links.slice(0, inlineCount.value));
+const moreLinks = computed(() => links.slice(inlineCount.value));
 const route = useRoute();
 const morePopover = useTemplateRef<HTMLElement>("morePopover");
 
@@ -97,6 +92,17 @@ watch(
 	right: anchor(right);
 	width: auto;
 	margin: 0.5rem 0 0;
+}
+/* desktop: a compact dropdown under the "More" button instead of a full-width sheet */
+@media (min-width: 768px) {
+	.menu-more-trigger {
+		anchor-name: --menu-more;
+	}
+	.menu-more {
+		position-anchor: --menu-more;
+		left: anchor(left);
+		right: auto;
+	}
 }
 .menu-more:popover-open {
 	display: flex;

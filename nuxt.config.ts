@@ -5,6 +5,11 @@ export default defineNuxtConfig({
 
 	compatibilityDate: "2024-07-09",
 
+	runtimeConfig: {
+		// optional, raises GitHub API rate limits for /api/prerender/contributions
+		githubToken: "",
+	},
+
 	site: {
 		url: "https://adrienzaganelli.com",
 	},
