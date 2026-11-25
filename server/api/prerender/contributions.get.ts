@@ -1,3 +1,5 @@
+// nuxt/server has no cache helpers yet
+import { defineCachedFunction } from "nitropack/runtime";
 import { defineEventHandler, useRuntimeConfig } from "nuxt/server";
 import { MIN_STARS, type Contribution } from "#shared/contributions";
 
@@ -17,16 +19,15 @@ interface Repo {
 	owner: { login: string; type: "User" | "Organization" };
 }
 
-// the page is prerendered: GitHub is hit once per build (and once per dev server)
-let cache: Promise<Contribution[]> | undefined;
-
-export default defineEventHandler(() => {
-	cache ??= fetchContributions().catch((error) => {
-		cache = undefined;
-		throw error;
-	});
-	return cache;
+// unauthenticated GitHub API allows 60 requests/hour and one call costs 1 + one per repo:
+// keep the result for an hour (nitro cache storage survives dev reloads; failures aren't cached)
+const getContributions = defineCachedFunction(fetchContributions, {
+	name: "github-contributions",
+	getKey: () => GITHUB_USER,
+	maxAge: 60 * 60,
 });
+
+export default defineEventHandler(() => getContributions());
 
 async function fetchContributions(): Promise<Contribution[]> {
 	const { githubToken } = useRuntimeConfig();

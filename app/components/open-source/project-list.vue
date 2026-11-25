@@ -35,6 +35,7 @@
 				<li v-for="pr in group.prs" :key="pr.url">
 					<cExternal
 						:href="pr.url"
+						data-linkz-ai-ignore
 						class="row group flex items-center gap-3 px-4 py-2.5 text-sm"
 					>
 						<Icon
@@ -47,9 +48,6 @@
 							class="flex-1 truncate group-hover:underline underline-offset-2"
 						>
 							{{ pr.title }}
-						</span>
-						<span class="shrink-0 font-mono text-xs opacity-60">
-							#{{ pr.number }}
 						</span>
 					</cExternal>
 				</li>
